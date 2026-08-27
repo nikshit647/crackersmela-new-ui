@@ -1,0 +1,32 @@
+# Build output
+target/
+*.class
+*.jar
+*.war
+
+# Backups / source dumps (EXCLUDE - may contain data)
+crackersmela-files-backup/
+crackersmela-files-backup.tar.gz
+crackersmela-database.sql
+
+# Separate/legacy projects and tooling
+crackersmela-api/
+.freebuff/
+
+# Secrets & config
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+application-secrets.yml
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Node (unused here, but safe)
+node_modules/

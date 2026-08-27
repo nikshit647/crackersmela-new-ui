@@ -1,0 +1,188 @@
+# =============================================================================
+# CrackersMela - Application Configuration
+# =============================================================================
+# Spring Boot configuration for PostgreSQL, Redis, JWT, and security.
+# All sensitive values should be overridden via environment variables in production.
+# =============================================================================
+
+spring:
+  application:
+    name: CrackersMela
+
+  # ---------------------------------------------------------------------------
+  # PostgreSQL Database
+  # ---------------------------------------------------------------------------
+  datasource:
+    url: jdbc:postgresql://localhost:5432/crackersmela
+    username: crackers
+    password: secret
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      # Connection pool tuned for seasonal traffic spikes
+      # During Diwali, we may see 50x normal traffic
+      maximum-pool-size: 30
+      minimum-idle: 5
+      idle-timeout: 300000        # 5 minutes
+      max-lifetime: 1200000       # 20 minutes
+      connection-timeout: 20000   # 20 seconds
+      pool-name: CrackersMelaPool
+
+  # ---------------------------------------------------------------------------
+  # JPA / Hibernate
+  # ---------------------------------------------------------------------------
+  jpa:
+    hibernate:
+      ddl-auto: validate          # Use Alembic/Flyway for schema changes
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        default_batch_fetch_size: 16  # Optimize N+1 queries
+    show-sql: false                # Set true in development
+
+  # ---------------------------------------------------------------------------
+  # Redis (Caching for seasonal traffic)
+  # ---------------------------------------------------------------------------
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 5000ms
+      lettuce:
+        pool:
+          max-active: 20
+          max-idle: 10
+          min-idle: 5
+          max-wait: 5000ms
+
+  # ---------------------------------------------------------------------------
+  # Cache Configuration
+  # ---------------------------------------------------------------------------
+  cache:
+    type: redis
+    redis:
+      time-to-live: 300000        # Default 5 minutes
+      cache-null-values: false    # Don't cache nulls
+      key-prefix: "crackersmela:"
+    cache-names:
+      - products                  # Product catalog cache
+      - product-detail            # Individual product cache
+      - categories                # Category tree cache
+      - users                     # User profile cache
+      - cart                      # Shopping cart cache
+
+  # ---------------------------------------------------------------------------
+  # Jackson (JSON Serialization)
+  # ---------------------------------------------------------------------------
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
+
+  # ---------------------------------------------------------------------------
+  # Validation
+  # ---------------------------------------------------------------------------
+  validation:
+    banner-mode: log
+
+# =============================================================================
+# Custom Application Properties
+# =============================================================================
+app:
+  jwt:
+    # IMPORTANT: Change JWT_SECRET in production!
+    secret: [REDACTED]  # demo default; set JWT_SECRET env in prod
+    access-token-expiration: 1800000    # 30 minutes in milliseconds
+    refresh-token-expiration: 604800000 # 7 days in milliseconds
+    token-prefix: "Bearer "
+    header: "Authorization"
+
+  # Rate limiting configuration
+  rate-limit:
+    requests-per-minute: 60
+    burst-capacity: 10
+
+  # CORS configuration
+  cors:
+    allowed-origins: http://localhost:3000,http://localhost:8080
+    allowed-methods: GET,POST,PUT,DELETE,OPTIONS
+    allowed-headers: "*"
+    allow-credentials: true
+    max-age: 3600
+
+  # Stripe payment gateway (placeholder)
+  stripe:
+    secret-key: "sk_test_placeholder"
+    publishable-key: "pk_test_placeholder"
+    webhook-secret: [REDACTED]  # demo default; set in prod
+
+  # Redis cache TTLs (seconds)
+  cache-ttl:
+    products: 300            # 5 minutes
+    product-detail: 600      # 10 minutes
+    categories: 1800         # 30 minutes
+    users: 600               # 10 minutes
+
+# =============================================================================
+# Actuator (Monitoring)
+# =============================================================================
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
+# =============================================================================
+# Local Development Profile (no PostgreSQL/Redis needed)
+# Run with: mvn spring-boot:run -Dspring-boot.run.profiles=local
+# =============================================================================
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  datasource:
+    url: jdbc:h2:mem:crackersmela;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+  # Disable Redis caching in local profile
+  cache:
+    type: simple
+
+  data:
+    redis:
+      repositories:
+        enabled: false
+
+# =============================================================================
+# Logging
+# =============================================================================
+logging:
+  level:
+    com.crackersmela: INFO
+    org.springframework.security: WARN
+    org.hibernate.SQL: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

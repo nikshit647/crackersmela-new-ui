@@ -1,0 +1,153 @@
+=============================================================================
+  CrackersMela — Midjourney / DALL-E Visual Inspiration Prompts
+=============================================================================
+
+Copy any of the prompts below into Midjourney (/imagine) or DALL-E to generate
+a mockup of the CrackersMela frontend design.
+
+-----------------------------------------------------------------------------
+PROMPT 1 — Full Landing Page Hero (Primary)
+-----------------------------------------------------------------------------
+
+Modern e-commerce landing page hero section for a premium fireworks store called
+"CrackersMela", dark mode UI with deep midnight blue background (#060613),
+vibrant glowing neon accents in gold (#ffd700), warm orange (#ff6b35), and
+magenta (#ff006e), glassmorphism frosted glass product cards with backdrop blur
+effects, animated spark particles rising from the bottom, bold gradient text
+headline "Ignite Your Celebrations", sticky transparent navigation bar with
+glassmorphism blur, search bar with keyboard shortcut indicator, shopping bag
+icon with magenta badge, call-to-action button with gold-to-orange gradient and
+glowing box-shadow hover effect, trust badges (PESO Certified, Free Delivery,
+Easy Returns), smooth scroll indicator mouse icon at bottom, premium Sans Serif
+typography (Inter + Space Grotesk), clean modern layout, 8k resolution,
+Behance winner, Dribbble featured, UI/UX design, web design mockup,
+Figma prototype quality --ar 16:9 --v 6.0 --style raw
+
+-----------------------------------------------------------------------------
+PROMPT 2 — Product Grid Close-Up
+-----------------------------------------------------------------------------
+
+Dark mode e-commerce product grid for a fireworks store, six glassmorphism
+product cards arranged in a responsive grid, each card has frosted glass
+background with subtle border glow on hover, product image area with soft
+radial gradient backdrop, colorful product badges (NEW in gold, SALE in
+magenta, BEST SELLER in cyan), circular gold-to-orange gradient "add to cart"
+button, heart icon wishlist toggle, quick view overlay on hover, pricing
+section with gold price, strikethrough compare price, and magenta discount
+badge, green stock indicator text, product category labels in cyan uppercase
+text, deep charcoal background (#060613), neon gold accents, premium firework
+product photography placeholders, glassmorphism effects, modern UI design,
+8k resolution, Behance winner, Dribbble featured, UI/UX mockup,
+Figma quality --ar 16:9 --v 6.0 --style raw
+
+-----------------------------------------------------------------------------
+PROMPT 3 — Navigation Bar Detail
+-----------------------------------------------------------------------------
+
+Close-up of a modern sticky transparent navigation bar for a fireworks
+e-commerce site, glassmorphism frosted glass effect with backdrop-blur(24px),
+deep midnight blue background, neon gold (#ffd700) logo accent on "Mela" text,
+clean sans-serif typography (Inter font family), uppercase nav links with
+gold underline hover animation, inline search bar with rounded pill shape and
+"slash" keyboard shortcut indicator, circular icon buttons for cart (with
+magenta badge showing count) and user account, mobile hamburger menu toggle,
+scroll-triggered state transition from fully transparent to frosted glass with
+subtle border, premium dark UI design, 8k resolution, Behance winner,
+Dribbble featured, web design mockup, Figma prototype --ar 21:9 --v 6.0
+--style raw
+
+-----------------------------------------------------------------------------
+PROMPT 4 — Deals Banner with Countdown
+-----------------------------------------------------------------------------
+
+Dark mode promotional banner for a Diwali fireworks sale, deep midnight blue
+background with subtle gold radial glow effect, bold headline "Diwali Mega
+Sale" in premium display font, gradient text "50% OFF" transitioning from gold
+to magenta, countdown timer with four glassmorphism blocks showing Days, Hours,
+Minutes, Seconds in gold text with semi-transparent gold borders, "Grab the
+Deal" call-to-action button with gold gradient and glowing box-shadow, limited
+time offer tag in magenta with pill shape, festive firework emoji accents,
+premium dark e-commerce design, glassmorphism UI, neon accents, 8k resolution,
+Behance winner, Dribbble featured, UI/UX mockup --ar 21:9 --v 6.0 --style raw
+
+-----------------------------------------------------------------------------
+PROMPT 5 — Complete Page Mockup (Full Page Scroll)
+-----------------------------------------------------------------------------
+
+Full-page mockup of a modern fireworks e-commerce website called "CrackersMela",
+complete landing page design with multiple sections stacked vertically:
+(1) Top promo ticker bar with gold gradient and scrolling text,
+(2) Sticky glassmorphism navigation with logo, links, search, cart,
+(3) Hero section with animated spark particles, bold headline "Ignite Your
+    Celebrations", gradient text, dual CTA buttons, trust badges,
+(4) Category grid with 6 glassmorphism cards (Sparklers, Firecrackers,
+    Rockets, Fountains, Aerial Shells, Garlands) with emoji icons,
+(5) Product grid with 6 glassmorphism product cards showing prices,
+    discounts, badges, and add-to-cart buttons,
+(6) Deals banner with countdown timer,
+(7) Features section with 4 benefit cards (Certified Safe, Fast Delivery,
+    Best Prices, Festive Bundles),
+(8) Newsletter signup with glassmorphism card and email input,
+(9) Footer with brand info, links, and social icons.
+Dark mode theme (#060613), neon gold/orange/magenta accents, glassmorphism
+effects throughout, premium typography (Inter + Space Grotesk), responsive
+layout, 8k resolution, Behance winner, Dribbble featured, complete web design
+mockup, UI/UX design, Figma quality, professional e-commerce template --ar 9:16
+--v 6.0 --style raw
+
+-----------------------------------------------------------------------------
+PROMPT 6 — Mobile Responsive View
+-----------------------------------------------------------------------------
+
+Mobile-first responsive e-commerce design for a fireworks store, dark mode
+smartphone mockup showing a premium fireworks website, stacked product cards
+with glassmorphism effect, compact navigation with hamburger menu, full-width
+hero section with bold typography and glowing CTA button, swipeable category
+chips, product grid in single column, bottom navigation bar with cart icon
+and magenta badge, deep midnight blue background (#060613), neon gold accents,
+glassmorphism frosted glass cards, modern mobile UI/UX design, 8k resolution,
+Behance winner, Dribbble featured, app design quality, Figma prototype,
+professional mobile web design --ar 9:16 --v 6.0 --style raw
+
+-----------------------------------------------------------------------------
+PROMPT 7 — Color Palette & Design System
+-----------------------------------------------------------------------------
+
+Design system mood board for "CrackersMela" fireworks e-commerce brand,
+dark mode color palette with deep midnight blue (#060613) as primary
+background, neon gold (#ffd700) as primary accent, warm orange (#ff6b35)
+as secondary accent, vibrant magenta (#ff006e) for CTAs and badges,
+cool cyan (#00d4ff) for category labels, success green (#39ff14) for
+stock indicators, glassmorphism component samples with backdrop blur
+and subtle white borders, typography specimens (Inter for body, Space
+Grotesk for display headings), button states (default, hover, active),
+card component with hover elevation, badge variations (NEW, SALE, BEST
+SELLER), gradient samples (gold-to-orange, gold-to-magenta), glow
+shadow samples, professional brand identity, 8k resolution, Behance
+winner, Dribbble featured, UI design system --ar 16:9 --v 6.0 --style raw
+
+=============================================================================
+  Tips for Best Results
+=============================================================================
+
+1. In Midjourney, append "--ar 16:9" for widescreen or "--ar 9:16" for
+   mobile-first layouts.
+
+2. Add "--v 6.0" for the latest Midjourney model with better text rendering.
+
+3. Use "--style raw" to get more literal interpretations without
+   Midjourney's default stylization.
+
+4. For DALL-E, paste the prompt directly — DALL-E 3 handles long,
+   descriptive prompts well.
+
+5. To refine results, add these keywords:
+   - "flat design" for cleaner, simpler layouts
+   - "isometric view" for 3D-perspective mockups
+   - "wireframe" for structural layouts before adding color
+   - "high fidelity" for production-ready mockups
+
+6. For consistent brand colors across multiple generations, include the
+   hex codes in each prompt.
+
+=============================================================================

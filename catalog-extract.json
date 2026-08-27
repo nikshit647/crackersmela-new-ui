@@ -1,0 +1,2009 @@
+{
+  "products": [
+    {
+      "id": 26,
+      "name": "ZAMIN CHAKKAR BIG 1 BOX - 10 Pcs ( Smaller Size than Ashoka & Deluxe )",
+      "slug": "zamin-chakkar-big-1-box-10-pcs-smaller-size-than-ashoka-deluxe",
+      "sku": null,
+      "regularPrice": 309,
+      "salePrice": 120,
+      "price": 120,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/zamin-chakkar-big36367.webp",
+      "categories": [
+        "KIDS SPECIAL STANDARD",
+        "CHAKKARS"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 27,
+      "name": "ZAMIN CHAKKAR ASHOKA 1 BOX - 10 Pcs",
+      "slug": "zamin-chakkar-ashoka-1-box-10-pcs",
+      "sku": null,
+      "regularPrice": 598,
+      "salePrice": 180,
+      "price": 180,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/zamin-chakkar-asoka-10-pcs73580.webp",
+      "categories": [
+        "KIDS SPECIAL STANDARD",
+        "CHAKKARS"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 28,
+      "name": "ZAMIN CHAKKAR DELUXE 1 BOX - 10 Pcs",
+      "slug": "zamin-chakkar-deluxe-1-box-10-pcs",
+      "sku": null,
+      "regularPrice": 1314,
+      "salePrice": 375,
+      "price": 375,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/zamin-chakkar-deluxe86445.webp",
+      "categories": [
+        "KIDS SPECIAL STANDARD",
+        "CHAKKARS"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 29,
+      "name": "WIRE CHAKKAR DELUXE 1 BOX - 10 Pcs",
+      "slug": "wire-chakkar-deluxe-1-box-10-pcs",
+      "sku": null,
+      "regularPrice": 1496,
+      "salePrice": 390,
+      "price": 390,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Wire-Chakkar.jpg",
+      "categories": [
+        "KIDS SPECIAL STANDARD",
+        "CHAKKARS"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 30,
+      "name": "FLOWER POTS BIG 1 BOX ( Smaller Size than FP SPECIAL) Each Box - 10 Pieces",
+      "slug": "flower-pots-big-1-box-smaller-size-than-fp-special-each-box-10-pieces",
+      "sku": null,
+      "regularPrice": 960,
+      "salePrice": 245,
+      "price": 245,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/fp-big.webp",
+      "categories": [
+        "FLOWER POTS",
+        "KIDS SPECIAL STANDARD"
+      ],
+      "description": "1 box only contains 10pcs\\r\\n\\r\\nThe Flower Pot Big is of a smaller size compared to the Flower Pot Special."
+    },
+    {
+      "id": 31,
+      "name": "FLOWER POTS SPECIAL 1 BOX",
+      "slug": "flower-pots-special-1-box",
+      "sku": null,
+      "regularPrice": 1277,
+      "salePrice": 340,
+      "price": 340,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/fp-special.webp",
+      "categories": [
+        "FLOWER POTS",
+        "KIDS SPECIAL STANDARD"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 32,
+      "name": "FLOWER POTS GIANT 1 BOX",
+      "slug": "flower-pots-giant-1-box",
+      "sku": null,
+      "regularPrice": 2649,
+      "salePrice": 650,
+      "price": 650,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/fp-giant.webp",
+      "categories": [
+        "FLOWER POTS",
+        "KIDS SPECIAL STANDARD"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 33,
+      "name": "FLOWER POTS DELUXE 1 BOX",
+      "slug": "flower-pots-deluxe-1-box",
+      "sku": null,
+      "regularPrice": 1722,
+      "salePrice": 450,
+      "price": 450,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/fp-deluxe.webp",
+      "categories": [
+        "FLOWER POTS",
+        "KIDS SPECIAL STANDARD"
+      ],
+      "description": "1 box only contains 5pcs"
+    },
+    {
+      "id": 34,
+      "name": "TRI COLOR FOUNTAIN 1 BOX",
+      "slug": "tri-color-fountain-1-box",
+      "sku": null,
+      "regularPrice": 2563,
+      "salePrice": 700,
+      "price": 700,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Tricolor-e1697127642191-1.jpg",
+      "categories": [
+        "FLOWER POTS"
+      ],
+      "description": "1 box only contains 5pcs"
+    },
+    {
+      "id": 35,
+      "name": "TRI COLOR FOUNTAIN(MILLENNIUM) 1 BOX",
+      "slug": "tri-color-fountainmillennium-1-box",
+      "sku": null,
+      "regularPrice": 3151,
+      "salePrice": 750,
+      "price": 750,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Tricolour-Fountain.jpg",
+      "categories": [
+        "FLOWER POTS",
+        "FANCY FIREWORKS"
+      ],
+      "description": "1 box only contains 5pcs"
+    },
+    {
+      "id": 36,
+      "name": "HAPPINESS",
+      "slug": "happiness",
+      "sku": null,
+      "regularPrice": 1815,
+      "salePrice": 500,
+      "price": 500,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/happiness.webp",
+      "categories": [
+        "FLOWER POTS",
+        "FANCY FIREWORKS"
+      ],
+      "description": "1 box only contains 5pcs"
+    },
+    {
+      "id": 37,
+      "name": "COLOR FOUNTAIN",
+      "slug": "color-fountain",
+      "sku": null,
+      "regularPrice": 2428,
+      "salePrice": 450,
+      "price": 450,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/color-fountain.webp",
+      "categories": [
+        "FLOWER POTS"
+      ],
+      "description": "1 box only contains 4pcs"
+    },
+    {
+      "id": 38,
+      "name": "CHEERS",
+      "slug": "cheers",
+      "sku": null,
+      "regularPrice": 1287,
+      "salePrice": 450,
+      "price": 450,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/cheers.webp",
+      "categories": [
+        "FLOWER POTS",
+        "KIDS SPECIAL STANDARD",
+        "FANCY FIREWORKS"
+      ],
+      "description": "1 box only contains 3pcs"
+    },
+    {
+      "id": 39,
+      "name": "JADE FLOWERS",
+      "slug": "jade-flowers",
+      "sku": null,
+      "regularPrice": 1658,
+      "salePrice": 495,
+      "price": 495,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/jade-flowers-1.webp",
+      "categories": [
+        "FLOWER POTS",
+        "KIDS SPECIAL STANDARD",
+        "FANCY FIREWORKS"
+      ],
+      "description": "1 box only contains 5pcs"
+    },
+    {
+      "id": 40,
+      "name": "JET FOUNTAIN",
+      "slug": "jet-fountain",
+      "sku": null,
+      "regularPrice": 1098,
+      "salePrice": 160,
+      "price": 160,
+      "stockStatus": "outofstock",
+      "featured": false,
+      "image": "2025/10/jet-fountain-1.webp",
+      "categories": [
+        "FLOWER POTS"
+      ],
+      "description": "1 box only contains 5pcs"
+    },
+    {
+      "id": 41,
+      "name": "MINI FOUNTAIN",
+      "slug": "mini-fountain",
+      "sku": null,
+      "regularPrice": 408,
+      "salePrice": 160,
+      "price": 160,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/mf-red.webp",
+      "categories": [
+        "FLOWER POTS"
+      ],
+      "description": "1 box only contains 6pcs"
+    },
+    {
+      "id": 42,
+      "name": "STANDARD GOLD SPARKERS 7CM 1 Box",
+      "slug": "standard-gold-sparkers-7cm-1-box",
+      "sku": null,
+      "regularPrice": 114,
+      "salePrice": 25,
+      "price": 25,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/7-cm-bobby-1.webp",
+      "categories": [
+        "SPARKLERS",
+        "KIDS SPECIAL STANDARD"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 43,
+      "name": "STANDARD GOLD SPARKLERS 12CM 1BOX",
+      "slug": "standard-gold-sparklers-12cm-1box",
+      "sku": null,
+      "regularPrice": 263,
+      "salePrice": 90,
+      "price": 90,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/12-cm-gold-2.webp",
+      "categories": [
+        "SPARKLERS",
+        "KIDS SPECIAL STANDARD"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 44,
+      "name": "STANDARD CRACKLING SPARKLERS 12CM 1BOX",
+      "slug": "standard-crackling-sparklers-12cm-1box",
+      "sku": null,
+      "regularPrice": 310,
+      "salePrice": 95,
+      "price": 95,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/12-cm-Crackling.jpg",
+      "categories": [
+        "SPARKLERS",
+        "KIDS SPECIAL STANDARD"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 45,
+      "name": "STANDARD GOLD SPARKLERS 15CM 1BOX",
+      "slug": "standard-gold-sparklers-15cm-1box",
+      "sku": null,
+      "regularPrice": 482,
+      "salePrice": 130,
+      "price": 130,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/15-Cm-gold.webp",
+      "categories": [
+        "SPARKLERS",
+        "KIDS SPECIAL STANDARD"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 46,
+      "name": "STANDARD CRACKLING SPARKLERS 15CM 1BOX",
+      "slug": "standard-crackling-sparklers-15cm-1box",
+      "sku": null,
+      "regularPrice": 539,
+      "salePrice": 135,
+      "price": 135,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/15-cm-crackling-4.webp",
+      "categories": [
+        "SPARKLERS",
+        "KIDS SPECIAL STANDARD"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 47,
+      "name": "STANDARD GREEN COLOR SPARKLERS 15CM 1BOX",
+      "slug": "standard-green-color-sparklers-15cm-1box",
+      "sku": null,
+      "regularPrice": 294,
+      "salePrice": 130,
+      "price": 130,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/15-cm-green-1.webp",
+      "categories": [
+        "SPARKLERS",
+        "KIDS SPECIAL STANDARD"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 48,
+      "name": "STANDARD RED COLOR SPARKLERS 15CM 1BOX",
+      "slug": "standard-red-color-sparklers-15cm-1box",
+      "sku": null,
+      "regularPrice": 452,
+      "salePrice": 130,
+      "price": 130,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/15-cm-red-1.webp",
+      "categories": [
+        "SPARKLERS",
+        "KIDS SPECIAL STANDARD"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 49,
+      "name": "STANDARD GOLD SPARKLERS 30CM 1BOX",
+      "slug": "standard-gold-sparklers-30cm-1box",
+      "sku": null,
+      "regularPrice": 360,
+      "salePrice": 135,
+      "price": 135,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/30-cm-gold.webp",
+      "categories": [
+        "SPARKLERS",
+        "KIDS SPECIAL STANDARD"
+      ],
+      "description": "1 box only contains 5pcs"
+    },
+    {
+      "id": 50,
+      "name": "STANDARD CRACKLING SPARKERLS 30CM 1BOX",
+      "slug": "standard-crackling-sparkerls-30cm-1box",
+      "sku": null,
+      "regularPrice": 539,
+      "salePrice": 140,
+      "price": 140,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/30-CM-Crackling.webp",
+      "categories": [
+        "SPARKLERS",
+        "KIDS SPECIAL STANDARD"
+      ],
+      "description": "STANDARD CRACKLING SPARKERLS 30CM 1BOX\\r\\n1 box only contains 5pcs"
+    },
+    {
+      "id": 51,
+      "name": "STD TRI COLOR(3 IN 1) 15CM 1BOX",
+      "slug": "std-tri-color3-in-1-15cm-1box",
+      "sku": null,
+      "regularPrice": 1493,
+      "salePrice": 330,
+      "price": 330,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/tri.webp",
+      "categories": [
+        "SPARKLERS"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 52,
+      "name": "9 CM LAXMI",
+      "slug": "9-cm-laxmi",
+      "sku": null,
+      "regularPrice": 154,
+      "salePrice": 70,
+      "price": 70,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/06341205.webp",
+      "categories": [
+        "ATOM BOMB"
+      ],
+      "description": "1 pkt only contains 5pcs"
+    },
+    {
+      "id": 53,
+      "name": "10 CM LAXMI / KRISHNA",
+      "slug": "10-cm-laxmi-krishna",
+      "sku": null,
+      "regularPrice": 204,
+      "salePrice": 80,
+      "price": 80,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/05526486.png",
+      "categories": [
+        "ATOM BOMB"
+      ],
+      "description": "1 pkt only contains 5pcs"
+    },
+    {
+      "id": 54,
+      "name": "10 CM HERCULES DELUXE",
+      "slug": "10-cm-hercules-deluxe",
+      "sku": null,
+      "regularPrice": 266,
+      "salePrice": 90,
+      "price": 90,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/180-x-18036749.png",
+      "categories": [
+        "ATOM BOMB"
+      ],
+      "description": "1 pkt only contains 5pcs"
+    },
+    {
+      "id": 55,
+      "name": "TWO SOUND CRACKERS",
+      "slug": "two-sound-crackers",
+      "sku": null,
+      "regularPrice": 237,
+      "salePrice": 80,
+      "price": 80,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/07495994.png",
+      "categories": [
+        "ATOM BOMB"
+      ],
+      "description": "1 pkt only contains 5pcs"
+    },
+    {
+      "id": 84,
+      "name": "STANDARD \"28\" MAGIC CRACKERS - 1 PKT",
+      "slug": "standard-28-magic-crackers-1-pkt",
+      "sku": null,
+      "regularPrice": 187,
+      "salePrice": 55,
+      "price": 55,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/IMG_20191004_131146.jpg",
+      "categories": [
+        "GARLANDS",
+        "ATOM BOMB"
+      ],
+      "description": "STANDARD \"28\" MAGIC CRACKERS"
+    },
+    {
+      "id": 85,
+      "name": "STANDARD \"100\" WALA MAGIC CRACKERS 1 STRING",
+      "slug": "standard-100-wala-magic-crackers-1-string",
+      "sku": null,
+      "regularPrice": 601,
+      "salePrice": 150,
+      "price": 150,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/100.webp",
+      "categories": [
+        "GARLANDS"
+      ],
+      "description": "STANDARD \"100\" WALA MAGIC CRACKERS 1 STRING"
+    },
+    {
+      "id": 86,
+      "name": "STANDARD\"1000\" WALA MAGIC CRACKERS 1 STRING",
+      "slug": "standard1000-wala-magic-crackers-1-string",
+      "sku": null,
+      "regularPrice": 3740,
+      "salePrice": 800,
+      "price": 800,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/1000.webp",
+      "categories": [
+        "GARLANDS"
+      ],
+      "description": "STANDARD\"1000\" WALA MAGIC CRACKERS 1 STRING"
+    },
+    {
+      "id": 87,
+      "name": "\"5000\" WALA 1 STRING ( Other Brand )",
+      "slug": "5000-wala-1-string-other-brand",
+      "sku": null,
+      "regularPrice": 6985,
+      "salePrice": 3900,
+      "price": 3900,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/1000-wala.webp",
+      "categories": [
+        "GARLANDS"
+      ],
+      "description": "1 string 5000 ( Other Brand )"
+    },
+    {
+      "id": 88,
+      "name": "\"1000\" WALA 1 STRING ( Other Brand )",
+      "slug": "1000-wala-1-string-other-brand",
+      "sku": null,
+      "regularPrice": 3971,
+      "salePrice": 600,
+      "price": 600,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/1000-wala.webp",
+      "categories": [
+        "GARLANDS"
+      ],
+      "description": "1 string 1000 ( Other Brand )"
+    },
+    {
+      "id": 89,
+      "name": "RED BIJILI 1 BAG",
+      "slug": "red-bijili-1-bag",
+      "sku": null,
+      "regularPrice": 264,
+      "salePrice": 100,
+      "price": 100,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/rebijili.jpg",
+      "categories": [
+        "ATOM BOMB"
+      ],
+      "description": "1 bag contains 100pcs"
+    },
+    {
+      "id": 90,
+      "name": "STANDARD ATOM BOMB 1 BOX",
+      "slug": "standard-atom-bomb-1-box",
+      "sku": null,
+      "regularPrice": 671,
+      "salePrice": 175,
+      "price": 175,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/07616399.png",
+      "categories": [
+        "ATOM BOMB"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 91,
+      "name": "HYDROGEN BOMB GREEN 1 BOX",
+      "slug": "hydrogen-bomb-green-1-box",
+      "sku": null,
+      "regularPrice": 613,
+      "salePrice": 175,
+      "price": 175,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Hydrogen-bomb.jpg",
+      "categories": [
+        "ATOM BOMB"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 92,
+      "name": "THUNDER BOMB GREEN 1 BOX",
+      "slug": "thunder-bomb-green-1-box",
+      "sku": null,
+      "regularPrice": 861,
+      "salePrice": 250,
+      "price": 250,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/09139951.png",
+      "categories": [
+        "ATOM BOMB"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 93,
+      "name": "BULLET BOMB 1 BOX",
+      "slug": "bullet-bomb-1-box",
+      "sku": null,
+      "regularPrice": 402,
+      "salePrice": 180,
+      "price": 180,
+      "stockStatus": "outofstock",
+      "featured": false,
+      "image": "2025/10/Bullet-bomb-e1759845835151.jpg",
+      "categories": [
+        "ATOM BOMB"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 94,
+      "name": "TWINKLING STAR 60CM 1 BOX",
+      "slug": "twinkling-star-60cm-1-box",
+      "sku": null,
+      "regularPrice": 429,
+      "salePrice": 140,
+      "price": 140,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/stl.webp",
+      "categories": [
+        "ROCKETS - NOVEL CRACKERS"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 95,
+      "name": "TWINKLING STAR DELUXE120CM 1 BOX",
+      "slug": "twinkling-star-deluxe120cm-1-box",
+      "sku": null,
+      "regularPrice": 855,
+      "salePrice": 225,
+      "price": 225,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/ts.webp",
+      "categories": [
+        "ROCKETS - NOVEL CRACKERS"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 96,
+      "name": "MULTI COLOR CANDLE 1 BOX",
+      "slug": "multi-color-candle-1-box",
+      "sku": null,
+      "regularPrice": 632,
+      "salePrice": 190,
+      "price": 190,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/mcc.webp",
+      "categories": [
+        "KIDS SPECIAL STANDARD",
+        "ROCKETS - NOVEL CRACKERS"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 97,
+      "name": "FIRE PENCIL 1 BOX",
+      "slug": "fire-pencil-1-box",
+      "sku": null,
+      "regularPrice": 436,
+      "salePrice": 150,
+      "price": 150,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/fp-1.webp",
+      "categories": [
+        "KIDS SPECIAL STANDARD",
+        "ROCKETS - NOVEL CRACKERS"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 98,
+      "name": "4 COLOR  TORCHES 1 BOX",
+      "slug": "4-color-torches-1-box",
+      "sku": null,
+      "regularPrice": 1318,
+      "salePrice": 350,
+      "price": 350,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/4ct-1.webp",
+      "categories": [
+        "ROCKETS - NOVEL CRACKERS"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 99,
+      "name": "ELECTRIC STONE 1 BOX",
+      "slug": "electric-stone-1-box",
+      "sku": null,
+      "regularPrice": 591,
+      "salePrice": 100,
+      "price": 100,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/rsz_2electric_stones.jpg",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "1 box only contains 10pcs"
+    },
+    {
+      "id": 100,
+      "name": "DISCO FLASH 1 BOX",
+      "slug": "disco-flash-1-box",
+      "sku": null,
+      "regularPrice": 522,
+      "salePrice": 150,
+      "price": 150,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/disco-flash.webp",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "1 box only contains 6pcs"
+    },
+    {
+      "id": 101,
+      "name": "COLOR CHANGING BUTTERFLY 1 BOX",
+      "slug": "color-changing-butterfly-1-box",
+      "sku": null,
+      "regularPrice": 699,
+      "salePrice": 225,
+      "price": 225,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/colour-changing-butt.png",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "1 box only contains 5pcs"
+    },
+    {
+      "id": 102,
+      "name": "JUMPING FROG 1 BOX",
+      "slug": "jumping-frog-1-box",
+      "sku": null,
+      "regularPrice": 719,
+      "salePrice": 175,
+      "price": 175,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/jumping-frog.webp",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "1 box only contains 6pcs"
+    },
+    {
+      "id": 103,
+      "name": "GOLDEN DROPS 1 BOX",
+      "slug": "golden-drops-1-box",
+      "sku": null,
+      "regularPrice": 2372,
+      "salePrice": 475,
+      "price": 475,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/golden-drops.webp",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "1 box only contains 5pcs"
+    },
+    {
+      "id": 104,
+      "name": "COLOR SMOKE FOUNTAIN 1 BOX",
+      "slug": "color-smoke-fountain-1-box",
+      "sku": null,
+      "regularPrice": 347,
+      "salePrice": 175,
+      "price": 175,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/color-smoke.webp",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "1 box only contains 5pcs"
+    },
+    {
+      "id": 105,
+      "name": "METEOR 1 BOX",
+      "slug": "meteor-1-box",
+      "sku": null,
+      "regularPrice": 1772,
+      "salePrice": 425,
+      "price": 425,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Meteor.jpg",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "1 box only contains 5pcs"
+    },
+    {
+      "id": 106,
+      "name": "GIFT BOX-\"WONDERFUL\" 1 BOX ( 31 Items )",
+      "slug": "gift-box-wonderful-1-box-31-items",
+      "sku": null,
+      "regularPrice": 7016,
+      "salePrice": 2050,
+      "price": 2050,
+      "stockStatus": "outofstock",
+      "featured": false,
+      "image": "2025/10/Wonderful-1.jpg",
+      "categories": [
+        "GIFT BOXES"
+      ],
+      "description": "1 box only contains 31 items"
+    },
+    {
+      "id": 107,
+      "name": "GIFT BOX-\"KUSHI\" 1 BOX ( 36 Items )",
+      "slug": "gift-box-kushi-1-box-36-items",
+      "sku": null,
+      "regularPrice": 9752,
+      "salePrice": 2500,
+      "price": 2500,
+      "stockStatus": "outofstock",
+      "featured": false,
+      "image": "2025/10/kushi-1.webp",
+      "categories": [
+        "GIFT BOXES"
+      ],
+      "description": "1 box only contains 36 items"
+    },
+    {
+      "id": 108,
+      "name": "GIFT BOX-\"JUBILEE\" 1 BOX ( 38 Items )",
+      "slug": "gift-box-jubilee-1-box-38-items",
+      "sku": null,
+      "regularPrice": 10539,
+      "salePrice": 2550,
+      "price": 2550,
+      "stockStatus": "outofstock",
+      "featured": false,
+      "image": "2025/10/jubilee.webp",
+      "categories": [
+        "GIFT BOXES"
+      ],
+      "description": "1 box only contains 38 items"
+    },
+    {
+      "id": 109,
+      "name": "GIFT BOX-\"DIAMOND\" 1 BOX ( 43 Items )",
+      "slug": "gift-box-diamond-1-box-43-items",
+      "sku": null,
+      "regularPrice": 12192,
+      "salePrice": 2800,
+      "price": 2800,
+      "stockStatus": "outofstock",
+      "featured": false,
+      "image": "2025/10/Diamond-1-1.jpg",
+      "categories": [
+        "GIFT BOXES"
+      ],
+      "description": "1 box only contains 43 items"
+    },
+    {
+      "id": 110,
+      "name": "GIFT BOX-\"TITAN\" 1 BOX ( 46 Items )",
+      "slug": "gift-box-titan-1-box-46-items",
+      "sku": null,
+      "regularPrice": 14446,
+      "salePrice": 3450,
+      "price": 3450,
+      "stockStatus": "outofstock",
+      "featured": false,
+      "image": "2025/10/titan.webp",
+      "categories": [
+        "GIFT BOXES"
+      ],
+      "description": "1 box only contains 46 items"
+    },
+    {
+      "id": 111,
+      "name": "GIFT BOX-\"NEW PARADISE\" 1 BOX ( 50 Items )",
+      "slug": "gift-box-new-paradise-1-box-50-items",
+      "sku": "65",
+      "regularPrice": 25752,
+      "salePrice": 6600,
+      "price": 6600,
+      "stockStatus": "outofstock",
+      "featured": false,
+      "image": "2025/10/paradise.webp",
+      "categories": [
+        "GIFT BOXES"
+      ],
+      "description": "1 box only contains 50 items.."
+    },
+    {
+      "id": 120,
+      "name": "RAINBOW ROCKET 1 BOX",
+      "slug": "rainbow-rocket-1-box",
+      "sku": null,
+      "regularPrice": 865,
+      "salePrice": 240,
+      "price": 240,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/rainbow-rockets84399.webp",
+      "categories": [
+        "ROCKETS - NOVEL CRACKERS"
+      ],
+      "description": "1 box only contains 10 pcs"
+    },
+    {
+      "id": 121,
+      "name": "BOMB ROCKET 1 BOX",
+      "slug": "bomb-rocket-1-box",
+      "sku": null,
+      "regularPrice": 776,
+      "salePrice": 250,
+      "price": 250,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/bomb-rockets39696.webp",
+      "categories": [
+        "ROCKETS - NOVEL CRACKERS"
+      ],
+      "description": "1 box only contains 10 pcs"
+    },
+    {
+      "id": 122,
+      "name": "ROHINI ROCKET 1 BOX",
+      "slug": "rohini-rocket-1-box",
+      "sku": null,
+      "regularPrice": 1513,
+      "salePrice": 400,
+      "price": 400,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/rohini-rockets84767.webp",
+      "categories": [
+        "ROCKETS - NOVEL CRACKERS"
+      ],
+      "description": "1 box only contains 10 pcs"
+    },
+    {
+      "id": 123,
+      "name": "2\" COMETS- ALL VARIETY 1 BOX",
+      "slug": "2-comets-all-variety-1-box",
+      "sku": null,
+      "regularPrice": 1058,
+      "salePrice": 475,
+      "price": 475,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/IMG_20191004_132555.jpg",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "1 box only contains 1 pcs"
+    },
+    {
+      "id": 124,
+      "name": "3\" COMETS- ALL VARIETY 1 BOX",
+      "slug": "3-comets-all-variety-1-box",
+      "sku": null,
+      "regularPrice": 2795,
+      "salePrice": 575,
+      "price": 575,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/IMG_20191004_132705.jpg",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "1 box only contains 1 pcs"
+    },
+    {
+      "id": 125,
+      "name": "7 SHOTS 1 BOX",
+      "slug": "7-shots-1-box",
+      "sku": null,
+      "regularPrice": 1536,
+      "salePrice": 325,
+      "price": 325,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/7-shots.webp",
+      "categories": [
+        "FANCY FIREWORKS",
+        "MULTICOLOR NIGHT OUTS"
+      ],
+      "description": "1 box only contains 5 pcs"
+    },
+    {
+      "id": 126,
+      "name": "12 SHOTS- ALL VARIETY 1 BOX",
+      "slug": "12-shots-all-variety-1-box",
+      "sku": null,
+      "regularPrice": 1673,
+      "salePrice": 375,
+      "price": 375,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/IMG_20191004_132959.jpg",
+      "categories": [
+        "FANCY FIREWORKS",
+        "MULTICOLOR NIGHT OUTS"
+      ],
+      "description": "1 box only contains 1 pcs"
+    },
+    {
+      "id": 127,
+      "name": "30 SHOTS- ALL VARIETY 1 BOX ( Other Brand)",
+      "slug": "30-shots-all-variety-1-box-other-brand",
+      "sku": null,
+      "regularPrice": 3875,
+      "salePrice": 1300,
+      "price": 1300,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": null,
+      "categories": [
+        "FANCY FIREWORKS",
+        "MULTICOLOR NIGHT OUTS"
+      ],
+      "description": "1 box only contains 1 pcs"
+    },
+    {
+      "id": 128,
+      "name": "60 SHOTS- ALL VARIETY 1 BOX ( Other Brand )",
+      "slug": "60-shots-all-variety-1-box-other-brand",
+      "sku": null,
+      "regularPrice": 4563,
+      "salePrice": 2000,
+      "price": 2000,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": null,
+      "categories": [
+        "FANCY FIREWORKS",
+        "MULTICOLOR NIGHT OUTS"
+      ],
+      "description": "1 box only contains 1 pcs"
+    },
+    {
+      "id": 141,
+      "name": "100 SHOTS- ALL VARIETY 1 BOX ( Sensation 100 / Sun Flower 100 )",
+      "slug": "100-shots-all-variety-1-box-sensation-100-sun-flower-100",
+      "sku": null,
+      "regularPrice": 16788,
+      "salePrice": 3600,
+      "price": 3600,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/s21.webp",
+      "categories": [
+        "FANCY FIREWORKS",
+        "MULTICOLOR NIGHT OUTS"
+      ],
+      "description": "1 box only contains 1 pcs\\r\\n( Sensation 100 / Sun Flower 100 )"
+    },
+    {
+      "id": 142,
+      "name": "100 SHOTS- SPECIAL 1 BOX ( Express 100 / Singing Bird 100 )",
+      "slug": "100-shots-special-1-box-express-100-singing-bird-100",
+      "sku": null,
+      "regularPrice": 19641,
+      "salePrice": 3600,
+      "price": 3600,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/s16.webp",
+      "categories": [
+        "FANCY FIREWORKS",
+        "MULTICOLOR NIGHT OUTS"
+      ],
+      "description": "1 box only contains 1 pcs\\r\\n( Express 100 / Singing Bird 100 )"
+    },
+    {
+      "id": 143,
+      "name": "125 SHOTS- ALL VARIETY 1 BOX ( Gold Bonanza / Red Roses / Green Park )",
+      "slug": "125-shots-all-variety-1-box-gold-bonanza-red-roses-green-park",
+      "sku": null,
+      "regularPrice": 28327,
+      "salePrice": 4500,
+      "price": 4500,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/s31.webp",
+      "categories": [
+        "FANCY FIREWORKS",
+        "MULTICOLOR NIGHT OUTS"
+      ],
+      "description": "1 box only contains 1 pcs\\r\\n( Gold Bonanza / Red Roses / Green Park )"
+    },
+    {
+      "id": 144,
+      "name": "125 SHOTS- SPECIAL 1 BOX ( Rain and Thunder / Gold Bonanza )",
+      "slug": "125-shots-special-1-box-rain-and-thunder-gold-bonanza",
+      "sku": null,
+      "regularPrice": 28327,
+      "salePrice": 4800,
+      "price": 4800,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/s32.webp",
+      "categories": [
+        "FANCY FIREWORKS",
+        "MULTICOLOR NIGHT OUTS"
+      ],
+      "description": "1 box only contains 1 pcs\\r\\n( Rain and Thunder / Gold Bonanza )"
+    },
+    {
+      "id": 145,
+      "name": "250 SHOTS- NEW PARADISE 1 BOX",
+      "slug": "250-shots-new-paradise-1-box",
+      "sku": null,
+      "regularPrice": 34362,
+      "salePrice": 8000,
+      "price": 8000,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Standard-Paradise-250.webp",
+      "categories": [
+        "FANCY FIREWORKS",
+        "MULTICOLOR NIGHT OUTS"
+      ],
+      "description": "1 box only contains 1 pcs."
+    },
+    {
+      "id": 146,
+      "name": "RED CINDERELLA ( 1 Box )",
+      "slug": "red-cinderella-1-box",
+      "sku": null,
+      "regularPrice": 2350,
+      "salePrice": 725,
+      "price": 725,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Red-Cindrella.jpg",
+      "categories": [
+        "FLOWER POTS",
+        "FANCY FIREWORKS"
+      ],
+      "description": "RED CINDERELLA ( 1 Box ) - 5 pcs"
+    },
+    {
+      "id": 147,
+      "name": "SILVER JET ROCKET",
+      "slug": "silver-jet-rocket",
+      "sku": null,
+      "regularPrice": 1508,
+      "salePrice": 400,
+      "price": 400,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Silver-jet.jpg",
+      "categories": [
+        "ROCKETS - NOVEL CRACKERS"
+      ],
+      "description": "SILVER JET ROCKET 1 Box - 10pcs"
+    },
+    {
+      "id": 148,
+      "name": "STANDARD \"10000\" WALA MAGIC CRACKERS 1 STRING",
+      "slug": "standard-10000-wala-magic-crackers-1-string",
+      "sku": null,
+      "regularPrice": 35228,
+      "salePrice": 6800,
+      "price": 6800,
+      "stockStatus": "outofstock",
+      "featured": false,
+      "image": "2025/10/10000.webp",
+      "categories": [
+        "GARLANDS"
+      ],
+      "description": "STANDARD \"10000\" WALA MAGIC CRACKERS 1 STRING"
+    },
+    {
+      "id": 149,
+      "name": "STANDARD \"5000\" WALA MAGIC CRACKERS 1 STRING",
+      "slug": "standard-5000-wala-magic-crackers-1-string",
+      "sku": null,
+      "regularPrice": 17614,
+      "salePrice": 4200,
+      "price": 4200,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/5000-1.webp",
+      "categories": [
+        "GARLANDS"
+      ],
+      "description": "STANDARD \"5000\" WALA MAGIC CRACKERS 1 STRING"
+    },
+    {
+      "id": 150,
+      "name": "4 COLOR SPARKLERS 1 BOX",
+      "slug": "4-color-sparklers-1-box",
+      "sku": null,
+      "regularPrice": 272,
+      "salePrice": 110,
+      "price": 110,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/4-color-sparklers.webp",
+      "categories": [
+        "SPARKLERS",
+        "KIDS SPECIAL STANDARD"
+      ],
+      "description": "4 COLOR SPARKLERS 1 Box-10pcs"
+    },
+    {
+      "id": 160,
+      "name": "MEGA TWISTER 1 BOX - 5 Pcs",
+      "slug": "mega-twister-1-box-5-pcs",
+      "sku": null,
+      "regularPrice": 930,
+      "salePrice": 250,
+      "price": 250,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Mega-twister-new.webp",
+      "categories": [
+        "CHAKKARS",
+        "FANCY FIREWORKS"
+      ],
+      "description": "MEGA TWISTER 1 BOX - 5pcs"
+    },
+    {
+      "id": 161,
+      "name": "TWIN SPIN 1 BOX - 5 Pcs",
+      "slug": "twin-spin-1-box-5-pcs",
+      "sku": null,
+      "regularPrice": 599,
+      "salePrice": 220,
+      "price": 220,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Twin-Spin-new.webp",
+      "categories": [
+        "CHAKKARS",
+        "FANCY FIREWORKS"
+      ],
+      "description": "TWIN SPIN 1 BOX - 5pcs"
+    },
+    {
+      "id": 162,
+      "name": "SWASTHIK WHEELS 1 BOX - 5 Pcs",
+      "slug": "swasthik-wheels-1-box-5-pcs",
+      "sku": null,
+      "regularPrice": 1120,
+      "salePrice": 440,
+      "price": 440,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Swasthik-Wheels-1-e1758743864140.webp",
+      "categories": [
+        "CHAKKARS",
+        "FANCY FIREWORKS"
+      ],
+      "description": "SWASTHIK WHEELS 1 BOX - 5PCS"
+    },
+    {
+      "id": 163,
+      "name": "CRACKLING KING",
+      "slug": "crackling-king",
+      "sku": null,
+      "regularPrice": 2718,
+      "salePrice": 625,
+      "price": 625,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/crackling-king.webp",
+      "categories": [
+        "FLOWER POTS",
+        "FANCY FIREWORKS"
+      ],
+      "description": "1 box only contains 5pcs"
+    },
+    {
+      "id": 164,
+      "name": "ARIAL OUT 1 BOX",
+      "slug": "arial-out-1-box",
+      "sku": null,
+      "regularPrice": 1968,
+      "salePrice": 425,
+      "price": 425,
+      "stockStatus": "outofstock",
+      "featured": false,
+      "image": "2025/10/Arial.jpg",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "1 box only contains 5pcs"
+    },
+    {
+      "id": 165,
+      "name": "GOLD RUSH - 1 BOX",
+      "slug": "gold-rush-1-box",
+      "sku": null,
+      "regularPrice": 1929,
+      "salePrice": 500,
+      "price": 500,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/GOLD-RUSH-3.jpg",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "GOLD RUSH - 1 BOX - 5PCS"
+    },
+    {
+      "id": 166,
+      "name": "MINE OF SHOTS 1 BOX - 5 Pcs",
+      "slug": "mine-of-shots-1-box-5-pcs",
+      "sku": null,
+      "regularPrice": 1171,
+      "salePrice": 375,
+      "price": 375,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/MINNE-OF-SHOTS.jpg",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "MINE OF SHOTS 1 BOX - 5 PCS"
+    },
+    {
+      "id": 167,
+      "name": "RAINBOW FOG 1 BOX",
+      "slug": "rainbow-fog-1-box",
+      "sku": null,
+      "regularPrice": 1250,
+      "salePrice": 275,
+      "price": 275,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/rainbowfog.jpg",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "RAINBOW FOG 1 BOX - 2PCS"
+    },
+    {
+      "id": 180,
+      "name": "POP POP 1 BOX",
+      "slug": "pop-pop-1-box",
+      "sku": null,
+      "regularPrice": 50,
+      "salePrice": 15,
+      "price": 15,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/pop-pop-new.jpg",
+      "categories": [
+        "GUNS- ROLLS - POP POP - SNAKES"
+      ],
+      "description": "POP POP 1 BOX - 50PCS"
+    },
+    {
+      "id": 181,
+      "name": "ROLL AYYAN / STANDARD",
+      "slug": "roll-ayyan-standard",
+      "sku": null,
+      "regularPrice": 620,
+      "salePrice": 150,
+      "price": 150,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/roll.jpg",
+      "categories": [
+        "GUNS- ROLLS - POP POP - SNAKES"
+      ],
+      "description": "ROLL AYYAN / STANDARD\\r\\n\\r\\nElevate your festive spirits with our ROLL AYYAN / STANDARD fireworks at Crackersmela. These classic fireworks are the embodiment of tradition and excitement. Perfect for adding a dazzling touch to your celebrations in Hyderabad and Secunderabad. Light up the night with the crackling magic of ROLL AYYAN / STANDARD!"
+    },
+    {
+      "id": 182,
+      "name": "POP POP 1 BUNDLE ( 50 BOXES )",
+      "slug": "pop-pop-1-bundle-50-boxes",
+      "sku": null,
+      "regularPrice": 3000,
+      "salePrice": 500,
+      "price": 500,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/pop-pop-bundle-1.jpg",
+      "categories": [
+        "GUNS- ROLLS - POP POP - SNAKES"
+      ],
+      "description": "POP POP 1 BUNDLE ( 50 BOXES )\\r\\nEACH BOX HAS 35-40 PCS"
+    },
+    {
+      "id": 183,
+      "name": "Colour World 1 Box",
+      "slug": "colour-world-1-box",
+      "sku": null,
+      "regularPrice": 2718,
+      "salePrice": 700,
+      "price": 700,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/colour-world.webp",
+      "categories": [
+        "FLOWER POTS"
+      ],
+      "description": "Colour World 1 Box - 10pcs"
+    },
+    {
+      "id": 184,
+      "name": "JACK GUN",
+      "slug": "jack-gun",
+      "sku": null,
+      "regularPrice": 130,
+      "salePrice": 70,
+      "price": 70,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/03a.jpg",
+      "categories": [
+        "GUNS- ROLLS - POP POP - SNAKES"
+      ],
+      "description": "JACK GUN"
+    },
+    {
+      "id": 185,
+      "name": "CENJO GUN",
+      "slug": "cenjo-gun",
+      "sku": null,
+      "regularPrice": 180,
+      "salePrice": 70,
+      "price": 70,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/02a.jpg",
+      "categories": [
+        "GUNS- ROLLS - POP POP - SNAKES"
+      ],
+      "description": "CENJO GUN"
+    },
+    {
+      "id": 186,
+      "name": "FUNTO GUN",
+      "slug": "funto-gun",
+      "sku": null,
+      "regularPrice": 250,
+      "salePrice": 130,
+      "price": 130,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/06a.jpg",
+      "categories": [
+        "GUNS- ROLLS - POP POP - SNAKES"
+      ],
+      "description": "FUNTO GUN"
+    },
+    {
+      "id": 187,
+      "name": "ZEEBRA GUN",
+      "slug": "zeebra-gun",
+      "sku": null,
+      "regularPrice": 200,
+      "salePrice": 130,
+      "price": 130,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/05a.jpg",
+      "categories": [
+        "GUNS- ROLLS - POP POP - SNAKES"
+      ],
+      "description": "ZEEBRA GUN"
+    },
+    {
+      "id": 188,
+      "name": "BULLET GUN",
+      "slug": "bullet-gun",
+      "sku": null,
+      "regularPrice": 1140,
+      "salePrice": 90,
+      "price": 90,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/07a.jpg",
+      "categories": [
+        "GUNS- ROLLS - POP POP - SNAKES"
+      ],
+      "description": "BULLET GUN"
+    },
+    {
+      "id": 189,
+      "name": "Tower Pot 1 Pc",
+      "slug": "tower-pot-1-pc",
+      "sku": null,
+      "regularPrice": 4686,
+      "salePrice": 700,
+      "price": 700,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Tower-pot.jpg",
+      "categories": [
+        "FLOWER POTS",
+        "FANCY FIREWORKS"
+      ],
+      "description": "Tower Pot 1 Pc"
+    },
+    {
+      "id": 190,
+      "name": "Pandav",
+      "slug": "pandav",
+      "sku": null,
+      "regularPrice": 708,
+      "salePrice": 275,
+      "price": 275,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Pandav.jpg",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "Pandav 1 Box ( 5 Pcs )"
+    },
+    {
+      "id": 191,
+      "name": "2000 Magic Crackers",
+      "slug": "2000-magic-crackers",
+      "sku": "0",
+      "regularPrice": 7479,
+      "salePrice": 1700,
+      "price": 1700,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/2000-wala-new-magic-1.webp",
+      "categories": [
+        "GARLANDS"
+      ],
+      "description": "2000 Magic Crackers"
+    },
+    {
+      "id": 193,
+      "name": "Magic Tree",
+      "slug": "magic-tree",
+      "sku": null,
+      "regularPrice": 3464,
+      "salePrice": 625,
+      "price": 625,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Magic-Tree.webp",
+      "categories": [
+        "FLOWER POTS",
+        "FANCY FIREWORKS"
+      ],
+      "description": "Magic Tree"
+    },
+    {
+      "id": 194,
+      "name": "Roman Candles ( 6 Balls )",
+      "slug": "roman-candles-6-balls",
+      "sku": null,
+      "regularPrice": 3828,
+      "salePrice": 375,
+      "price": 375,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Roman-Candles.webp",
+      "categories": [
+        "FANCY FIREWORKS",
+        "ROCKETS - NOVEL CRACKERS"
+      ],
+      "description": "Roman Candles ( 6 Balls )"
+    },
+    {
+      "id": 211,
+      "name": "Jewel Pots - 5 Pcs in 1 Box",
+      "slug": "jewel-pots-5-pcs-in-1-box",
+      "sku": null,
+      "regularPrice": 1762,
+      "salePrice": 475,
+      "price": 475,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/jewel-pots-1.webp",
+      "categories": [
+        "FLOWER POTS",
+        "KIDS SPECIAL STANDARD",
+        "FANCY FIREWORKS"
+      ],
+      "description": "Jewel Pots - 5 Pcs in 1 Box"
+    },
+    {
+      "id": 212,
+      "name": "Whizz Wheels 1 BOX - 5 Pcs",
+      "slug": "whizz-wheels-1-box-5-pcs",
+      "sku": null,
+      "regularPrice": 535,
+      "salePrice": 225,
+      "price": 225,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Whizz-wheel.webp",
+      "categories": [
+        "CHAKKARS",
+        "FANCY FIREWORKS"
+      ],
+      "description": "Whizz Wheels - 1 Box ( 5 Pcs )"
+    },
+    {
+      "id": 213,
+      "name": "100 Wala ( Other Brand )",
+      "slug": "100-wala-other-brand",
+      "sku": null,
+      "regularPrice": 525,
+      "salePrice": 130,
+      "price": 130,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/100-wala-other.webp",
+      "categories": [
+        "GARLANDS"
+      ],
+      "description": "100 Wala ( Other Brand )"
+    },
+    {
+      "id": 214,
+      "name": "200 Wala ( Other Brand )",
+      "slug": "200-wala-other-brand",
+      "sku": null,
+      "regularPrice": 650,
+      "salePrice": 200,
+      "price": 200,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/200-wala-other.webp",
+      "categories": [
+        "GARLANDS"
+      ],
+      "description": "200 Wala ( Other Brand )"
+    },
+    {
+      "id": 215,
+      "name": "28 Chorsa Gaint Crackers ( Other Brand )",
+      "slug": "28-chorsa-gaint-crackers-other-brand",
+      "sku": null,
+      "regularPrice": 150,
+      "salePrice": 60,
+      "price": 60,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/28-wala.webp",
+      "categories": [
+        "GARLANDS",
+        "ATOM BOMB"
+      ],
+      "description": "Standard 28 Chorsa Gaint Magic Crackers"
+    },
+    {
+      "id": 216,
+      "name": "25 Shots - Standard",
+      "slug": "25-shots-standard",
+      "sku": null,
+      "regularPrice": 3776,
+      "salePrice": 1200,
+      "price": 1200,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/25-shots.webp",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "25 Shots - Standard"
+    },
+    {
+      "id": 217,
+      "name": "30 Shots - Standard",
+      "slug": "30-shots-standard",
+      "sku": null,
+      "regularPrice": 3776,
+      "salePrice": 1500,
+      "price": 1500,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/30-shots.webp",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "30 Shots - Standard"
+    },
+    {
+      "id": 218,
+      "name": "40 Shots - Standard",
+      "slug": "40-shots-standard",
+      "sku": null,
+      "regularPrice": 4966,
+      "salePrice": 1800,
+      "price": 1800,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/40-Shots-2.jpg",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "40 Shots - Standard"
+    },
+    {
+      "id": 219,
+      "name": "60 Shots - Standard",
+      "slug": "60-shots-standard",
+      "sku": null,
+      "regularPrice": 6299,
+      "salePrice": 2800,
+      "price": 2800,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/60-Shots.webp",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "60 Shots - Standard"
+    },
+    {
+      "id": 220,
+      "name": "Magic Whip",
+      "slug": "magic-whip",
+      "sku": null,
+      "regularPrice": 328,
+      "salePrice": 150,
+      "price": 150,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Magic-Whip.webp",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "Magic Whip- 1 string"
+    },
+    {
+      "id": 221,
+      "name": "LONG BOY GUN",
+      "slug": "long-boy-gun",
+      "sku": "280",
+      "regularPrice": 280,
+      "salePrice": 150,
+      "price": 150,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/04a.webp",
+      "categories": [
+        "GUNS- ROLLS - POP POP - SNAKES"
+      ],
+      "description": "LONG BOY GUN"
+    },
+    {
+      "id": 222,
+      "name": "Golden Whistle - 5 Pcs",
+      "slug": "golden-whistle-5-pcs",
+      "sku": null,
+      "regularPrice": 1171,
+      "salePrice": 300,
+      "price": 300,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/golden-whistle.webp",
+      "categories": [
+        "FANCY FIREWORKS"
+      ],
+      "description": "Golden Whistle - 5 Pcs"
+    },
+    {
+      "id": 223,
+      "name": "T.V.TOWER",
+      "slug": "t-v-tower",
+      "sku": null,
+      "regularPrice": 1634,
+      "salePrice": 350,
+      "price": 350,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/TV-Tower.webp",
+      "categories": [
+        "FLOWER POTS",
+        "FANCY FIREWORKS"
+      ],
+      "description": "T.V.TOWER"
+    },
+    {
+      "id": 224,
+      "name": "Lavender Fountain - 3 Pcs",
+      "slug": "lavender-fountain-3-pcs",
+      "sku": null,
+      "regularPrice": 3192,
+      "salePrice": 700,
+      "price": 700,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/Lavender.jpg",
+      "categories": [
+        "FLOWER POTS",
+        "FANCY FIREWORKS"
+      ],
+      "description": "Lavender Fountain - 3 Pcs in 1 Box"
+    },
+    {
+      "id": 225,
+      "name": "Standard 15 CM Lemon Tree - 10 Pcs",
+      "slug": "standard-15-cm-lemon-tree-10-pcs",
+      "sku": null,
+      "regularPrice": 428,
+      "salePrice": 130,
+      "price": 130,
+      "stockStatus": "instock",
+      "featured": false,
+      "image": "2025/10/standard-lemon-tree-sparklers-e1760015783834.jpeg",
+      "categories": [
+        "SPARKLERS",
+        "KIDS SPECIAL STANDARD"
+      ],
+      "description": "Standard 15 CM Lemon Tree - 10 Pcs in 1 Box"
+    },
+    {
+      "id": 234,
+      "name": "NEW PARADISE (FANCY / AERIAL COLLECTIONS) (27 ITEMS)",
+      "slug": "new-paradise-fancy-aerial-collections-27-items",
+      "sku": null,
+      "regularPrice": 25752,
+      "salePrice": 5800,
+      "price": 5800,
+      "stockStatus": "outofstock",
+      "featured": false,
+      "image": "2025/10/new-paradise-.webp",
+      "categories": [
+        "GIFT BOXES"
+      ],
+      "description": "NEW PARADISE (FANCY / AERIAL COLLECTIONS) (27 ITEMS)\\r\\n1. Avengers Special\\r\\n2.Fusion\\r\\n3.High Five\\r\\n4.Joker\\r\\n5.Magic Box\\r\\n6.Pandav\\r\\n7. Peacock Beauty\\r\\n8. Royal Gems\\r\\n9. Starfire - Red &amp; White\\r\\n10. Starfire - Purple\\r\\n11. Super Star - Blue &amp; White\\r\\n12. Super Star - Purple &amp; Gold\\r\\n13. Super Star - Red\\r\\n14. Super Star - Silver Rain\\r\\n15. Chat Chat\\r\\n16. Cluster Blaster\\r\\n17.Fat Boy\\r\\n18.4G Spectrum\\r\\n19.Diamond Mine\\r\\n20.Five Star\\r\\n21.Matrix Firecracker\\"
+    }
+  ],
+  "categories": [
+    {
+      "id": "15",
+      "termId": "15",
+      "name": "Uncategorized",
+      "slug": "uncategorized",
+      "parent": "0",
+      "count": "0"
+    },
+    {
+      "id": "17",
+      "termId": "17",
+      "name": "SPARKLERS",
+      "slug": "standard-sparklers-buy-online-hyderabad-at-crackersmela-and-doorstep-delivery",
+      "parent": "0",
+      "count": "12"
+    },
+    {
+      "id": "18",
+      "termId": "18",
+      "name": "FLOWER POTS",
+      "slug": "buy-standard-crackers-flower-pots-online-hyderabad-buy-crackers-online-hyderabad-crackersmela",
+      "parent": "0",
+      "count": "20"
+    },
+    {
+      "id": "19",
+      "termId": "19",
+      "name": "KIDS SPECIAL STANDARD",
+      "slug": "kids-special",
+      "parent": "0",
+      "count": "24"
+    },
+    {
+      "id": "20",
+      "termId": "20",
+      "name": "GIFT BOXES",
+      "slug": "gift-boxes-standard-fireworks-online-hyderabad-crackersmela",
+      "parent": "0",
+      "count": "7"
+    },
+    {
+      "id": "21",
+      "termId": "21",
+      "name": "CHAKKARS",
+      "slug": "chakkarswire-chakkar-zamin-chakkar-ground-chakkar-deluxe-twin-spin-mega-twister-standard-crackers-exclusive-store",
+      "parent": "0",
+      "count": "8"
+    },
+    {
+      "id": "22",
+      "termId": "22",
+      "name": "GARLANDS",
+      "slug": "standard-garlands-online-in-hyderabad-with-home-delivery-enjoy-the-best-prices-on-standard-garlands-crackers-at-crackersmela",
+      "parent": "0",
+      "count": "11"
+    },
+    {
+      "id": "23",
+      "termId": "23",
+      "name": "GUNS- ROLLS – POP POP – SNAKES",
+      "slug": "buy-standard-pop-pop-guns-and-rolls-crackers-online-in-hyderabad-enjoy-home-delivery-and-best-prices-at-crackersmela",
+      "parent": "0",
+      "count": "0"
+    },
+    {
+      "id": "24",
+      "termId": "24",
+      "name": "ROCKETS – NOVEL CRACKERS",
+      "slug": "buy-standard-crackers-exclusively-from-hyderabads-online-store-rockets-novel-crackersmela",
+      "parent": "0",
+      "count": "0"
+    },
+    {
+      "id": "25",
+      "termId": "25",
+      "name": "FANCY FIREWORKS",
+      "slug": "order-standard-fancy-crackers-online-in-hyderabad-delivered-to-your-doorstep-explore-the-best-prices-on-standard-crackers-and-fancy-crackers-at-crackersmela",
+      "parent": "0",
+      "count": "45"
+    },
+    {
+      "id": "26",
+      "termId": "26",
+      "name": "MULTICOLOR NIGHT OUTS",
+      "slug": "multicolor-night-outs-sky-shots-fancy-crackers-commets",
+      "parent": "0",
+      "count": "9"
+    },
+    {
+      "id": "27",
+      "termId": "27",
+      "name": "ATOM BOMB",
+      "slug": "atom-bomb-diwali-bombs-crackermela-thunderbomd-hydrogen-bomb-crackers-online-hyderabad",
+      "parent": "0",
+      "count": "11"
+    },
+    {
+      "id": "32",
+      "termId": "32",
+      "name": "ROCKETS - NOVEL CRACKERS",
+      "slug": "rockets-novel-crackers",
+      "parent": "0",
+      "count": "10"
+    },
+    {
+      "id": "33",
+      "termId": "33",
+      "name": "GUNS- ROLLS - POP POP - SNAKES",
+      "slug": "guns-rolls-pop-pop-snakes",
+      "parent": "0",
+      "count": "9"
+    }
+  ]
+}
