@@ -679,8 +679,17 @@ textarea {
 }
 
 .nav-drop__menu--cats {
-  min-width: 420px;
-  grid-template-columns: 1fr 1fr;
+  min-width: 520px;
+  max-width: calc(100vw - 40px);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  right: 0;
+  left: auto;
+  transform: translateY(8px);
+}
+
+.nav-drop:hover > .nav-drop__menu--cats,
+.nav-drop:focus-within > .nav-drop__menu--cats {
+  transform: translateY(0);
 }
 
 .nav-actions {
@@ -845,16 +854,16 @@ body.is-authed #userIconBtn {
 .mobile-drawer__panel {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   bottom: 0;
   width: min(340px, 88vw);
   background: rgba(244, 250, 255, 0.92);
   backdrop-filter: var(--blur);
   -webkit-backdrop-filter: var(--blur);
-  border-left: 1px solid var(--glass-border);
+  border-right: 1px solid var(--glass-border);
   box-shadow: var(--shadow-3);
   padding: 20px;
-  transform: translateX(100%);
+  transform: translateX(-100%);
   transition: transform 0.28s ease;
   display: flex;
   flex-direction: column;
@@ -1504,7 +1513,7 @@ body.is-authed #userIconBtn {
   overflow: hidden;
   transition: transform 0.26s var(--ease), box-shadow 0.26s var(--ease),
     border-color 0.26s var(--ease), background 0.26s var(--ease);
-  animation: card-in 0.45s var(--ease) both;
+  animation: card-in 0.45s var(--ease) backwards;
 }
 
 @keyframes card-in {
@@ -6161,4 +6170,1262 @@ body.admin-mode .shell-main { width: 100%; max-width: none; padding: 0; }
   .admin-shell *,
   .admin-shell *::before,
   .admin-shell *::after { transition: none !important; animation: none !important; }
+}
+
+/* ============================================================
+   CrackersMela — Glass v2 Polish Layer
+   Elevates the glass system: ambient depth, stronger blur on
+   floating surfaces, gradient product-card glass, blue-active
+   favourites, focus/a11y hardening, mobile performance.
+   ============================================================ */
+
+/* ---------- Ambient depth (fixed, non-canvas) ---------- */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(52% 40% at 12% 0%, rgba(144, 202, 249, 0.5) 0%, transparent 62%),
+    radial-gradient(46% 38% at 88% 6%, rgba(33, 150, 243, 0.28) 0%, transparent 64%),
+    radial-gradient(60% 46% at 50% 104%, rgba(144, 202, 249, 0.34) 0%, transparent 62%);
+}
+
+/* ---------- Navbar: floating glass + edge light ---------- */
+.navbar {
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+}
+.navbar::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.25), #fff 45%, rgba(255, 255, 255, 0.25));
+  pointer-events: none;
+}
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.96);
+}
+.nav-drop__menu {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: var(--el-3);
+}
+
+/* ---------- Nav actions: floating glass controls ---------- */
+.icon-btn {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: var(--el-1);
+  transition: transform 0.24s var(--ease), box-shadow 0.24s var(--ease), background 0.24s var(--ease), color 0.24s var(--ease);
+}
+.icon-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--el-2);
+}
+.account-chip {
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  box-shadow: var(--el-1);
+}
+.search-trigger {
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: var(--el-1);
+}
+
+/* ---------- Hero: deeper glass staging ---------- */
+.hero {
+  border-radius: 34px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(70% 55% at 74% 0%, rgba(255, 255, 255, 0.4) 0%, transparent 60%),
+    radial-gradient(50% 46% at 8% 100%, rgba(144, 202, 249, 0.32) 0%, transparent 62%);
+  pointer-events: none;
+}
+.hero-inner,
+.hero-visual {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Product cards: gradient glass + top light ---------- */
+.prod-card {
+  border-radius: 20px;
+  background: linear-gradient(152deg, rgba(255, 255, 255, 0.85) 0%, rgba(144, 202, 249, 0.26) 100%);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 8px 24px rgba(13, 71, 161, 0.08);
+}
+.prod-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 52%;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+.prod-card > .prod-card__media,
+.prod-card > .prod-card__badges,
+.prod-card > .prod-card__wish,
+.prod-card > .prod-oos-tint {
+  z-index: 1;
+}
+.prod-card > .prod-card__body {
+  position: relative;
+  z-index: 1;
+}
+.prod-card:hover {
+  transform: translateY(-7px);
+  background: linear-gradient(152deg, rgba(255, 255, 255, 0.94) 0%, rgba(144, 202, 249, 0.34) 100%);
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 18px 44px rgba(13, 71, 161, 0.14);
+}
+.prod-card:hover .add-btn--round,
+.prod-card:hover .add-btn {
+  transform: translateY(-1px) scale(1.05);
+}
+
+/* ---------- Favourites: floating glass, blue when active ---------- */
+.prod-card__wish {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 14px rgba(13, 71, 161, 0.16);
+  transition: transform 0.24s var(--ease), background 0.24s var(--ease), color 0.24s var(--ease), box-shadow 0.24s var(--ease);
+}
+.prod-card__wish:hover {
+  transform: scale(1.1);
+  color: var(--primary-deep);
+  background: #fff;
+}
+.prod-card__wish.active {
+  background: linear-gradient(135deg, var(--primary-deep), var(--primary));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: var(--el-blue);
+  transform: scale(1.08);
+}
+.prod-card__wish.active svg {
+  fill: currentColor;
+}
+
+/* ---------- Chips, pills & categories: translucent + glow ---------- */
+.chip,
+.cat-pill,
+.meta-pill {
+  background: rgba(255, 255, 255, 0.66);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: var(--el-1);
+}
+.chip.active,
+.cat-pill.active {
+  box-shadow: var(--el-blue), 0 0 0 4px rgba(33, 150, 243, 0.14);
+}
+.cat-rail {
+  backdrop-filter: blur(14px) saturate(145%);
+  -webkit-backdrop-filter: blur(14px) saturate(145%);
+}
+
+/* ---------- Button: primary glow depth ---------- */
+.btn-primary:hover {
+  box-shadow: var(--el-blue-hi), 0 0 0 4px rgba(33, 150, 243, 0.16);
+}
+
+/* ---------- Cart drawer: floating frosted panel ---------- */
+.drawer__panel {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(28px) saturate(165%);
+  -webkit-backdrop-filter: blur(28px) saturate(165%);
+  border-left: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: -28px 0 70px rgba(13, 71, 161, 0.2);
+}
+.drawer__head {
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.cart-line {
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(12px) saturate(145%);
+  -webkit-backdrop-filter: blur(12px) saturate(145%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  box-shadow: var(--el-1);
+}
+.mini-qty {
+  background: #fff;
+  border: 1px solid rgba(13, 71, 161, 0.1);
+}
+.drawer__foot {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+}
+
+/* ---------- Modals: strong frosted glass ---------- */
+.modal__card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(28px) saturate(165%);
+  -webkit-backdrop-filter: blur(28px) saturate(165%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: var(--el-3), 0 0 0 1px rgba(144, 202, 249, 0.22);
+}
+.modal__scrim {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.mobile-drawer__panel {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+}
+
+/* ---------- Search overlay ---------- */
+.search-box {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(26px) saturate(160%);
+  -webkit-backdrop-filter: blur(26px) saturate(160%);
+}
+.search-box__input {
+  transition: box-shadow 0.2s var(--ease);
+}
+.search-box__input:focus-within {
+  box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.14);
+}
+
+/* ---------- Section surfaces: uniform medium glass ---------- */
+.content-card,
+.glass-panel,
+.filter-card,
+.trust-card,
+.offer-card,
+.step-card,
+.testi-card,
+.info-tile,
+.contact-card,
+.benefit,
+.why-card,
+.promo-tile,
+.order-item {
+  backdrop-filter: blur(14px) saturate(145%);
+  -webkit-backdrop-filter: blur(14px) saturate(145%);
+}
+
+/* ---------- Forms & inputs: light readable glass ---------- */
+.form-field input,
+.form-field select,
+.form-field textarea,
+.track-form input,
+.pos-cust input,
+.cal-row input,
+.nl-form input {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ---------- Toasts ---------- */
+.toast {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: var(--el-3);
+}
+.empty-state {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px dashed rgba(13, 71, 161, 0.2);
+}
+
+/* ---------- Accessibility: visible keyboard focus ---------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+::selection {
+  background: rgba(33, 150, 243, 0.26);
+  color: var(--ink);
+}
+
+@media (min-width: 821px) {
+  *::-webkit-scrollbar { width: 10px; height: 10px; }
+  *::-webkit-scrollbar-thumb {
+    background: rgba(144, 202, 249, 0.65);
+    border-radius: 99px;
+    border: 3px solid rgba(255, 255, 255, 0.9);
+  }
+  *::-webkit-scrollbar-track { background: transparent; }
+}
+
+/* ---------- Mobile: reduced blur for performance ---------- */
+@media (max-width: 820px) {
+  .bg-orb {
+    filter: blur(46px);
+    opacity: 0.42;
+    animation: none;
+  }
+  body::before {
+    background:
+      radial-gradient(46% 34% at 14% 0%, rgba(144, 202, 249, 0.4) 0%, transparent 62%),
+      radial-gradient(40% 30% at 88% 8%, rgba(33, 150, 243, 0.22) 0%, transparent 64%);
+  }
+  .navbar,
+  .drawer__panel,
+  .modal__card,
+  .mobile-drawer__panel,
+  .search-box {
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+  }
+  .prod-card,
+  .cat-card,
+  .trust-card,
+  .offer-card,
+  .step-card,
+  .testi-card,
+  .content-card,
+  .glass-panel,
+  .filter-card,
+  .contact-card,
+  .cat-rail,
+  .order-item {
+    backdrop-filter: blur(8px) saturate(128%);
+    -webkit-backdrop-filter: blur(8px) saturate(128%);
+  }
+  .prod-card {
+    background: linear-gradient(152deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.78) 100%);
+  }
+  .chip,
+  .cat-pill,
+  .meta-pill,
+  .search-trigger,
+  .account-chip,
+  .icon-btn {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* ============================================================
+   Glass Tuning — 70% transparent, just a light frost
+   (fills at 30% white, gentle 6px blur)
+   ============================================================ */
+
+/* ---------- Navbar ---------- */
+.navbar {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px) saturate(130%);
+  -webkit-backdrop-filter: blur(6px) saturate(130%);
+}
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(8px) saturate(130%);
+  -webkit-backdrop-filter: blur(8px) saturate(130%);
+}
+.nav-drop__menu {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px) saturate(130%);
+  -webkit-backdrop-filter: blur(6px) saturate(130%);
+}
+
+/* ---------- Nav actions ---------- */
+.icon-btn,
+.account-chip,
+.search-trigger {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px) saturate(130%);
+  -webkit-backdrop-filter: blur(6px) saturate(130%);
+}
+
+/* ---------- Product cards ---------- */
+.prod-card {
+  background: linear-gradient(152deg, rgba(255, 255, 255, 0.34) 0%, rgba(144, 202, 249, 0.12) 100%);
+  backdrop-filter: blur(6px) saturate(130%);
+  -webkit-backdrop-filter: blur(6px) saturate(130%);
+}
+.prod-card::before {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 100%);
+}
+.prod-card:hover {
+  background: linear-gradient(152deg, rgba(255, 255, 255, 0.4) 0%, rgba(144, 202, 249, 0.16) 100%);
+}
+
+/* ---------- Favourites ---------- */
+.prod-card__wish {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px) saturate(130%);
+  -webkit-backdrop-filter: blur(6px) saturate(130%);
+}
+
+/* ---------- Chips, pills, category rail ---------- */
+.chip,
+.cat-pill,
+.meta-pill {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px) saturate(130%);
+  -webkit-backdrop-filter: blur(6px) saturate(130%);
+}
+.cat-rail {
+  backdrop-filter: blur(5px) saturate(128%);
+  -webkit-backdrop-filter: blur(5px) saturate(128%);
+}
+
+/* ---------- Cart drawer ---------- */
+.drawer__panel {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px) saturate(135%);
+  -webkit-backdrop-filter: blur(8px) saturate(135%);
+}
+.drawer__head {
+  background: rgba(255, 255, 255, 0.14);
+}
+.cart-line {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px) saturate(130%);
+  -webkit-backdrop-filter: blur(6px) saturate(130%);
+}
+.drawer__foot {
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(8px) saturate(135%);
+  -webkit-backdrop-filter: blur(8px) saturate(135%);
+}
+
+/* ---------- Modals ---------- */
+.modal__card {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px) saturate(135%);
+  -webkit-backdrop-filter: blur(8px) saturate(135%);
+}
+.modal__scrim {
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+.mobile-drawer__panel {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px) saturate(135%);
+  -webkit-backdrop-filter: blur(8px) saturate(135%);
+}
+
+/* ---------- Search overlay ---------- */
+.search-box {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px) saturate(135%);
+  -webkit-backdrop-filter: blur(8px) saturate(135%);
+}
+
+/* ---------- Section surfaces ---------- */
+.content-card,
+.glass-panel,
+.filter-card,
+.trust-card,
+.offer-card,
+.step-card,
+.testi-card,
+.info-tile,
+.contact-card,
+.benefit,
+.why-card,
+.promo-tile,
+.order-item {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px) saturate(130%);
+  -webkit-backdrop-filter: blur(6px) saturate(130%);
+}
+
+/* ---------- Forms & inputs ---------- */
+.form-field input,
+.form-field select,
+.form-field textarea,
+.track-form input,
+.pos-cust input,
+.cal-row input,
+.nl-form input {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px) saturate(125%);
+  -webkit-backdrop-filter: blur(4px) saturate(125%);
+}
+
+/* ---------- Toasts & empty state ---------- */
+.toast {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px) saturate(130%);
+  -webkit-backdrop-filter: blur(6px) saturate(130%);
+}
+.empty-state {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px) saturate(130%);
+  -webkit-backdrop-filter: blur(6px) saturate(130%);
+}
+
+/* ---------- Mobile: keep glass but lighter ---------- */
+@media (max-width: 820px) {
+  .navbar,
+  .navbar.scrolled,
+  .nav-drop__menu,
+  .icon-btn,
+  .account-chip,
+  .search-trigger,
+  .prod-card,
+  .prod-card:hover,
+  .prod-card__wish,
+  .chip,
+  .cat-pill,
+  .meta-pill,
+  .cat-rail,
+  .cart-line {
+    backdrop-filter: blur(4px) saturate(120%);
+    -webkit-backdrop-filter: blur(4px) saturate(120%);
+  }
+  .drawer__panel,
+  .modal__card,
+  .mobile-drawer__panel,
+  .search-box,
+  .drawer__foot {
+    backdrop-filter: blur(6px) saturate(125%);
+    -webkit-backdrop-filter: blur(6px) saturate(125%);
+  }
+  .drawer__panel,
+  .modal__card,
+  .mobile-drawer__panel,
+  .search-box,
+  .toast,
+  .empty-state {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* ============================================================
+   Navbar Dropdown — floating opaque frosted panel (FIX)
+   - own stacking context, positioned against .nav-inner
+   - never clipped: clamped left + max-width in viewport
+   - opaque frosted glass: products underneath cannot bleed
+   - anchored under the trigger link (JS sets --drop-x),
+     fallback = centred under the navbar
+   ============================================================ */
+.nav-drop {
+  position: static;
+}
+
+.nav-drop__menu {
+  position: absolute;
+  isolation: isolate;
+  z-index: 9999;
+  top: calc(100% + 10px);
+  left: var(--drop-x, 50%);
+  transform: translate(-50%, 10px);
+  transform-origin: top center;
+  width: max-content;
+  min-width: 232px;
+  max-width: calc(100vw - 40px);
+  padding: 24px 28px;
+  border-radius: 24px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.97), rgba(227, 242, 253, 0.95));
+  backdrop-filter: blur(28px) saturate(165%);
+  -webkit-backdrop-filter: blur(28px) saturate(165%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 20px 60px rgba(13, 71, 161, 0.18), 0 4px 16px rgba(13, 71, 161, 0.08);
+  display: grid;
+  gap: 6px 20px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.18s;
+}
+
+.nav-drop:hover .nav-drop__menu,
+.nav-drop:focus-within .nav-drop__menu,
+.nav-drop.is-open .nav-drop__menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+/* ESC / outside-click force-close (wins over :hover while applied) */
+.nav-drop.force-close .nav-drop__menu {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 10px);
+}
+
+/* invisible hover bridge across the 10px gap (width matches the menu area) */
+.nav-drop__menu::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -10px;
+  height: 10px;
+}
+
+/* Categories mega-menu: clean multi-column grid */
+.nav-drop__menu--cats {
+  min-width: 560px;
+  max-width: calc(100vw - 40px);
+  grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+  right: 0;
+  left: auto;
+}
+
+.nav-drop:hover > .nav-drop__menu--cats,
+.nav-drop:focus-within > .nav-drop__menu--cats {
+  transform: translateY(0);
+}
+
+/* every item gets its own cell: icon + text, no overlap/collision */
+.nav-drop__menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0D47A1;
+  white-space: nowrap;
+  transition: background 0.16s var(--ease), color 0.16s var(--ease);
+}
+
+.nav-drop__menu a:hover {
+  background: rgba(33, 150, 243, 0.1);
+  color: #2196F3;
+}
+
+.nav-drop__menu a .mi {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  background: rgba(33, 150, 243, 0.12);
+}
+
+.nav-drop__menu--cats a > span:last-child,
+.nav-drop__all > span:last-child {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+
+.nav-drop__menu--cats a b,
+.nav-drop__all b {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0D47A1;
+  line-height: 1.3;
+}
+
+.nav-drop__menu--cats a small,
+.nav-drop__all small {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #576A82;
+}
+/* ============================================================
+   Mobile header reorder:  hamburger · centered logo · search+cart
+   (<=820px only; desktop header untouched)
+============================================================ */
+@media (max-width: 820px) {
+  .nav-inner {
+    padding: 0 8px;
+    gap: 6px;
+  }
+
+  .mobile-toggle {
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--primary-deep);
+    background: rgba(227, 242, 253, 0.72);
+    border: 1px solid rgba(144, 202, 249, 0.5);
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .mobile-toggle:hover {
+    background: var(--primary);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: var(--el-blue);
+    transform: translateY(-1px);
+  }
+
+  .logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    gap: 7px;
+    z-index: 1;
+  }
+
+  .logo-badge {
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+    box-shadow: 0 6px 16px rgba(33, 150, 243, 0.35);
+  }
+
+  .logo-badge svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .logo-text {
+    gap: 2px;
+  }
+
+  .logo-text b {
+    font-size: 13.5px;
+    letter-spacing: 0.7px;
+  }
+
+  .logo-text em {
+    font-size: 9px;
+    letter-spacing: 5.2px;
+  }
+
+  .nav-actions {
+    margin-left: auto;
+    gap: 6px;
+  }
+
+  .nav-actions .icon-btn,
+  .search-trigger {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+/* ============================================================
+   DEPTH LAYER — iOS 26 "Liquid Glass" inspired spatial design
+   Layered hierarchy:  BACKGROUND -> ATMOSPHERE -> GLASS
+   -> CONTENT -> FLOATING CONTROLS -> FOCUSED ELEMENTS
+   Blue + white brand. Depth is built from light + layers,
+   NOT from raw blur or wholesale transparency.
+   ============================================================ */
+
+/* ---------- 0. Depth tokens ---------- */
+:root {
+  /* Blue-tinted elevation ladder (stronger = physically higher) */
+  --d-sh-1: 0 2px 6px rgba(13, 71, 161, 0.05), 0 10px 26px rgba(13, 71, 161, 0.09);
+  --d-sh-2: 0 6px 18px rgba(13, 71, 161, 0.09), 0 22px 48px rgba(13, 71, 161, 0.15);
+  --d-sh-3: 0 12px 30px rgba(13, 71, 161, 0.12), 0 34px 72px rgba(13, 71, 161, 0.22);
+  --d-sh-4: 0 16px 40px rgba(13, 71, 161, 0.16), 0 48px 104px rgba(13, 71, 161, 0.26);
+
+  /* Glass light: edge catches more light on top than bottom */
+  --d-edge-lo: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  --d-edge-hi: inset 0 1px 0 rgba(255, 255, 255, 0.85),
+               inset 1px 0 0 rgba(255, 255, 255, 0.14),
+               inset -1px 0 0 rgba(144, 202, 249, 0.12);
+
+  /* Glass levels */
+  --d-glass-1-bg: linear-gradient(150deg, rgba(255, 255, 255, 0.62), rgba(227, 242, 253, 0.42));
+  --d-glass-1-blur: blur(14px) saturate(140%);
+  --d-glass-2-bg: linear-gradient(150deg, rgba(255, 255, 255, 0.9), rgba(227, 242, 253, 0.66));
+  --d-glass-2-blur: blur(20px) saturate(150%);
+  --d-glass-3-bg: linear-gradient(158deg, rgba(255, 255, 255, 0.93), rgba(227, 242, 253, 0.74));
+  --d-glass-3-blur: blur(26px) saturate(160%);
+  --d-glass-4-bg: linear-gradient(150deg, rgba(255, 255, 255, 0.97), rgba(227, 242, 253, 0.9));
+  --d-glass-4-blur: blur(30px) saturate(165%);
+
+  --d-motion: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- 1. Background atmosphere (behind the glass) ----------
+   Layered, fixed, very low volume. No obvious blobs. */
+.bg-fx::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(52% 34% at 16% 0%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 60%),
+    radial-gradient(40% 30% at 84% 6%, rgba(144, 202, 249, 0.55) 0%, rgba(144, 202, 249, 0) 62%),
+    radial-gradient(60% 42% at 50% 108%, rgba(13, 71, 161, 0.14) 0%, rgba(13, 71, 161, 0) 66%);
+}
+
+.bg-orb {
+  opacity: 0.5;
+  filter: blur(110px);
+  transition: opacity 0.5s var(--d-motion);
+}
+
+.bg-grid {
+  opacity: 0.5;
+}
+
+/* ---------- 2. Glass Level 2 — normal glass surfaces ----------
+   Directional fill (light catches top-left) + backdrop blur +
+   hairline border + inner edge-light + blue-tinted lift. */
+.prod-card,
+.cat-card,
+.trust-card,
+.offer-card,
+.step-card,
+.testi-card,
+.content-card,
+.filter-card,
+.contact-card,
+.glass-panel,
+.order-item,
+.cart-line,
+.newsletter-band__inner {
+  background: var(--d-glass-2-bg);
+  backdrop-filter: var(--d-glass-2-blur);
+  -webkit-backdrop-filter: var(--d-glass-2-blur);
+  border-color: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--d-sh-1), var(--d-edge-hi);
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 250ms cubic-bezier(0.16, 1, 0.3, 1),
+    background 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Promo banner keeps its designed deep-blue fill — only lift + light */
+.promo-banner {
+  box-shadow: var(--d-sh-3), var(--d-edge-hi);
+  transition: box-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- 3. Floating card: hover elevation + blue glow ---------- */
+.prod-card:hover,
+.cat-card:hover,
+.trust-card:hover,
+.offer-card:hover,
+.step-card:hover,
+.testi-card:hover,
+.content-card:hover,
+.filter-card:hover,
+.contact-card:hover,
+.glass-panel:hover,
+.order-item:hover {
+  transform: translateY(-4px);
+  animation: none;
+  background: var(--d-glass-2-bg);
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 18px 44px rgba(13, 71, 161, 0.16),
+    0 0 0 1px rgba(33, 150, 243, 0.1),
+    var(--d-edge-hi);
+}
+
+/* Favourites tile behaves like the rest of the card */
+.prod-card__wish {
+  background: var(--d-glass-2-bg);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border-color: rgba(255, 255, 255, 0.75);
+  box-shadow: var(--d-sh-1), var(--d-edge-hi);
+  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 150ms ease, background 150ms ease;
+}
+
+/* Fly-off glass chips & ghost buttons */
+.chip,
+.cat-pill,
+.meta-pill,
+.btn-glass {
+  background: var(--d-glass-2-bg);
+  backdrop-filter: blur(14px) saturate(145%);
+  -webkit-backdrop-filter: blur(14px) saturate(145%);
+  border-color: rgba(255, 255, 255, 0.78);
+  box-shadow: var(--d-sh-1), var(--d-edge-lo);
+}
+
+.btn-glass:hover {
+  background: var(--d-glass-2-bg);
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--d-sh-2), var(--d-edge-hi);
+}
+
+/* ---------- 4. Product image depth — floats inside the glass ---------- */
+.prod-card__media {
+  background: radial-gradient(130% 100% at 50% 8%, #ffffff 0%, #EAF4FE 58%, #D6E9FB 100%);
+  box-shadow: 0 12px 24px rgba(13, 71, 161, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.prod-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(70% 62% at 50% 36%, rgba(144, 202, 249, 0.28) 0%, rgba(144, 202, 249, 0) 68%);
+}
+
+/* ---------- 5. Navbar — Level 3 floating glass object ---------- */
+.navbar {
+  background: var(--d-glass-3-bg);
+  backdrop-filter: var(--d-glass-3-blur);
+  -webkit-backdrop-filter: var(--d-glass-3-blur);
+  border-color: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 24px 60px rgba(13, 71, 161, 0.16), var(--d-edge-hi);
+  transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+/* On scroll: deeper, slightly more present, never solid */
+.navbar.scrolled {
+  background: linear-gradient(158deg, rgba(255, 255, 255, 0.96), rgba(227, 242, 253, 0.82));
+  box-shadow: 0 30px 72px rgba(13, 71, 161, 0.2), var(--d-edge-hi);
+}
+
+/* ---------- 6. Icon controls — floating glass orbs ---------- */
+.nav-actions .icon-btn,
+#searchTrigger,
+.account-chip,
+.mobile-toggle,
+.drawer-close,
+.filter-close,
+.modal__close {
+  background: var(--d-glass-2-bg);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border-color: rgba(255, 255, 255, 0.75);
+  box-shadow: var(--d-sh-1), var(--d-edge-hi);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms ease,
+    border-color 200ms ease, background 200ms ease;
+}
+
+.nav-actions .icon-btn:hover,
+#searchTrigger:hover,
+.account-chip:hover,
+.mobile-toggle:hover,
+.drawer-close:hover,
+.filter-close:hover,
+.modal__close:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 26px rgba(33, 150, 243, 0.35), var(--d-edge-hi);
+}
+
+/* ---------- 7. Dropdown — Level 3 panel BELOW the navbar ----------
+   Strong glass, high opacity, deep shadow. Re-affirms the earlier
+   fix: product grid must never bleed through. */
+.nav-drop__menu {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.97), rgba(227, 242, 253, 0.95));
+  backdrop-filter: blur(28px) saturate(165%);
+  -webkit-backdrop-filter: blur(28px) saturate(165%);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 30px 70px rgba(13, 71, 161, 0.22), var(--d-edge-hi);
+  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.18s, box-shadow 0.18s ease;
+}
+
+/* ---------- 8. Modal — Level 4, closest to the user ---------- */
+.modal__scrim {
+  background: rgba(13, 71, 161, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal__card {
+  background: var(--d-glass-4-bg);
+  backdrop-filter: var(--d-glass-4-blur);
+  -webkit-backdrop-filter: var(--d-glass-4-blur);
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--d-sh-4), var(--d-edge-hi);
+}
+
+/* ---------- 9. Buttons — tactile, not cartoonish ---------- */
+.btn-primary {
+  background: linear-gradient(135deg, #0D47A1, #2196F3);
+  box-shadow: 0 12px 30px rgba(33, 150, 243, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -3px 8px rgba(13, 71, 161, 0.32);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 38px rgba(33, 150, 243, 0.46),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -3px 8px rgba(13, 71, 161, 0.32);
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.99);
+  box-shadow: 0 6px 16px rgba(33, 150, 243, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-white {
+  background: #fff;
+  box-shadow: var(--d-sh-2), var(--d-edge-lo);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms ease;
+}
+
+.btn-white:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--d-sh-3), var(--d-edge-hi);
+}
+
+/* ---------- 10. Drawers & search — Level 3 ---------- */
+.drawer__panel,
+.search-box,
+.mobile-drawer__panel {
+  background: var(--d-glass-3-bg);
+  backdrop-filter: var(--d-glass-3-blur);
+  -webkit-backdrop-filter: var(--d-glass-3-blur);
+  border-color: rgba(255, 255, 255, 0.75);
+}
+
+.drawer__head,
+.drawer__foot {
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(4px);
+}
+
+/* ---------- 11. Search box & inputs — Level 2 with focus light ---------- */
+.search-box input,
+.form-field input,
+.form-field textarea,
+.form-field select,
+.shop-bar input,
+.shop-bar select {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(144, 202, 249, 0.55);
+  box-shadow: inset 0 2px 5px rgba(13, 71, 161, 0.05), var(--d-edge-lo);
+  transition: border-color 200ms ease, box-shadow 200ms ease, background 200ms ease;
+}
+
+.search-box input:focus,
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus,
+.shop-bar input:focus,
+.shop-bar select:focus {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* ---------- 12. Soft reflections on large glass panels ----------
+   A subtle upper-left light pool. Direct children are promoted
+   above the sheen so text & controls stay crisp. */
+.glass-panel,
+.content-card,
+.newsletter-band__inner,
+.modal__card,
+.drawer__panel,
+.mobile-drawer__panel {
+  position: relative;
+}
+
+.glass-panel::before,
+.content-card::before,
+.newsletter-band__inner::before,
+.modal__card::before,
+.drawer__panel::before,
+.mobile-drawer__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 46%);
+}
+
+.glass-panel > *,
+.content-card > *,
+.newsletter-band__inner > *,
+.modal__card > *,
+.drawer__panel > *,
+.mobile-drawer__panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- 13. Hero — layered over the airflow ---------- */
+.hero-search {
+  background: var(--d-glass-2-bg);
+  backdrop-filter: var(--d-glass-2-blur);
+  -webkit-backdrop-filter: var(--d-glass-2-blur);
+  border-color: rgba(255, 255, 255, 0.78);
+  box-shadow: var(--d-sh-2), var(--d-edge-hi);
+  transition: box-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-shot {
+  box-shadow: var(--d-sh-3), var(--d-edge-hi);
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-shot:hover {
+  box-shadow: var(--d-sh-4), var(--d-edge-hi);
+}
+
+.hero-chip {
+  background: var(--d-glass-2-bg);
+  backdrop-filter: blur(14px) saturate(145%);
+  -webkit-backdrop-filter: blur(14px) saturate(145%);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: var(--d-sh-1), var(--d-edge-hi);
+}
+
+/* Category rail — light, quiet */
+.cat-rail {
+  background: var(--d-glass-1-bg);
+  backdrop-filter: var(--d-glass-1-blur);
+  -webkit-backdrop-filter: var(--d-glass-1-blur);
+  box-shadow: var(--d-sh-1), var(--d-edge-lo);
+}
+
+/* ---------- 14. Mobile: keep premium, cut the expensive blur ---------- */
+@media (max-width: 820px) {
+  .bg-orb {
+    filter: blur(60px);
+    opacity: 0.34;
+  }
+  .bg-grid {
+    display: none;
+  }
+
+  .navbar {
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+  }
+  .nav-drop__menu {
+    backdrop-filter: blur(20px) saturate(155%);
+    -webkit-backdrop-filter: blur(20px) saturate(155%);
+  }
+  .prod-card,
+  .cat-card,
+  .trust-card,
+  .offer-card,
+  .step-card,
+  .testi-card,
+  .content-card,
+  .filter-card,
+  .contact-card,
+  .glass-panel,
+  .order-item,
+  .cart-line {
+    backdrop-filter: blur(10px) saturate(135%);
+    -webkit-backdrop-filter: blur(10px) saturate(135%);
+  }
+  .prod-card:hover,
+  .cat-card:hover,
+  .trust-card:hover,
+  .offer-card:hover {
+    transform: translateY(-2px);
+  }
+  .drawer__panel,
+  .modal__card,
+  .mobile-drawer__panel,
+  .search-box {
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+  }
+}
+
+/* ---------- 15. Honours "reduce motion" ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .bg-orb,
+  .bg-grid {
+    animation: none;
+  }
+  .prod-card,
+  .cat-card,
+  .trust-card,
+  .offer-card,
+  .step-card,
+  .testi-card,
+  .content-card,
+  .filter-card,
+  .contact-card,
+  .order-item {
+    animation: none;
+    transition-duration: 1ms;
+  }
+  .prod-card:hover,
+  .cat-card:hover,
+  .trust-card:hover,
+  .offer-card:hover,
+  .step-card:hover,
+  .testi-card:hover,
+  .content-card:hover,
+  .filter-card:hover,
+  .contact-card:hover {
+    transform: none;
+  }
+  .btn-primary:hover,
+  .btn-white:hover,
+  .btn-glass:hover {
+    transform: none;
+  }
+  .nav-actions .icon-btn:hover,
+  #searchTrigger:hover,
+  .account-chip:hover,
+  .mobile-toggle:hover,
+  .drawer-close:hover,
+  .filter-close:hover,
+  .modal__close:hover,
+  .hero-chip:hover,
+  .hero-shot:hover {
+    transform: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Enhanced categories mega-menu */
+.nav-drop__menu--cats a {
+  padding: 12px 14px;
+  gap: 14px;
+  transition: background 0.22s var(--ease), transform 0.22s var(--ease);
+}
+.nav-drop__menu--cats a:hover {
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.12), rgba(13, 71, 161, 0.08));
+  transform: translateX(4px);
+}
+.nav-drop__menu--cats a .mi {
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.15), rgba(144, 202, 249, 0.2));
+  border-radius: 12px;
+}
+.nav-drop__menu--cats a:hover .mi {
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.25), rgba(144, 202, 249, 0.3));
+  transform: scale(1.05);
+}
+.nav-drop__menu--cats a b {
+  font-size: 14px;
+}
+.nav-drop__menu--cats a small {
+  font-size: 12px;
 }

@@ -1,0 +1,37 @@
+# Robots.txt for CrackersMela — Premium Fireworks Store
+# https://crackersmela.com
+
+User-agent: *
+Allow: /
+Disallow: /staff
+Disallow: /admin
+
+# AI Search Crawlers — Allow indexing for citation
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Block training-only crawlers (not search/citation)
+User-agent: CCBot
+Disallow: /
+
+User-agent: omgili
+Disallow: /
+

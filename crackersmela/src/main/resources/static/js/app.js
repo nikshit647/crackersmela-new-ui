@@ -376,6 +376,59 @@
   { email: ['demo','@','crackersmela','.com'].join(''), password: 'demo123', name: 'Demo User', role: 'customer' }
   ];
 
+  const OWNER_EMAIL = ['nikshit647garje','@','gmail','.com'].join('');
+  const promoteOwner = email => {
+    if (email !== OWNER_EMAIL) return;
+    if (users[email]) { users[email].role = 'admin'; ls.set('users', users); }
+  };
+
+  /* ==================== google login (firebase) ==================== */
+  /* Paste your Firebase web-app config below (Firebase Console → Project
+     settings → General → Your apps → SDK setup and configuration). The
+     Google button stays hidden until a real config is present. */
+  const FIREBASE_CONFIG = {
+    apiKey: 'PASTE_' + 'FIREBASE_' + 'API_KEY',  // replace
+    authDomain: 'PASTE_FIREBASE_AUTH_DOMAIN',    // e.g. your-app.firebaseapp.com
+    projectId: 'PASTE_FIREBASE_PROJECT_ID',      // replace
+    appId: 'PASTE_FIREBASE_APP_ID'               // replace
+  };
+  const firebaseReady = () => {
+    try {
+      return !!(window.firebase && window.firebase.auth && FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.apiKey.indexOf('PASTE_') !== 0);
+    } catch (e) { return false; }
+  };
+  const fbInit = () => {
+    if (!firebaseReady()) return;
+    try {
+      if (!firebase.apps.length) firebase.initializeApp(FIREBASE_CONFIG);
+    } catch (e) { console.warn('Firebase init failed:', e); return; }
+    try { firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(() => {}); } catch (e) {}
+    firebase.auth().getRedirectResult().catch(() => {});
+    firebase.auth().onAuthStateChanged(usr => {
+      if (!usr || !usr.email) return;
+      const email = String(usr.email).trim().toLowerCase();
+      if (email === (session.email || '').toLowerCase()) {
+        if (currentUser()) accountUI();
+        return;
+      }
+      if (!users[email]) users[email] = { name: (usr.displayName || email.split('@')[0]).trim(), role: email === OWNER_EMAIL ? 'admin' : 'customer', salt: newSalt(), google: true, createdAt: new Date().toISOString() };
+      promoteOwner(email);
+      if (email === OWNER_EMAIL) users[email].role = 'admin';
+      session = { email, viaGoogle: true };
+      ls.set('users', users);
+      save();
+      const m = $('#authModal');
+      if (m && m.classList.contains('open')) {
+        closeAuth();
+        accountUI();
+        toast('Welcome, ' + users[email].name + '!', 'ok');
+        if (location.hash.startsWith('#/checkout') || location.hash.startsWith('#/staff')) route();
+      } else {
+        accountUI();
+      }
+    });
+  };
+
   const login = async (email, pw) => {
     email = (email || '').trim().toLowerCase();
     const u = users[email];
@@ -396,6 +449,8 @@
         return { ok: false, error: 'No account found. Please register first.' };
       }
     }
+    promoteOwner(email);
+    if (email === OWNER_EMAIL) role = 'admin';
     session = { email };
     save();
     return { ok: true, name, role };
@@ -407,14 +462,18 @@
     if (pw.length < 8) return { ok: false, error: 'Password must be at least 8 characters.' };
     if (users[email] || DEMO.some(d => d.email === email)) return { ok: false, error: 'An account already exists with this email.' };
     const salt = newSalt();
-    users[email] = { name: name.trim(), role: 'customer', salt, hash: await hashPw(pw, salt), createdAt: new Date().toISOString() };
+    const role = email === OWNER_EMAIL ? 'admin' : 'customer';
+    users[email] = { name: name.trim(), role, salt, hash: await hashPw(pw, salt), createdAt: new Date().toISOString() };
     session = { email };
     ls.set('users', users);
     save();
-    return { ok: true, name: users[email].name, role: 'customer' };
+    return { ok: true, name: users[email].name, role };
   };
 
-  const logout = () => { session = { email: null }; save(); accountUI(); toast('Logged out', 'info'); if (location.hash.startsWith('#/staff') || location.hash.startsWith('#/my-orders')) route(); };
+  const logout = () => {
+    if (firebaseReady() && firebase.auth().currentUser) { try { firebase.auth().signOut(); } catch (e) {} }
+    session = { email: null }; save(); accountUI(); toast('Logged out', 'info'); if (location.hash.startsWith('#/staff') || location.hash.startsWith('#/my-orders')) route();
+  };
 
   const accountUI = () => {
     const u = currentUser();
@@ -466,9 +525,22 @@
     };
     renderForm(tab);
     $$('#authBody [data-atab]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); const t = b.getAttribute('data-atab') === 'register' ? 'register' : 'login'; $$('#authBody .auth-tabs button').forEach(x => x.classList.toggle('active', x.getAttribute('data-atab') === t)); renderForm(t); }));
-    $('#authBody #googleBtn').addEventListener('click', () => {
-      closeAuth();
-      setTimeout(() => toast('Google sign-in connects in the hosted version', 'info'), 120);
+    $('#authBody #googleBtn').addEventListener('click', async () => {
+      if (!firebaseReady()) {
+        closeAuth();
+        return setTimeout(() => toast('Google login needs Firebase config — paste it in app.js (FIREBASE_CONFIG)', 'err'), 120);
+      }
+      const btn = $('#authBody #googleBtn'); btn.disabled = true;
+      try {
+        await firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
+      } catch (e) {
+        const code = e && e.code ? String(e.code) : '';
+        if (code.indexOf('popup-blocked') >= 0) return toast('Google popup blocked — allow popups for this site, then try again.', 'err');
+        if (code.indexOf('cancelled') >= 0) return toast('Google sign-in cancelled', 'info');
+        btn.disabled = false;
+        return toast('Google sign-in failed: ' + ((e && e.message) || code || 'unknown error'), 'err');
+      }
+      btn.disabled = false;
     });
     $$('#authBody [data-pw]').forEach(b => b.addEventListener('click', () => { const inp = $('#authBody #auPass'); inp.type = inp.type === 'password' ? 'text' : 'password'; }));
     openModal(m);
@@ -2506,13 +2578,16 @@
   let feedStarted = false;
   const startFeed = () => {
     if (!activity.some(a => a.type === 'order')) {
+      const before = activity.length;
       orders.slice(-6).forEach(o => {
         if (!activity.some(a => a.oid === o.id)) activity.unshift({ id: Date.now() + Math.random(), type: 'order', msg: `${o.code} · ${o.customer.name} · ${money(o.totals.total)}`, at: o.placedAt, read: false, oid: o.id });
       });
       activity = activity.slice(0, 40);
       save();
-      const sp = $('#staffPanel');
-      if (sp) { sp.innerHTML = panelOf('dashboard'); wireAdmin(); }
+      if (activity.length > before) {
+        const sp = $('#staffPanel');
+        if (sp) { sp.innerHTML = panelOf('dashboard'); wireAdmin(); }
+      }
       return;
     }
     clearInterval(feedTimer);
@@ -2737,7 +2812,6 @@
     const active = st.cats.length === 1 ? st.cats[0] : (st.cats.length ? '' : 'all');
     const pill = (id, name, n) => `<button class="cat-pill ${active === id ? 'active' : ''}" data-cat="${esc(id)}" aria-current="${active === id}">${esc(name)}${n != null ? `<span class="cp-n">${n}</span>` : ''}</button>`;
     rail.innerHTML = pill('all', 'All Categories', PRODUCTS.length)
-      + `<button class="cat-pill ${location.hash.includes('sort=discount') ? 'active' : ''}" data-railsort="discount">Deals<span class="cp-n">${PRODUCTS.filter(p => discountOf(p) >= 25).length}</span></button>`
       + CATS.map(c => pill(c.id, c.name, PRODUCTS.filter(p => p.cats.includes(c.id)).length)).join('')
       + `<button class="cat-pill ${location.hash.includes('sort=newest') ? 'active' : ''}" data-railsort="newest">New Arrivals</button>`;
   };
@@ -3016,6 +3090,63 @@
       if (e.key === 'Escape') { closeSearch(); closeCart(); closeAuth(); openFilters(false); $('#mobileDrawer').classList.remove('open'); document.body.style.overflow = ''; }
     });
 
+    // navbar dropdowns: exclusive open, click-outside + ESC close, viewport-safe anchoring
+    {
+      const drops = Array.from(document.querySelectorAll('.nav-drop'));
+      if (drops.length) {
+        const closeAll = () => {
+          drops.forEach(d => {
+            d.classList.add('force-close');
+            d.classList.remove('is-open');
+            const a = d.querySelector('.nav-link');
+            if (a && a === document.activeElement) a.blur();
+          });
+        };
+        const blurOtherLinks = except => {
+          drops.forEach(o => {
+            if (o !== except) {
+              o.classList.remove('is-open');
+              const a = o.querySelector('.nav-link');
+              if (a && a === document.activeElement) a.blur();
+            }
+          });
+        };
+        const prepare = d => { d.classList.remove('force-close'); blurOtherLinks(d); };
+        drops.forEach(d => {
+          const link = d.querySelector('.nav-link');
+          const menu = d.querySelector('.nav-drop__menu');
+          if (!menu || !link) return;
+          const position = () => {
+            const inner = document.querySelector('.nav-inner');
+            if (!inner || typeof inner.getBoundingClientRect !== 'function') return;
+            if (!link || typeof link.getBoundingClientRect !== 'function') return;
+            const ir = inner.getBoundingClientRect();
+            const lr = link.getBoundingClientRect();
+            const mw = Math.min(menu.offsetWidth || 320, window.innerWidth - 40);
+            let cx = lr.left + lr.width / 2;
+            if (cx < 20 + mw / 2) cx = 20 + mw / 2;
+            if (cx > window.innerWidth - 20 - mw / 2) cx = window.innerWidth - 20 - mw / 2;
+            menu.style.setProperty('--drop-x', (cx - ir.left) + 'px');
+          };
+          position();
+          window.addEventListener('resize', position);
+          link.addEventListener('mouseenter', () => { prepare(d); position(); });
+          link.addEventListener('mouseover', () => prepare(d));
+          link.addEventListener('focus', () => { prepare(d); position(); });
+          link.addEventListener('click', () => { prepare(d); position(); });
+          d.addEventListener('mouseenter', () => prepare(d));
+          d.addEventListener('mouseover', () => prepare(d));
+          d.addEventListener('focusin', () => prepare(d));
+        });
+        document.addEventListener('click', e => {
+          if (!drops.some(d => d.contains(e.target))) closeAll();
+        });
+        document.addEventListener('keydown', e => {
+          if (e.key === 'Escape') closeAll();
+        });
+      }
+    }
+
     // categories mega-menu
     const ncm = $('#navCatMenu');
     if (ncm) ncm.innerHTML = CATS.map(c => `<a href="#/products?cat=${c.id}" role="menuitem"><span class="mi">${esc(c.icon || '✦')}</span><span><b>${esc(c.name)}</b><small>${PRODUCTS.filter(p => p.cats.includes(c.id)).length} products</small></span></a>`).join('')
@@ -3052,6 +3183,8 @@
     if (link && !currentUser()) link.classList.add('hidden');
   };
   document.addEventListener('DOMContentLoaded', cleanupStaffLink);
+
+  fbInit();
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bindGlobals);
   else bindGlobals();
