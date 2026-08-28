@@ -8,9 +8,9 @@
   --bg: #E3F2FD;
   --bg-deep: #D4E9FB;
   --bg-inner: #F4FAFF;
-  --surface: rgba(255, 255, 255, 0.5);
-  --surface-2: rgba(255, 255, 255, 0.68);
-  --surface-3: rgba(255, 255, 255, 0.85);
+  --surface: rgba(255, 255, 255, 0.3);
+  --surface-2: rgba(255, 255, 255, 0.35);
+  --surface-3: rgba(255, 255, 255, 0.4);
   --glass-border: rgba(255, 255, 255, 0.65);
   --glass-border-2: rgba(13, 71, 161, 0.08);
   --ink: #0B1B3A;
@@ -41,13 +41,13 @@
   --nav-h: 78px;
 
   /* --- Layered glass system (strong → medium → light) --- */
-  --glass-strong-bg: rgba(255, 255, 255, 0.82);
+  --glass-strong-bg: rgba(255, 255, 255, 0.35);
   --glass-strong-blur: blur(26px) saturate(150%);
   --glass-strong-border: rgba(255, 255, 255, 0.85);
-  --glass-med-bg: rgba(255, 255, 255, 0.66);
+  --glass-med-bg: rgba(255, 255, 255, 0.3);
   --glass-med-blur: blur(18px) saturate(135%);
   --glass-med-border: rgba(255, 255, 255, 0.7);
-  --glass-light-bg: rgba(255, 255, 255, 0.42);
+  --glass-light-bg: rgba(255, 255, 255, 0.25);
   --glass-light-blur: blur(10px);
   --glass-light-border: rgba(255, 255, 255, 0.55);
 
