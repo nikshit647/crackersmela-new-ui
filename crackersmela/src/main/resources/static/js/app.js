@@ -2505,6 +2505,16 @@
 
   let feedStarted = false;
   const startFeed = () => {
+    if (!activity.some(a => a.type === 'order')) {
+      orders.slice(-6).forEach(o => {
+        if (!activity.some(a => a.oid === o.id)) activity.unshift({ id: Date.now() + Math.random(), type: 'order', msg: `${o.code} · ${o.customer.name} · ${money(o.totals.total)}`, at: o.placedAt, read: false, oid: o.id });
+      });
+      activity = activity.slice(0, 40);
+      save();
+      const sp = $('#staffPanel');
+      if (sp) { sp.innerHTML = panelOf('dashboard'); wireAdmin(); }
+      return;
+    }
     clearInterval(feedTimer);
     feedTimer = setInterval(() => {
       if (document.hidden) return;
