@@ -37,7 +37,9 @@
     return CAT_MAP[p.primary] || CAT_MAP.fancy;
   };
 
-  const discountOf = p => p.compareAt && p.compareAt > p.price ? Math.round((1 - p.price / p.compareAt) * 100) : 0;
+  const priceOf = p => (priceOverrides[p.id] != null ? Number(priceOverrides[p.id]) : p.price);
+  const featuredOf = p => (featOn[p.id] != null ? !!featOn[p.id] : !!p.featured);
+  const discountOf = p => p.compareAt && p.compareAt > priceOf(p) ? Math.round((1 - priceOf(p) / p.compareAt) * 100) : 0;
   const stockLine = p => {
     if (!p.inStock) return `<span class="stock-line out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 9v4"/><circle cx="12" cy="17" r="0.4"/><circle cx="12" cy="12" r="9" stroke-dasharray="2 2"/></svg>Out of stock</span>`;
     if (p.stock <= 6) return `<span class="stock-line low"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l2.8 2.8M16.2 16.2 19 19M19 5l-2.8 2.8M7.8 16.2 5 19"/></svg>Only ${p.stock} left</span>`;
@@ -68,8 +70,10 @@
   let users = ls.get('users', {});
   let orders = ls.get('orders', []);
   let stockOverrides = ls.get('stockOverrides', {});
+  let priceOverrides = ls.get('priceOverrides', {});
+  let featOn = ls.get('featOn', {});
 
-  const save = () => { ls.set('cart', cart); ls.set('wish', wish); ls.set('recent', recent); ls.set('orders', orders); ls.set('session', session); ls.set('stockOverrides', stockOverrides); };
+  const save = () => { ls.set('cart', cart); ls.set('wish', wish); ls.set('recent', recent); ls.set('orders', orders); ls.set('session', session); ls.set('stockOverrides', stockOverrides); ls.set('priceOverrides', priceOverrides); ls.set('featOn', featOn); };
 
   const stockOf = p => stockOverrides[p.id] !== undefined ? stockOverrides[p.id] : p.stock;
   const inStockOf = p => stockOf(p) > 0 && p.inStock;
@@ -124,7 +128,7 @@
     <article class="prod-card reveal" data-id="${p.id}">
       <div class="prod-card__media">
         <a href="${prodUrl(p)}" tabindex="-1" aria-hidden="true">${media}</a>
-        ${off >= 25 ? `<div class="prod-card__badges"><span class="badge-off">-${off}% OFF</span>${p.featured ? '<span class="badge-off badge-hot">HOT</span>' : ''}</div>` : p.featured ? `<div class="prod-card__badges"><span class="badge-off badge-hot">HOT</span></div>` : ''}
+        ${off >= 25 ? `<div class="prod-card__badges"><span class="badge-off">-${off}% OFF</span>${featuredOf(p) ? '<span class="badge-off badge-hot">HOT</span>' : ''}</div>` : featuredOf(p) ? `<div class="prod-card__badges"><span class="badge-off badge-hot">HOT</span></div>` : ''}
         <button class="prod-card__wish ${saved(p.id) ? 'active' : ''}" data-wish="${p.id}" aria-label="Toggle wishlist" aria-pressed="${saved(p.id)}">${saved(p.id) ? I.heartF : I.heart}</button>
         ${!inStockOf(p) ? `<div class="prod-oos-tint"><span>OUT OF STOCK</span></div>` : ''}
       </div>
@@ -133,8 +137,8 @@
         <h3 class="prod-card__name"><a href="${prodUrl(p)}">${esc(p.shortName)}</a></h3>
         <div class="rating-row">${stars(p.rating)} <span>${p.rating.toFixed(1)} · ${p.reviews} reviews</span></div>
         <div class="price-row">
-          <span class="price-now">${money(p.price)}</span>
-          ${p.compareAt && p.compareAt > p.price ? `<span class="price-cmp">${money(p.compareAt)}</span>` : ''}
+          <span class="price-now">${money(priceOf(p))}</span>
+          ${p.compareAt && p.compareAt > priceOf(p) ? `<span class="price-cmp">${money(p.compareAt)}</span>` : ''}
         </div>
         <div class="prod-card__foot">
           ${stockLine(p)}
@@ -189,8 +193,8 @@
     for (const line of cart) {
       const p = PRODUCTS.find(x => x.id === line.id);
       if (!p) continue;
-      subtotal += p.price * line.qty;
-      if (p.compareAt > p.price) saving += (p.compareAt - p.price) * line.qty;
+      subtotal += priceOf(p) * line.qty;
+      if (p.compareAt > priceOf(p)) saving += (p.compareAt - priceOf(p)) * line.qty;
       count += line.qty;
     }
     const festive = subtotal >= 1000 ? subtotal >= 2000 ? 0.15 : 0.10 : subtotal >= 500 ? 0.05 : 0;
@@ -366,7 +370,7 @@
     if (pw.length < 8) return { ok: false, error: 'Password must be at least 8 characters.' };
     if (users[email] || DEMO.some(d => d.email === email)) return { ok: false, error: 'An account already exists with this email.' };
     const salt = newSalt();
-    users[email] = { name: name.trim(), role: 'customer', salt, hash: await hashPw(pw, salt) };
+    users[email] = { name: name.trim(), role: 'customer', salt, hash: await hashPw(pw, salt), createdAt: new Date().toISOString() };
     session = { email };
     ls.set('users', users);
     save();
@@ -453,7 +457,7 @@
   const placeOrder = (customer, shipping, payment) => {
     const lines = cart.map(c => {
       const p = PRODUCTS.find(x => x.id === c.id);
-      return { id: p.id, sku: p.sku, name: p.shortName, image: p.image, qty: c.qty, price: p.price, compareAt: p.compareAt };
+      return { id: p.id, sku: p.sku, name: p.shortName, image: p.image, qty: c.qty, price: priceOf(p), compareAt: p.compareAt };
     });
     const t = cartTotals();
     const now = new Date().toISOString();
@@ -536,7 +540,7 @@
   const views = {};
 
   views.home = () => {
-    const featured = PRODUCTS.filter(p => p.featured && inStockOf(p)).slice(0, 8);
+    const featured = PRODUCTS.filter(p => featuredOf(p) && inStockOf(p)).slice(0, 8);
     const best = [...PRODUCTS.filter(inStockOf)].sort((a, b) => b.salesCount - a.salesCount).slice(0, 8);
     const night = PRODUCTS.filter(p => p.cats.includes('night-outs') || p.cats.includes('gift-boxes')).sort((a, b) => (b.compareAt || b.price) - (a.compareAt || a.price)).slice(0, 4);
     const heroPicks = [...PRODUCTS.filter(p => p.inStock && p.image)].sort(() => Math.random() - 0.5).slice(0, 3);
@@ -569,7 +573,7 @@
             ${heroPicks.map((p, i) => `<a class="hero-card hero-card--${['a', 'b', 'c'][i]}" href="${prodUrl(p)}" aria-label="${esc(p.shortName)}">
               <img src="${esc(p.image)}" alt="" loading="lazy">
               <div class="hero-card__body"><h4>${esc(p.shortName)}</h4>
-                <div class="price-row"><span class="hero-card__price">${money(p.price)}</span>${p.compareAt > p.price ? `<span class="hero-card__cmp">${money(p.compareAt)}</span><span class="hero-card__off">-${discountOf(p)}%</span>` : ''}</div>
+                <div class="price-row"><span class="hero-card__price">${money(priceOf(p))}</span>${p.compareAt > priceOf(p) ? `<span class="hero-card__cmp">${money(p.compareAt)}</span><span class="hero-card__off">-${discountOf(p)}%</span>` : ''}</div>
               </div></a>`).join('')}
           </div>
         </div>
@@ -691,12 +695,12 @@
     list = list.filter(p => inStockOf(p) || !params.get('instock'));
 
     switch (sort) {
-      case 'price-asc': list.sort((a, b) => a.price - b.price); break;
-      case 'price-desc': list.sort((a, b) => b.price - a.price); break;
+      case 'price-asc': list.sort((a, b) => priceOf(a) - priceOf(b)); break;
+      case 'price-desc': list.sort((a, b) => priceOf(b) - priceOf(a)); break;
       case 'discount': list.sort((a, b) => discountOf(b) - discountOf(a)); break;
       case 'rating': list.sort((a, b) => b.rating - a.rating); break;
       case 'name': list.sort((a, b) => a.shortName.localeCompare(b.shortName)); break;
-      default: list.sort((a, b) => (b.featured - a.featured) || (b.salesCount - a.salesCount));
+      default: list.sort((a, b) => (featuredOf(b) - featuredOf(a)) || (b.salesCount - a.salesCount));
     }
 
     const chips = [{ id: 'all', name: 'All', icon: '🎆' }, ...CATS.map(c => ({ id: c.id, name: c.name, icon: c.icon }))];
@@ -760,14 +764,14 @@
           </div>
 
           <div class="prod-price-big">
-            <span class="big">${money(p.price)}</span>
-            ${p.compareAt > p.price ? `<span class="cmp">${money(p.compareAt)}</span>` : ''}
+            <span class="big">${money(priceOf(p))}</span>
+            ${p.compareAt > priceOf(p) ? `<span class="cmp">${money(p.compareAt)}</span>` : ''}
             ${off ? `<span class="off">-${off}% OFF</span>` : ''}
           </div>
 
           <p class="desc-note">${esc(p.note || p.desc || 'Premium quality fireworks from certified factories.')}</p>
 
-          ${p.compareAt > p.price ? `<div class="savings-note">${I.check} You save <b>${money((p.compareAt - p.price) * qty)}</b> on this order</div>` : ''}
+          ${p.compareAt > priceOf(p) ? `<div class="savings-note">${I.check} You save <b>${money((p.compareAt - priceOf(p)) * qty)}</b> on this order</div>` : ''}
 
           <div class="stock-line ${!p.inStock ? 'out' : p.stock <= 6 ? 'low' : 'in'}">${stockLine(p)}</div>
 
@@ -784,7 +788,7 @@
           </div>` : ''}
 
           <div class="prod-info-grid">
-            <div class="info-tile">${I.truck}<div><b>Delivery</b><span>${p.price * qty >= STORE.freeDeliveryAbove ? 'FREE today' : `${money(50)} · free above ${money(STORE.freeDeliveryAbove)}`}</span></div></div>
+            <div class="info-tile">${I.truck}<div><b>Delivery</b><span>${priceOf(p) * qty >= STORE.freeDeliveryAbove ? 'FREE today' : `${money(50)} · free above ${money(STORE.freeDeliveryAbove)}`}</span></div></div>
             <div class="info-tile">${I.cash}<div><b>Payment</b><span>Cash / UPI on delivery</span></div></div>
             <div class="info-tile">${I.gift}<div><b>Festive offer</b><span>Up to 15% auto-off</span></div></div>
             <div class="info-tile">${I.shield}<div><b>Safety</b><span>Certified &amp; tested</span></div></div>
@@ -1251,8 +1255,8 @@
       return `<tr>
         <td class="row-name" style="max-width:340px"><a href="${prodUrl(p)}">${esc(p.shortName)}</a></td>
         <td>${esc(catLabel(p).name)}</td>
-        <td style="text-align:right">${p.compareAt > p.price ? money(p.compareAt) : '—'}</td>
-        <td style="text-align:right;font-weight:800;color:var(--primary-deep)">${money(p.price)}</td>
+        <td style="text-align:right">${p.compareAt > priceOf(p) ? money(p.compareAt) : '—'}</td>
+        <td style="text-align:right;font-weight:800;color:var(--primary-deep)">${money(priceOf(p))}</td>
         <td style="text-align:right;color:var(--success);font-weight:700">${off ? '-' + off + '%' : '—'}</td>
         <td style="text-align:center"><span class="tag ${inStockOf(p) ? 'in' : 'out'}">${inStockOf(p) ? 'In stock' : 'Out'}</span></td>
       </tr>`;
@@ -1261,49 +1265,139 @@
   views.staff = () => {
     const u = currentUser();
     if (!u || !['admin', 'staff'].includes(u.role)) {
-      return `<div class="page-head reveal"><h1>Staff hub</h1><p>Restricted — sign in with a staff account.</p></div>
+      return `<div class="page-head reveal"><h1>Admin panel</h1><p>Restricted — sign in with a staff account.</p></div>
         <div class="glass-panel reveal" style="max-width:520px"><h2>Staff access only</h2><p class="panel-sub">Use <code>${DEMO.find(x => x.role === 'admin').email}</code> / <code>admin123</code> to explore the management console.</p>
         <button class="btn btn-primary" id="goAuthStaff">Sign in as staff</button></div>`;
     }
     const revenue = orders.reduce((a, o) => a + o.totals.total, 0);
+    const custCount = Object.keys(users).length;
     return `
-      <div class="page-head reveal"><h1>Staff hub</h1><p>Welcome, <b>${esc(u.name)}</b> · ${esc(u.role === 'admin' ? 'Administrator' : 'Staff')}</p></div>
+      <div class="page-head reveal"><h1>Admin panel</h1><p>Welcome, <b>${esc(u.name)}</b> · ${esc(u.role === 'admin' ? 'Administrator' : 'Staff')}</p></div>
       <div class="kpi-grid reveal">
-        <div class="kpi"><div class="k-num">${orders.length}</div><div class="k-lbl">Orders (demo)</div></div>
+        <div class="kpi"><div class="k-num">${orders.length}</div><div class="k-lbl">Orders</div></div>
         <div class="kpi"><div class="k-num">${money(revenue)}</div><div class="k-lbl">Order value</div></div>
-        <div class="kpi"><div class="k-num">${PRODUCTS.length}</div><div class="k-lbl">Products</div></div>
+        <div class="kpi"><div class="k-num">${custCount}</div><div class="k-lbl">Customers</div></div>
         <div class="kpi"><div class="k-num">${PRODUCTS.filter(p => inStockOf(p)).length}</div><div class="k-lbl">In stock</div></div>
       </div>
       <div class="tabs reveal">
-        <button class="tab-btn active" data-stab="orders">Orders</button>
-        <button class="tab-btn" data-stab="stock">Stock control</button>
+        <button class="tab-btn active" data-stab="dashboard">Dashboard</button>
+        <button class="tab-btn" data-stab="orders">Orders</button>
+        <button class="tab-btn" data-stab="stock">Product control</button>
+        <button class="tab-btn" data-stab="customers">Customers</button>
         <button class="tab-btn" data-stab="pl">Price list</button>
         <button class="tab-btn danger-zone" data-stab="danger">Danger zone</button>
       </div>
-      <div id="staffPanel">${staffOrders()}</div>`;
+      <div id="staffPanel">${staffDashboard()}</div>`;
   };
 
-  const staffOrders = () => {
+  const staffDashboard = () => {
+    const unitsBy = {};
+    for (const o of orders) for (const it of o.items || []) unitsBy[it.id] = (unitsBy[it.id] || 0) + it.qty;
+    const top = Object.entries(unitsBy).map(([id, qty]) => ({ p: PRODUCTS.find(x => x.id === Number(id)), qty })).filter(x => x.p).sort((a, b) => b.qty - a.qty).slice(0, 5);
+    const cod = orders.filter(o => o.payment === 'COD').length;
+    const upi = orders.length - cod;
+    const low = PRODUCTS.filter(p => inStockOf(p) && stockOf(p) <= 6).sort((a, b) => stockOf(a) - stockOf(b)).slice(0, 5);
+    const recentList = [...orders].slice(0, 3);
+    return `
+      <div class="admin-grid">
+        <div class="glass-panel reveal admin-chart-card">
+          <div class="panel-row"><h3>Orders · last 14 days</h3><span class="panel-sub">${orders.length ? `${orders.length} orders total` : 'No orders yet'}</span></div>
+          ${orders.length ? `<canvas id="dlChart" height="180" aria-label="Orders per day chart"></canvas>` : `<p class="panel-sub">Place an order from the storefront and it appears here as a daily bar.</p>`}
+        </div>
+        <div class="glass-panel reveal admin-chart-card">
+          <div class="panel-row"><h3>Payment split</h3><span class="panel-sub">${orders.length ? `${Math.round((upi / orders.length) * 100)}% UPI` : 'Awaiting orders'}</span></div>
+          ${orders.length ? `<canvas id="dmChart" height="180" aria-label="Payment method donut"></canvas>` : `<p class="panel-sub">COD vs UPI once customers start ordering.</p>`}
+        </div>
+        <div class="glass-panel reveal">
+          <h3>Top sellers <span class="panel-sub">by units</span></h3>
+          ${top.length ? `<ol class="admin-list">${top.map((t, i) => `<li><b>${i + 1}.</b> <a href="${prodUrl(t.p)}">${esc(t.p.shortName)}</a><span>${t.qty} sold</span></li>`).join('')}</ol>`
+            : `<p class="panel-sub">Products will rank here once orders come in.</p>`}
+        </div>
+        <div class="glass-panel reveal">
+          <h3>Low stock <span class="panel-sub">≤ 6 units</span></h3>
+          ${low.length ? `<ul class="admin-list">${low.map(p => `<li><a href="${prodUrl(p)}">${esc(p.shortName)}</a><span class="tag ${stockOf(p) > 0 ? 'in' : 'out'}">${stockOf(p)} left</span></li>`).join('')}</ul>`
+            : `<p class="panel-sub">Inventory is healthy — no low-stock items.</p>`}
+        </div>
+        <div class="glass-panel reveal">
+          <h3>Recent orders</h3>
+          ${recentList.length ? `<ul class="admin-list">${recentList.map(o => `<li><a href="#/staff" data-code-jump="${o.id}"><b>${esc(o.code)}</b></a><span>${money(o.totals.total)} · ${esc(o.customer.name)}</span></li>`).join('')}</ul>`
+            : `<p class="panel-sub">Latest orders will show here.</p>`}
+        </div>
+      </div>`;
+  };
+
+  const staffCustomers = () => {
+    const rows = Object.entries(users).map(([email, user]) => {
+      const mine = orders.filter(o => o.email === email);
+      const spent = mine.reduce((a, o) => a + o.totals.total, 0);
+      return `<tr>
+        <td class="row-name">${esc(user.name || '—')}</td>
+        <td>${esc(email)}</td>
+        <td>${esc(user.role || 'customer')}</td>
+        <td style="font-size:12.5px;color:var(--muted)">${user.createdAt ? fmtDate(user.createdAt) : '—'}</td>
+        <td style="text-align:center">${mine.length}</td>
+        <td style="text-align:center;font-weight:800;color:var(--primary-deep)">${mine.length ? money(spent) : '—'}</td>
+      </tr>`;
+    }).join('');
+    if (!rows) return `<div class="empty-state reveal"><div class="e-emoji">👥</div><h3>No customers yet</h3><p>People who register on this device will be listed here.</p></div>`;
+    return `<div class="table-wrap reveal"><table class="data-table">
+      <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Joined</th><th style="text-align:center">Orders</th><th style="text-align:center">Spent</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>`;
+  };
+
+  const orderDetailRow = o => `<tr class="odetail" data-oid="${o.id}">
+      <td colspan="6"><div class="odetail-inner">
+        <div class="odetail-left"><h4>Items</h4>
+          ${(o.items || []).map(it => `<div class="odetail-line"><span>${esc(it.name)} × ${it.qty}</span><b>${money(it.price * it.qty)}</b></div>`).join('')}
+          <div class="odetail-sums">
+            <div><span>Subtotal</span><b>${money(o.totals.subtotal)}</b></div>
+            ${o.totals.saving ? `<div><span>You save</span><b>−${money(o.totals.saving)}</b></div>` : ''}
+            ${o.totals.festiveAmt ? `<div><span>Festive off (${o.totals.festivePct}%)</span><b>−${money(o.totals.festiveAmt)}</b></div>` : ''}
+            <div><span>Delivery</span><b>${o.totals.delivery ? money(o.totals.delivery) : 'FREE'}</b></div>
+            <div class="total"><span>Total</span><b>${money(o.totals.total)}</b></div>
+          </div>
+        </div>
+        <div class="odetail-right">
+          <h4>Ship to</h4>
+          <p class="panel-sub">${esc(o.customer.name)}<br>${esc(o.customer.phone)}<br>${esc(o.customer.email || '')}</p>
+          <p class="panel-sub">${esc(o.customer.address)}, ${esc(o.customer.area)}<br>${esc(o.customer.city)} — ${esc(o.customer.pincode)}</p>
+          <h4 style="margin-top:14px">Payment</h4>
+          <p class="panel-sub">${esc(o.payment === 'COD' ? 'Cash on delivery' : 'UPI')} · ${fmtDate(o.placedAt)}</p>
+        </div>
+      </div></td>
+    </tr>`;
+
+  const toggleOrderDetail = id => {
+    const panel = $('#staffPanel');
+    if (!panel) return;
+    const btn = $(`[data-code-detail="${id}"]`);
+    const open = btn && (btn.textContent || '').includes('▴');
+    panel.innerHTML = staffOrders(open ? '' : id);
+    wireStaffTables();
+  };
+
+  const staffOrders = (expandId = '') => {
     if (!orders.length) return `<div class="empty-state reveal"><div class="e-emoji">📦</div><h3>No orders yet</h3><p>Orders placed on this device appear here instantly.</p></div>`;
     return `<div class="table-wrap reveal"><table class="data-table">
       <thead><tr><th>Code</th><th>Customer</th><th>Total</th><th>Payment</th><th>Status</th><th>When</th></tr></thead>
       <tbody>${orders.map(o => `<tr>
-        <td class="row-name">${esc(o.code)}</td>
+        <td class="row-name"><button type="button" class="link-btn" data-code-detail="${o.id}">${esc(o.code)} ${expandId === o.id ? '▴' : '▾'}</button></td>
         <td>${esc(o.customer.name)}<br><span style="font-size:12px;color:var(--muted)">${esc(o.customer.phone)}</span></td>
         <td style="font-weight:800;color:var(--primary-deep)">${money(o.totals.total)}</td>
         <td>${esc(o.payment === 'COD' ? 'COD' : 'UPI')}</td>
         <td><select class="filter-select" style="padding:6px 30px 6px 10px;font-size:12.5px" data-status="${o.id}">${STATUSES.map(s => `<option value="${s.key}" ${s.key === o.status ? 'selected' : ''}>${s.label}</option>`).join('')}</select></td>
         <td style="font-size:12.5px;color:var(--muted)">${fmtDate(o.placedAt)}</td>
-      </tr>`).join('')}</tbody>
+      </tr>${expandId === o.id ? orderDetailRow(o) : ''}`).join('')}</tbody>
     </table></div>`;
   };
 
   const staffStock = () => `<div class="table-wrap reveal"><table class="data-table">
-      <thead><tr><th>Item</th><th>Category</th><th style="text-align:right">Price</th><th style="text-align:center">Stock</th><th style="text-align:center">Override</th></tr></thead>
+      <thead><tr><th>Item</th><th>Category</th><th style="text-align:right">Price ₹</th><th style="text-align:center">Stock</th><th style="text-align:center">Override</th><th style="text-align:center">Featured</th></tr></thead>
       <tbody>${PRODUCTS.map(p => `<tr>
-        <td class="row-name" style="max-width:300px"><a href="${prodUrl(p)}">${esc(p.shortName)}</a></td>
+        <td class="row-name" style="max-width:260px"><a href="${prodUrl(p)}">${esc(p.shortName)}</a></td>
         <td>${esc(catLabel(p).name)}</td>
-        <td style="text-align:right;font-weight:800">${money(p.price)}</td>
+        <td style="text-align:right"><div class="pd-cell"><span class="p-display">${money(priceOf(p))}</span><input class="price-input" type="number" min="0" step="1" data-price="${p.id}" value="${priceOf(p)}" aria-label="Price for ${esc(p.shortName)}"></div></td>
         <td style="text-align:center"><span class="tag ${inStockOf(p) ? 'in' : 'out'}">${stockOf(p) > 0 ? stockOf(p) + ' units' : 'Out'}</span></td>
         <td style="text-align:center"><select class="filter-select" style="padding:6px 30px 6px 10px;font-size:12.5px" data-stock="${p.id}">
           <option value="0" ${stockOf(p) === 0 ? 'selected' : ''}>Out of stock</option>
@@ -1311,8 +1405,87 @@
           <option value="10" ${stockOf(p) === 10 ? 'selected' : ''}>In stock (10)</option>
           <option value="999" ${stockOf(p) === 999 ? 'selected' : ''}>Abundant (999)</option>
         </select></td>
+        <td style="text-align:center"><input type="checkbox" class="feat-box" data-feat="${p.id}" ${featuredOf(p) ? 'checked' : ''} aria-label="Toggle featured for ${esc(p.shortName)}"></td>
       </tr>`).join('')}</tbody>
     </table></div>`;
+
+  const drawStaffCharts = () => {
+    const dl = $('#dlChart');
+    if (dl && orders.length) {
+      const days = 14;
+      const buckets = Array.from({ length: days }, () => 0);
+      const now = new Date(); now.setHours(0, 0, 0, 0);
+      for (const o of orders) { const d = new Date(o.placedAt); const bb = new Date(d); bb.setHours(0, 0, 0, 0); const i = Math.round((now - bb) / 864e5); if (i >= 0 && i < days) buckets[days - 1 - i]++; }
+      const max = Math.max(1, ...buckets);
+      const ctx = dl.getContext('2d');
+      const W = dl.clientWidth || 300, H = dl.height;
+      const dpr = window.devicePixelRatio || 1;
+      dl.width = W * dpr; dl.height = H * dpr; ctx.scale(dpr, dpr);
+      const pad = 6, bw = (W - pad * 2) / days, gap = 3;
+      ctx.clearRect(0, 0, W, H);
+      for (let i = 0; i < days; i++) {
+        const bh = Math.max(4, (buckets[i] / max) * (H - 30));
+        const x = pad + i * bw;
+        ctx.fillStyle = i === days - 1 ? '#FF6F91' : '#2196F3';
+        ctx.globalAlpha = .85;
+        ctx.fillRect(x + gap, H - 18 - bh, bw - gap * 2, bh);
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = 'rgba(255,255,255,.4)';
+        ctx.beginPath(); ctx.arc(x + (bw - gap * 2) / 2, H - 18 - bh, 2.5, 0, 7); ctx.fill();
+      }
+      ctx.fillStyle = 'rgba(255,255,255,.55)'; ctx.font = '11px sans-serif';
+      ctx.fillText('14d ago', pad, H - 5); ctx.fillText('today', W - 38, H - 5);
+    }
+    const dm = $('#dmChart');
+    if (dm && orders.length) {
+      const cod = orders.filter(o => o.payment === 'COD').length, upi = orders.length - cod;
+      const ctx = dm.getContext('2d');
+      const S = Math.min(dm.clientWidth || 160, dm.clientWidth ? dm.clientHeight : 120);
+      const cx = S / 2, cy = S / 2, R = S / 2 - 6;
+      const dpr = window.devicePixelRatio || 1;
+      dm.width = S * dpr; dm.height = S * dpr; ctx.scale(dpr, dpr);
+      ctx.clearRect(0, 0, S, S);
+      const segs = [[upi, '#2196F3'], [cod, '#FF7043']].filter(s => s[0] > 0);
+      let a = 0;
+      for (const [v, col] of segs) { const ang = (v / orders.length) * Math.PI * 2; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, R, a, a + ang); ctx.closePath(); ctx.fillStyle = col; ctx.fill(); a += ang; }
+      ctx.beginPath(); ctx.arc(cx, cy, R * .62, 0, 7); ctx.fillStyle = 'rgba(10,20,40,.9)'; ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = '700 20px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(String(orders.length), cx, cy - 4);
+      ctx.font = '10px sans-serif'; ctx.fillStyle = 'rgba(255,255,255,.7)'; ctx.fillText('orders', cx, cy + 12);
+    }
+  };
+
+  const wireStaffTables = () => {
+    $$('[data-status]').forEach(s => s.onchange = () => {
+      const o = orders.find(x => x.id === s.getAttribute('data-status'));
+      if (o) {
+        o.status = s.value;
+        o.log = o.log.filter(l => statusIndex(l.status) <= statusIndex(s.value));
+        if (!o.log.some(l => l.status === s.value)) o.log.push({ status: s.value, at: new Date().toISOString() });
+        save(); toast(`Order ${o.code} → ${(STATUSES.find(x => x.key === s.value) || {}).label}`);
+      }
+    });
+    $$('[data-stock]').forEach(s => s.onchange = () => {
+      const id = Number(s.getAttribute('data-stock'));
+      stockOverrides[id] = Number(s.value);
+      save();
+      toast('Stock updated');
+    });
+    $$('[data-price]').forEach(i => i.onchange = () => {
+      const id = Number(i.getAttribute('data-price'));
+      priceOverrides[id] = Number(i.value) || 0;
+      save();
+      toast('Price updated');
+      const cell = i.closest('tr') ? i.closest('tr').querySelector('.p-display') : null;
+      if (cell) cell.textContent = money(priceOf(PRODUCTS.find(x => x.id === id)));
+    });
+    $$('[data-feat]').forEach(c => c.onchange = () => {
+      const id = Number(c.getAttribute('data-feat'));
+      featOn[id] = c.checked;
+      save();
+      toast(c.checked ? 'Marked as featured' : 'Removed from featured');
+    });
+  };
 
   views.notFound = () => `
     <div class="page-head reveal"><h1>Page not found</h1></div>
@@ -1520,31 +1693,16 @@
     if (v === 'staff') {
       const ga = $('#goAuthStaff');
       if (ga) ga.onclick = () => authModal('login');
-      const wireStaffTables = () => {
-        $$('[data-status]').forEach(s => s.onchange = () => {
-          const o = orders.find(x => x.id === s.getAttribute('data-status'));
-          if (o) {
-            o.status = s.value;
-            o.log = o.log.filter(l => statusIndex(l.status) <= statusIndex(s.value));
-            if (!o.log.some(l => l.status === s.value)) o.log.push({ status: s.value, at: new Date().toISOString() });
-            save(); toast(`Order ${o.code} → ${(STATUSES.find(x => x.key === s.value) || {}).label}`);
-          }
-        });
-        $$('[data-stock]').forEach(s => s.onchange = () => {
-          const id = Number(s.getAttribute('data-stock'));
-          stockOverrides[id] = Number(s.value);
-          save();
-          toast('Stock updated');
-        });
-      };
       $$('[data-stab]').forEach(b => b.onclick = () => {
         $$('[data-stab]').forEach(x => x.classList.toggle('active', x === b));
         const tab = b.getAttribute('data-stab');
-        $('#staffPanel').innerHTML = tab === 'orders' ? staffOrders() : tab === 'stock' ? staffStock() : tab === 'pl' ? `<div class="table-wrap"><table class="data-table">${priceListRows()}</table></div>` : ` <div class="glass-panel"><h2>Danger zone</h2><p class="panel-sub">Reset the demo workspace (this device only).</p><button class="btn" style="background:linear-gradient(135deg,#E0464B,#c0392b);color:#fff" id="resetAll">Reset demo data</button></div>`;
+        $('#staffPanel').innerHTML = tab === 'dashboard' ? staffDashboard() : tab === 'orders' ? staffOrders() : tab === 'stock' ? staffStock() : tab === 'customers' ? staffCustomers() : tab === 'pl' ? `<div class="table-wrap"><table class="data-table">${priceListRows()}</table></div>` : ` <div class="glass-panel"><h2>Danger zone</h2><p class="panel-sub">Reset the demo workspace (this device only).</p><button class="btn" style="background:linear-gradient(135deg,#E0464B,#c0392b);color:#fff" id="resetAll">Reset demo data</button></div>`;
         wireStaffTables();
-        if (tab === 'danger') { const r = $('#resetAll'); if (r) r.onclick = () => { ['cart', 'wish', 'orders', 'session', 'stockOverrides', 'recent'].forEach(k => localStorage.removeItem('cm2.' + k)); location.hash = '#/'; location.reload(); }; }
+        if (tab === 'dashboard') drawStaffCharts();
+        if (tab === 'danger') { const r = $('#resetAll'); if (r) r.onclick = () => { ['cart', 'wish', 'orders', 'session', 'stockOverrides', 'priceOverrides', 'featOn', 'recent'].forEach(k => localStorage.removeItem('cm2.' + k)); location.hash = '#/'; location.reload(); }; }
       });
       wireStaffTables();
+      drawStaffCharts();
     }
     if (v === 'priceList') {
       const ps = $('#plSearch'); const pc = $('#plCat');
@@ -1623,6 +1781,14 @@
       if (t.closest && t.closest('[data-del]')) { removeLine(t.closest('[data-del]').getAttribute('data-del')); return; }
       if (t.closest && t.closest('[data-cat]')) { location.hash = '#/products?cat=' + t.closest('[data-cat]').getAttribute('data-cat'); return; }
       if (t.closest && t.closest('[data-search-hit]')) { closeSearch(); return; }
+      if (t.closest && t.closest('[data-code-detail]')) { toggleOrderDetail(t.closest('[data-code-detail]').getAttribute('data-code-detail')); return; }
+      if (t.closest && t.closest('[data-code-jump]')) {
+        const id = t.closest('[data-code-jump]').getAttribute('data-code-jump');
+        const panel = $('#staffPanel');
+        $$('[data-stab]').forEach(x => x.classList.toggle('active', x.getAttribute('data-stab') === 'orders'));
+        if (panel) { panel.innerHTML = staffOrders(id); wireStaffTables(); }
+        return;
+      }
     });
 
     $('#cartBtn').addEventListener('click', openCart);
