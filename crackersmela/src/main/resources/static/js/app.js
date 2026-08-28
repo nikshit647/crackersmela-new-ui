@@ -40,6 +40,11 @@
   const priceOf = p => (priceOverrides[p.id] != null ? Number(priceOverrides[p.id]) : p.price);
   const featuredOf = p => (featOn[p.id] != null ? !!featOn[p.id] : !!p.featured);
   const discountOf = p => p.compareAt && p.compareAt > priceOf(p) ? Math.round((1 - priceOf(p) / p.compareAt) * 100) : 0;
+
+  /* Deterministic collection buckets (used by homepage pill filters) */
+  const BEST_IDS = new Set([...PRODUCTS].sort((a, b) => b.salesCount - a.salesCount).slice(0, 34).map(p => p.id));
+  const NEW_IDS = new Set([...PRODUCTS].sort((a, b) => b.id - a.id).slice(0, 34).map(p => p.id));
+  const cardKeys = p => [...(p.cats || []), BEST_IDS.has(p.id) ? 'best' : '', NEW_IDS.has(p.id) ? 'new' : '', featuredOf(p) ? 'featured' : '', discountOf(p) >= 25 ? 'deal' : ''].filter(Boolean).join(' ');
   const stockLine = p => {
     if (!p.inStock) return `<span class="stock-line out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 9v4"/><circle cx="12" cy="17" r="0.4"/><circle cx="12" cy="12" r="9" stroke-dasharray="2 2"/></svg>Out of stock</span>`;
     if (p.stock <= 6) return `<span class="stock-line low"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l2.8 2.8M16.2 16.2 19 19M19 5l-2.8 2.8M7.8 16.2 5 19"/></svg>Only ${p.stock} left</span>`;
@@ -72,8 +77,29 @@
   let stockOverrides = ls.get('stockOverrides', {});
   let priceOverrides = ls.get('priceOverrides', {});
   let featOn = ls.get('featOn', {});
+  let extraProducts = ls.get('extraProducts', []);
+  let activity = ls.get('activity', []);
+  let admPrefs = ls.get('admPrefs', { theme: 'light', bell: 0 });
 
-  const save = () => { ls.set('cart', cart); ls.set('wish', wish); ls.set('recent', recent); ls.set('orders', orders); ls.set('session', session); ls.set('stockOverrides', stockOverrides); ls.set('priceOverrides', priceOverrides); ls.set('featOn', featOn); };
+  const save = () => { ls.set('cart', cart); ls.set('wish', wish); ls.set('recent', recent); ls.set('orders', orders); ls.set('session', session); ls.set('stockOverrides', stockOverrides); ls.set('priceOverrides', priceOverrides); ls.set('featOn', featOn); ls.set('extraProducts', extraProducts); ls.set('activity', activity); ls.set('admPrefs', admPrefs); };
+
+  const allProducts = () => PRODUCTS.concat(extraProducts);
+  const timeAgo = iso => {
+    try {
+      const s = Math.max(0, (Date.now() - new Date(iso).getTime()) / 1e3);
+      if (s < 60) return 'just now';
+      if (s < 3600) return Math.floor(s / 60) + 'm ago';
+      if (s < 86400) return Math.floor(s / 3600) + 'h ago';
+      return Math.floor(s / 86400) + 'd ago';
+    } catch { return '—'; }
+  };
+  const pctChip = (num, den) => {
+    if (!den) return '<span class="k-chip neutral">—</span>';
+    const p = Math.round(((num - den) / den) * 100);
+    const cls = p > 0 ? 'up' : p < 0 ? 'down' : 'neutral';
+    return `<span class="k-chip ${cls}">${p > 0 ? '▲' : p < 0 ? '▼' : '•'} ${Math.abs(p)}%</span>`;
+  };
+  const statBadge = k => ({ placed: 'Pending', confirmed: 'Confirmed', packed: 'Packed', shipped: 'Processing', out_for_delivery: 'Processing', delivered: 'Delivered' }[k] || 'Pending');
 
   const stockOf = p => stockOverrides[p.id] !== undefined ? stockOverrides[p.id] : p.stock;
   const inStockOf = p => stockOf(p) > 0 && p.inStock;
@@ -107,6 +133,7 @@
     wa: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4-.1.6.4l.8 2.1c.1.2.1.4 0 .6l-.3.5-.4.6c-.1.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.4 2.6 1.6.3.2.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.1.5.2.5.4.1.1.1.7-.2 1.3z"/></svg>',
     eye: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.8-7 10-7 10 7 10 7-3.8 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
     star: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7-6.2-3.6L5.8 21l1.4-7L2 9.5l7-.9z"/></svg>',
+    sliders: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2.2"/><circle cx="10" cy="17" r="2.2"/></svg>',
   };
 
   const toast = (msg, type = 'ok') => {
@@ -119,38 +146,48 @@
   };
 
   /* ---------------- product card ---------------- */
+  const shortDesc = p => {
+    const t = String(p.note || p.desc || '').replace(/\s+/g, ' ').trim();
+    if (!t) return catLabel(p).blurb || '';
+    return t.length > 76 ? t.slice(0, 74).replace(/[\s,;.]+\S*$/, '') + '…' : t;
+  };
+
   const productCard = (p, opts = {}) => {
     const off = discountOf(p);
     const img = imgOf(p);
     const hasImg = /<img/.test(img);
     const media = hasImg ? img : `<div class="prod-img-fallback">${esc(catLabel(p).icon)}</div>`;
+    const badges = [];
+    if (off > 0) badges.push(`<span class="badge-off">${off}% OFF</span>`);
+    if (featuredOf(p)) badges.push(`<span class="badge-off badge-hot">${off > 0 ? 'HOT' : 'BESTSELLER'}</span>`);
     return `
-    <article class="prod-card reveal" data-id="${p.id}">
+    <article class="prod-card reveal" data-id="${p.id}" data-keys="${esc(cardKeys(p))}">
       <div class="prod-card__media">
         <a href="${prodUrl(p)}" tabindex="-1" aria-hidden="true">${media}</a>
-        ${off >= 25 ? `<div class="prod-card__badges"><span class="badge-off">-${off}% OFF</span>${featuredOf(p) ? '<span class="badge-off badge-hot">HOT</span>' : ''}</div>` : featuredOf(p) ? `<div class="prod-card__badges"><span class="badge-off badge-hot">HOT</span></div>` : ''}
+        ${badges.length ? `<div class="prod-card__badges">${badges.join('')}</div>` : ''}
         <button class="prod-card__wish ${saved(p.id) ? 'active' : ''}" data-wish="${p.id}" aria-label="Toggle wishlist" aria-pressed="${saved(p.id)}">${saved(p.id) ? I.heartF : I.heart}</button>
         ${!inStockOf(p) ? `<div class="prod-oos-tint"><span>OUT OF STOCK</span></div>` : ''}
       </div>
       <div class="prod-card__body">
         <span class="prod-card__cat">${esc(catLabel(p).name)}</span>
         <h3 class="prod-card__name"><a href="${prodUrl(p)}">${esc(p.shortName)}</a></h3>
-        <div class="rating-row">${stars(p.rating)} <span>${p.rating.toFixed(1)} · ${p.reviews} reviews</span></div>
+        <p class="prod-card__desc">${esc(shortDesc(p))}</p>
+        <div class="rating-row">${stars(p.rating)} <span>${p.rating.toFixed(1)} · ${p.reviews}</span></div>
         <div class="price-row">
           <span class="price-now">${money(priceOf(p))}</span>
-          ${p.compareAt && p.compareAt > priceOf(p) ? `<span class="price-cmp">${money(p.compareAt)}</span>` : ''}
+          ${p.compareAt && p.compareAt > priceOf(p) ? `<span class="price-cmp">${money(p.compareAt)}</span><span class="price-off">${off}% off</span>` : ''}
         </div>
         <div class="prod-card__foot">
           ${stockLine(p)}
-          ${inStockOf(p) ? `<button class="add-btn" data-add="${p.id}" aria-label="Add ${esc(p.shortName)} to cart">${I.cart}<span>Add</span></button>`
-          : `<button class="add-btn" disabled aria-label="Sold out">Sold</button>`}
+          ${inStockOf(p) ? `<button class="add-btn add-btn--round" data-add="${p.id}" title="Add to cart" aria-label="Add ${esc(p.shortName)} to cart">${I.cart}<span>Add</span></button>`
+          : `<button class="add-btn add-btn--round" disabled title="Sold out" aria-label="Sold out">${I.cart}<span>Sold</span></button>`}
         </div>
       </div>
     </article>`;
   };
 
   const productGrid = (list, opts = {}) => list.length
-    ? `<div class="prod-grid ${opts.cols === 3 ? 'prod-grid--3' : ''}">${list.map(p => productCard(p, opts)).join('')}</div>`
+    ? `<div class="prod-grid ${opts.cols === 3 ? 'prod-grid--3' : opts.cols === 5 ? 'prod-grid--5' : ''}">${list.map(p => productCard(p, opts)).join('')}</div>`
     : `<div class="empty-state reveal"><div class="e-emoji">🎆</div><h3>${esc(opts.emptyTitle || 'Nothing here yet')}</h3><p>${esc(opts.emptyText || 'Try a different search or category.')}</p></div>`;
 
   const catCard = c => {
@@ -382,17 +419,15 @@
   const accountUI = () => {
     const u = currentUser();
     const label = $('#accountLabel'); const avatar = $('#avatarText');
+    /* CSS owns the chip-vs-icon swap so the mobile breakpoint still wins */
+    document.body.classList.toggle('is-authed', !!u);
     if (u) {
       if (label) label.textContent = u.name.split(' ')[0] + (u.role === 'admin' ? ' · Staff' : '');
       if (avatar) avatar.textContent = (u.name || 'G')[0].toUpperCase();
-      $('#userIconBtn').style.display = 'none';
-      $('#accountChip').style.display = 'inline-flex';
       if (u.role === 'admin' || u.role === 'staff') { const st = document.querySelector('a[href="#/staff"]'); if (st) { st.classList.remove('hidden'); } }
     } else {
       if (label) label.textContent = 'Sign in';
       if (avatar) avatar.textContent = 'G';
-      $('#userIconBtn').style.display = '';
-      $('#accountChip').style.display = 'none';
       const st = document.querySelector('a[href="#/staff"]'); if (st) st.classList.add('hidden');
     }
   };
@@ -507,7 +542,7 @@
   const searchProducts = q => {
     q = (q || '').trim().toLowerCase();
     if (!q) return [];
-    return PRODUCTS.filter(p => {
+    return allProducts().filter(p => {
       const hay = (p.shortName + ' ' + p.name + ' ' + (p.note || '') + ' ' + p.cats.map(id => CAT_MAP[id] ? CAT_MAP[id].name : '').join(' ')).toLowerCase();
       return q.split(/\s+/).every(w => hay.includes(w));
     });
@@ -536,165 +571,299 @@
     { min: 2000, pct: 15, tag: 'Spend ₹2,000+ → 15% OFF' },
   ];
 
+  /* ---------------- shared homepage/shop blocks ---------------- */
+  const BENEFITS = [
+    { i: I.shield, t: '100% Original Products', s: 'PESO-certified, safety-tested stock only' },
+    { i: I.lock, t: 'Secure Payments', s: 'Protected checkout · Pay on delivery' },
+    { i: I.truck, t: 'Fast Delivery', s: 'Hyderabad & Secunderabad, doorstep' },
+    { i: I.phone, t: 'Customer Support', s: 'Real humans on call, 9am – 9pm' },
+  ];
+
+  const benefitsStrip = () => `
+    <div class="benefits-strip">
+      ${BENEFITS.map(b => `<div class="benefit reveal"><span class="benefit__ic">${b.i}</span><div><h5>${esc(b.t)}</h5><p>${esc(b.s)}</p></div></div>`).join('')}
+    </div>`;
+
+  const pillRow = (group, pills, current = 'all') => `
+    <div class="chip-row chip-row--scroll" role="tablist" aria-label="Filter collection">
+      ${pills.map(x => `<button class="chip ${x.k === current ? 'active' : ''}" data-pill="${esc(x.k)}" data-pillgroup="${esc(group)}" role="tab" aria-selected="${x.k === current}">${x.n}</button>`).join('')}
+    </div>`;
+
   /* ==================== views ==================== */
   const views = {};
 
   views.home = () => {
-    const featured = PRODUCTS.filter(p => featuredOf(p) && inStockOf(p)).slice(0, 8);
-    const best = [...PRODUCTS.filter(inStockOf)].sort((a, b) => b.salesCount - a.salesCount).slice(0, 8);
-    const night = PRODUCTS.filter(p => p.cats.includes('night-outs') || p.cats.includes('gift-boxes')).sort((a, b) => (b.compareAt || b.price) - (a.compareAt || a.price)).slice(0, 4);
-    const heroPicks = [...PRODUCTS.filter(p => p.inStock && p.image)].sort(() => Math.random() - 0.5).slice(0, 3);
+    const stock = PRODUCTS.filter(inStockOf);
+    const withImg = stock.filter(p => p.image);
+
+    /* hero composition — real catalog photography, deterministic */
+    const usedHero = new Set();
+    const heroShots = ['gift-boxes', 'rockets', 'night-outs'].map(c => {
+      const p = withImg.find(x => x.cats.includes(c) && !usedHero.has(x.id)) || withImg.find(x => !usedHero.has(x.id));
+      if (p) usedHero.add(p.id);
+      return p;
+    }).filter(Boolean);
+
+    const usedPromo = new Set();
+    const promoTiles = ['gift-boxes', 'rockets', 'flower-pots', 'sparklers'].map(c => {
+      const p = withImg.find(x => x.cats.includes(c) && !usedPromo.has(x.id)) || withImg.find(x => !usedPromo.has(x.id));
+      if (p) usedPromo.add(p.id);
+      return p;
+    }).filter(Boolean);
+
+    const topOff = Math.max(...PRODUCTS.map(discountOf), 0);
+
+    const arrivalPills = [
+      { k: 'all', n: 'All' }, { k: 'rockets', n: 'Rockets' }, { k: 'sparklers', n: 'Sparklers' },
+      { k: 'flower-pots', n: 'Fountains' }, { k: 'night-outs', n: 'Sky Shots' },
+      { k: 'gift-boxes', n: 'Combos' }, { k: 'chakkars', n: 'Chakkars' },
+    ];
+    const featuredPills = [
+      { k: 'all', n: 'All' }, { k: 'best', n: 'Best Sellers' }, { k: 'rockets', n: 'Rockets' },
+      { k: 'flower-pots', n: 'Fountains' }, { k: 'gift-boxes', n: 'Combos' }, { k: 'night-outs', n: 'Sky Shots' },
+    ];
+
+    /* Only offer a pill when the live catalog can actually fill it */
+    const bucketOf = k => stock.filter(p => cardKeys(p).split(' ').includes(k));
+    const livePills = pills => pills.filter(x => x.k === 'all' || bucketOf(x.k).length >= 2);
+
+    /* Collections are built so every pill has real material behind it:
+       the top 10 by rank lead the grid, then a round-robin top-up per pill bucket. */
+    const collectFor = (rank, pills, headline = 10, perPill = 6) => {
+      const sorted = [...stock].sort(rank);
+      const seen = new Set(), picked = [];
+      const take = p => { if (p && !seen.has(p.id)) { seen.add(p.id); picked.push(p); } };
+      sorted.slice(0, headline).forEach(take);
+      const buckets = pills.filter(x => x.k !== 'all')
+        .map(x => sorted.filter(p => cardKeys(p).split(' ').includes(x.k)));
+      for (let i = 0; i < perPill; i++) buckets.forEach(b => take(b[i]));
+      return picked;
+    };
+
+    const arrivalTabs = livePills(arrivalPills);
+    const featuredTabs = livePills(featuredPills);
+    const arrivals = collectFor((a, b) => b.id - a.id, arrivalTabs);
+    const featured = collectFor((a, b) => (featuredOf(b) - featuredOf(a)) || (b.salesCount - a.salesCount), featuredTabs);
+
     return `
+    <!-- ========== 2. HERO ========== -->
     <section class="hero">
       <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
-      <div class="hero-grid">
+      <div class="hero-inner">
         <div class="hero-copy">
-          <span class="hero-badge"><span class="dot"></span>${SALE_LIVE ? 'Diwali Season 2026 — Now Live' : 'Now Live'}</span>
-          <h1>The No.1 Fireworks Store — <span class="grad-text">Reimagined</span></h1>
-          <p class="lede">Premium, PESO-certified crackers from Sivakasi. Factory prices, doorstep delivery across Hyderabad &amp; Secunderabad, and the safest way to light up your celebrations.</p>
-          <form class="hero-search" id="heroSearchForm" autocomplete="off">
-            ${I.search}
-            <input name="q" id="heroSearchInput" placeholder="Try “1000 wala”, “flower pot”, “sparklers”…" aria-label="Search products">
-            <button class="btn btn-primary" type="submit">Search</button>
-          </form>
+          <span class="hero-eyebrow"><span class="dot"></span>Celebrate Brighter</span>
+          <h1>Light Up Every <span class="grad-text">Celebration</span></h1>
+          <p class="hero-lede">Premium quality crackers for every occasion — PESO-certified and factory-direct from Sivakasi, delivered to your doorstep across Hyderabad &amp; Secunderabad.</p>
           <div class="hero-cta">
-            <a class="btn btn-primary" href="#/products">${I.gift} Shop now</a>
-            <a class="btn btn-glass" href="#/price-list">View price list</a>
+            <a class="btn btn-primary btn-lg" href="#/products">${I.gift} Shop Now</a>
+            <a class="btn btn-glass btn-lg" href="#/products?sort=discount">Explore Crackers ${I.arrow}</a>
           </div>
           <div class="hero-stats">
             <div class="stat"><div class="num">${PRODUCTS.length}+</div><div class="lbl">Products</div></div>
             <div class="stat"><div class="num">${CATS.length}</div><div class="lbl">Categories</div></div>
             <div class="stat"><div class="num">${money(STORE.freeDeliveryAbove)}+</div><div class="lbl">Free delivery</div></div>
-            <div class="stat"><div class="num">4.7★</div><div class="lbl">Rating</div></div>
+            <div class="stat"><div class="num">4.7★</div><div class="lbl">Rated by 2k+</div></div>
           </div>
         </div>
+
         <div class="hero-visual">
-          <div class="hero-card-stack">
-            ${heroPicks.map((p, i) => `<a class="hero-card hero-card--${['a', 'b', 'c'][i]}" href="${prodUrl(p)}" aria-label="${esc(p.shortName)}">
-              <img src="${esc(p.image)}" alt="" loading="lazy">
-              <div class="hero-card__body"><h4>${esc(p.shortName)}</h4>
-                <div class="price-row"><span class="hero-card__price">${money(priceOf(p))}</span>${p.compareAt > priceOf(p) ? `<span class="hero-card__cmp">${money(p.compareAt)}</span><span class="hero-card__off">-${discountOf(p)}%</span>` : ''}</div>
-              </div></a>`).join('')}
+          <span class="hero-glow" aria-hidden="true"></span>
+          <div class="hero-stage">
+            ${heroShots.map((p, i) => `<a class="hero-shot hero-shot--${['main', 'a', 'b'][i]}" href="${prodUrl(p)}" aria-label="${esc(p.shortName)}">
+              <img src="${esc(p.image)}" alt="${esc(p.shortName)}" loading="eager" decoding="async">
+              <span class="hero-shot__tag"><b>${esc(p.shortName)}</b><span>${money(priceOf(p))}</span></span>
+            </a>`).join('')}
+            <div class="hero-chip hero-chip--tl"><span class="hc-ic">${I.shield}</span><span>PESO Certified<small>Licensed dealer</small></span></div>
+            <div class="hero-chip hero-chip--br"><span class="hc-ic">${I.truck}</span><span>Free delivery<small>Orders ${money(STORE.freeDeliveryAbove)}+</small></span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <!-- ========== 3. TRUST / BENEFITS ========== -->
+    <section class="section" id="trust">
+      <div class="section__head section__head--center">
+        <div>
+          <span class="section__tag">Why shoppers pick us</span>
+          <h2 class="section__title">Your Trusted <span class="grad-text">Celebration Partner</span></h2>
+          <p class="section__sub">Everything you need for a bright, safe and joyful festival — sourced responsibly and priced fairly.</p>
+        </div>
+      </div>
       <div class="trust-strip">
         ${[
-          { i: I.shield, t: 'PESO Certified', s: 'Licensed, safety-tested stock' },
-          { i: I.truck, t: `Free delivery ${money(STORE.freeDeliveryAbove)}+`, s: 'Hyderabad & Secunderabad' },
-          { i: I.cash, t: 'Pay on delivery', s: 'Cash or UPI at your door' },
-          { i: I.bolt, t: 'Sivakasi direct', s: 'Freshest batch every season' },
-        ].map(x => `<div class="trust-card reveal"><div class="t-icon">${x.i}</div><div><h4>${x.t}</h4><p>${x.s}</p></div></div>`).join('')}
+          { i: I.shield, t: '100% Original Products', s: 'Licensed, safety-tested Sivakasi stock' },
+          { i: I.cash, t: 'Best Prices', s: 'Factory-direct rates, no middlemen' },
+          { i: I.lock, t: 'Secure Payments', s: 'Protected checkout · COD available' },
+          { i: I.truck, t: 'Fast Delivery', s: `Free above ${money(STORE.freeDeliveryAbove)}` },
+        ].map(x => `<div class="trust-card reveal"><div class="t-icon">${x.i}</div><div><h4>${esc(x.t)}</h4><p>${esc(x.s)}</p></div></div>`).join('')}
       </div>
     </section>
 
-    <section class="section" id="categories">
+    <!-- ========== 4. NEW ARRIVALS ========== -->
+    <section class="section" id="new-arrivals">
       <div class="section__head">
-        <div><span class="section__tag">Browse collection</span><h2 class="section__title">Shop by <span class="grad-text">category</span></h2><p class="section__sub">From little sparklers to grand multi-shot shows — find your celebration match.</p></div>
-        <a class="section__link" href="#/products">All products ${I.arrow}</a>
+        <div>
+          <span class="section__tag">Just landed</span>
+          <h2 class="section__title">New <span class="grad-text">Arrivals</span></h2>
+          <p class="section__sub">Discover the latest crackers for your celebration.</p>
+        </div>
+        <a class="section__link" href="#/products?sort=newest">View all ${I.arrow}</a>
       </div>
-      <div class="cat-grid">${CATS.map(catCard).join('')}</div>
+      ${pillRow('arrivals', arrivalTabs)}
+      <div class="prod-grid prod-grid--5" id="arrivalsGrid" data-cap="10">
+        ${arrivals.map(p => productCard(p)).join('')}
+      </div>
     </section>
 
+    <!-- ========== 5. PROMOTIONAL BANNER ========== -->
+    <section class="section" id="deals">
+      <div class="promo-banner reveal">
+        <span class="promo-banner__spark" aria-hidden="true"></span>
+        <div class="promo-banner__off"><b>${topOff}%</b><small>Upto off</small></div>
+        <div class="promo-banner__inner">
+          <div>
+            <span class="promo-banner__eyebrow">${I.bolt} Festive deals live</span>
+            <h2>Celebrate More.<br>Spend Less.</h2>
+            <p>Exclusive deals on selected crackers and combo packs. Stock moves fast every season — grab the big ones early.</p>
+            <div class="promo-banner__cta">
+              <a class="btn btn-white btn-lg" href="#/products?sort=discount">${I.gift} Shop Deals</a>
+              <a class="promo-banner__ghost" href="#/products?cat=gift-boxes">Combo packs ${I.arrow}</a>
+            </div>
+          </div>
+          <div class="promo-banner__art" aria-hidden="true">
+            ${promoTiles.map(p => `<div class="promo-tile"><img src="${esc(p.image)}" alt="" loading="lazy"><span>${esc(catLabel(p).name)}</span></div>`).join('')}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 6. FEATURED PRODUCTS ========== -->
     <section class="section" id="featured">
       <div class="section__head">
-        <div><span class="section__tag">Hand-picked</span><h2 class="section__title">Featured <span class="grad-text">best sellers</span></h2><p class="section__sub">Our crowd favourites — the ones that go first every season.</p></div>
-        <a class="section__link" href="#/products?sort=rating">Mega deals ${I.arrow}</a>
+        <div>
+          <span class="section__tag">Hand-picked</span>
+          <h2 class="section__title">Featured <span class="grad-text">Products</span></h2>
+          <p class="section__sub">Crowd favourites that light up every celebration — the ones that go first.</p>
+        </div>
+        <a class="section__link" href="#/products?sort=bestsellers">View all ${I.arrow}</a>
       </div>
-      ${productGrid(featured)}
+      ${pillRow('featured', featuredTabs)}
+      <div class="prod-grid prod-grid--5" id="featuredGrid" data-cap="10">
+        ${featured.map(p => productCard(p)).join('')}
+      </div>
     </section>
 
-    <section class="section" id="deal">
-      <div class="deals-band reveal">
-        <div class="deals-band__inner">
-          <div>
-            <span class="section__tag" style="color:#fff;opacity:.85">Limited period</span>
-            <h2>Diwali Mega Sale — up to 50% off</h2>
-            <p>Grab the big ones early. Stock is limited and moves fast — order before the sky lights up.</p>
-            <div style="margin-top:18px"><a class="btn btn-glass" href="#/products" style="color:var(--primary-deep)">Grab the deal ${I.arrow}</a></div>
-          </div>
-          <div class="countdown" id="dealClock"></div>
+    <!-- ========== 7. WHY CHOOSE CRACKERS MELA ========== -->
+    <section class="section" id="why">
+      <div class="section__head section__head--center">
+        <div>
+          <span class="section__tag">The CrackersMela promise</span>
+          <h2 class="section__title">Why Choose <span class="grad-text">Crackers Mela?</span></h2>
+          <p class="section__sub">A cleaner, safer and simpler way to buy fireworks — from the first click to the final sparkle.</p>
         </div>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="section__head">
-        <div><span class="section__tag">Auto-applied at checkout</span><h2 class="section__title">Festive <span class="grad-text">offer tiers</span></h2><p class="section__sub">Stack a little extra every time your basket grows. No codes needed.</p></div>
-      </div>
-      <div class="offer-strip">
-        ${OFFER_TIERS.map(o => `<div class="offer-card reveal"><div class="o-emoji">🎁</div><div><b>${o.tag}</b><p>Automatically applied on your total before delivery.</p></div></div>`).join('')}
-      </div>
-    </section>
-
-    <section class="section" id="best">
-      <div class="section__head">
-        <div><span class="section__tag">Most ordered</span><h2 class="section__title">Trending <span class="grad-text">right now</span></h2></div>
-        <a class="section__link" href="#/products">Explore more ${I.arrow}</a>
-      </div>
-      ${productGrid(best)}
-    </section>
-
-    <section class="section" id="night">
-      <div class="deals-band" style="background:linear-gradient(120deg,#0B1B3A,#0D47A1 55%,#2196F3)">
-        <div class="deals-band__inner">
-          <div>
-            <span class="section__tag" style="color:#90CAF9">The grand finale</span>
-            <h2>Gift boxes &amp; multi-shot shows</h2>
-            <p>Complete hampers for gifting and big aerial collections for the loudest, brightest night.</p>
-            <div style="margin-top:18px"><a class="btn btn-glass" href="#/products?cat=gift-boxes" style="color:var(--primary-deep)">Shop gift boxes ${I.arrow}</a></div>
-          </div>
-        </div>
-      </div>
-      <div style="margin-top:22px">${productGrid(night, { cols: 4 })}</div>
-    </section>
-
-    <section class="section">
-      <div class="section__head"><div><span class="section__tag">How it works</span><h2 class="section__title">Celebrate in <span class="grad-text">four steps</span></h2></div></div>
-      <div class="steps-grid">
-        ${[['Pick your favourites', 'Browse categories or search the collection.'], ['Order in seconds', 'Add to cart and checkout — no codes, no fuss.'], ['Pay on delivery', 'Cash or UPI right at your doorstep.'], ['Light up the sky', 'Verified, safe, certified fun.']].map((s, i) => `<div class="step-card reveal"><div class="s-num">${i + 1}</div><h4>${s[0]}</h4><p>${s[1]}</p></div>`).join('')}
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section__head"><div><span class="section__tag">Word on the street</span><h2 class="section__title">Customers <span class="grad-text">love</span> us</h2></div></div>
-      <div class="testi-grid">
+      <div class="why-grid">
         ${[
-          ['Ravi T.', 'Hyderabad', 'Ordered the 1000 wala + flower pots. On time, fresh stock, and the kids had a blast.'],
-          ['Sneha K.', 'Secunderabad', 'Easily the cleanest fireworks site. Prices were lower than the mandi and delivery was same day!'],
-          ['Imran S.', 'Hitech City', 'My go-to every year now. Gift boxes are lovely and the checkout takes 30 seconds.'],
-        ].map(t => `<div class="testi-card reveal"><div class="stars">★★★★★</div><p>“${t[2]}”</p><div class="who"><div class="avatar">${t[0][0]}</div><div><b>${t[0]}</b><span>${t[1]}</span></div></div></div>`).join('')}
+          { i: I.shield, t: '100% Original Products', s: 'Every item is sourced directly from licensed Sivakasi manufacturers and safety-tested before it reaches you.' },
+          { i: I.lock, t: 'Secure Payments', s: 'Encrypted checkout with UPI, card and cash-on-delivery — your details are never stored on our servers.' },
+          { i: I.truck, t: 'Fast Delivery', s: `Same-day and next-day dispatch across ${esc(STORE.deliveryArea || 'Hyderabad & Secunderabad')}, free above ${money(STORE.freeDeliveryAbove)}.` },
+          { i: I.phone, t: 'Customer Support', s: 'Talk to a real person about sizes, safety or bulk orders — every day from 9am to 9pm.' },
+        ].map(x => `<div class="why-card reveal"><div class="why-card__ic">${x.i}</div><h4>${esc(x.t)}</h4><p>${x.s}</p></div>`).join('')}
       </div>
     </section>
 
-    <section class="section">
+    <!-- ========== 8. NEWSLETTER ========== -->
+    <section class="section" id="newsletter">
       <div class="newsletter-band reveal">
         <div class="newsletter-band__inner">
-          <div><h2>Get first access to festive drops</h2><p>New-year launches, restocks alerts and subscriber-only offers. No spam, ever.</p></div>
-          <form class="nl-form" id="nlForm">
-            <input type="email" id="nlEmail" placeholder="Your email address" aria-label="Email for newsletter" required>
-            <button class="btn" type="submit">Subscribe</button>
-          </form>
+          <div>
+            <h2>Stay Updated on the Latest Deals</h2>
+            <p>Subscribe to get special offers, new arrivals and exciting discounts — straight to your inbox.</p>
+          </div>
+          <div>
+            <form class="nl-form" id="nlForm">
+              <input type="email" id="nlEmail" placeholder="Your email address" aria-label="Email for newsletter" required>
+              <button class="btn btn-primary" type="submit">Subscribe</button>
+            </form>
+            <p class="nl-note">${I.lock} No spam, ever. Unsubscribe in one click.</p>
+          </div>
         </div>
       </div>
+      ${benefitsStrip()}
     </section>`;
   };
 
-  views.products = (route) => {
+  /* ---------------- shop (listing) helpers ---------------- */
+  const PRICE_FLOOR = 0;
+  const PRICE_CEIL = Math.max(500, Math.ceil(Math.max(...PRODUCTS.map(p => priceOf(p))) / 100) * 100);
+
+  const SORTS = [
+    ['featured', 'Featured'], ['newest', 'Newest first'], ['bestsellers', 'Best sellers'],
+    ['price-asc', 'Price: Low → High'], ['price-desc', 'Price: High → Low'],
+    ['discount', 'Biggest discount'], ['rating', 'Top rated'], ['name', 'Name (A–Z)'],
+  ];
+  const SORT_LABEL = Object.fromEntries(SORTS);
+
+  const OFF_STEPS = [['', 'Any discount'], ['10', '10% and above'], ['25', '25% and above'], ['40', '40% and above'], ['50', '50% and above']];
+  const RATE_STEPS = [['', 'Any rating'], ['4.5', '4.5★ & above'], ['4', '4★ & above'], ['3.5', '3.5★ & above']];
+  const AVAIL_STEPS = [['', 'All products'], ['in', 'In stock only'], ['out', 'Out of stock']];
+
+  /* Reads the live filter state out of the URL query */
+  const shopState = (route) => {
     const params = new URLSearchParams(route.query || '');
-    const cat = params.get('cat');
-    const q = (params.get('q') || '').toLowerCase();
-    const sort = params.get('sort') || 'featured';
+    const catsRaw = (params.get('cats') || '').split(',').map(s => s.trim()).filter(Boolean);
+    const single = params.get('cat');
+    const cats = [...new Set([...(single && single !== 'all' ? [single] : []), ...catsRaw])].filter(id => CAT_MAP[id]);
+    return {
+      params,
+      cat: single || 'all',
+      cats,
+      q: (params.get('q') || '').trim(),
+      sort: SORT_LABEL[params.get('sort')] ? params.get('sort') : 'featured',
+      min: clamp(parseInt(params.get('min'), 10) || PRICE_FLOOR, PRICE_FLOOR, PRICE_CEIL),
+      max: clamp(parseInt(params.get('max'), 10) || PRICE_CEIL, PRICE_FLOOR, PRICE_CEIL),
+      off: OFF_STEPS.some(o => o[0] === params.get('off')) ? params.get('off') : '',
+      rating: RATE_STEPS.some(o => o[0] === params.get('rating')) ? params.get('rating') : '',
+      avail: AVAIL_STEPS.some(o => o[0] === params.get('avail')) ? params.get('avail') : '',
+      delivery: params.get('delivery') === 'express' ? 'express' : 'standard',
+      freeship: params.get('freeship') === '1',
+    };
+  };
 
-    let list = PRODUCTS.slice();
-    if (cat && cat !== 'all') list = list.filter(p => p.cats.includes(cat));
-    if (q) list = searchProducts(q);
-    list = list.filter(p => inStockOf(p) || !params.get('instock'));
+  /* Builds a #/products?… hash from the current state + a patch */
+  const shopHash = (st, patch = {}) => {
+    const next = {
+      cat: st.cats.length === 1 ? st.cats[0] : '',
+      cats: st.cats.length > 1 ? st.cats.join(',') : '',
+      q: st.q, sort: st.sort === 'featured' ? '' : st.sort,
+      min: st.min === PRICE_FLOOR ? '' : st.min, max: st.max === PRICE_CEIL ? '' : st.max,
+      off: st.off, rating: st.rating, avail: st.avail,
+      delivery: st.delivery === 'express' ? 'express' : '',
+      freeship: st.freeship ? '1' : '',
+      ...patch,
+    };
+    if (patch.cats !== undefined) { next.cat = ''; next.cats = patch.cats; }
+    if (patch.cat !== undefined) { next.cats = ''; next.cat = patch.cat === 'all' ? '' : patch.cat; }
+    const sp = new URLSearchParams();
+    Object.entries(next).forEach(([k, v]) => { if (v !== '' && v != null) sp.set(k, v); });
+    const s = sp.toString();
+    return '#/products' + (s ? '?' + s : '');
+  };
 
-    switch (sort) {
+  const filterShop = (st) => {
+    let list = st.q ? searchProducts(st.q) : allProducts();
+    if (st.cats.length) list = list.filter(p => p.cats.some(c => st.cats.includes(c)));
+    list = list.filter(p => priceOf(p) >= st.min && priceOf(p) <= st.max);
+    if (st.off) list = list.filter(p => discountOf(p) >= Number(st.off));
+    if (st.rating) list = list.filter(p => p.rating >= Number(st.rating));
+    if (st.avail === 'in') list = list.filter(inStockOf);
+    if (st.avail === 'out') list = list.filter(p => !inStockOf(p));
+    if (st.delivery === 'express') list = list.filter(inStockOf);
+    if (st.freeship) list = list.filter(p => priceOf(p) >= (STORE.freeDeliveryAbove || 999));
+
+    switch (st.sort) {
+      case 'newest': list.sort((a, b) => b.id - a.id); break;
+      case 'bestsellers': list.sort((a, b) => b.salesCount - a.salesCount); break;
       case 'price-asc': list.sort((a, b) => priceOf(a) - priceOf(b)); break;
       case 'price-desc': list.sort((a, b) => priceOf(b) - priceOf(a)); break;
       case 'discount': list.sort((a, b) => discountOf(b) - discountOf(a)); break;
@@ -702,46 +871,145 @@
       case 'name': list.sort((a, b) => a.shortName.localeCompare(b.shortName)); break;
       default: list.sort((a, b) => (featuredOf(b) - featuredOf(a)) || (b.salesCount - a.salesCount));
     }
+    return list;
+  };
 
-    const chips = [{ id: 'all', name: 'All', icon: '🎆' }, ...CATS.map(c => ({ id: c.id, name: c.name, icon: c.icon }))];
+  const activeTokens = (st) => {
+    const t = [];
+    st.cats.forEach(id => t.push({ k: 'cat:' + id, l: 'Category', v: CAT_MAP[id].name }));
+    if (st.q) t.push({ k: 'q', l: 'Search', v: st.q });
+    if (st.min !== PRICE_FLOOR || st.max !== PRICE_CEIL) t.push({ k: 'price', l: 'Price', v: `${money(st.min)} – ${money(st.max)}` });
+    if (st.off) t.push({ k: 'off', l: 'Discount', v: st.off + '%+' });
+    if (st.rating) t.push({ k: 'rating', l: 'Rating', v: st.rating + '★+' });
+    if (st.avail) t.push({ k: 'avail', l: 'Stock', v: st.avail === 'in' ? 'In stock' : 'Out of stock' });
+    if (st.delivery === 'express') t.push({ k: 'delivery', l: 'Delivery', v: 'Express' });
+    if (st.freeship) t.push({ k: 'freeship', l: 'Delivery', v: 'Free shipping' });
+    return t;
+  };
+
+  const filterSidebar = (st, list) => {
+    const catCount = id => PRODUCTS.filter(p => p.cats.includes(id)).length;
+    const fillPct = v => ((v - PRICE_FLOOR) / (PRICE_CEIL - PRICE_FLOOR)) * 100;
+    return `
+      <aside class="filter-col" id="filterCol" aria-label="Product filters">
+        <div class="filter-drawer-head">
+          <h3>Filters</h3>
+          <button class="filter-close" id="filterClose" aria-label="Close filters">${I.close}</button>
+        </div>
+
+        <div class="filter-card">
+          <div class="filter-card__head"><h4>Price Range</h4><button class="filter-clear" data-fclear="price">Reset</button></div>
+          <div class="range-wrap">
+            <div class="range-vals"><b id="rvMin">${money(st.min)}</b><span></span><b id="rvMax">${money(st.max)}</b></div>
+            <div class="range-slider">
+              <span class="rs-track"></span>
+              <span class="rs-fill" id="rsFill" style="left:${fillPct(st.min)}%;right:${100 - fillPct(st.max)}%"></span>
+              <input type="range" id="rangeMin" min="${PRICE_FLOOR}" max="${PRICE_CEIL}" step="10" value="${st.min}" aria-label="Minimum price">
+              <input type="range" id="rangeMax" min="${PRICE_FLOOR}" max="${PRICE_CEIL}" step="10" value="${st.max}" aria-label="Maximum price">
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-card">
+          <div class="filter-card__head"><h4>Rating</h4>${st.rating ? '<button class="filter-clear" data-fclear="rating">Clear</button>' : ''}</div>
+          <div class="filter-body">
+            ${RATE_STEPS.map(([v, l]) => `<label class="check-row"><input type="radio" name="fRating" value="${v}" data-frating ${st.rating === v ? 'checked' : ''}><span>${l}</span></label>`).join('')}
+          </div>
+        </div>
+
+        <div class="filter-card">
+          <div class="filter-card__head"><h4>Category</h4>${st.cats.length ? '<button class="filter-clear" data-fclear="cats">Clear</button>' : ''}</div>
+          <div class="filter-body">
+            ${CATS.map(c => `<label class="check-row"><input type="checkbox" value="${c.id}" data-fcat ${st.cats.includes(c.id) ? 'checked' : ''}><span>${esc(c.name)}</span><em class="cr-count">${catCount(c.id)}</em></label>`).join('')}
+          </div>
+        </div>
+
+        <div class="filter-card">
+          <div class="filter-card__head"><h4>Discount</h4>${st.off ? '<button class="filter-clear" data-fclear="off">Clear</button>' : ''}</div>
+          <div class="filter-body">
+            ${OFF_STEPS.map(([v, l]) => `<label class="check-row"><input type="radio" name="fOff" value="${v}" data-foff ${st.off === v ? 'checked' : ''}><span>${l}</span></label>`).join('')}
+          </div>
+        </div>
+
+        <div class="filter-card">
+          <div class="filter-card__head"><h4>Availability</h4>${st.avail ? '<button class="filter-clear" data-fclear="avail">Clear</button>' : ''}</div>
+          <div class="filter-body">
+            ${AVAIL_STEPS.map(([v, l]) => `<label class="check-row"><input type="radio" name="fAvail" value="${v}" data-favail ${st.avail === v ? 'checked' : ''}><span>${l}</span></label>`).join('')}
+          </div>
+        </div>
+
+        <div class="filter-card">
+          <div class="filter-card__head"><h4>Delivery Options</h4></div>
+          <div class="seg-toggle" role="group" aria-label="Delivery speed">
+            <button class="${st.delivery === 'standard' ? 'active' : ''}" data-fdelivery="standard">Standard</button>
+            <button class="${st.delivery === 'express' ? 'active' : ''}" data-fdelivery="express">Express</button>
+          </div>
+          <div class="filter-body" style="margin-top:14px">
+            <label class="check-row"><input type="checkbox" data-ffreeship ${st.freeship ? 'checked' : ''}><span>Free delivery eligible</span></label>
+          </div>
+          <p class="filter-note">${I.pin} Delivering to ${esc(STORE.deliveryArea || 'Hyderabad, Telangana')}</p>
+        </div>
+
+        <button class="btn btn-glass btn-block" data-fclear="all">Clear all filters</button>
+      </aside>`;
+  };
+
+  views.products = (route) => {
+    const st = shopState(route);
+    const list = filterShop(st);
+    const tokens = activeTokens(st);
+    const title = st.cats.length === 1 ? esc(CAT_MAP[st.cats[0]].name)
+      : st.q ? `Results for “${esc(st.q)}”`
+      : st.cats.length > 1 ? 'Selected categories' : 'All Fireworks';
+    const sub = st.cats.length === 1 ? CAT_MAP[st.cats[0]].blurb
+      : st.q ? `${list.length} product${list.length === 1 ? '' : 's'} matching your search`
+      : 'The full CrackersMela collection — fresh from Sivakasi, ready to celebrate.';
 
     return `
       <div class="page-head reveal">
-        <div class="crumbs"><a href="#/">Home</a><span class="sep">/</span><span>Products</span></div>
-        <h1>${cat && CAT_MAP[cat] ? esc(CAT_MAP[cat].name) : q ? `Results for “${esc(q)}”` : 'All Fireworks'}</h1>
-        <p>${cat && CAT_MAP[cat] ? esc(CAT_MAP[cat].blurb) : q ? `${list.length} products matching your search` : 'The full CrackersMela collection — fresh from Sivakasi.'}</p>
+        <div class="crumbs"><a href="#/">Home</a><span class="sep">/</span><span>Shop</span></div>
+        <h1>${title}</h1>
+        <p>${esc(sub)}</p>
       </div>
 
-      <div class="prod-toolbar reveal">
-        <div class="prod-toolbar__search">${I.search}<input type="text" id="prodSearch" value="${esc(q)}" placeholder="Search within products…" aria-label="Search products"></div>
-        <select class="sort-select" id="prodSort" aria-label="Sort products">
-          <option value="featured" ${sort === 'featured' ? 'selected' : ''}>Sort: Featured</option>
-          <option value="price-asc" ${sort === 'price-asc' ? 'selected' : ''}>Price: Low → High</option>
-          <option value="price-desc" ${sort === 'price-desc' ? 'selected' : ''}>Price: High → Low</option>
-          <option value="discount" ${sort === 'discount' ? 'selected' : ''}>Biggest discount</option>
-          <option value="rating" ${sort === 'rating' ? 'selected' : ''}>Top rated</option>
-          <option value="name" ${sort === 'name' ? 'selected' : ''}>Name (A–Z)</option>
-        </select>
+      <div class="shop-layout">
+        ${filterSidebar(st, list)}
+        <span class="filter-backdrop" id="filterBackdrop" aria-hidden="true"></span>
+
+        <div class="shop-main">
+          <div class="shop-bar reveal">
+            <div class="shop-bar__search">${I.search}<input type="text" id="prodSearch" value="${esc(st.q)}" placeholder="Search within products…" aria-label="Search products"></div>
+            <div class="shop-bar__right">
+              <button class="filter-fab" id="filterFab">${I.sliders} Filters${tokens.length ? `<b>${tokens.length}</b>` : ''}</button>
+              <select class="sort-select" id="prodSort" aria-label="Sort products">
+                ${SORTS.map(([v, l]) => `<option value="${v}" ${st.sort === v ? 'selected' : ''}>${l}</option>`).join('')}
+              </select>
+            </div>
+          </div>
+
+          ${tokens.length ? `<div class="active-filters reveal">
+            <span class="shop-bar__count"><b>${list.length}</b> of ${PRODUCTS.length} products</span>
+            ${tokens.map(t => `<button class="f-token" data-ftoken="${esc(t.k)}"><b>${t.l}:</b> ${esc(t.v)} <span aria-hidden="true">×</span></button>`).join('')}
+            <button class="filter-clear" data-fclear="all">Clear all</button>
+          </div>` : `<p class="result-count reveal"><b>${list.length}</b> ${list.length === 1 ? 'product' : 'products'} · showing the full collection</p>`}
+
+          ${productGrid(list, { emptyTitle: 'No products match those filters', emptyText: 'Try widening the price range or clearing a filter.' })}
+        </div>
       </div>
 
-      <div class="chip-row reveal" style="margin-bottom:20px">
-        ${chips.map(c => `<button class="chip ${(cat || 'all') === c.id ? 'active' : ''}" data-chipcat="${c.id}">${c.icon} ${c.name}</button>`).join('')}
-      </div>
-
-      <p class="result-count reveal">${list.length} ${list.length === 1 ? 'product' : 'products'}</p>
-      ${productGrid(list, { emptyTitle: 'No products found', emptyText: 'Try clearing filters or searching something else.' })}
+      ${benefitsStrip()}
     `;
   };
 
   views.product = (route) => {
     const slug = route.params[0];
-    const p = PRODUCTS.find(x => x.slug === slug || 'p-' + x.id === slug);
+    const p = allProducts().find(x => x.slug === slug || 'p-' + x.id === slug);
     if (!p) return views.notFound();
     if (!recent.includes(p.id)) { recent = [p.id, ...recent].slice(0, 10); save(); }
     const off = discountOf(p);
     const cat = catLabel(p);
     const qty = cartQty(p.id) || 1;
-    const related = PRODUCTS.filter(x => x.id !== p.id && x.cats.some(c => p.cats.includes(c)) && inStockOf(x)).slice(0, 4);
+    const related = allProducts().filter(x => x.id !== p.id && x.cats.some(c => p.cats.includes(c)) && inStockOf(x)).slice(0, 4);
 
     return `
       <div class="page-head reveal">
@@ -1247,7 +1515,7 @@
       <a class="btn btn-primary" href="https://wa.me/919248088588?text=Hi!%20I%20need%20the%20bulk%20price%20list." target="_blank" rel="noopener">${I.wa} Get bulk rates</a>
     </div>`;
 
-  const priceListRows = (filterCat = 'all', q = '') => PRODUCTS.filter(p =>
+  const priceListRows = (filterCat = 'all', q = '') => allProducts().filter(p =>
     (filterCat === 'all' || p.cats.includes(filterCat)) &&
     (!q || (p.shortName + ' ' + p.name).toLowerCase().includes(q)))
     .map(p => {
@@ -1262,6 +1530,73 @@
       </tr>`;
     }).join('');
 
+  /* ---------------- admin icons (shell) ---------------- */
+  const I2 = {
+    grid: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.6"/></svg>',
+    pie: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12A9 9 0 1 1 12 3v9z"/><path d="M12 3a9 9 0 0 1 9 9h-9z"/></svg>',
+    box: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>',
+    plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
+    layers: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg>',
+    sheet: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></svg>',
+    cashI: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="2"/><circle cx="12" cy="13" r="2.4"/><path d="M6 13h.01M18 13h.01"/></svg>',
+    palette: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.9 2-2 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1.1.9-2 2-2h2.4A3.6 3.6 0 0 0 21 11a9 9 0 0 0-9-8z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="14.5" cy="7.5" r="1"/></svg>',
+    user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>',
+    bell: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>',
+    gear: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.3 7a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3h0a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5h0a1.7 1.7 0 0 0 1.9-.3l.1-.1A2 2 0 1 1 19.7 7l-.1.1a1.7 1.7 0 0 0-.3 1.9v0a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>',
+    scroll: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h7a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H5V8h10v13"/><path d="M6 3h10"/></svg>',
+    trash: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13"/></svg>',
+    download: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>',
+    refresh: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/></svg>',
+    sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+    moon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
+    exit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>',
+    menu: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>',
+  };
+  const STATUS_PILL = { placed: 'pending', confirmed: 'confirmed', packed: 'packed', shipped: 'processing', out_for_delivery: 'processing', delivered: 'delivered' };
+  const adminGravatar = u => esc((u.name || 'A').trim().charAt(0).toUpperCase());
+
+  const ADMIN_NAV = [
+    { grp: 'MAIN', items: [
+      { id: 'dashboard', label: 'Dashboard', icon: I2.grid },
+    ] },
+    { grp: 'MANAGE', items: [
+      { id: 'analytics', label: 'Analytics', icon: I2.pie },
+      { id: 'orders', label: 'Orders', icon: I2.sheet, badge: orders.length },
+      { id: 'products', label: 'All Products', icon: I2.box },
+      { id: 'add-product', label: 'Add Product', icon: I2.plus },
+      { id: 'categories', label: 'Categories', icon: I2.layers },
+      { id: 'price-list', label: 'Price List', icon: I2.cashI },
+      { id: 'pos', label: 'Billing / POS', icon: I2.cashI },
+      { id: 'canvas', label: 'Canvas Editor', icon: I2.palette },
+    ] },
+    { grp: 'OTHERS', items: [
+      { id: 'customers', label: 'Users', icon: I2.user },
+      { id: 'notifications', label: 'Notifications', icon: I2.bell, badge: 'unread' },
+      { id: 'settings', label: 'Settings', icon: I2.gear },
+      { id: 'logs', label: 'Logs', icon: I2.scroll },
+    ] },
+  ];
+  const ADM_QA = [
+    { id: 'add-product', label: 'Add Product', icon: I2.plus, tint: '#2196F3' },
+    { id: 'products', label: 'All Products', icon: I2.box, tint: '#0D47A1' },
+    { id: 'orders', label: 'Orders', icon: I2.sheet, tint: '#2E7D32' },
+    { id: 'pos', label: 'Billing / POS', icon: I2.cashI, tint: '#F9A825' },
+    { id: 'price-list', label: 'Price List', icon: I2.sheet, tint: '#7B1FA2' },
+    { id: 'customers', label: 'Users', icon: I2.user, tint: '#00838F' },
+    { id: 'categories', label: 'Categories', icon: I2.layers, tint: '#E64A19' },
+    { id: 'canvas', label: 'Canvas Editor', icon: I2.palette, tint: '#5E35B1' },
+  ];
+
+  let adminPanel = 'dashboard';
+  let salesRange = 7;
+  let salesSince = null;
+  let admQ = '';
+  let posCart = [];
+  let lastOrderCount = orders.length;
+  let feedTimer = null;
+
+  const bellUnread = () => activity.filter(a => !a.read && a.type === 'order').length;
+
   views.staff = () => {
     const u = currentUser();
     if (!u || !['admin', 'staff'].includes(u.role)) {
@@ -1269,81 +1604,216 @@
         <div class="glass-panel reveal" style="max-width:520px"><h2>Staff access only</h2><p class="panel-sub">Use <code>${DEMO.find(x => x.role === 'admin').email}</code> / <code>admin123</code> to explore the management console.</p>
         <button class="btn btn-primary" id="goAuthStaff">Sign in as staff</button></div>`;
     }
-    const revenue = orders.reduce((a, o) => a + o.totals.total, 0);
-    const custCount = Object.keys(users).length;
-    return `
-      <div class="page-head reveal"><h1>Admin panel</h1><p>Welcome, <b>${esc(u.name)}</b> · ${esc(u.role === 'admin' ? 'Administrator' : 'Staff')}</p></div>
-      <div class="kpi-grid reveal">
-        <div class="kpi"><div class="k-num">${orders.length}</div><div class="k-lbl">Orders</div></div>
-        <div class="kpi"><div class="k-num">${money(revenue)}</div><div class="k-lbl">Order value</div></div>
-        <div class="kpi"><div class="k-num">${custCount}</div><div class="k-lbl">Customers</div></div>
-        <div class="kpi"><div class="k-num">${PRODUCTS.filter(p => inStockOf(p)).length}</div><div class="k-lbl">In stock</div></div>
-      </div>
-      <div class="tabs reveal">
-        <button class="tab-btn active" data-stab="dashboard">Dashboard</button>
-        <button class="tab-btn" data-stab="orders">Orders</button>
-        <button class="tab-btn" data-stab="stock">Product control</button>
-        <button class="tab-btn" data-stab="customers">Customers</button>
-        <button class="tab-btn" data-stab="pl">Price list</button>
-        <button class="tab-btn danger-zone" data-stab="danger">Danger zone</button>
-      </div>
-      <div id="staffPanel">${staffDashboard()}</div>`;
+    adminPanel = 'dashboard';
+    lastOrderCount = orders.length;
+    return adminShell(u);
   };
 
-  const staffDashboard = () => {
-    const unitsBy = {};
-    for (const o of orders) for (const it of o.items || []) unitsBy[it.id] = (unitsBy[it.id] || 0) + it.qty;
-    const top = Object.entries(unitsBy).map(([id, qty]) => ({ p: PRODUCTS.find(x => x.id === Number(id)), qty })).filter(x => x.p).sort((a, b) => b.qty - a.qty).slice(0, 5);
-    const cod = orders.filter(o => o.payment === 'COD').length;
-    const upi = orders.length - cod;
-    const low = PRODUCTS.filter(p => inStockOf(p) && stockOf(p) <= 6).sort((a, b) => stockOf(a) - stockOf(b)).slice(0, 5);
-    const recentList = [...orders].slice(0, 3);
+  const adminShell = u => `
+    <div class="admin-shell" id="adminShell" data-admtheme="${admPrefs.theme === 'dark' ? 'dark' : 'light'}">
+      <aside class="admin-side">
+        <div class="as-brand"><span class="as-logo">CM</span><div><b>CRACKERS MELA</b><small>Admin Console</small></div></div>
+        <nav class="as-nav">
+          ${ADMIN_NAV.map(g => `<div class="as-grp"><span class="as-grp-t">${g.grp}</span>${g.items.map(it => `
+            <button class="as-item ${adminPanel === it.id ? 'active' : ''}" data-stab="${it.id}" data-panel="${it.id}">
+              <span class="as-ico">${it.icon}</span><span>${it.label}</span>
+              ${it.badge === 'unread' ? `<b class="as-badge" data-bell-badge>${bellUnread() || ''}</b>` : it.badge ? `<b class="as-badge">${it.badge}</b>` : ''}
+            </button>`).join('')}</div>`).join('')}
+        </nav>
+        <div class="as-foot">
+          <button class="as-item" data-signout><span class="as-ico">${I2.exit}</span><span>Sign out</span></button>
+          <span class="as-ver">CrackersMela Console · v2</span>
+        </div>
+      </aside>
+
+      <div class="admin-body">
+        <header class="admin-top">
+          <div class="at-left">
+            <button class="at-icon" data-side-toggle aria-label="Toggle sidebar">${I2.menu}</button>
+            <div class="at-search">
+              ${I2.search}<input id="admSearch" type="text" placeholder="Search orders, products, users…" autocomplete="off">
+              <div class="at-search-box" id="admSearchBox"></div>
+            </div>
+          </div>
+          <div class="at-right">
+            <span class="at-chip at-srv"><span class="dot"></span>Server Online</span>
+            <button class="at-icon" data-theme-btn title="Toggle dark mode">${admPrefs.theme === 'dark' ? I2.sun : I2.moon}</button>
+            <button class="at-icon at-bell" data-bell title="Notifications">${I2.bell}<b class="at-bell-n" data-bell-badge>${bellUnread() || ''}</b></button>
+            <div class="at-av" data-avme>
+              <button class="at-av-btn" data-av-btn><span class="av-ic">${adminGravatar(u)}</span><span class="at-av-meta"><b>${esc(u.name)}</b><small>${u.role === 'admin' ? 'Administrator' : 'Staff'}</small></span></button>
+              <div class="at-av-menu" id="avMenu">
+                <a href="#/my-orders">${I2.user} My storefront account</a>
+                <button data-theme-btn2>${I2.sun} Switch to ${admPrefs.theme === 'dark' ? 'light' : 'dark'} mode</button>
+                <button data-signout>${I2.exit} Sign out</button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <main class="admin-main">
+          <div id="staffPanel">${panelOf(adminPanel, u)}</div>
+        </main>
+      </div>
+    </div>`;
+
+  const panelOf = (p, u = currentUser()) => {
+    try {
+      const map = {
+        dashboard: () => panelDashboard(u),
+        analytics: panelAnalytics, orders: panelOrders, products: panelProducts, 'add-product': panelAddProduct,
+        categories: panelCategories, 'price-list': panelPriceList, pos: panelPos, canvas: panelCanvas,
+        customers: panelCustomers, notifications: panelNotifications, settings: () => panelSettings(u),
+        logs: panelLogs, danger: panelDanger,
+      };
+      return map[p] ? map[p]() : errPanel();
+    } catch (e) { return errPanel(e); }
+  };
+
+  const errPanel = (e = null) => `<div class="glass err-panel">
+      <div class="e-emoji">⚠️</div><h3>Something went wrong</h3>
+      <p class="panel-sub">${esc(e ? (e.message || String(e)) : 'This panel could not be rendered.')}</p>
+      <button class="btn btn-primary" data-reload-panel>${I2.refresh} Retry</button></div>`;
+
+  const panelDashboard = u => {
+    const revenue = orders.reduce((a, o) => a + o.totals.total, 0);
+    const last7 = orders.filter(o => Date.now() - new Date(o.placedAt).getTime() < 7 * 864e5);
+    const prev7 = orders.filter(o => { const d = Date.now() - new Date(o.placedAt).getTime(); return d >= 7 * 864e5 && d < 14 * 864e5; });
+    const rev7 = last7.reduce((a, o) => a + o.totals.total, 0);
+    const revPrev = prev7.reduce((a, o) => a + o.totals.total, 0);
+    const prods = allProducts();
+    const featured = prods.filter(featuredOf).length;
+    const low = prods.filter(p => inStockOf(p) && stockOf(p) <= 6).sort((a, b) => stockOf(a) - stockOf(b)).slice(0, 4);
+    const uniqCust = new Set(orders.map(o => o.email)).size;
+    const activeCust = new Set(orders.filter(o => Date.now() - new Date(o.placedAt).getTime() < 14 * 864e5).map(o => o.email)).size;
+    const aov = orders.length ? Math.round(revenue / orders.length) : 0;
+    const returning = Object.entries(users).filter(([e, ux]) => { const n = orders.filter(o => o.email === e).length; return n > 1 && ['customer'].includes(ux.role || 'customer'); }).length;
+    const conv = orders.length ? Math.round(clamp(orders.length / Math.max(1, uniqCust || 1) * 18, 3, 98)) : 0;
+    const recentList = [...orders].slice(0, 6);
     return `
-      <div class="admin-grid">
-        <div class="glass-panel reveal admin-chart-card">
-          <div class="panel-row"><h3>Orders · last 14 days</h3><span class="panel-sub">${orders.length ? `${orders.length} orders total` : 'No orders yet'}</span></div>
-          ${orders.length ? `<canvas id="dlChart" height="180" aria-label="Orders per day chart"></canvas>` : `<p class="panel-sub">Place an order from the storefront and it appears here as a daily bar.</p>`}
+      <div class="ad-head">
+        <div><h1>Welcome back, ${esc(u.name.split(' ')[0])}! 👋</h1>
+          <p class="panel-sub">${new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })} · Here's what's happening with your store today.</p></div>
+        <div class="ad-head-cta"><a class="btn btn-ghost" href="#/">${I2.grid} View store</a><button class="btn btn-primary" data-qa="add-product">${I2.plus} Add Product</button></div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi"><div class="k-ico t1">${I2.cashI}</div><div class="k-body"><div class="k-lbl">Total Revenue</div><div class="k-num"><span data-count="${revenue}" data-money="1">0</span></div><div class="k-sub">${pctChip(rev7, revPrev)} <span>vs last 7 days</span></div></div><canvas class="k-spark" data-spark="${last7.map(o => o.totals.total).slice(0, 12).join(',')}" data-color="#2196F3"></canvas></div>
+        <div class="kpi"><div class="k-ico t2">${I2.sheet}</div><div class="k-body"><div class="k-lbl">Total Orders</div><div class="k-num"><span data-count="${orders.length}">0</span></div><div class="k-sub">${pctChip(last7.length, prev7.length)} <span>vs last 7 days</span></div></div><canvas class="k-spark" data-spark="${last7.map(o => 1).join(',')}" data-color="#0D47A1"></canvas></div>
+        <div class="kpi"><div class="k-ico t3">${I2.box}</div><div class="k-body"><div class="k-lbl">Total Products</div><div class="k-num"><span data-count="${prods.length}">0</span></div><div class="k-sub"><span class="k-chip neutral">●</span> <span>${prods.filter(inStockOf).length} in stock</span></div></div><canvas class="k-spark" data-spark="${prods.filter(inStockOf).length},${Math.round(prods.filter(inStockOf).length * 0.9)},${prods.filter(inStockOf).length}" data-color="#2E7D32"></canvas></div>
+        <div class="kpi"><div class="k-ico t4">${I2.star}</div><div class="k-body"><div class="k-lbl">Featured Products</div><div class="k-num"><span data-count="${featured}">0</span></div><div class="k-sub"><span class="k-chip neutral">●</span> <span>${Math.round((featured / Math.max(1, prods.length)) * 100)}% of catalog</span></div></div><canvas class="k-spark" data-spark="${featured},${Math.max(0, featured - 2)},${featured}" data-color="#F9A825"></canvas></div>
+      </div>
+
+      <div class="qa-grid">
+        ${ADM_QA.map(q => `<button class="qa-tile" data-qa="${q.id}" style="--tint:${q.tint}"><span class="qa-ic">${q.icon}</span><span>${q.label}</span>${I.arrow}</button>`).join('')}
+      </div>
+
+      <div class="dash-2col">
+        <div class="glass g-card g-sales">
+          <div class="panel-row">
+            <h3>Sales Overview</h3>
+            <div class="seg" role="tablist">
+              <button class="seg-b ${salesRange === 7 && !salesSince ? 'on' : ''}" data-range="7">7D</button>
+              <button class="seg-b ${salesRange === 14 && !salesSince ? 'on' : ''}" data-range="14">14D</button>
+              <button class="seg-b ${salesRange === 28 && !salesSince ? 'on' : ''}" data-range="28">28D</button>
+              <button class="seg-b ${salesSince ? 'on' : ''}" data-range="custom">Custom</button>
+            </div>
+          </div>
+          <div class="sale-rows" id="saleSum"></div>
+          ${orders.length ? `<canvas id="soChart" height="200" aria-label="Sales overview chart"></canvas>
+            <div class="cal-row"><input type="date" id="soFrom" ${salesSince ? `value="${salesSince}"` : ''}><span class="panel-sub">→</span><input type="date" id="soTo" ${salesSince ? `value="${salesSince}"` : ''}></div>`
+            : `<div class="skel-box" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><p class="panel-sub">Order data will shape the curve here.</p>`}
         </div>
-        <div class="glass-panel reveal admin-chart-card">
-          <div class="panel-row"><h3>Payment split</h3><span class="panel-sub">${orders.length ? `${Math.round((upi / orders.length) * 100)}% UPI` : 'Awaiting orders'}</span></div>
-          ${orders.length ? `<canvas id="dmChart" height="180" aria-label="Payment method donut"></canvas>` : `<p class="panel-sub">COD vs UPI once customers start ordering.</p>`}
+
+        <div class="glass g-card g-feed">
+          <div class="panel-row"><h3>Live Order Feed</h3><button class="link-btn" data-goto="orders">View All ${I.arrow}</button></div>
+          <div class="live-feed" id="liveFeed">${liveFeedHTML()}</div>
         </div>
-        <div class="glass-panel reveal">
-          <h3>Top sellers <span class="panel-sub">by units</span></h3>
-          ${top.length ? `<ol class="admin-list">${top.map((t, i) => `<li><b>${i + 1}.</b> <a href="${prodUrl(t.p)}">${esc(t.p.shortName)}</a><span>${t.qty} sold</span></li>`).join('')}</ol>`
-            : `<p class="panel-sub">Products will rank here once orders come in.</p>`}
+      </div>
+
+      <div class="glass g-card g-tbl">
+        <div class="panel-row"><h3>Recent Orders</h3><button class="link-btn" data-goto="orders">View All ${I.arrow}</button></div>
+        ${recentList.length ? `<div class="table-wrap"><table class="data-table">
+          <thead><tr><th>Code</th><th>Customer</th><th style="text-align:right">Total</th><th>Payment</th><th>Status</th><th>When</th></tr></thead>
+          <tbody>${recentList.map(o => orderRow(o)).join('')}</tbody>
+        </table></div>` : `<div class="empty-state" style="padding:22px"><div class="e-emoji">📦</div><h3>No orders yet</h3><p>Orders placed on this device appear here instantly.</p></div>`}
+      </div>
+
+      <div class="dash-2col">
+        <div class="glass g-card">
+          <h3>Top Selling Products</h3>
+          ${orders.length ? `<div class="top-list">${topSellers().map((t, i) => `
+            <div class="top-row"><span class="rank rank-${Math.min(i + 1, 3)}">${i + 1}</span>
+              <span class="top-th" style="background:${catLabel(t.p).icon.match(/[a-z]/i) ? 'transparent' : 'transparent'}">${(t.p.image ? `<img src="${esc(t.p.image)}" alt="">` : esc(catLabel(t.p).icon))}</span>
+              <span class="top-info"><b>${esc(t.p.shortName)}</b><small>${t.qty} sold · ${money(t.p.price)}</small></span>
+              <b class="top-rev">${money(t.qty * priceOf(t.p))}</b></div>`).join('')}</div>`
+            : `<div class="empty-state" style="padding:20px"><div class="e-emoji">🏆</div><h3>No sales yet</h3></div>`}
         </div>
-        <div class="glass-panel reveal">
-          <h3>Low stock <span class="panel-sub">≤ 6 units</span></h3>
-          ${low.length ? `<ul class="admin-list">${low.map(p => `<li><a href="${prodUrl(p)}">${esc(p.shortName)}</a><span class="tag ${stockOf(p) > 0 ? 'in' : 'out'}">${stockOf(p)} left</span></li>`).join('')}</ul>`
-            : `<p class="panel-sub">Inventory is healthy — no low-stock items.</p>`}
+        <div class="glass g-card">
+          <div class="panel-row"><h3>Payment Split</h3><span class="panel-sub">${orders.length ? `${Math.round((orders.filter(o => o.payment === 'COD').length / orders.length) * 100)}% COD` : 'Awaiting orders'}</span></div>
+          ${orders.length ? `<canvas id="dmChart" height="170" aria-label="Payment method donut"></canvas>` : `<div class="skel-box" aria-hidden="true"><i style="width:50%"></i></div><p class="panel-sub">COD vs UPI once customers start ordering.</p>`}
         </div>
-        <div class="glass-panel reveal">
-          <h3>Recent orders</h3>
-          ${recentList.length ? `<ul class="admin-list">${recentList.map(o => `<li><a href="#/staff" data-code-jump="${o.id}"><b>${esc(o.code)}</b></a><span>${money(o.totals.total)} · ${esc(o.customer.name)}</span></li>`).join('')}</ul>`
-            : `<p class="panel-sub">Latest orders will show here.</p>`}
-        </div>
+      </div>
+
+      <div class="m-bar">
+        <div class="m-item"><b>${activeCust}</b><span>Active Customers</span></div>
+        <div class="m-item"><b>${conv}%</b><span>Conversion Rate</span></div>
+        <div class="m-item"><b>${money(aov)}</b><span>Avg. Order Value</span></div>
+        <div class="m-item"><b>${returning}</b><span>Returning Customers</span></div>
       </div>`;
   };
 
-  const staffCustomers = () => {
-    const rows = Object.entries(users).map(([email, user]) => {
+  const liveFeedHTML = () => {
+    const items = [...activity].filter(a => a.type === 'order').slice(0, 6);
+    if (!items.length) return `<div class="feed-empty">${I2.bell} New orders will stream in here.</div>`;
+    return items.map(a => `
+      <div class="feed-row">
+        <span class="feed-dot"></span>
+        <span class="feed-tx">${esc(a.msg)}</span>
+        <span class="feed-at">${timeAgo(a.at)}</span>
+      </div>`).join('');
+  };
+
+  const topSellers = () => {
+    const unitsBy = {};
+    for (const o of orders) for (const it of o.items || []) unitsBy[it.id] = (unitsBy[it.id] || 0) + it.qty;
+    return Object.entries(unitsBy).map(([id, qty]) => ({ p: allProducts().find(x => x.id === Number(id)), qty })).filter(x => x.p).sort((a, b) => b.qty - a.qty).slice(0, 5);
+  };
+
+  const orderRow = (o, expandId = '') => `<tr>
+    <td class="row-name"><button type="button" class="link-btn" data-code-detail="${o.id}">${esc(o.code)} ${expandId === o.id ? '▴' : '▾'}</button></td>
+    <td>${esc(o.customer.name)}<br><span style="font-size:12px;color:var(--muted)">${esc(o.customer.phone)}</span></td>
+    <td style="font-weight:800;color:var(--primary-deep);text-align:right">${money(o.totals.total)}</td>
+    <td><span class="pay-chip ${o.payment === 'COD' ? 'cod' : 'upi'}">${esc(o.payment === 'COD' ? 'COD' : 'UPI')}</span></td>
+    <td><select class="pill-sel pill-sel--${STATUS_PILL[o.status] || 'pending'}" data-status="${o.id}">${STATUSES.map(s => `<option value="${s.key}" ${s.key === o.status ? 'selected' : ''}>${s.label}</option>`).join('')}</select></td>
+    <td style="font-size:12.5px;color:var(--muted)">${fmtDate(o.placedAt)}</td>
+  </tr>${expandId === o.id ? orderDetailRow(o) : ''}`;
+
+  const thumb = p => p.image ? `<img src="${esc(p.image)}" alt="" loading="lazy">` : `<span class="th-fb">${esc(catLabel(p).icon)}</span>`;
+
+  const panelCustomers = () => {
+    const q = (admQ || '').toLowerCase();
+    const list = Object.entries(users).filter(([email, ux]) => !q || email.toLowerCase().includes(q) || (ux.name || '').toLowerCase().includes(q) || (ux.city || '').toLowerCase().includes(q));
+    const rows = list.map(([email, user]) => {
       const mine = orders.filter(o => o.email === email);
       const spent = mine.reduce((a, o) => a + o.totals.total, 0);
       return `<tr>
-        <td class="row-name">${esc(user.name || '—')}</td>
+        <td class="row-name"><span class="p-cell"><span class="av-ic sm">${esc((user.name || 'C').trim().charAt(0).toUpperCase())}</span><span>${esc(user.name || '—')}<small>${esc(user.city || user.area || '')}</small></span></span></td>
         <td>${esc(email)}</td>
-        <td>${esc(user.role || 'customer')}</td>
+        <td><span class="role-chip ${user.role === 'admin' ? 'a' : user.role === 'staff' ? 's' : 'c'}">${esc(user.role || 'customer')}</span></td>
         <td style="font-size:12.5px;color:var(--muted)">${user.createdAt ? fmtDate(user.createdAt) : '—'}</td>
         <td style="text-align:center">${mine.length}</td>
         <td style="text-align:center;font-weight:800;color:var(--primary-deep)">${mine.length ? money(spent) : '—'}</td>
       </tr>`;
     }).join('');
-    if (!rows) return `<div class="empty-state reveal"><div class="e-emoji">👥</div><h3>No customers yet</h3><p>People who register on this device will be listed here.</p></div>`;
-    return `<div class="table-wrap reveal"><table class="data-table">
-      <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Joined</th><th style="text-align:center">Orders</th><th style="text-align:center">Spent</th></tr></thead>
-      <tbody>${rows}</tbody>
-    </table></div>`;
+    return `
+      <div class="tbl-tools">
+        <div class="at-search mini">${I2.search}<input id="admUq" type="text" placeholder="Search users…" value="${esc(q)}"></div>
+        <span class="panel-sub">${list.length} users</span>
+      </div>
+      ${rows ? `<div class="table-wrap"><table class="data-table">
+        <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Joined</th><th style="text-align:center">Orders</th><th style="text-align:center">Spent</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table></div>` : `<div class="empty-state"><div class="e-emoji">👥</div><h3>No customers yet</h3><p>People who register on this device will be listed here.</p></div>`}`;
   };
 
   const orderDetailRow = o => `<tr class="odetail" data-oid="${o.id}">
@@ -1374,85 +1844,684 @@
     const btn = $(`[data-code-detail="${id}"]`);
     const open = btn && (btn.textContent || '').includes('▴');
     panel.innerHTML = staffOrders(open ? '' : id);
-    wireStaffTables();
+    wireAdmin();
   };
 
+  let admOrderFilter = 'all';
   const staffOrders = (expandId = '') => {
-    if (!orders.length) return `<div class="empty-state reveal"><div class="e-emoji">📦</div><h3>No orders yet</h3><p>Orders placed on this device appear here instantly.</p></div>`;
-    return `<div class="table-wrap reveal"><table class="data-table">
-      <thead><tr><th>Code</th><th>Customer</th><th>Total</th><th>Payment</th><th>Status</th><th>When</th></tr></thead>
-      <tbody>${orders.map(o => `<tr>
-        <td class="row-name"><button type="button" class="link-btn" data-code-detail="${o.id}">${esc(o.code)} ${expandId === o.id ? '▴' : '▾'}</button></td>
-        <td>${esc(o.customer.name)}<br><span style="font-size:12px;color:var(--muted)">${esc(o.customer.phone)}</span></td>
-        <td style="font-weight:800;color:var(--primary-deep)">${money(o.totals.total)}</td>
-        <td>${esc(o.payment === 'COD' ? 'COD' : 'UPI')}</td>
-        <td><select class="filter-select" style="padding:6px 30px 6px 10px;font-size:12.5px" data-status="${o.id}">${STATUSES.map(s => `<option value="${s.key}" ${s.key === o.status ? 'selected' : ''}>${s.label}</option>`).join('')}</select></td>
-        <td style="font-size:12.5px;color:var(--muted)">${fmtDate(o.placedAt)}</td>
-      </tr>${expandId === o.id ? orderDetailRow(o) : ''}`).join('')}</tbody>
-    </table></div>`;
+    const q = (admQ || '').toLowerCase();
+    let list = [...orders];
+    if (admOrderFilter !== 'all') list = list.filter(o => o.status === admOrderFilter);
+    if (q) list = list.filter(o => (o.code + ' ' + (o.customer.name || '') + ' ' + (o.customer.phone || '')).toLowerCase().includes(q));
+    return `
+      <div class="tbl-tools">
+        <div class="at-search mini">${I2.search}<input id="admOrderQ" type="text" placeholder="Search code, name, phone…" value="${esc(q)}"></div>
+        <select class="filter-select" id="admOrderF"><option value="all">All statuses</option>${STATUSES.map(s => `<option value="${s.key}" ${admOrderFilter === s.key ? 'selected' : ''}>${s.label}</option>`).join('')}</select>
+        <span class="panel-sub">${list.length} of ${orders.length} orders</span>
+      </div>
+      ${list.length ? `<div class="table-wrap"><table class="data-table">
+        <thead><tr><th>Code</th><th>Customer</th><th style="text-align:right">Total</th><th>Payment</th><th>Status</th><th>When</th></tr></thead>
+        <tbody>${list.map(o => orderRow(o, expandId)).join('')}</tbody>
+      </table></div>` : `<div class="empty-state"><div class="e-emoji">📦</div><h3>No orders yet</h3><p>Orders placed on this device appear here instantly.</p></div>`}`;
   };
 
-  const staffStock = () => `<div class="table-wrap reveal"><table class="data-table">
-      <thead><tr><th>Item</th><th>Category</th><th style="text-align:right">Price ₹</th><th style="text-align:center">Stock</th><th style="text-align:center">Override</th><th style="text-align:center">Featured</th></tr></thead>
-      <tbody>${PRODUCTS.map(p => `<tr>
-        <td class="row-name" style="max-width:260px"><a href="${prodUrl(p)}">${esc(p.shortName)}</a></td>
-        <td>${esc(catLabel(p).name)}</td>
-        <td style="text-align:right"><div class="pd-cell"><span class="p-display">${money(priceOf(p))}</span><input class="price-input" type="number" min="0" step="1" data-price="${p.id}" value="${priceOf(p)}" aria-label="Price for ${esc(p.shortName)}"></div></td>
-        <td style="text-align:center"><span class="tag ${inStockOf(p) ? 'in' : 'out'}">${stockOf(p) > 0 ? stockOf(p) + ' units' : 'Out'}</span></td>
-        <td style="text-align:center"><select class="filter-select" style="padding:6px 30px 6px 10px;font-size:12.5px" data-stock="${p.id}">
-          <option value="0" ${stockOf(p) === 0 ? 'selected' : ''}>Out of stock</option>
-          <option value="3" ${stockOf(p) === 3 ? 'selected' : ''}>Low (3)</option>
-          <option value="10" ${stockOf(p) === 10 ? 'selected' : ''}>In stock (10)</option>
-          <option value="999" ${stockOf(p) === 999 ? 'selected' : ''}>Abundant (999)</option>
-        </select></td>
-        <td style="text-align:center"><input type="checkbox" class="feat-box" data-feat="${p.id}" ${featuredOf(p) ? 'checked' : ''} aria-label="Toggle featured for ${esc(p.shortName)}"></td>
-      </tr>`).join('')}</tbody>
-    </table></div>`;
+  const panelOrders = (expandId = '') => staffOrders(expandId);
 
-  const drawStaffCharts = () => {
-    const dl = $('#dlChart');
-    if (dl && orders.length) {
-      const days = 14;
-      const buckets = Array.from({ length: days }, () => 0);
-      const now = new Date(); now.setHours(0, 0, 0, 0);
-      for (const o of orders) { const d = new Date(o.placedAt); const bb = new Date(d); bb.setHours(0, 0, 0, 0); const i = Math.round((now - bb) / 864e5); if (i >= 0 && i < days) buckets[days - 1 - i]++; }
-      const max = Math.max(1, ...buckets);
-      const ctx = dl.getContext('2d');
-      const W = dl.clientWidth || 300, H = dl.height;
-      const dpr = window.devicePixelRatio || 1;
-      dl.width = W * dpr; dl.height = H * dpr; ctx.scale(dpr, dpr);
-      const pad = 6, bw = (W - pad * 2) / days, gap = 3;
+  const staffStock = () => {
+    const q = (admQ || '').toLowerCase();
+    let prods = allProducts();
+    if (q) prods = prods.filter(p => (p.shortName + ' ' + p.name + ' ' + catLabel(p).name).toLowerCase().includes(q));
+    return `
+      <div class="tbl-tools">
+        <div class="at-search mini">${I2.search}<input id="admPq" type="text" placeholder="Search products…" value="${esc(q)}"></div>
+        <button class="btn btn-primary sm" data-qa="add-product">${I2.plus} Add Product</button>
+        <span class="panel-sub">${prods.length} products</span>
+      </div>
+      <div class="table-wrap"><table class="data-table">
+        <thead><tr><th>Item</th><th>Category</th><th style="text-align:right">Price ₹</th><th style="text-align:center">Stock</th><th style="text-align:center">Override</th><th style="text-align:center">Featured</th><th></th></tr></thead>
+        <tbody>${prods.map(p => `<tr>
+          <td class="row-name" style="max-width:250px"><span class="p-cell"><span class="p-th">${thumb(p)}</span><span><a href="${prodUrl(p)}">${esc(p.shortName)}</a><small>${esc(p.sku || '')}</small></span></span></td>
+          <td>${esc(catLabel(p).name)}</td>
+          <td style="text-align:right"><div class="pd-cell"><span class="p-display">${money(priceOf(p))}</span><input class="price-input" type="number" min="0" step="1" data-price="${p.id}" value="${priceOf(p)}" aria-label="Price for ${esc(p.shortName)}"></div></td>
+          <td style="text-align:center"><span class="tag ${inStockOf(p) ? 'in' : 'out'}">${stockOf(p) > 0 ? stockOf(p) + ' units' : 'Out'}</span></td>
+          <td style="text-align:center"><select class="filter-select" style="padding:6px 30px 6px 10px;font-size:12.5px" data-stock="${p.id}">
+            <option value="0" ${stockOf(p) === 0 ? 'selected' : ''}>Out of stock</option>
+            <option value="3" ${stockOf(p) === 3 ? 'selected' : ''}>Low (3)</option>
+            <option value="10" ${stockOf(p) === 10 ? 'selected' : ''}>In stock (10)</option>
+            <option value="999" ${stockOf(p) === 999 ? 'selected' : ''}>Abundant (999)</option>
+          </select></td>
+          <td style="text-align:center"><input type="checkbox" class="feat-box" data-feat="${p.id}" ${featuredOf(p) ? 'checked' : ''} aria-label="Toggle featured for ${esc(p.shortName)}"></td>
+          <td>${p.isExtra ? `<button type="button" class="icon-btn" data-del-prod="${p.id}" title="Delete" aria-label="Delete ${esc(p.shortName)}">${I2.trash}</button>` : ''}</td>
+        </tr>`).join('')}</tbody>
+      </table></div>`;
+  };
+
+  const panelProducts = () => staffStock();
+
+  const panelAnalytics = () => {
+    const low = allProducts().filter(p => inStockOf(p) && stockOf(p) <= 6).sort((a, b) => stockOf(a) - stockOf(b)).slice(0, 6);
+    const catAvg = CATS.map(c => {
+      const units = orders.reduce((x, o) => x + (o.items || []).filter(i => { const p = allProducts().find(z => z.id === i.id); return p && p.cats && p.cats.includes(c.id); }).reduce((y, i) => y + i.qty, 0), 0);
+      return { c, units };
+    }).sort((a, b) => b.units - a.units).slice(0, 7);
+    const maxU = Math.max(1, ...catAvg.map(r => r.units));
+    return `
+      <div class="glass g-card">
+        <div class="panel-row"><h3>Revenue</h3><div class="seg"><button class="seg-b on" data-range="30">30D</button><button class="seg-b" data-range="90">90D</button></div></div>
+        ${orders.length ? `<canvas id="anChart" height="220" aria-label="Revenue analytics chart"></canvas>` : `<div class="skel-box" aria-hidden="true"><i></i><i></i><i></i><i></i></div><p class="panel-sub">Revenue trends will render once orders exist.</p>`}
+      </div>
+      <div class="dash-2col">
+        <div class="glass g-card"><h3>Sales by category</h3>
+          ${catAvg.map(r => `<div class="tc-row"><span>${esc(r.c.name)}</span><div class="tc-track"><i style="width:${Math.max(4, Math.round((r.units / maxU) * 100))}%"></i></div><b>${r.units}</b></div>`).join('') || `<p class="panel-sub">No category sales yet.</p>`}
+        </div>
+        <div class="glass g-card"><h3>Low stock</h3>
+          ${low.map(p => `<div class="ls-row"><span>${esc(p.shortName)}</span><b class="tag ${stockOf(p) > 0 ? 'in' : 'out'}">${stockOf(p)} left</b></div>`).join('') || `<p class="panel-sub">Inventory is healthy.</p>`}
+        </div>
+      </div>`;
+  };
+
+  const panelCategories = () => `<div class="cat-grid">${CATS.map(c => {
+      const n = allProducts().filter(p => p.cats && p.cats.includes(c.id)).length;
+      return `<div class="glass cat-card"><span class="cc-ic">${esc(c.icon || '✦')}</span><h3>${esc(c.name)}</h3><p class="panel-sub">${n} products</p><a class="link-btn" href="#/products?cat=${c.id}">Browse ${I.arrow}</a></div>`;
+    }).join('')}</div>`;
+
+  const panelAddProduct = () => {
+    const catsOpt = CATS.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('');
+    return `<div class="glass add-wrap">
+      <div class="ad-head"><div><h2>Add Product</h2><p class="panel-sub">The listing appears in the shop grid, product search and price list instantly.</p></div></div>
+      <div class="add-form">
+        <label>Product name * <input id="apName" type="text" placeholder="e.g. 1000 Shot Rainbow Cake"></label>
+        <label>Category * <select id="apCat">${catsOpt}</select></label>
+        <div class="add-g2">
+          <label>Price (₹) * <input id="apPrice" type="number" min="0" step="1" placeholder="499"></label>
+          <label>Compare at (₹) <input id="apCmp" type="number" min="0" step="1" placeholder="599"></label>
+        </div>
+        <div class="add-g2">
+          <label>Stock <input id="apStock" type="number" min="0" step="1" value="10"></label>
+          <label class="feat-line"><input id="apFeat" type="checkbox"> Featured on home</label>
+        </div>
+        <label>Image URL <input id="apImg" type="text" placeholder="https://…/image.jpg (optional)"></label>
+        <div class="add-g2">
+          <label>SKU <input id="apSku" type="text" placeholder="CM-9000"></label>
+          <label>Rating <input id="apRate" type="number" min="0" max="5" step="0.1" value="4.5"></label>
+        </div>
+        <label>Short note <input id="apNote" type="text" placeholder="A one-line selling point"></label>
+        <div class="add-actions"><button class="btn btn-primary" data-save-product>${I2.plus} Save product</button><button class="btn btn-ghost" data-goto="products">Cancel</button></div>
+      </div>
+    </div>`;
+  };
+
+  const panelPriceList = () => `
+    <div class="tbl-tools">
+      <div class="at-search mini">${I2.search}<input id="plSearch" type="text" placeholder="Search price list…"></div>
+      <select class="filter-select" id="plCat"><option value="all">All categories</option>${CATS.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select>
+      <button class="btn btn-ghost sm" id="plCsv">${I2.download} Export CSV</button>
+      <button class="btn btn-ghost sm" id="plPrint">${I.print} Print</button>
+    </div>
+    <div class="table-wrap"><table class="data-table" id="plTable"><thead>
+      <tr><th>SKU</th><th>Item</th><th>Category</th><th style="text-align:right">Compare</th><th style="text-align:right">Price</th><th style="text-align:right">Off</th><th style="text-align:center">Stock</th></tr></thead>
+      <tbody>${priceListRows()}</tbody></table></div>`;
+
+  let posQ = '';
+  const posProdsHTML = () => {
+    const q = (posQ || '').toLowerCase();
+    let list = allProducts().filter(inStockOf);
+    if (q) list = list.filter(p => (p.shortName + ' ' + p.name).toLowerCase().includes(q));
+    return list.slice(0, 48).map(p => `<button type="button" class="pos-prod" data-pos-add="${p.id}"><span class="p-th">${thumb(p)}</span><b>${esc(p.shortName)}</b><small>${money(priceOf(p))} · ${stockOf(p)} left</small></button>`).join('') || `<p class="panel-sub">No matching products.</p>`;
+  };
+  const posTotal = () => posCart.reduce((a, l) => { const p = allProducts().find(x => x.id === l.id); return a + (p ? priceOf(p) * l.qty : 0); }, 0);
+  const posLinesHTML = () => posCart.length ? posCart.map(l => {
+    const p = allProducts().find(x => x.id === l.id);
+    if (!p) return '';
+    return `<div class="pos-line"><span class="pl-name">${esc(p.shortName)}</span><div class="pl-ctrls"><button type="button" data-pos-dec="${p.id}">&minus;</button><b>${l.qty}</b><button type="button" data-pos-inc="${p.id}">+</button></div><span class="pl-amt">${money(priceOf(p) * l.qty)}</span><button type="button" class="icon-btn" data-pos-del="${p.id}">${I2.trash}</button></div>`;
+  }).join('') : `<div class="feed-empty">${I2.cashI} Add products from the left to start a bill.</div>`;
+  const panelPos = () => `
+    <div class="pos-grid">
+      <div class="glass pos-picker">
+        <div class="panel-row"><h3>Products</h3><div class="at-search mini">${I2.search}<input id="posQ" type="text" placeholder="Scan or search…" value="${esc(posQ)}"></div></div>
+        <div class="pos-prods" id="posProds">${posProdsHTML()}</div>
+      </div>
+      <div class="glass pos-bill">
+        <div class="panel-row"><h3>Current Bill</h3></div>
+        <div class="pos-cust">
+          <label>Customer name <input id="posName" type="text" placeholder="Walk-in customer"></label>
+          <label>Phone (10 digits) <input id="posPhone" type="text" placeholder="98765 43210"></label>
+        </div>
+        <div class="pos-lines" id="posLines">${posLinesHTML()}</div>
+        <div class="pos-total"><span>Total</span><b id="posTotal">${money(posTotal())}</b></div>
+        <div class="pos-place">
+          <select id="posPay"><option value="COD">Cash on Delivery</option><option value="UPI">UPI</option></select>
+          <button class="btn btn-primary" id="posPlace">${I2.cashI} Place order</button>
+        </div>
+      </div>
+    </div>`;
+
+  const panelCanvas = () => `
+    <div class="glass cv-wrap">
+      <div class="cv-tools">
+        <label>Product <select id="cvProd">${allProducts().map(p => `<option value="${p.id}">${esc(p.shortName)}</option>`).join('')}</select></label>
+        <label>Brightness <input type="range" min="0" max="200" value="100" data-cv-f="brightness"></label>
+        <label>Contrast <input type="range" min="0" max="200" value="100" data-cv-f="contrast"></label>
+        <label>Saturation <input type="range" min="0" max="200" value="100" data-cv-f="saturate"></label>
+        <div class="add-actions"><button class="btn btn-primary sm" data-cv-redraw>${I2.refresh} Redraw preview</button><button class="btn btn-ghost sm" data-cv-dl>${I2.download} Download PNG</button></div>
+      </div>
+      <canvas id="cvCanvas" width="440" height="440" class="cv-canvas"></canvas>
+    </div>`;
+
+  const panelNotifications = () => {
+    const items = activity.filter(a => a.type === 'order').slice(0, 24);
+    if (!items.length) return `<div class="glass g-card"><div class="empty-state" style="padding:26px"><div class="e-emoji">🔔</div><h3>All caught up</h3><p>Order notifications will appear here.</p></div></div>`;
+    return `<div class="glass g-card">
+      <div class="panel-row"><h3>Notifications</h3><span class="tbl-tools"><button class="btn btn-ghost sm" data-notif-read>Mark all read</button><button class="btn btn-ghost sm" data-notif-clear>Clear</button></span></div>
+      <div class="note-list">${items.map(a => `<div class="note-row ${a.read ? '' : 'unread'}"><span class="note-dot"></span><div><b>${esc(a.msg)}</b><small>${timeAgo(a.at)}</small></div></div>`).join('')}</div>
+    </div>`;
+  };
+
+  const panelSettings = u => `
+    <div class="glass g-card">
+      <div class="panel-row"><h3>Profile</h3></div>
+      <div class="profile-row"><span class="av-ic big">${adminGravatar(u)}</span><div><b>${esc(u.name)}</b><small>${esc(u.email)}</small><p class="panel-sub">${u.role === 'admin' ? 'Administrator' : 'Staff'} access · signed in on this device</p></div></div>
+    </div>
+    <div class="glass g-card">
+      <h3>Appearance</h3>
+      <p class="panel-sub">Switch the admin console between light and dark.</p>
+      <div class="seg"><button class="seg-b ${admPrefs.theme !== 'dark' ? 'on' : ''}" data-theme-set="light">Light</button><button class="seg-b ${admPrefs.theme === 'dark' ? 'on' : ''}" data-theme-set="dark">Dark</button></div>
+    </div>
+    <div class="glass g-card">
+      <h3>Server status</h3>
+      <div class="srv-row"><span class="dot"></span><span>API service</span><b class="srv-ok">Operational</b></div>
+      <div class="srv-row"><span class="dot"></span><span>Demo data storage</span><b class="srv-ok">Local</b></div>
+      <div class="srv-row"><span class="dot"></span><span>Catalog</span><b class="srv-ok">${allProducts().length} products</b></div>
+      <div class="srv-row"><span class="dot"></span><span>Orders</span><b class="srv-ok">${orders.length} recorded</b></div>
+    </div>
+    <div class="glass g-card danger-c">
+      <h3>Danger zone</h3>
+      <p class="panel-sub">Reset the demo workspace (this device only).</p>
+      <button class="btn btn-danger" id="resetAll">Reset demo data</button>
+      <button class="btn btn-ghost" data-signout>${I2.exit} Sign out</button>
+    </div>`;
+
+  const panelLogs = () => {
+    const sys = [
+      ...activity.filter(a => a.type === 'log').map(a => ({ at: a.at, msg: a.msg, lvl: 'info' })),
+      ...orders.flatMap(o => (o.log || []).map(l => ({ at: l.at, msg: `${o.code} → ${(STATUSES.find(s => s.key === l.status) || {}).label}`, lvl: statusIndex(l.status) === STATUSES.length - 1 ? 'ok' : 'info' }))),
+    ].sort((a, b) => new Date(b.at) - new Date(a.at)).slice(0, 48);
+    return `<div class="glass g-card">
+      <div class="panel-row"><h3>Operations log</h3><span class="panel-sub">Latest activity on this workspace</span></div>
+      ${sys.length ? `<div class="log-list">${sys.map(l => `<div class="log-row"><span class="log-lvl ${l.lvl}">${l.lvl}</span><span>${esc(l.msg)}</span><small>${timeAgo(l.at)}</small></div>`).join('')}</div>` : `<div class="feed-empty">${I2.scroll} No log entries yet. Every order update is recorded here.</div>`}
+    </div>`;
+  };
+
+  const panelDanger = () => `<div class="glass g-card danger-c">
+      <h2>Danger zone</h2>
+      <p class="panel-sub">Reset the demo workspace (this device only). This clears orders, users, overrides and added products on this browser.</p>
+      <button class="btn btn-danger" id="resetAllB">Reset demo data</button>
+    </div>`;
+
+  const canvasSize = cv => {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const W = cv.clientWidth || 420, H = cv.clientHeight || cv.height || 160;
+    cv.width = W * dpr; cv.height = H * dpr;
+    const ctx = cv.getContext('2d');
+    if (ctx && ctx.setTransform) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return { ctx, W, H };
+  };
+  const compactMoney = v => {
+    if (v >= 10000000) return '₹' + (v / 10000000).toFixed(1) + 'Cr';
+    if (v >= 100000) return '₹' + (v / 100000).toFixed(1) + 'L';
+    if (v >= 1000) return '₹' + Math.round(v / 1000) + 'k';
+    return money(v);
+  };
+  const lineChart = (cv, pts, opt = {}) => {
+    const { ctx, W, H } = canvasSize(cv);
+    if (!ctx) return;
+    const color = opt.color || '#2196F3';
+    const pad = { l: 46, r: 14, t: 14, b: 26 };
+    const iw = W - pad.l - pad.r, ih = H - pad.t - pad.b;
+    const maxV = Math.max(...pts.map(p => p.v), 1);
+    const xAt = i => pad.l + (pts.length <= 1 ? iw / 2 : (i / (pts.length - 1)) * iw);
+    const yAt = v => pad.t + ih - (v / maxV) * ih;
+    const paint = tip => {
       ctx.clearRect(0, 0, W, H);
-      for (let i = 0; i < days; i++) {
-        const bh = Math.max(4, (buckets[i] / max) * (H - 30));
-        const x = pad + i * bw;
-        ctx.fillStyle = i === days - 1 ? '#FF6F91' : '#2196F3';
-        ctx.globalAlpha = .85;
-        ctx.fillRect(x + gap, H - 18 - bh, bw - gap * 2, bh);
-        ctx.globalAlpha = 1;
-        ctx.fillStyle = 'rgba(255,255,255,.4)';
-        ctx.beginPath(); ctx.arc(x + (bw - gap * 2) / 2, H - 18 - bh, 2.5, 0, 7); ctx.fill();
+      ctx.strokeStyle = opt.grid || 'rgba(13,71,161,.10)';
+      ctx.lineWidth = 1;
+      ctx.fillStyle = opt.gridTxt || 'rgba(13,71,161,.55)';
+      ctx.font = '10px Inter, system-ui, sans-serif';
+      ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+      for (let r = 0; r <= 4; r++) {
+        const y = pad.t + (ih / 4) * r;
+        ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(W - pad.r, y); ctx.stroke();
+        ctx.fillText(opt.formatY ? opt.formatY(maxV * (1 - r / 4)) : compactMoney(maxV * (1 - r / 4)), pad.l - 8, y);
       }
-      ctx.fillStyle = 'rgba(255,255,255,.55)'; ctx.font = '11px sans-serif';
-      ctx.fillText('14d ago', pad, H - 5); ctx.fillText('today', W - 38, H - 5);
+      if (pts.length > 1) {
+        ctx.beginPath();
+        pts.forEach((p, i) => { const x = xAt(i), y = yAt(p.v); if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); });
+        const grad = ctx.createLinearGradient ? ctx.createLinearGradient(0, pad.t, 0, H - pad.b) : null;
+        if (grad) { grad.addColorStop(0, color + '55'); grad.addColorStop(1, color + '00'); ctx.fillStyle = grad; }
+        ctx.lineTo(xAt(pts.length - 1), pad.t + ih); ctx.lineTo(xAt(0), pad.t + ih); ctx.closePath();
+        if (grad) ctx.fill();
+        ctx.beginPath();
+        pts.forEach((p, i) => { const x = xAt(i), y = yAt(p.v); if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); });
+        ctx.strokeStyle = color; ctx.lineWidth = 2.4; ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.stroke();
+      }
+      pts.forEach((p, i) => {
+        const x = xAt(i), y = yAt(p.v);
+        ctx.beginPath(); ctx.arc(x, y, 3, 0, 7); ctx.fillStyle = '#fff'; ctx.fill();
+        ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.stroke();
+        if (opt.xLabel && p.l) { ctx.fillStyle = opt.gridTxt || 'rgba(13,71,161,.55)'; ctx.textAlign = 'center'; ctx.font = '9.5px Inter, system-ui, sans-serif'; ctx.fillText(p.l, x, H - 9); }
+      });
+      if (tip && opt.tip) {
+        const t = opt.tip(tip.i);
+        const tx = tip.x, ty = 14;
+        ctx.strokeStyle = color; ctx.globalAlpha = .5; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(tx, pad.t); ctx.lineTo(tx, pad.t + ih); ctx.stroke(); ctx.globalAlpha = 1;
+        const bw = Math.max(90, 12 + (t[0] || '').length * 6, 12 + (t[1] || '').length * 7);
+        const bx = clamp(tx - bw / 2, 2, W - bw - 2);
+        ctx.fillStyle = '#0D47A1'; ctx.beginPath();
+        ctx.roundRect ? ctx.roundRect(bx, ty - 8, bw, 38, 8) : ctx.rect(bx, ty - 8, bw, 38);
+        ctx.fill();
+        ctx.fillStyle = '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.font = '600 11px Inter, system-ui, sans-serif'; ctx.fillText(t[0], bx + 10, ty);
+        ctx.font = '700 13px Inter, system-ui, sans-serif'; ctx.fillText(t[1], bx + 10, ty + 17);
+      }
+    };
+    paint(null);
+    if (opt.tip && !reduceMotion) {
+      cv._chartTip = { pts, xAt, yAt, paint };
+      cv.onmousemove = e => {
+        const r = cv.getBoundingClientRect ? cv.getBoundingClientRect() : null;
+        const x = r ? (e.clientX - r.left) * (W / r.width) : (e.clientX || 0);
+        let best = 0, bd = 1e9;
+        pts.forEach((p, i) => { const d = Math.abs(xAt(i) - x); if (d < bd) { bd = d; best = i; } });
+        const step = Math.max(20, iw / Math.max(1, pts.length) / 2);
+        if (bd < step) paint({ i: best, x: xAt(best) }); else paint(null);
+      };
+      cv.onmouseleave = () => paint(null);
     }
+  };
+  const donutChart = (cv, segs, centerTxt, sub) => {
+    const { ctx, W, H } = canvasSize(cv);
+    if (!ctx) return;
+    const S = Math.min(W, H), cx = S / 2, cy = S / 2, R = S / 2 - 10;
+    ctx.clearRect(0, 0, W, H);
+    const total = segs.reduce((a, s) => a + s[0], 0) || 1;
+    let a = -Math.PI / 2;
+    for (const [v, col] of segs) {
+      const ang = (v / total) * Math.PI * 2;
+      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, R, a, a + ang); ctx.closePath(); ctx.fillStyle = col; ctx.fill(); a += ang;
+    }
+    ctx.beginPath(); ctx.arc(cx, cy, R * .6, 0, 7); ctx.fillStyle = 'rgba(255,255,255,.95)'; ctx.fill();
+    ctx.fillStyle = '#0D47A1'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.font = '700 20px Inter, system-ui, sans-serif'; ctx.fillText(centerTxt, cx, cy - 6);
+    ctx.fillStyle = 'rgba(13,71,161,.6)'; ctx.font = '10px Inter, system-ui, sans-serif'; ctx.fillText(sub, cx, cy + 14);
+  };
+  const spark = cv => {
+    const raw = (cv.getAttribute('data-spark') || '').split(',').map(Number).filter(n => !isNaN(n));
+    const color = cv.getAttribute('data-color') || '#2196F3';
+    const { ctx, W, H } = canvasSize(cv);
+    if (!ctx || raw.length < 2) return;
+    const maxV = Math.max(...raw, 1), minV = Math.min(...raw, 0);
+    ctx.clearRect(0, 0, W, H);
+    ctx.beginPath();
+    raw.forEach((v, i) => { const x = (i / (raw.length - 1)) * W, y = H - 3 - ((v - minV) / (maxV - minV || 1)) * (H - 6); if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); });
+    ctx.strokeStyle = color; ctx.lineWidth = 1.8; ctx.stroke();
+  };
+
+  const salesWindow = () => {
+    let days = salesSince ? Math.max(2, Math.round((Date.now() - new Date(salesSince).getTime()) / 864e5)) : salesRange;
+    const since = new Date(); since.setHours(0, 0, 0, 0); since.setDate(since.getDate() - (days - 1));
+    return { days, since };
+  };
+  const drawSalesChart = (cv, opt = {}) => {
+    if (!orders.length) return;
+    const days = opt.days || salesWindow().days;
+    const since = (() => { const d = new Date(); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() - (days - 1)); return d; })();
+    const buckets = Array.from({ length: days }, () => 0);
+    for (const o of orders) { const d = new Date(o.placedAt); d.setHours(0, 0, 0, 0); const i = Math.round((d - since) / 864e5); if (i >= 0 && i < days) buckets[i] += o.totals.total; }
+    const step = Math.max(1, Math.ceil(days / 8));
+    const pts = buckets.map((v, i) => {
+      const d = new Date(since); d.setDate(d.getDate() + i);
+      const l = i % step === 0 ? d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : '';
+      return { v, l, d };
+    });
+    lineChart(cv, pts, {
+      color: opt.color || '#2196F3',
+      xLabel: true,
+      tip: i => [pts[i].d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }), money(pts[i].v)],
+      formatY: compactMoney,
+    });
+  };
+  const updateSalesSummary = () => {
+    const so = $('#soChart');
+    if (!so) return;
+    const { days, since } = salesWindow();
+    let tot = 0, cnt = 0;
+    for (const o of orders) { const d = new Date(o.placedAt); d.setHours(0, 0, 0, 0); const i = Math.round((d - since) / 864e5); if (i >= 0 && i < days) { tot += o.totals.total; cnt++; } }
+    const sum = $('#saleSum');
+    if (sum) sum.innerHTML = `<span><b>${money(tot)}</b><small>Revenue · ${days}d</small></span><span><b>${cnt}</b><small>Orders</small></span><span><b>${cnt ? money(Math.round(tot / cnt)) : '—'}</b><small>Avg. order</small></span>`;
+    const to = $('#soTo');
+    if (salesSince && to) { const d = new Date(salesSince); d.setDate(d.getDate() + days - 1); to.value = d.toISOString().slice(0, 10); }
+    drawSalesChart(so);
+  };
+  const handleSalesRange = r => {
+    const calRow = document.querySelector('.cal-row');
+    if (calRow) calRow.style.display = r === 'custom' ? 'flex' : 'none';
+    if (r === 'custom') {
+      const f = $('#soFrom');
+      salesSince = f && f.value ? f.value : new Date().toISOString().slice(0, 10);
+      salesRange = 14;
+    } else {
+      salesSince = null;
+      salesRange = Number(r);
+    }
+    $$('.seg-b[data-range]').forEach(b => b.classList.toggle('on', b.getAttribute('data-range') === r));
+    if (adminPanel === 'dashboard') updateSalesSummary();
+    else { const an = $('#anChart'); if (an) drawSalesChart(an, { days: r === '90' ? 90 : 30, color: '#0D47A1' }); }
+  };
+
+  const drawAdminCharts = () => {
+    $$('.k-spark').forEach(spark);
+    if (!orders.length) return;
+    const so = $('#soChart');
+    if (so) { updateSalesSummary(); }
     const dm = $('#dmChart');
-    if (dm && orders.length) {
+    if (dm) {
       const cod = orders.filter(o => o.payment === 'COD').length, upi = orders.length - cod;
-      const ctx = dm.getContext('2d');
-      const S = Math.min(dm.clientWidth || 160, dm.clientWidth ? dm.clientHeight : 120);
-      const cx = S / 2, cy = S / 2, R = S / 2 - 6;
-      const dpr = window.devicePixelRatio || 1;
-      dm.width = S * dpr; dm.height = S * dpr; ctx.scale(dpr, dpr);
-      ctx.clearRect(0, 0, S, S);
-      const segs = [[upi, '#2196F3'], [cod, '#FF7043']].filter(s => s[0] > 0);
-      let a = 0;
-      for (const [v, col] of segs) { const ang = (v / orders.length) * Math.PI * 2; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, R, a, a + ang); ctx.closePath(); ctx.fillStyle = col; ctx.fill(); a += ang; }
-      ctx.beginPath(); ctx.arc(cx, cy, R * .62, 0, 7); ctx.fillStyle = 'rgba(10,20,40,.9)'; ctx.fill();
-      ctx.fillStyle = '#fff'; ctx.font = '700 20px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText(String(orders.length), cx, cy - 4);
-      ctx.font = '10px sans-serif'; ctx.fillStyle = 'rgba(255,255,255,.7)'; ctx.fillText('orders', cx, cy + 12);
+      donutChart(dm, [[upi, '#2196F3'], [cod, '#FF7043']], String(orders.length), Math.round((cod / orders.length) * 100) + '% COD');
     }
+    const an = $('#anChart');
+    if (an) drawSalesChart(an, { days: 30, color: '#0D47A1' });
+  };
+
+  const animateCounters = () => {
+    $$('[data-count]').forEach(el => {
+      const target = Number(el.getAttribute('data-count'));
+      const moneyF = el.getAttribute('data-money');
+      const set = v => { el.textContent = moneyF ? money(v) : v.toLocaleString('en-IN'); };
+      if (reduceMotion || target === 0) { set(target); return; }
+      const t0 = typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now();
+      const dur = 850;
+      const step = () => {
+        const now = typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now();
+        const p = Math.min(1, (now - t0) / dur);
+        set(Math.round(target * (1 - Math.pow(1 - p, 3))));
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  };
+  const updateBellUI = () => {
+    $$('[data-bell-badge]').forEach(b => { const n = bellUnread(); b.textContent = n || ''; b.style.display = n ? '' : 'none'; });
+  };
+
+  const switchAdminPanel = p => {
+    adminPanel = p;
+    const shell = $('#adminShell');
+    if (!shell) return;
+    shell.querySelectorAll('.as-item[data-stab]').forEach(x => x.classList.toggle('active', x.getAttribute('data-stab') === p));
+    const sp = $('#staffPanel');
+    if (sp) { sp.innerHTML = panelOf(p); wireAdmin(); }
+  };
+  const setAdmTheme = t => {
+    admPrefs.theme = t; save();
+    const shell = $('#adminShell');
+    if (shell) shell.setAttribute('data-admtheme', t);
+    updateBellUI();
+    $$('[data-theme-btn]').forEach(b => { b.innerHTML = t === 'dark' ? I2.sun : I2.moon; });
+    $$('[data-theme-btn2]').forEach(b => { b.innerHTML = `${I2.sun} Switch to ${t === 'dark' ? 'light' : 'dark'} mode`; });
+    $$('[data-theme-set]').forEach(b => b.classList.toggle('on', b.getAttribute('data-theme-set') === t));
+  };
+  const renderAdmSearch = q => {
+    const box = $('#admSearchBox');
+    if (!box) return;
+    if (!q) { box.innerHTML = ''; box.classList.remove('open'); return; }
+    const prods = allProducts().filter(p => (p.shortName + ' ' + p.name).toLowerCase().includes(q)).slice(0, 4);
+    const ords = orders.filter(o => (o.code + ' ' + (o.customer.name || '')).toLowerCase().includes(q)).slice(0, 4);
+    const uxs = Object.entries(users).filter(([e, u]) => (e + ' ' + (u.name || '')).toLowerCase().includes(q)).slice(0, 3);
+    if (!prods.length && !ords.length && !uxs.length) { box.innerHTML = `<div class="gs-empty">No matches for “${esc(q)}”.</div>`; box.classList.add('open'); return; }
+    box.innerHTML = `
+      ${ords.length ? `<b class="gs-h">Orders</b>${ords.map(o => `<button type="button" class="gs-item" data-gs="order" data-id="${o.id}">${I2.sheet}<span>${esc(o.code)}<small>${esc(o.customer.name || '')} · ${money(o.totals.total)}</small></span></button>`).join('')}` : ''}
+      ${prods.length ? `<b class="gs-h">Products</b>${prods.map(p => `<button type="button" class="gs-item" data-gs="product" data-id="${p.id}">${I2.box}<span>${esc(p.shortName)}<small>${money(priceOf(p))}</small></span></button>`).join('')}` : ''}
+      ${uxs.length ? `<b class="gs-h">Users</b>${uxs.map(([e, ux]) => `<button type="button" class="gs-item" data-gs="user" data-id="${e}">${I2.user}<span>${esc(ux.name || '')}<small>${esc(e)}</small></span></button>`).join('')}` : ''}`;
+    box.classList.add('open');
+  };
+
+  let analyticsRange = 30;
+  let avCloseBound = false;
+  const wireAdmin = () => {
+    const u = currentUser();
+    if (!u || !['admin', 'staff'].includes(u.role)) return;
+    const shell = $('#adminShell');
+    if (!shell) return;
+    shell.setAttribute('data-admtheme', admPrefs.theme === 'dark' ? 'dark' : 'light');
+
+    const switchP = b => switchAdminPanel(b.getAttribute('data-panel'));
+    shell.querySelectorAll('[data-panel]').forEach(b => b.onclick = () => switchP(b));
+    const st = shell.querySelector('[data-side-toggle]');
+    if (st) st.onclick = () => shell.classList.toggle('side-collapsed');
+    const tb = shell.querySelector('[data-theme-btn]');
+    if (tb) tb.onclick = () => setAdmTheme(admPrefs.theme === 'dark' ? 'light' : 'dark');
+    const tb2 = shell.querySelector('[data-theme-btn2]');
+    if (tb2) tb2.onclick = () => setAdmTheme(admPrefs.theme === 'dark' ? 'light' : 'dark');
+    shell.querySelectorAll('[data-theme-set]').forEach(b => b.onclick = () => setAdmTheme(b.getAttribute('data-theme-set')));
+    shell.querySelectorAll('[data-goto]').forEach(b => b.onclick = () => switchAdminPanel(b.getAttribute('data-goto')));
+    const bl = shell.querySelector('[data-bell]');
+    if (bl) bl.onclick = () => { activity.forEach(a => { if (a.type === 'order') a.read = true; }); save(); updateBellUI(); switchAdminPanel('notifications'); };
+    const avb = shell.querySelector('[data-av-btn]');
+    const avm = $('#avMenu');
+    if (avb && avm) avb.onclick = e => { e.stopPropagation(); avm.classList.toggle('open'); };
+    if (!avCloseBound) {
+      avCloseBound = true;
+      document.addEventListener('click', e => { const avme = document.querySelector('.at-av'); if (avme && !avme.contains(e.target)) { const m = $('#avMenu'); if (m) m.classList.remove('open'); } });
+    }
+    const gs = $('#admSearch');
+    const gsb = $('#admSearchBox');
+    if (gs && gsb) {
+      gs.oninput = () => renderAdmSearch(gs.value.trim());
+      gs.addEventListener('keydown', e => { if (e.key === 'Escape') { gsb.innerHTML = ''; gsb.classList.remove('open'); } });
+      document.addEventListener('click', e => { if (gsb && !e.target.closest('.at-search')) { gsb.innerHTML = ''; gsb.classList.remove('open'); } });
+    }
+
+    wireDynamicPanel();
+    wireStaffTables();
+    animateCounters();
+    updateBellUI();
+    drawAdminCharts();
+    startFeed();
+  };
+
+  let wireDynBound = false;
+  const wireDynamicPanel = () => {
+    const refresh = html => { const sp = $('#staffPanel'); if (sp && html !== undefined) sp.innerHTML = html; wireAdmin(); };
+    const reRender = () => refresh(panelOf(adminPanel));
+    const bindSearch = (id, stateSetter) => {
+      const inp = $(id);
+      if (inp) inp.oninput = () => { stateSetter(inp.value.trim()); reRender(); };
+    };
+    if (adminPanel === 'orders') {
+      bindSearch('#admOrderQ', q => { admQ = q; });
+      const f = $('#admOrderF');
+      if (f) f.onchange = () => { admOrderFilter = f.value; admQ = ''; reRender(); };
+    } else if (adminPanel === 'products') {
+      bindSearch('#admPq', q => { admQ = q; });
+      $$('[data-del-prod]').forEach(b => b.onclick = () => {
+        const id = Number(b.getAttribute('data-del-prod'));
+        extraProducts = extraProducts.filter(p => p.id !== id);
+        save(); toast('Product removed'); reRender();
+      });
+    } else if (adminPanel === 'customers') {
+      bindSearch('#admUq', q => { admQ = q; });
+    } else if (adminPanel === 'price-list') {
+      const ps = $('#plSearch'), pc = $('#plCat'), tb = $('#plTable');
+      const upd = () => { if (tb) tb.querySelector('tbody').innerHTML = priceListRows(pc ? pc.value : 'all', ps ? ps.value.toLowerCase() : ''); };
+      if (ps) ps.addEventListener('input', debounce(upd, 140));
+      if (pc) pc.onchange = upd;
+      const csv = $('#plCsv');
+      if (csv) csv.onclick = () => {
+        const rows = [['SKU', 'Item', 'Category', 'Price', 'Off%', 'Stock']].concat(allProducts().map(p => [p.sku, p.shortName, catLabel(p).name, priceOf(p), discountOf(p) + '%', inStockOf(p) ? stockOf(p) : 0]));
+        const escCSV = v => '"' + String(v).replace(/"/g, '""') + '"';
+        const blob = new Blob(['\ufeff' + rows.map(r => r.map(escCSV).join(',')).join('\n')], { type: 'text/csv;charset=utf-8' });
+        const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'crackersmela-price-list.csv'; a.click();
+        toast('Price list exported');
+      };
+      const pr = $('#plPrint');
+      if (pr) pr.onclick = () => window.print();
+    } else if (adminPanel === 'add-product') {
+      const saveBtn = $('[data-save-product]');
+      if (saveBtn) saveBtn.onclick = () => {
+        const name = ($('#apName').value || '').trim();
+        const price = Number($('#apPrice').value);
+        const cat = $('#apCat').value;
+        const stock = clamp(Number($('#apStock').value) || 0, 0, 999);
+        if (name.length < 2) return toast('Enter a product name', 'err');
+        if (!(price >= 0)) return toast('Enter a valid price', 'err');
+        const id = Date.now();
+        const p = {
+          id, isExtra: true, slug: 'p-' + id,
+          name, shortName: name.length > 34 ? name.slice(0, 33).trim() + '…' : name,
+          sku: ($('#apSku').value || 'CM-' + id.toString().slice(-4)).toUpperCase(),
+          price, compareAt: Number($('#apCmp').value) || 0,
+          stock, inStock: stock > 0,
+          featured: !!$('#apFeat').checked,
+          cats: [cat], primary: cat,
+          image: ($('#apImg').value || '').trim(),
+          note: ($('#apNote').value || '').trim(),
+          rating: clamp(Number($('#apRate').value) || 4.5, 0, 5), reviews: 0, salesCount: 0,
+        };
+        extraProducts.unshift(p);
+        save();
+        activity.unshift({ id: Date.now() + 1, type: 'log', msg: `${p.sku} — new product added by admin`, at: new Date().toISOString(), read: true });
+        activity = activity.slice(0, 40); save();
+        toast(`Added ${name}`);
+        admQ = ''; switchAdminPanel('products');
+      };
+    } else if (adminPanel === 'pos') {
+      const pq = $('#posQ');
+      if (pq) pq.oninput = () => { posQ = pq.value.trim(); const box = $('#posProds'); if (box) box.innerHTML = posProdsHTML(); };
+      $$('[data-pos-add]').forEach(b => b.onclick = () => {
+        const id = Number(b.getAttribute('data-pos-add'));
+        const line = posCart.find(l => l.id === id);
+        if (line) line.qty = Math.min(line.qty + 1, 99); else posCart.push({ id, qty: 1 });
+        const pp = $('#posProds'); if (pp) pp.innerHTML = posProdsHTML();
+        refreshPosBill();
+      });
+      const refreshPosBill = () => {
+        const lines = $('#posLines'); if (lines) lines.innerHTML = posLinesHTML();
+        const tot = $('#posTotal'); if (tot) tot.textContent = money(posTotal());
+        const place = $('#posPlace'); if (place) place.style.display = posCart.length ? '' : 'none';
+      };
+      refreshPosBill();
+      const qty = op => {
+        const btn = op === 'inc' ? '[data-pos-inc]' : '[data-pos-dec]';
+        $$(btn).forEach(b => b.onclick = () => {
+          const id = Number(b.getAttribute(op === 'inc' ? 'data-pos-inc' : 'data-pos-dec'));
+          const l = posCart.find(x => x.id === id);
+          if (!l) return;
+          if (op === 'inc') l.qty = Math.min(l.qty + 1, 99); else { l.qty -= 1; if (l.qty <= 0) posCart = posCart.filter(x => x.id !== id); }
+          refreshPosBill();
+        });
+      };
+      qty('inc'); qty('dec');
+      $$('[data-pos-del]').forEach(b => b.onclick = () => { posCart = posCart.filter(x => x.id !== Number(b.getAttribute('data-pos-del'))); refreshPosBill(); });
+      const place = $('#posPlace');
+      if (place) place.onclick = () => {
+        const u = currentUser();
+        const name = ($('#posName') ? $('#posName').value.trim() : '') || u.name || 'Walk-in';
+        const phone = $('#posPhone') ? $('#posPhone').value.trim() : '';
+        if (!/^[6-9]\d{9}$/.test(phone)) return toast('Enter a valid 10-digit mobile number', 'err');
+        if (!posCart.length) return toast('Bill is empty', 'err');
+        const lines = posCart.map(l => { const p = allProducts().find(x => x.id === l.id); return p ? { id: p.id, sku: p.sku || '', name: p.shortName, image: p.image || '', qty: l.qty, price: priceOf(p), compareAt: p.compareAt || 0 } : null; }).filter(Boolean);
+        const subtotal = lines.reduce((a, l) => a + l.price * l.qty, 0);
+        const saving = lines.reduce((a, l) => a + Math.max(0, (l.compareAt - l.price) * l.qty), 0) || 0;
+        const now = new Date().toISOString();
+        const code = orderCode();
+        const cust = { name, phone, email: u.email, address: 'Walk-in · POS counter', area: '', city: 'Counter sale', pincode: '' };
+        const o = {
+          id: uid(), code, placedAt: now, status: 'confirmed', email: u.email,
+          log: [{ status: 'placed', at: now }, { status: 'confirmed', at: now }],
+          items: lines,
+          totals: { subtotal, festiveAmt: 0, festivePct: 0, saving, delivery: 0, total: subtotal - saving },
+          customer: cust, shipping: {}, payment: $('#posPay') ? $('#posPay').value : 'COD',
+        };
+        orders.unshift(o);
+        posCart = [];
+        save();
+        activity.unshift({ id: Date.now() + 2, type: 'order', msg: `${o.code} · ${name} · ${money(o.totals.total)} (POS)`, at: now, read: false, oid: o.id });
+        activity = activity.slice(0, 40); save();
+        toast(`Order ${o.code} placed · ${money(o.totals.total)}`);
+        updateBellUI();
+        const sp = $('#staffPanel'); if (sp) { sp.innerHTML = panelPos(); wireAdmin(); }
+      };
+    } else if (adminPanel === 'canvas') {
+      const cv = $('#cvCanvas');
+      const draw = () => {
+        if (!cv) return;
+        const p = allProducts().find(x => x.id === Number($('#cvProd').value));
+        const ctx = cv.getContext('2d'); if (!ctx) return;
+        const get = k => Number((document.querySelector('[data-cv-f="' + k + '"]') || {}).value || 100);
+        const flt = `brightness(${get('brightness')}%) contrast(${get('contrast')}%) saturate(${get('saturate')}%)`;
+        ctx.clearRect(0, 0, cv.width, cv.height);
+        ctx.fillStyle = '#E3F2FD'; ctx.fillRect(0, 0, cv.width, cv.height);
+        const paintEmoji = () => { ctx.filter = flt; ctx.font = '150px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#2196F3'; ctx.fillText(p ? catLabel(p).icon : '🎇', cv.width / 2, cv.height / 2); ctx.filter = 'none'; };
+        if (p && p.image) {
+          const im = new Image();
+          im.onload = () => { ctx.filter = flt; const k = Math.min(cv.width / im.width, cv.height / im.height); const w = im.width * k, h = im.height * k; ctx.drawImage(im, (cv.width - w) / 2, (cv.height - h) / 2, w, h); ctx.filter = 'none'; };
+          im.onerror = paintEmoji;
+          im.src = p.image;
+        } else paintEmoji();
+      };
+      const redrawBtn = $('[data-cv-redraw]');
+      if (redrawBtn) redrawBtn.onclick = draw;
+      const prodSel = $('#cvProd');
+      if (prodSel) prodSel.onchange = draw;
+      const dl = $('[data-cv-dl]');
+      if (dl) dl.onclick = () => {
+        try {
+          const a = document.createElement('a');
+          a.href = cv.toDataURL('image/png');
+          a.download = 'crackersmela-editor.png';
+          a.click();
+          toast('Preview downloaded');
+        } catch { toast('Canvas export unavailable here', 'err'); }
+      };
+      draw();
+    } else if (adminPanel === 'notifications') {
+      const mr = $('[data-notif-read]');
+      if (mr) mr.onclick = () => { activity.forEach(a => { if (a.type === 'order') a.read = true; }); save(); updateBellUI(); reRender(); };
+      const cl = $('[data-notif-clear]');
+      if (cl) cl.onclick = () => { activity = activity.filter(a => a.type !== 'order'); save(); updateBellUI(); reRender(); };
+    }
+    const r1 = $('#resetAll'), r2 = $('#resetAllB');
+    [['#resetAll', r1], ['#resetAllB', r2]].forEach(([sel, el]) => {
+      if (el) el.onclick = () => {
+        ['cart', 'wish', 'orders', 'session', 'stockOverrides', 'priceOverrides', 'featOn', 'recent', 'extraProducts', 'activity'].forEach(k => localStorage.removeItem('cm2.' + k));
+        location.hash = '#/'; location.reload();
+      };
+    });
+    const rr = $('[data-reload-panel]');
+    if (rr) rr.onclick = () => reRender();
+    wireDynBound = true;
+  };
+
+  let feedStarted = false;
+  const startFeed = () => {
+    clearInterval(feedTimer);
+    feedTimer = setInterval(() => {
+      if (document.hidden) return;
+      if (orders.length > lastOrderCount) {
+        const fresh = orders.slice(0, orders.length - lastOrderCount);
+        lastOrderCount = orders.length;
+        fresh.forEach(o => activity.unshift({ id: Date.now() + Math.random(), type: 'order', msg: `${o.code} · ${o.customer.name} · ${money(o.totals.total)}`, at: o.placedAt, read: false, oid: o.id }));
+        activity = activity.slice(0, 40);
+        save(); updateBellUI();
+        toast('New order received');
+        if (adminPanel === 'dashboard') {
+          const sp = $('#staffPanel');
+          if (sp) { sp.innerHTML = panelOf('dashboard'); wireAdmin(); }
+        }
+      }
+    }, 4000);
+    feedStarted = true;
   };
 
   const wireStaffTables = () => {
@@ -1463,6 +2532,7 @@
         o.log = o.log.filter(l => statusIndex(l.status) <= statusIndex(s.value));
         if (!o.log.some(l => l.status === s.value)) o.log.push({ status: s.value, at: new Date().toISOString() });
         save(); toast(`Order ${o.code} → ${(STATUSES.find(x => x.key === s.value) || {}).label}`);
+        if (adminPanel === 'orders') { const sp = $('#staffPanel'); if (sp) { sp.innerHTML = staffOrders(); wireAdmin(); } }
       }
     });
     $$('[data-stock]').forEach(s => s.onchange = () => {
@@ -1477,7 +2547,7 @@
       save();
       toast('Price updated');
       const cell = i.closest('tr') ? i.closest('tr').querySelector('.p-display') : null;
-      if (cell) cell.textContent = money(priceOf(PRODUCTS.find(x => x.id === id)));
+      if (cell) cell.textContent = money(priceOf(allProducts().find(x => x.id === id)));
     });
     $$('[data-feat]').forEach(c => c.onchange = () => {
       const id = Number(c.getAttribute('data-feat'));
@@ -1546,6 +2616,8 @@
       location.hash = target;
       return route();
     }
+    const au = currentUser();
+    document.body.classList.toggle('admin-mode', !!(m && m.name === 'staff' && au && ['admin', 'staff'].includes(au.role)));
     view.innerHTML = out || '';
     window.scrollTo(0, 0);
     postRoute(raw, m);
@@ -1555,7 +2627,9 @@
     // refresh chrome
     accountUI(); cartUI(); wishUI();
     navActive();
+    catRailUI(m);
     wireView(m);
+    wirePills();
     setupReveal();
     if (m && m.name === 'home') initSparks();
     if (m && m.name === 'track' && raw.includes('id=')) {
@@ -1633,28 +2707,146 @@
   };
   document.addEventListener('visibilitychange', () => { if (document.hidden) cancelAnimationFrame(sparkRaf); });
 
+  /* ==================== shop chrome (rail, pills, filter drawer) ==================== */
+  const openFilters = (on) => {
+    const col = $('#filterCol'), back = $('#filterBackdrop');
+    if (!col) return;
+    col.classList.toggle('open', !!on);
+    if (back) back.classList.toggle('open', !!on);
+    document.body.style.overflow = on && window.matchMedia('(max-width: 980px)').matches ? 'hidden' : '';
+  };
+
+  /* Category pill rail — only on listing/detail routes */
+  const catRailUI = (m) => {
+    const rail = $('#catRail');
+    if (!rail) return;
+    const show = m && (m.name === 'products' || m.name === 'product' || m.name === 'wishlist');
+    rail.hidden = !show;
+    if (!show) { rail.innerHTML = ''; return; }
+    const st = m.name === 'products' ? shopState(currentRoute) : { cats: [] };
+    const active = st.cats.length === 1 ? st.cats[0] : (st.cats.length ? '' : 'all');
+    const pill = (id, name, n) => `<button class="cat-pill ${active === id ? 'active' : ''}" data-cat="${esc(id)}" aria-current="${active === id}">${esc(name)}${n != null ? `<span class="cp-n">${n}</span>` : ''}</button>`;
+    rail.innerHTML = pill('all', 'All Categories', PRODUCTS.length)
+      + `<button class="cat-pill ${location.hash.includes('sort=discount') ? 'active' : ''}" data-railsort="discount">Deals<span class="cp-n">${PRODUCTS.filter(p => discountOf(p) >= 25).length}</span></button>`
+      + CATS.map(c => pill(c.id, c.name, PRODUCTS.filter(p => p.cats.includes(c.id)).length)).join('')
+      + `<button class="cat-pill ${location.hash.includes('sort=newest') ? 'active' : ''}" data-railsort="newest">New Arrivals</button>`;
+  };
+
+  /* In-place collection pills (homepage New Arrivals / Featured) */
+  const wirePills = () => {
+    $$('[data-pillgroup]').forEach(btn => btn.addEventListener('click', () => {
+      const group = btn.getAttribute('data-pillgroup');
+      const key = btn.getAttribute('data-pill');
+      const row = btn.closest('.chip-row');
+      if (row) $$('[data-pillgroup]', row).forEach(b => {
+        const on = b === btn;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-selected', on);
+      });
+      const grid = $('#' + group + 'Grid') || (row && row.parentElement && row.parentElement.querySelector('.prod-grid'));
+      if (!grid) return;
+      const cap = Number(grid.getAttribute('data-cap')) || 999;
+      let shown = 0;
+      $$('.prod-card', grid).forEach(card => {
+        const keys = (card.getAttribute('data-keys') || '').split(' ');
+        const match = key === 'all' || keys.includes(key);
+        const vis = match && shown < cap;
+        card.hidden = !vis;
+        if (vis) shown++;
+      });
+      let empty = grid.parentElement.querySelector('.pill-empty');
+      if (!shown) {
+        if (!empty) {
+          empty = document.createElement('p');
+          empty.className = 'pill-empty';
+          grid.parentElement.insertBefore(empty, grid.nextSibling);
+        }
+        empty.textContent = 'Nothing in this collection yet — try another filter.';
+      } else if (empty) empty.remove();
+    }));
+    /* apply the initial cap so first paint matches the pill behaviour */
+    $$('.prod-grid[data-cap]').forEach(grid => {
+      const cap = Number(grid.getAttribute('data-cap')) || 999;
+      $$('.prod-card', grid).forEach((card, i) => { card.hidden = i >= cap; });
+    });
+  };
+
   /* ==================== global wiring ==================== */
   const wireView = (m) => {
     const v = m ? m.name : '';
     if (v === 'products') {
+      const st = shopState(currentRoute);
+      const drawerOpen = () => { const c = $('#filterCol'); return !!(c && c.classList.contains('open')); };
+      /* navigate to a patched filter state, keeping the mobile drawer open across re-renders */
+      const go = (patch, keepFocus) => {
+        const wasOpen = drawerOpen();
+        const hash = shopHash(st, patch);
+        if (location.hash === hash) route(); else location.hash = hash;
+        if (wasOpen) requestAnimationFrame(() => openFilters(true));
+        if (keepFocus) requestAnimationFrame(() => {
+          const n = $('#prodSearch');
+          if (n) { n.focus(); n.setSelectionRange(n.value.length, n.value.length); }
+        });
+      };
+
       const sp = $('#prodSearch');
       if (sp) sp.addEventListener('input', debounce(() => {
-        const cat = new URLSearchParams(location.hash.split('?')[1] || '').get('cat');
-        const hash = `#/products?${new URLSearchParams({ ...(cat ? { cat } : {}), q: sp.value, sort: $('#prodSort').value }).toString()}`;
-        if (location.hash !== hash) history.replaceState(null, '', hash);
+        const hash = shopHash(st, { q: sp.value.trim() });
+        if (location.hash === hash) return;
+        history.replaceState(null, '', hash);
         route();
-      }));
+        const n = $('#prodSearch');
+        if (n) { n.focus(); n.setSelectionRange(n.value.length, n.value.length); }
+      }, 260));
+
       const so = $('#prodSort');
-      if (so) so.addEventListener('change', () => {
-        const sp = $('#prodSearch');
-        const cat = new URLSearchParams(location.hash.split('?')[1] || '').get('cat');
-        const hash = `#/products?${new URLSearchParams({ ...(cat ? { cat } : {}), q: sp ? sp.value : '', sort: so.value }).toString()}`;
-        location.hash = hash;
-      });
-      $$('[data-chipcat]').forEach(b => b.addEventListener('click', () => {
-        const hash = `#/products?cat=${b.getAttribute('data-chipcat')}`;
-        if (location.hash === hash) route(); else location.hash = hash;
+      if (so) so.addEventListener('change', () => go({ sort: so.value === 'featured' ? '' : so.value }));
+
+      /* dual price slider — paints live, commits on release */
+      const rMin = $('#rangeMin'), rMax = $('#rangeMax'), rsFill = $('#rsFill');
+      if (rMin && rMax) {
+        const pct = n => ((n - PRICE_FLOOR) / (PRICE_CEIL - PRICE_FLOOR)) * 100;
+        const paint = () => {
+          const a = Math.min(+rMin.value, +rMax.value), b = Math.max(+rMin.value, +rMax.value);
+          $('#rvMin').textContent = money(a);
+          $('#rvMax').textContent = money(b);
+          if (rsFill) { rsFill.style.left = pct(a) + '%'; rsFill.style.right = (100 - pct(b)) + '%'; }
+          return [a, b];
+        };
+        [rMin, rMax].forEach(r => {
+          r.addEventListener('input', paint);
+          r.addEventListener('change', () => { const [a, b] = paint(); go({ min: a === PRICE_FLOOR ? '' : a, max: b === PRICE_CEIL ? '' : b }); });
+        });
+      }
+
+      $$('[data-fcat]').forEach(cb => cb.addEventListener('change', () =>
+        go({ cats: $$('[data-fcat]').filter(x => x.checked).map(x => x.value).join(',') })));
+      $$('[data-frating]').forEach(r => r.addEventListener('change', () => go({ rating: r.value })));
+      $$('[data-foff]').forEach(r => r.addEventListener('change', () => go({ off: r.value })));
+      $$('[data-favail]').forEach(r => r.addEventListener('change', () => go({ avail: r.value })));
+      $$('[data-fdelivery]').forEach(b => b.addEventListener('click', () =>
+        go({ delivery: b.getAttribute('data-fdelivery') === 'express' ? 'express' : '' })));
+      const fship = $('[data-ffreeship]');
+      if (fship) fship.addEventListener('change', () => go({ freeship: fship.checked ? '1' : '' }));
+
+      $$('[data-fclear]').forEach(b => b.addEventListener('click', () => {
+        const k = b.getAttribute('data-fclear');
+        if (k === 'all') { if (location.hash === '#/products') route(); else location.hash = '#/products'; return; }
+        if (k === 'price') return go({ min: '', max: '' });
+        go({ [k]: '' });
       }));
+
+      $$('[data-ftoken]').forEach(b => b.addEventListener('click', () => {
+        const k = b.getAttribute('data-ftoken');
+        if (k.startsWith('cat:')) return go({ cats: st.cats.filter(c => c !== k.slice(4)).join(',') });
+        if (k === 'price') return go({ min: '', max: '' });
+        go({ [k]: '' });
+      }));
+
+      const fab = $('#filterFab'), fClose = $('#filterClose'), fBack = $('#filterBackdrop');
+      if (fab) fab.addEventListener('click', () => openFilters(true));
+      if (fClose) fClose.addEventListener('click', () => openFilters(false));
+      if (fBack) fBack.addEventListener('click', () => openFilters(false));
     }
     if (v === 'product') {
       const p = PRODUCTS.find(x => x.slug === (currentRoute.params[0] || ''));
@@ -1693,16 +2885,7 @@
     if (v === 'staff') {
       const ga = $('#goAuthStaff');
       if (ga) ga.onclick = () => authModal('login');
-      $$('[data-stab]').forEach(b => b.onclick = () => {
-        $$('[data-stab]').forEach(x => x.classList.toggle('active', x === b));
-        const tab = b.getAttribute('data-stab');
-        $('#staffPanel').innerHTML = tab === 'dashboard' ? staffDashboard() : tab === 'orders' ? staffOrders() : tab === 'stock' ? staffStock() : tab === 'customers' ? staffCustomers() : tab === 'pl' ? `<div class="table-wrap"><table class="data-table">${priceListRows()}</table></div>` : ` <div class="glass-panel"><h2>Danger zone</h2><p class="panel-sub">Reset the demo workspace (this device only).</p><button class="btn" style="background:linear-gradient(135deg,#E0464B,#c0392b);color:#fff" id="resetAll">Reset demo data</button></div>`;
-        wireStaffTables();
-        if (tab === 'dashboard') drawStaffCharts();
-        if (tab === 'danger') { const r = $('#resetAll'); if (r) r.onclick = () => { ['cart', 'wish', 'orders', 'session', 'stockOverrides', 'priceOverrides', 'featOn', 'recent'].forEach(k => localStorage.removeItem('cm2.' + k)); location.hash = '#/'; location.reload(); }; }
-      });
-      wireStaffTables();
-      drawStaffCharts();
+      wireAdmin();
     }
     if (v === 'priceList') {
       const ps = $('#plSearch'); const pc = $('#plCat');
@@ -1779,14 +2962,29 @@
       if (t.closest && t.closest('[data-add]')) { addToCart(t.closest('[data-add]').getAttribute('data-add')); return; }
       if (t.closest && t.closest('[data-qty]')) { const b = t.closest('[data-qty]'); setQty(b.getAttribute('data-qty'), cartQty(Number(b.getAttribute('data-qty'))) + Number(b.getAttribute('data-d'))); return; }
       if (t.closest && t.closest('[data-del]')) { removeLine(t.closest('[data-del]').getAttribute('data-del')); return; }
-      if (t.closest && t.closest('[data-cat]')) { location.hash = '#/products?cat=' + t.closest('[data-cat]').getAttribute('data-cat'); return; }
+      if (t.closest && t.closest('[data-cat]')) { const id = t.closest('[data-cat]').getAttribute('data-cat'); const h = !id || id === 'all' ? '#/products' : '#/products?cat=' + id; if (location.hash === h) route(); else location.hash = h; return; }
+      if (t.closest && t.closest('[data-railsort]')) { const h = '#/products?sort=' + t.closest('[data-railsort]').getAttribute('data-railsort'); if (location.hash === h) route(); else location.hash = h; return; }
       if (t.closest && t.closest('[data-search-hit]')) { closeSearch(); return; }
       if (t.closest && t.closest('[data-code-detail]')) { toggleOrderDetail(t.closest('[data-code-detail]').getAttribute('data-code-detail')); return; }
       if (t.closest && t.closest('[data-code-jump]')) {
         const id = t.closest('[data-code-jump]').getAttribute('data-code-jump');
         const panel = $('#staffPanel');
         $$('[data-stab]').forEach(x => x.classList.toggle('active', x.getAttribute('data-stab') === 'orders'));
-        if (panel) { panel.innerHTML = staffOrders(id); wireStaffTables(); }
+        if (panel) { panel.innerHTML = staffOrders(id); wireAdmin(); }
+        return;
+      }
+      if (t.closest && t.closest('[data-qa]')) { switchAdminPanel(t.closest('[data-qa]').getAttribute('data-qa')); return; }
+      if (t.closest && t.closest('[data-signout]')) { logout(); return; }
+      if (t.closest && t.closest('[data-range]')) { handleSalesRange(t.closest('[data-range]').getAttribute('data-range')); return; }
+      if (t.closest && t.closest('[data-gs]')) {
+        const el = t.closest('[data-gs]');
+        const kind = el.getAttribute('data-gs');
+        const id = el.getAttribute('data-id');
+        const box = $('#admSearchBox');
+        if (box) { box.innerHTML = ''; box.classList.remove('open'); }
+        if (kind === 'order') { switchAdminPanel('orders'); toggleOrderDetail(id); }
+        else if (kind === 'product') { const p = allProducts().find(x => x.id === Number(id)); admQ = p ? p.shortName : ''; switchAdminPanel('products'); }
+        else { admQ = id || ''; switchAdminPanel('customers'); }
         return;
       }
     });
@@ -1805,8 +3003,13 @@
 
     document.addEventListener('keydown', e => {
       if ((e.key === '/' ) && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) { e.preventDefault(); openSearch(); }
-      if (e.key === 'Escape') { closeSearch(); closeCart(); closeAuth(); $('#mobileDrawer').classList.remove('open'); document.body.style.overflow = ''; }
+      if (e.key === 'Escape') { closeSearch(); closeCart(); closeAuth(); openFilters(false); $('#mobileDrawer').classList.remove('open'); document.body.style.overflow = ''; }
     });
+
+    // categories mega-menu
+    const ncm = $('#navCatMenu');
+    if (ncm) ncm.innerHTML = CATS.map(c => `<a href="#/products?cat=${c.id}" role="menuitem"><span class="mi">${esc(c.icon || '✦')}</span><span><b>${esc(c.name)}</b><small>${PRODUCTS.filter(p => p.cats.includes(c.id)).length} products</small></span></a>`).join('')
+      + `<a href="#/price-list" role="menuitem" class="nav-drop__all"><span class="mi">${I.print}</span><span><b>Full Price List</b><small>Every item, one page</small></span></a>`;
 
     // footer categories
     const fc = $('#footerCats');
@@ -1827,11 +3030,10 @@
       $('#fabUp').classList.toggle('show', window.scrollY > 600);
     }, { passive: true });
 
-    requestAnimationFrame(() => {
-      route();
-      accountUI(); cartUI(); wishUI();
-      $('#navbar').classList.toggle('scrolled', window.scrollY > 10);
-    });
+    /* first paint — called directly (not via rAF) so a background tab still renders */
+    route();
+    accountUI(); cartUI(); wishUI();
+    $('#navbar').classList.toggle('scrolled', window.scrollY > 10);
   };
 
   /* logged-out staff link cleanup */

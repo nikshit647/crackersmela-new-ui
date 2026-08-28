@@ -27,88 +27,118 @@
   <div class="promo-bar__track" id="promoTrack"></div>
 </div>
 
-<!-- ============ NAVBAR ============ -->
-<header class="navbar" id="navbar">
-  <div class="nav-inner">
-    <a href="#/" class="logo" aria-label="CrackersMela home">
-      <span class="logo-badge">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" fill="currentColor"/></svg>
-      </span>
-      <span class="logo-text">Crackers<em>Mela</em></span>
-    </a>
+<!-- ============ APP SHELL ============ -->
+<div class="app-shell">
 
-    <nav class="nav-links" aria-label="Primary">
-      <a class="nav-link" href="#/" data-nav="/">Home</a>
-      <a class="nav-link" href="#/products" data-nav="/products">Products</a>
-      <a class="nav-link" href="#/products?cat=gift-boxes" data-nav="gift">Gift Boxes</a>
-      <a class="nav-link" href="#/price-list" data-nav="/price-list">Price List</a>
-      <a class="nav-link" href="#/track" data-nav="/track">Track Order</a>
-      <a class="nav-link" href="#/contact" data-nav="/contact">Contact</a>
-    </nav>
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#/" class="logo" aria-label="CrackersMela home">
+        <span class="logo-badge">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" fill="currentColor"/></svg>
+        </span>
+        <span class="logo-text"><b>CRACKERS</b><em>MELA</em></span>
+      </a>
 
-    <div class="nav-actions">
-      <button class="search-trigger" id="searchTrigger" aria-label="Search products">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-        <span>Search products…</span>
-        <kbd>/</kbd>
-      </button>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="nav-link" href="#/" data-nav="/">Home</a>
 
-      <button class="icon-btn" id="userIconBtn" aria-label="Account">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
-      </button>
+        <div class="nav-drop">
+          <a class="nav-link" href="#/products" data-nav="/products">Shop
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div class="nav-drop__menu" role="menu">
+            <a href="#/products" role="menuitem">All Products</a>
+            <a href="#/products?sort=newest" role="menuitem">New Arrivals</a>
+            <a href="#/products?sort=bestsellers" role="menuitem">Best Sellers</a>
+            <a href="#/products?sort=discount" role="menuitem">Deals</a>
+            <a href="#/products?cat=gift-boxes" role="menuitem">Combo &amp; Gift Packs</a>
+            <a href="#/price-list" role="menuitem">Full Price List</a>
+          </div>
+        </div>
 
-      <button class="account-chip" id="accountChip" aria-label="Account">
-        <span class="avatar" id="avatarText">G</span>
-        <span id="accountLabel">Sign in</span>
-      </button>
+        <div class="nav-drop">
+          <a class="nav-link" href="#/products" data-nav="cats">Categories
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div class="nav-drop__menu nav-drop__menu--cats" role="menu" id="navCatMenu"></div>
+        </div>
 
-      <button class="icon-btn" id="wishBtn" aria-label="Wishlist">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
-        <span class="count-bubble hidden" id="wishCount">0</span>
-      </button>
+        <a class="nav-link" href="#/products?sort=discount" data-nav="deals">Deals</a>
+        <a class="nav-link" href="#/about" data-nav="about">About Us</a>
+        <a class="nav-link" href="#/contact" data-nav="contact">Contact</a>
+      </nav>
 
-      <button class="icon-btn" id="cartBtn" aria-label="Cart">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        <span class="count-bubble hidden" id="cartCount">0</span>
-      </button>
+      <div class="nav-actions">
+        <button class="search-trigger" id="searchTrigger" aria-label="Search products">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <span>Search for crackers…</span>
+          <kbd>/</kbd>
+        </button>
 
-      <button class="icon-btn mobile-toggle" id="mobileToggle" aria-label="Open menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
+        <button class="icon-btn" id="wishBtn" aria-label="Favourites">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+          <span class="count-bubble hidden" id="wishCount">0</span>
+        </button>
+
+        <button class="icon-btn" id="cartBtn" aria-label="Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="count-bubble hidden" id="cartCount">0</span>
+        </button>
+
+        <button class="icon-btn" id="userIconBtn" aria-label="Account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+        </button>
+
+        <button class="account-chip" id="accountChip" aria-label="Account">
+          <span class="avatar" id="avatarText">G</span>
+          <span id="accountLabel">Sign in</span>
+        </button>
+
+        <button class="icon-btn mobile-toggle" id="mobileToggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
+
+  <!-- ============ CATEGORY RAIL (listing pages) ============ -->
+  <nav class="cat-rail" id="catRail" aria-label="Shop categories" hidden></nav>
+
+  <!-- ============ MAIN VIEW ============ -->
+  <main id="view" class="container shell-main"></main>
+
+</div><!-- /.app-shell -->
 
 <!-- ============ MOBILE DRAWER ============ -->
 <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
   <div class="mobile-drawer__scrim" data-close-drawer></div>
   <div class="mobile-drawer__panel">
     <div class="drawer-head">
-      <span class="logo-text">Crackers<em>Mela</em></span>
+      <span class="logo-text"><b>CRACKERS</b><em>MELA</em></span>
       <button class="icon-btn" data-close-drawer aria-label="Close menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
       </button>
     </div>
     <a class="mobile-nav-link" href="#/" data-close-drawer>Home</a>
     <a class="mobile-nav-link" href="#/products" data-close-drawer>All Products</a>
-    <a class="mobile-nav-link" href="#/products?cat=gift-boxes" data-close-drawer>Gift Boxes <span class="badge-mini" id="giftMini">New</span></a>
-    <a class="mobile-nav-link" href="#/products?cat=night-outs" data-close-drawer>Multicolor Shows</a>
+    <a class="mobile-nav-link" href="#/products?sort=newest" data-close-drawer>New Arrivals</a>
+    <a class="mobile-nav-link" href="#/products?sort=discount" data-close-drawer>Deals</a>
+    <a class="mobile-nav-link" href="#/products?cat=gift-boxes" data-close-drawer>Combo &amp; Gift Packs <span class="badge-mini" id="giftMini">New</span></a>
     <a class="mobile-nav-link" href="#/wishlist" data-close-drawer>
-      Wishlist <span class="badge-mini hidden" id="mWishCount">0</span>
+      Favourites <span class="badge-mini hidden" id="mWishCount">0</span>
     </a>
-    <a class="mobile-nav-link" href="#/track" data-close-drawer>Track Order</a>
     <a class="mobile-nav-link" href="#/my-orders" data-close-drawer>My Orders</a>
+    <a class="mobile-nav-link" href="#/track" data-close-drawer>Track Order</a>
     <a class="mobile-nav-link" href="#/price-list" data-close-drawer>Price List</a>
     <a class="mobile-nav-link" href="#/wholesale" data-close-drawer>Wholesale</a>
+    <a class="mobile-nav-link" href="#/about" data-close-drawer>About Us</a>
     <a class="mobile-nav-link" href="#/safety" data-close-drawer>Safety Guide</a>
     <a class="mobile-nav-link" href="#/faq" data-close-drawer>FAQ</a>
     <a class="mobile-nav-link" href="#/contact" data-close-drawer>Contact</a>
     <a class="mobile-nav-link" href="#/staff" data-close-drawer>Staff Hub <span class="badge-mini">Staff</span></a>
   </div>
 </div>
-
-<!-- ============ MAIN VIEW ============ -->
-<main id="view" class="container"></main>
 
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
@@ -119,13 +149,9 @@
           <span class="logo-badge">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" fill="currentColor"/></svg>
           </span>
-          <span class="logo-text">Crackers<em>Mela</em></span>
+          <span class="logo-text"><b>CRACKERS</b><em>MELA</em></span>
         </a>
-        <p>Premium, PESO-certified fireworks for every celebration. Factory-direct pricing from Sivakasi, delivered across Hyderabad &amp; Secunderabad.</p>
-        <div class="phone-links">
-          <span>☎ 92480 88588 &nbsp;·&nbsp; 92933 20000</span>
-          <span>✉ <span id="footEmail"></span></span>
-        </div>
+        <p>Your one-stop shop for premium, PESO-certified crackers. Factory-direct from Sivakasi — celebrate every moment with joy and brightness.</p>
         <div class="social-row">
           <a href="https://wa.me/919248088588" target="_blank" rel="noopener" aria-label="WhatsApp">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4-.1.6.4l.8 2.1c.1.2.1.4 0 .6l-.3.5-.4.6c-.1.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.4 2.6 1.6.3.2.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.1.5.2.5.4.1.1.1.7-.2 1.3z"/></svg>
@@ -144,18 +170,23 @@
 
       <div>
         <h4>Shop</h4>
-        <div class="footer-links" id="footerCats"></div>
+        <div class="footer-links">
+          <a href="#/products">All Products</a>
+          <a href="#/products?sort=newest">New Arrivals</a>
+          <a href="#/products?sort=bestsellers">Best Sellers</a>
+          <a href="#/products?sort=discount">Deals</a>
+          <a href="#/products?cat=gift-boxes">Combo Packs</a>
+        </div>
       </div>
 
       <div>
-        <h4>Support</h4>
+        <h4>Customer Care</h4>
         <div class="footer-links">
-          <a href="#/track">Track Order</a>
-          <a href="#/my-orders">My Orders</a>
-          <a href="#/faq">FAQ</a>
+          <a href="#/contact">Contact Us</a>
           <a href="#/shipping">Shipping Policy</a>
           <a href="#/returns">Returns &amp; Refunds</a>
-          <a href="#/policies">Safety &amp; Usage</a>
+          <a href="#/faq">FAQs</a>
+          <a href="#/track">Track Order</a>
         </div>
       </div>
 
@@ -163,13 +194,30 @@
         <h4>Company</h4>
         <div class="footer-links">
           <a href="#/about">About Us</a>
-          <a href="#/wholesale">Wholesale</a>
-          <a href="#/price-list">Price List</a>
-          <a href="#/staff">Admin Login</a>
-          <a href="#/contact">Contact Us</a>
-          <a href="#/terms">Terms of Service</a>
+          <a href="#/terms">Terms &amp; Conditions</a>
           <a href="#/privacy">Privacy Policy</a>
+          <a href="#/returns">Cancellation Policy</a>
+          <a href="#/wholesale">Wholesale</a>
         </div>
+      </div>
+
+      <div>
+        <h4>Contact Us</h4>
+        <div class="footer-contact">
+          <a href="tel:+919248088588">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
+            <span>+91 92480 88588</span>
+          </a>
+          <a href="#/contact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <span id="footEmail"></span>
+          </a>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            <span>Hyderabad, Telangana, India</span>
+          </span>
+        </div>
+        <div class="footer-links footer-links--cats" id="footerCats"></div>
       </div>
     </div>
 
@@ -179,6 +227,7 @@
         <a href="#/terms">Terms</a>
         <a href="#/privacy">Privacy</a>
         <a href="#/safety">Safety</a>
+        <a href="#/staff">Staff Hub</a>
       </div>
     </div>
   </div>
