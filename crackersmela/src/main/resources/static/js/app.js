@@ -1663,6 +1663,10 @@
   let salesRange = 7;
   let salesSince = null;
   let admQ = '';
+  let admURole = 'all';
+  let admUStatus = 'all';
+  let admUSort = 'joined';
+  let admUDir = 'desc';
   let posCart = [];
   let lastOrderCount = orders.length;
   let feedTimer = null;
@@ -1862,30 +1866,91 @@
 
   const thumb = p => p.image ? `<img src="${esc(p.image)}" alt="" loading="lazy">` : `<span class="th-fb">${esc(catLabel(p).icon)}</span>`;
 
+  const U_ROLES = ['admin', 'staff', 'customer'];
+  const roleClass = r => (r === 'admin' ? 'a' : r === 'staff' ? 's' : 'c');
+  const sortArrow = key => admUSort === key ? (admUDir === 'asc' ? ' ▲' : ' ▼') : '';
+
   const panelCustomers = () => {
     const q = (admQ || '').toLowerCase();
-    const list = Object.entries(users).filter(([email, ux]) => !q || email.toLowerCase().includes(q) || (ux.name || '').toLowerCase().includes(q) || (ux.city || '').toLowerCase().includes(q));
-    const rows = list.map(([email, user]) => {
+    // Enrich every account with real order stats — never fabricated.
+    let list = Object.entries(users).map(([email, user]) => {
       const mine = orders.filter(o => o.email === email);
-      const spent = mine.reduce((a, o) => a + o.totals.total, 0);
+      return {
+        email,
+        user,
+        name: user.name || '',
+        role: user.role || 'customer',
+        disabled: !!user.disabled,
+        joined: user.createdAt ? new Date(user.createdAt).getTime() : 0,
+        joinedRaw: user.createdAt || '',
+        count: mine.length,
+        spent: mine.reduce((a, o) => a + o.totals.total, 0),
+      };
+    });
+
+    if (admURole !== 'all') list = list.filter(x => x.role === admURole);
+    if (admUStatus !== 'all') list = list.filter(x => admUStatus === 'disabled' ? x.disabled : !x.disabled);
+    if (q) list = list.filter(x => x.email.toLowerCase().includes(q) || x.name.toLowerCase().includes(q) || (x.user.city || '').toLowerCase().includes(q));
+
+    const dir = admUDir === 'asc' ? 1 : -1;
+    const getV = { name: x => x.name.toLowerCase(), joined: x => x.joined, orders: x => x.count, spent: x => x.spent };
+    const gv = getV[admUSort] || getV.joined;
+    list.sort((a, b) => { const va = gv(a), vb = gv(b); return va < vb ? -1 * dir : va > vb ? 1 * dir : 0; });
+
+    const total = Object.keys(users).length;
+    const active = Object.values(users).filter(u => !u.disabled).length;
+
+    const rows = list.map(x => {
+      const initial = (x.name || x.email || 'C').trim().charAt(0).toUpperCase();
       return `<tr>
-        <td class="row-name"><span class="p-cell"><span class="av-ic sm">${esc((user.name || 'C').trim().charAt(0).toUpperCase())}</span><span>${esc(user.name || '—')}<small>${esc(user.city || user.area || '')}</small></span></span></td>
-        <td>${esc(email)}</td>
-        <td><span class="role-chip ${user.role === 'admin' ? 'a' : user.role === 'staff' ? 's' : 'c'}">${esc(user.role || 'customer')}</span></td>
-        <td style="font-size:12.5px;color:var(--muted)">${user.createdAt ? fmtDate(user.createdAt) : '—'}</td>
-        <td style="text-align:center">${mine.length}</td>
-        <td style="text-align:center;font-weight:800;color:var(--primary-deep)">${mine.length ? money(spent) : '—'}</td>
+        <td class="row-name"><span class="p-cell"><span class="av-ic sm">${esc(initial)}</span><span><b>${esc(x.name || '—')}</b><small>${esc(x.email)}</small></span></span></td>
+        <td>
+          <select class="role-sel role-sel--${roleClass(x.role)}" data-urole="${esc(x.email)}" aria-label="Role for ${esc(x.name || x.email)}">
+            ${U_ROLES.map(r => `<option value="${r}" ${r === x.role ? 'selected' : ''}>${r.charAt(0).toUpperCase() + r.slice(1)}</option>`).join('')}
+          </select>
+        </td>
+        <td>${x.disabled
+          ? `<span class="stat-chip off">Disabled</span>`
+          : `<span class="stat-chip on">Active</span>`}</td>
+        <td style="font-size:12.5px;color:var(--muted)">${x.joinedRaw ? fmtDate(x.joinedRaw) : '—'}</td>
+        <td style="text-align:right"><span class="tab-num">${x.count}</span></td>
+        <td style="text-align:right;font-weight:800;color:var(--primary-deep)">${x.count ? money(x.spent) : '—'}</td>
+        <td>
+          <div class="u-acts">
+            <button class="ubtn" data-uorders="${esc(x.email)}" title="View orders" aria-label="View orders for ${esc(x.name || x.email)}">${I2.sheet}</button>
+            <button class="ubtn" data-utoggle="${esc(x.email)}" title="${x.disabled ? 'Enable account' : 'Disable account'}" aria-label="${x.disabled ? 'Enable' : 'Disable'} ${esc(x.name || x.email)}">${x.disabled
+              ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>`
+              : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg>`}</button>
+            <button class="ubtn danger" data-udel="${esc(x.email)}" title="Delete user" aria-label="Delete ${esc(x.name || x.email)}">${I2.trash || '✕'}</button>
+          </div>
+        </td>
       </tr>`;
     }).join('');
+
+    const sel = (id, val, opts) => `<select id="${id}" class="u-filter">${opts.map(o => `<option value="${o[0]}" ${o[0] === val ? 'selected' : ''}>${o[1]}</option>`).join('')}</select>`;
+
     return `
-      <div class="tbl-tools">
-        <div class="at-search mini">${I2.search}<input id="admUq" type="text" placeholder="Search users…" value="${esc(q)}"></div>
-        <span class="panel-sub">${list.length} users</span>
+      <div class="ad-head">
+        <div><h1>Users</h1><p class="panel-sub"><span class="tab-num">${total}</span> ${total === 1 ? 'user' : 'users'} · ${active} active</p></div>
       </div>
-      ${rows ? `<div class="table-wrap"><table class="data-table">
-        <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Joined</th><th style="text-align:center">Orders</th><th style="text-align:center">Spent</th></tr></thead>
+      <div class="tbl-tools u-tools">
+        <div class="at-search mini">${I2.search}<input id="admUq" type="text" placeholder="Search name, email, city…" value="${esc(admQ)}"></div>
+        <label class="u-fl">Role ${sel('admURoleF', admURole, [['all', 'All'], ['admin', 'Admin'], ['staff', 'Staff'], ['customer', 'Customer']])}</label>
+        <label class="u-fl">Status ${sel('admUStatusF', admUStatus, [['all', 'All'], ['active', 'Active'], ['disabled', 'Disabled']])}</label>
+        <span class="panel-sub" style="margin-left:auto">${list.length} shown</span>
+      </div>
+      ${rows ? `<div class="table-wrap"><table class="data-table u-table">
+        <thead><tr>
+          <th><button class="th-sort" data-usort="name">User${sortArrow('name')}</button></th>
+          <th>Role</th>
+          <th>Status</th>
+          <th><button class="th-sort" data-usort="joined">Joined${sortArrow('joined')}</button></th>
+          <th style="text-align:right"><button class="th-sort" data-usort="orders">Orders${sortArrow('orders')}</button></th>
+          <th style="text-align:right"><button class="th-sort" data-usort="spent">Spent${sortArrow('spent')}</button></th>
+          <th style="text-align:right">Actions</th>
+        </tr></thead>
         <tbody>${rows}</tbody>
-      </table></div>` : `<div class="empty-state"><div class="e-emoji">👥</div><h3>No customers yet</h3><p>People who register on this device will be listed here.</p></div>`}`;
+      </table></div>` : `<div class="empty-state"><div class="e-emoji">👥</div><h3>No users found</h3><p>Try clearing the search or filters.</p></div>`}`;
   };
 
   const orderDetailRow = o => `<tr class="odetail" data-oid="${o.id}">
@@ -2423,6 +2488,32 @@
       });
     } else if (adminPanel === 'customers') {
       bindSearch('#admUq', q => { admQ = q; });
+      const rf = $('#admURoleF'); if (rf) rf.onchange = () => { admURole = rf.value; reRender(); };
+      const sf = $('#admUStatusF'); if (sf) sf.onchange = () => { admUStatus = sf.value; reRender(); };
+      $$('[data-usort]').forEach(b => b.onclick = () => {
+        const k = b.getAttribute('data-usort');
+        if (admUSort === k) admUDir = admUDir === 'asc' ? 'desc' : 'asc';
+        else { admUSort = k; admUDir = k === 'name' ? 'asc' : 'desc'; }
+        reRender();
+      });
+      const myEmail = session && session.email;
+      $$('[data-urole]').forEach(sel => sel.onchange = () => {
+        const email = sel.getAttribute('data-urole');
+        if (email === myEmail && sel.value !== 'admin') { toast('You cannot remove your own admin access', 'err'); sel.value = 'admin'; return; }
+        if (users[email]) { users[email].role = sel.value; ls.set('users', users); toast('Role updated to ' + sel.value); reRender(); }
+      });
+      $$('[data-utoggle]').forEach(b => b.onclick = () => {
+        const email = b.getAttribute('data-utoggle');
+        if (email === myEmail) { toast('You cannot disable your own account', 'err'); return; }
+        if (users[email]) { users[email].disabled = !users[email].disabled; ls.set('users', users); toast(users[email].disabled ? 'Account disabled' : 'Account enabled'); reRender(); }
+      });
+      $$('[data-udel]').forEach(b => b.onclick = () => {
+        const email = b.getAttribute('data-udel');
+        if (email === myEmail) { toast('You cannot delete your own account', 'err'); return; }
+        if (!confirm('Delete ' + email + ' permanently? This cannot be undone.')) return;
+        delete users[email]; ls.set('users', users); toast('User deleted'); reRender();
+      });
+      $$('[data-uorders]').forEach(b => b.onclick = () => { admQ = b.getAttribute('data-uorders'); switchAdminPanel('orders'); });
     } else if (adminPanel === 'price-list') {
       const ps = $('#plSearch'), pc = $('#plCat'), tb = $('#plTable');
       const upd = () => { if (tb) tb.querySelector('tbody').innerHTML = priceListRows(pc ? pc.value : 'all', ps ? ps.value.toLowerCase() : ''); };
