@@ -1,0 +1,920 @@
+{
+  "generatedAt": "2026-09-26T12:31:12.142Z",
+  "scope": "Read-only public image recovery; no APIs, customer data or source-code changes",
+  "knownProductCount": 115,
+  "knownSourceImages": 113,
+  "productsWithoutSourceImages": [
+    127,
+    128
+  ],
+  "recovered": 113,
+  "unavailableLive": 0,
+  "failed": 0,
+  "bytes": 4185680,
+  "results": [
+    {
+      "path": "/images/products/nobg/p100.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 18932,
+      "sha256": "e1164a3e0aba3ac1be675fee18a42a6b9fa91b7eefb970c9a430dbb4b555075e"
+    },
+    {
+      "path": "/images/products/nobg/p101.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 36518,
+      "sha256": "eebad96fb09a6d5858a3d751257b31dadeaa6005ed2805712967d78bc509f447"
+    },
+    {
+      "path": "/images/products/nobg/p102.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 33498,
+      "sha256": "ad028eb9d8dd9a67b06a9da39e4dce0aef923914252080d65d53e810b29eca8c"
+    },
+    {
+      "path": "/images/products/nobg/p103.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 31760,
+      "sha256": "c466798a990abcb6f6504a33332937ba7bace50e9a330aaf84d597a9fbb46a6b"
+    },
+    {
+      "path": "/images/products/nobg/p104.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 22700,
+      "sha256": "7da85f4ad3496bd756dc3ce0c15b1fd31f2bcfa7ccfd8a212b0c1cfa8c54ceec"
+    },
+    {
+      "path": "/images/products/nobg/p105.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 8362,
+      "sha256": "ebfdb2a41249182a256d4fdaad1f25f8f139924ea803bee8816d585630c0ec6a"
+    },
+    {
+      "path": "/images/products/nobg/p106.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 655584,
+      "sha256": "da0adc8d940d2dd5b1cef001f42faea14f350ba46079541b2f83bf9c4a23ce03"
+    },
+    {
+      "path": "/images/products/nobg/p107.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 36966,
+      "sha256": "da010fb6ffe7eafac6539554c03322d9f0e0375b8bcacc2dbd9e2289e75d8f1b"
+    },
+    {
+      "path": "/images/products/nobg/p108.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 34540,
+      "sha256": "d7f43126486a4e0d36b945838b682d9cd5d10b5c08f0e0f74a76b5c3a5269303"
+    },
+    {
+      "path": "/images/products/nobg/p109.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 666692,
+      "sha256": "ef8ad2fd28b707e8a8574102771535540fc885afe425e26cff1335139aa4f4d4"
+    },
+    {
+      "path": "/images/products/nobg/p110.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 40212,
+      "sha256": "f7103b52f8e2c7ad1d8e9fc8578b722a01fd419ea34f47de18a227768ac25cd0"
+    },
+    {
+      "path": "/images/products/nobg/p111.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 46118,
+      "sha256": "36f6ab3bb1bc1508ce856584a8abe1e6ce4d25fb3fc9cb2f9b2ff8388c8b9096"
+    },
+    {
+      "path": "/images/products/nobg/p120.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 21084,
+      "sha256": "84cee17401670741e971075c1f3b7befebfc31a8d3eb5d0ee845fd3c2c7787b3"
+    },
+    {
+      "path": "/images/products/nobg/p121.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 15152,
+      "sha256": "eaf5a1ef100d3602947a8c819e3e59f4ee3b966f1ae10f61e5227061bb3b5cb3"
+    },
+    {
+      "path": "/images/products/nobg/p122.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 12806,
+      "sha256": "f84cb3dea3acdded7e213903cbb17ef717ac113e48c72f6b8f8541613b5500ef"
+    },
+    {
+      "path": "/images/products/nobg/p123.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 85020,
+      "sha256": "e3ba0b1bfdd0e17d839f5fd6dae16badc31eb991caa9ef0a6598dda816206e20"
+    },
+    {
+      "path": "/images/products/nobg/p124.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 96338,
+      "sha256": "75f2a6ccbd617ea442dc2aa585c6257887072cfa41f6d10504931d839105f8c5"
+    },
+    {
+      "path": "/images/products/nobg/p125.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 22500,
+      "sha256": "b366db350ec817dedd1df011a5ca4c54c189d60febea85b3912c9ab573f5267e"
+    },
+    {
+      "path": "/images/products/nobg/p126.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 129302,
+      "sha256": "6c33f1618d5761330d6c4c2cfd9026f1cb77be48b6540bb41bfac8bf2c927578"
+    },
+    {
+      "path": "/images/products/nobg/p141.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 24360,
+      "sha256": "83a05fdabc413b4c7015bcbe8f16171671776ad066fa4f9834b72d914efb372c"
+    },
+    {
+      "path": "/images/products/nobg/p142.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 24298,
+      "sha256": "7dc43235ec462648e6de4e56b4ec97844bf1155f79e9f7a585745cf67f25b8cc"
+    },
+    {
+      "path": "/images/products/nobg/p143.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 24580,
+      "sha256": "7627d2e5f461afd46a1a8c52a46d37e2b7a19332267dba5a186d2eca37cfb401"
+    },
+    {
+      "path": "/images/products/nobg/p144.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 29502,
+      "sha256": "7763ca0db39220ecb2b0c0a7b1387b9f05939286e42252bf9deec70ff82712da"
+    },
+    {
+      "path": "/images/products/nobg/p145.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 22492,
+      "sha256": "8a24b48e4f0e8ddfa17e7861e6187ce45620e808182b8fa5d69bd4c4162563a2"
+    },
+    {
+      "path": "/images/products/nobg/p146.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 8752,
+      "sha256": "04ec1eb694bedce6375c81214663361cd2cf623532836cab7170ebcaf0e37f01"
+    },
+    {
+      "path": "/images/products/nobg/p147.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 36836,
+      "sha256": "73900f3b9e4a900dd48904edfc549aceed41cf9128d471409161529efaf7d44b"
+    },
+    {
+      "path": "/images/products/nobg/p148.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 19296,
+      "sha256": "e3d7a31251c9690b629bfd1b2f8446c66e0bf00ca09e9721ea678f32cdf3767a"
+    },
+    {
+      "path": "/images/products/nobg/p149.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 34618,
+      "sha256": "c7da5201e4b45e93a521bcefb766edf7216c42410862eb07a1ce9611369b6328"
+    },
+    {
+      "path": "/images/products/nobg/p150.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 15610,
+      "sha256": "0ecfcf2e9f82346eb4f995ac73187e77765103cd0b5926a48cea8cc61c7b8c05"
+    },
+    {
+      "path": "/images/products/nobg/p160.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 9728,
+      "sha256": "8c0128ead16a31a206dec372602e81ff933a03727f69beaf117fcb2fecde3c71"
+    },
+    {
+      "path": "/images/products/nobg/p161.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 9014,
+      "sha256": "70270c65c38cb80ffa12db26308ace87f641cb3a86f2acfdf6f2bf5ac1b7dc64"
+    },
+    {
+      "path": "/images/products/nobg/p162.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 8566,
+      "sha256": "f471a73fbb08692fe2671170d1ba0cf2ff76f1e93e55868a35bac74cd46e6582"
+    },
+    {
+      "path": "/images/products/nobg/p163.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 27956,
+      "sha256": "2d99e3a2615860a472eb38ed4cc4115b44e8abaa0aef2a37ef152e327ce575c0"
+    },
+    {
+      "path": "/images/products/nobg/p164.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 12256,
+      "sha256": "a40005064f6af908289473d66b7422312c6ede2050b437c684137dab5b3bb227"
+    },
+    {
+      "path": "/images/products/nobg/p165.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 32916,
+      "sha256": "f11924967a87b2e226ddd25b51d1b65810af63f0decc076f998761532a394160"
+    },
+    {
+      "path": "/images/products/nobg/p166.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 33412,
+      "sha256": "b79abe16298f44113c3916e297169aa46f6653ffdd973c6697c638fda30a3cda"
+    },
+    {
+      "path": "/images/products/nobg/p167.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 30012,
+      "sha256": "3acb8174d6b237416ee488a8556252fa0bc40d6316cbd057bdb62e92242a6cd6"
+    },
+    {
+      "path": "/images/products/nobg/p180.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 15174,
+      "sha256": "99625ab8b80a58bb797622506d1fef3aa2cdbbf690d33672a35b2b51516d8b22"
+    },
+    {
+      "path": "/images/products/nobg/p181.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 6440,
+      "sha256": "11d9626228befda813b02088760a4a98dc038ae57c359f5c187a2ed2e7acccb2"
+    },
+    {
+      "path": "/images/products/nobg/p182.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 15816,
+      "sha256": "67ae483c720510d925807a8e15445ce86fca4f214d1e6d70337db9ce39f60eca"
+    },
+    {
+      "path": "/images/products/nobg/p183.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 9946,
+      "sha256": "fd0d8c2f033ebe356657eac7ad2c5f9257d0514554be7c691d9c47b551e3cdcd"
+    },
+    {
+      "path": "/images/products/nobg/p184.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 25156,
+      "sha256": "70dab67b1304f32608e74fbdcd87a96ca47bb3341825ddabad981ee0d7f9dd15"
+    },
+    {
+      "path": "/images/products/nobg/p185.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 20354,
+      "sha256": "01055c0181a3e01aab6e390d6058e5cf8624d7c050b6ed3cccbab31ef015f008"
+    },
+    {
+      "path": "/images/products/nobg/p186.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 16206,
+      "sha256": "9a262b833c0a0a754957ae696d142aaf2507a5186d277a6a372da881d7f0f37a"
+    },
+    {
+      "path": "/images/products/nobg/p187.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 20616,
+      "sha256": "4f7ca52e12f9c76971957c91dea9dfe6bf0ca73a8392d7d1cfa8c8137f58feea"
+    },
+    {
+      "path": "/images/products/nobg/p188.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 22298,
+      "sha256": "7551bb8c0761b14b0648f4ecd088b89ddb9084e539d2e1a8c8bc92171ead1a53"
+    },
+    {
+      "path": "/images/products/nobg/p189.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 11370,
+      "sha256": "c3f8112e401692333687a0c3dd5cb5516eb38c435e0497294905a057ab189617"
+    },
+    {
+      "path": "/images/products/nobg/p190.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 88290,
+      "sha256": "77b7e1ab293fe7de0ab2aaa22c4a8bede143a0e7538afd1b85b753ea43f45981"
+    },
+    {
+      "path": "/images/products/nobg/p191.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 8824,
+      "sha256": "d729d007077d201483abc530eee9fe34087f8473cc1b0b937141b9b91c7cf46a"
+    },
+    {
+      "path": "/images/products/nobg/p193.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 34442,
+      "sha256": "17ee0cc97aade45ec810ef2b21027b80964219388a000a3d005ca2c59c22c22e"
+    },
+    {
+      "path": "/images/products/nobg/p194.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 5926,
+      "sha256": "6e470fd382a0e0a0934049236c03fbe9e316fc76ff450328ada8415ebdb4f832"
+    },
+    {
+      "path": "/images/products/nobg/p211.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 12532,
+      "sha256": "ba875a145a1fdf3decee850a556d4ba1f5d8e1f39c376b6a55dbe9ea31b056ac"
+    },
+    {
+      "path": "/images/products/nobg/p212.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 10464,
+      "sha256": "5d2d727222b7990cc2c7579f379156e2a8caa2b4193c51106a92bb373aacec2c"
+    },
+    {
+      "path": "/images/products/nobg/p213.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 4556,
+      "sha256": "ed0c00d4af942e107f62a8fba42c9555b0ef8be331e6cc70c2a6f1a050e8931e"
+    },
+    {
+      "path": "/images/products/nobg/p214.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 6132,
+      "sha256": "2989abdb053b588478e0d9b970178216252a88da704937a85bf93ff6ddd6e35a"
+    },
+    {
+      "path": "/images/products/nobg/p215.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 12968,
+      "sha256": "f5ec60691b64ef0ff8d3ccd460ac8b1e77806b2d86481a5026dd744f55464acf"
+    },
+    {
+      "path": "/images/products/nobg/p216.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 7398,
+      "sha256": "0cc99c0328a1e230067f0a40936a0bce53aa3e8d299d66d4f1bccccb44fab549"
+    },
+    {
+      "path": "/images/products/nobg/p217.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 9312,
+      "sha256": "c198a218b7d13d4bb733ffcea535bd60d7e42064a19bd461f233725e762525dc"
+    },
+    {
+      "path": "/images/products/nobg/p218.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 14824,
+      "sha256": "56c0a2ac9bf6e6c81a3e53c1838b4216b8ca3fcbf26c0daf78f3b4c84d574b42"
+    },
+    {
+      "path": "/images/products/nobg/p219.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 6660,
+      "sha256": "86590c77d2a12dceae47eb5f32429d560b1466bd346c9cab4f857a6b9f8c8697"
+    },
+    {
+      "path": "/images/products/nobg/p220.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 6238,
+      "sha256": "3619b43b9fc306b828084e8a8be5c16ebabff7b86a212b4e80142e58801bf87a"
+    },
+    {
+      "path": "/images/products/nobg/p221.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 31992,
+      "sha256": "4c03be345b26fe20e2c429e972c45525aa1ca95d0940d5ce59eda63dfc5cf5af"
+    },
+    {
+      "path": "/images/products/nobg/p222.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 8312,
+      "sha256": "c46d8250ea43545657a0bedd54a388c91cd31cffc5fab45258d2c5149ed95cca"
+    },
+    {
+      "path": "/images/products/nobg/p223.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 10924,
+      "sha256": "71f103102531dffb05da887dfe057165572f412889c9201af9add8f5f51a193e"
+    },
+    {
+      "path": "/images/products/nobg/p224.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 11098,
+      "sha256": "735cab7b7c4a7524300654ec48e69fc774b2c79d4d3aca340b9a003507dc685a"
+    },
+    {
+      "path": "/images/products/nobg/p225.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 9794,
+      "sha256": "bbfae81daf072ec439545546d4c3231b74ddb24c76004d89066163fee421c7c1"
+    },
+    {
+      "path": "/images/products/nobg/p234.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 58382,
+      "sha256": "35a1a849c0ea1e49396f595cb37a1d6896120efe38eaba9de91fed199fa3c3ca"
+    },
+    {
+      "path": "/images/products/nobg/p26.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 25160,
+      "sha256": "c7a9cbf323b5390d31fdcd3a7bb1b32a851405e98fed0d64215be740b15672dd"
+    },
+    {
+      "path": "/images/products/nobg/p27.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 28158,
+      "sha256": "c69f1939f6810c117ab6cbc1005ad5216f1f0881a725dac2ef813a0f764559c6"
+    },
+    {
+      "path": "/images/products/nobg/p28.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 25728,
+      "sha256": "289626f5965ace5622dd8bf4c61f17758bfe402206319223f1152b884cda7dbe"
+    },
+    {
+      "path": "/images/products/nobg/p29.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 9160,
+      "sha256": "95404a317546286bf7d3cd663200b234a2dc38031c08b9a0990da69a0e662c79"
+    },
+    {
+      "path": "/images/products/nobg/p30.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 33918,
+      "sha256": "5d95f3a7b556937ef2929502074e489a0752be7137df015912dfca47cf7af195"
+    },
+    {
+      "path": "/images/products/nobg/p31.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 34886,
+      "sha256": "c222c2a916e2fedb34f289baa48223ffae76c7f2cff3284492a8708f574fce16"
+    },
+    {
+      "path": "/images/products/nobg/p32.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 34744,
+      "sha256": "af413ca90002197b9d187f998ddfe4490859ceea0076de61ff26582efbb4e3f9"
+    },
+    {
+      "path": "/images/products/nobg/p33.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 34270,
+      "sha256": "019443e71bad8e37d95c2522d67059e36ff8e5f5c208faf8374900d9f71bb5cc"
+    },
+    {
+      "path": "/images/products/nobg/p34.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 68622,
+      "sha256": "303f5ab8c3850b694bcb87f8dc1d9b24e107aac4652884e2d4563e45e3d6178b"
+    },
+    {
+      "path": "/images/products/nobg/p35.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 104700,
+      "sha256": "144f5e505eb528311754b8e567aa13e929364f27a3cb74f2b82db167a5dddcfa"
+    },
+    {
+      "path": "/images/products/nobg/p36.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 27038,
+      "sha256": "dce430cc0f1b164f3c58c7de4c0b326cee8483e33e1e030dc2683debe4293b65"
+    },
+    {
+      "path": "/images/products/nobg/p37.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 37970,
+      "sha256": "db93bf27a86be70bd4655165f79986c262a95c497d747346c6690bcb7f1c40a9"
+    },
+    {
+      "path": "/images/products/nobg/p38.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 36792,
+      "sha256": "59dfbd7e78007a095fc24ba306f0eacc44fca3f78967c512d565ca26af380122"
+    },
+    {
+      "path": "/images/products/nobg/p39.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 6976,
+      "sha256": "48b14420e36f2ee0680f3c2a1b821904b71eead78930c774c7ffa77e8c1f8853"
+    },
+    {
+      "path": "/images/products/nobg/p40.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 8638,
+      "sha256": "33941f68770ce4b4646124959273f665f63da79549a0cd8c1e8900c572f8f40c"
+    },
+    {
+      "path": "/images/products/nobg/p41.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 26282,
+      "sha256": "4aa23501be45bd4e53b92993d645b98b6d6a82c7c149651f1babcdca75421203"
+    },
+    {
+      "path": "/images/products/nobg/p42.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 16828,
+      "sha256": "f10ff9d6816faa466d58e118f53f661bdc9ffcdfacfcfedf0d8e6e23b6c6f5e4"
+    },
+    {
+      "path": "/images/products/nobg/p43.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 21314,
+      "sha256": "2e6a62ed227be38a76d463a10a03e05e11b94cb1b4996976577dc6786d8f071f"
+    },
+    {
+      "path": "/images/products/nobg/p44.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 9052,
+      "sha256": "60b8cfe12b8e16be295347a4b62a12c0b56b8820d3d7239ded39d0aa73bed710"
+    },
+    {
+      "path": "/images/products/nobg/p45.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 21578,
+      "sha256": "c12d51ef3e8cc4d992d44db618f40f21bbb364b976e45bdc1b7fda6b7c34dab7"
+    },
+    {
+      "path": "/images/products/nobg/p46.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 8150,
+      "sha256": "bfad8b3b5cb89e9e3e5feb3e5406f998975e6ae15b90922cca9b0a982b9d5937"
+    },
+    {
+      "path": "/images/products/nobg/p47.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 7980,
+      "sha256": "ae087d76427e58752361aa8801c8db75ccaa5fb346c6ca0566e4c335957f60e4"
+    },
+    {
+      "path": "/images/products/nobg/p48.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 8010,
+      "sha256": "3080092ae8a978e90e257ab55142b210558e9150f398300350a5d124b59aef2b"
+    },
+    {
+      "path": "/images/products/nobg/p49.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 15852,
+      "sha256": "16bfd766f84337c6f815c02ea0110ebc0b11b925810fda04126dcd9c83ec7d73"
+    },
+    {
+      "path": "/images/products/nobg/p50.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 21038,
+      "sha256": "5d5210e4ab5f9e5728805a86659a99cdd938ac7f23f6b71677d0ecc6c811010f"
+    },
+    {
+      "path": "/images/products/nobg/p51.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 24106,
+      "sha256": "4cdc029b1afdb9f520dc16440a1515992502d8b066dc8f4aafce5189202212c3"
+    },
+    {
+      "path": "/images/products/nobg/p52.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 9818,
+      "sha256": "1ca3a3fada6b03b418032a683240d6e75dac7bebaabc9ccbd57622a2d660570a"
+    },
+    {
+      "path": "/images/products/nobg/p53.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 13392,
+      "sha256": "f7fec727e03b15eee55a8b1e938b88cf58fedce9d88b4adb0a477d96f908ef2b"
+    },
+    {
+      "path": "/images/products/nobg/p54.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 14296,
+      "sha256": "42a198a5779699c8dadd93400ed90d208b54a09f534d118a14cd7b5a5b22abc1"
+    },
+    {
+      "path": "/images/products/nobg/p55.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 13628,
+      "sha256": "83bf2d0f40c1aa5e4a72e1bdce02f67ccabcf81fc44b59467ebc9ca27d538583"
+    },
+    {
+      "path": "/images/products/nobg/p84.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 174486,
+      "sha256": "dcba3fe89f436586536261a97904b0341e5e815aef89fe3fc7cebfbfb8202e7f"
+    },
+    {
+      "path": "/images/products/nobg/p85.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 24626,
+      "sha256": "6433ae2d620bca38793d693a890c7e8574e7ba3f3eb037a447933a9f0da030f6"
+    },
+    {
+      "path": "/images/products/nobg/p86.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 38064,
+      "sha256": "d396e05b89da1290c26481f2198f685e5ba292db0ad57cce2c266bef063f3580"
+    },
+    {
+      "path": "/images/products/nobg/p87.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 8744,
+      "sha256": "ec4ee1d643e47bb65494b98915fb98d4d5c5f7b2bc08cf44ab0e4f34732c9282"
+    },
+    {
+      "path": "/images/products/nobg/p88.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 8744,
+      "sha256": "ec4ee1d643e47bb65494b98915fb98d4d5c5f7b2bc08cf44ab0e4f34732c9282"
+    },
+    {
+      "path": "/images/products/nobg/p89.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 19800,
+      "sha256": "d5956e7a3224ae20b08447b30cb5cf226342d75c9d28a941d02f849e3535da28"
+    },
+    {
+      "path": "/images/products/nobg/p90.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 29280,
+      "sha256": "20ab5dfa291b21e023529ae5b9a7f347ddc735ef0ce2d0b2f9f65a8691e341f6"
+    },
+    {
+      "path": "/images/products/nobg/p91.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 14476,
+      "sha256": "526d2fc342a45b186b71bcee00b7d535a8a5d0ac2e7aefeda7005d6441800096"
+    },
+    {
+      "path": "/images/products/nobg/p92.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 28728,
+      "sha256": "075da339e9a2358f09c5b044c15268c22ebb5b604882d11b22443097e44018ac"
+    },
+    {
+      "path": "/images/products/nobg/p93.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 16152,
+      "sha256": "5835dd0c327941cf3202a16f0f1996480376eb52c513e8d772e92274c19807e7"
+    },
+    {
+      "path": "/images/products/nobg/p94.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 19702,
+      "sha256": "17568d7bb9e0c08dddabaca17aef9398196b9c35e15c31ea3abd2204096070ac"
+    },
+    {
+      "path": "/images/products/nobg/p95.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 18110,
+      "sha256": "987e6d751fbc9c05844af65bd785babb2eb0ee46c71a9ad65be8bb98be23bfc4"
+    },
+    {
+      "path": "/images/products/nobg/p96.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 19834,
+      "sha256": "508d32d061987735fb87bce560825562d79d1f4394029b1db94ecb5fdc4068f6"
+    },
+    {
+      "path": "/images/products/nobg/p97.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 24414,
+      "sha256": "b84d1a8c251ee13182c2420e7dbcafccb8f2497515da974bee1c113fc7f522a2"
+    },
+    {
+      "path": "/images/products/nobg/p98.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 25860,
+      "sha256": "584263f38d4e796f5c0ff7e389098fb6ead13c554298cfdb6e8d56d437b86f58"
+    },
+    {
+      "path": "/images/products/nobg/p99.webp",
+      "httpStatus": 200,
+      "contentType": "image/webp",
+      "status": "recovered",
+      "bytes": 25844,
+      "sha256": "2590757e9d7f9f06afba40a0922b204fb68910edb7347d8e084075f42a7a20ad"
+    }
+  ]
+}

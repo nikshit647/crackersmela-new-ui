@@ -1,0 +1,9 @@
+# Deployed evidence can contain exposed credentials; never publish it.
+live-app.js
+live-index.html
+node_modules/
+*.log
+audit/screenshots/
+*.png
+!review/public/images/**/*.png
+audit-evidence/

@@ -1,0 +1,243 @@
+﻿{
+    "Scope":  "Local frontend only; backend operations unavailable",
+    "Results":  [
+                    {
+                        "Requested":  "/",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "Light Up Every Celebration",
+                                         "overflow":  false,
+                                         "route":  "#/",
+                                         "title":  "CrackersMela | Premium Crackers \u0026 Fireworks in Hyderabad"
+                                     }
+                    },
+                    {
+                        "Requested":  "/products",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "All Fireworks",
+                                         "overflow":  false,
+                                         "route":  "#/products",
+                                         "title":  "Buy Crackers \u0026 Fireworks Online in Hyderabad | CrackersMela"
+                                     }
+                    },
+                    {
+                        "Requested":  "/products?q=sparkler",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "Results for “sparkler”",
+                                         "overflow":  false,
+                                         "route":  "#/products?q=sparkler",
+                                         "title":  "Buy Crackers \u0026 Fireworks Online in Hyderabad | CrackersMela"
+                                     }
+                    },
+                    {
+                        "Requested":  "/product/long-boy-gun",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "Long Boy Gun",
+                                         "overflow":  false,
+                                         "route":  "#/product/long-boy-gun",
+                                         "title":  "Long Boy Gun | Crackers in Hyderabad | CrackersMela"
+                                     }
+                    },
+                    {
+                        "Requested":  "/cart",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "Your cart",
+                                         "overflow":  false,
+                                         "route":  "#/cart",
+                                         "title":  "CrackersMela | Fireworks in Hyderabad"
+                                     }
+                    },
+                    {
+                        "Requested":  "/checkout",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "Your cart",
+                                         "overflow":  false,
+                                         "route":  "#/cart",
+                                         "title":  "CrackersMela | Fireworks in Hyderabad"
+                                     }
+                    },
+                    {
+                        "Requested":  "/wishlist",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "Your wishlist",
+                                         "overflow":  false,
+                                         "route":  "#/wishlist",
+                                         "title":  "CrackersMela | Fireworks in Hyderabad"
+                                     }
+                    },
+                    {
+                        "Requested":  "/my-orders",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "My orders",
+                                         "overflow":  false,
+                                         "route":  "#/my-orders",
+                                         "title":  "CrackersMela | Fireworks in Hyderabad"
+                                     }
+                    },
+                    {
+                        "Requested":  "/track",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "Track your order",
+                                         "overflow":  false,
+                                         "route":  "#/track",
+                                         "title":  "CrackersMela | Fireworks in Hyderabad"
+                                     }
+                    },
+                    {
+                        "Requested":  "/price-list",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "Price list",
+                                         "overflow":  false,
+                                         "route":  "#/price-list",
+                                         "title":  "Crackers Price List | Hyderabad | CrackersMela"
+                                     }
+                    },
+                    {
+                        "Requested":  "/about",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "About us",
+                                         "overflow":  false,
+                                         "route":  "#/about",
+                                         "title":  "About CrackersMela | Hyderabad Fireworks Store"
+                                     }
+                    },
+                    {
+                        "Requested":  "/contact",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "Contact us",
+                                         "overflow":  false,
+                                         "route":  "#/contact",
+                                         "title":  "Contact CrackersMela | Fireworks Delivery in Hyderabad"
+                                     }
+                    },
+                    {
+                        "Requested":  "/faq",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "FAQ",
+                                         "overflow":  false,
+                                         "route":  "#/faq",
+                                         "title":  "Fireworks FAQ | CrackersMela Hyderabad"
+                                     }
+                    },
+                    {
+                        "Requested":  "/wholesale",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "Wholesale \u0026 events",
+                                         "overflow":  false,
+                                         "route":  "#/wholesale",
+                                         "title":  "CrackersMela | Fireworks in Hyderabad"
+                                     }
+                    },
+                    {
+                        "Requested":  "/shipping",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "Shipping \u0026 delivery",
+                                         "overflow":  false,
+                                         "route":  "#/shipping",
+                                         "title":  "CrackersMela | Fireworks in Hyderabad"
+                                     }
+                    },
+                    {
+                        "Requested":  "/returns",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "Returns \u0026 refunds",
+                                         "overflow":  false,
+                                         "route":  "#/returns",
+                                         "title":  "CrackersMela | Fireworks in Hyderabad"
+                                     }
+                    },
+                    {
+                        "Requested":  "/safety",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "Safety \u0026 usage",
+                                         "overflow":  false,
+                                         "route":  "#/safety",
+                                         "title":  "CrackersMela | Fireworks in Hyderabad"
+                                     }
+                    },
+                    {
+                        "Requested":  "/terms",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "Terms of service",
+                                         "overflow":  false,
+                                         "route":  "#/terms",
+                                         "title":  "CrackersMela | Fireworks in Hyderabad"
+                                     }
+                    },
+                    {
+                        "Requested":  "/privacy",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "Privacy policy",
+                                         "overflow":  false,
+                                         "route":  "#/privacy",
+                                         "title":  "CrackersMela | Fireworks in Hyderabad"
+                                     }
+                    },
+                    {
+                        "Requested":  "/missing-qa-page",
+                        "Status":  "PASS",
+                        "Observed":  {
+                                         "errorPanel":  false,
+                                         "heading":  "Page not found",
+                                         "overflow":  false,
+                                         "route":  "#/missing-qa-page",
+                                         "title":  "CrackersMela | Fireworks in Hyderabad"
+                                     }
+                    }
+                ],
+    "BrowserErrors":  {
+                          "errors":  [
+
+                                     ],
+                          "lifecycle":  {
+                                            "effectiveLaunch":  {
+                                                                    "browserLaunched":  true,
+                                                                    "engine":  "chrome",
+                                                                    "launchHash":  7707568497978554591
+                                                                },
+                                            "launched":  false,
+                                            "relaunchedBrowser":  false,
+                                            "restartedBackground":  false,
+                                            "restoreStatus":  "not_configured",
+                                            "reused":  true,
+                                            "saveStatus":  "not_attempted"
+                                        }
+                      }
+}

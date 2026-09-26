@@ -1,0 +1,21 @@
+{
+  "name": "crackersmela-local-ui-review",
+  "private": true,
+  "type": "module",
+  "description": "Isolated UI preview of the recovered CrackersMela frontend. Deployed PHP backend source is unavailable.",
+  "scripts": {
+    "preview": "node review/server.mjs",
+    "check:preview": "node --check review/server.mjs",
+    "test:preview": "node --test tests/preview-server.test.mjs",
+    "lint": "eslint review/public/js review/server.mjs tests eslint.config.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check review/public/js/app.js && node --check review/public/js/accessibility.js && node --check review/server.mjs"
+  },
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24"
+  },
+  "devDependencies": {
+    "eslint": "10.11.0",
+    "globals": "^16.4.0"
+  }
+}
