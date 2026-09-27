@@ -1,0 +1,47 @@
+{
+  "scope": "Local UI only; synthetic drafts; no production writes or real authentication",
+  "checks": [
+    {
+      "name": "Primary hover has no gradient, glow or movement",
+      "status": "PASS"
+    },
+    {
+      "name": "Product primary action has visible keyboard focus",
+      "status": "PASS"
+    },
+    {
+      "name": "Checkout progress exposes one current non-button step",
+      "status": "PASS"
+    },
+    {
+      "name": "Payment choice supports keyboard selection",
+      "status": "PASS"
+    },
+    {
+      "name": "Review retains payment choice and presents current review step",
+      "status": "PASS"
+    },
+    {
+      "name": "Back retains the selected payment method",
+      "status": "PASS"
+    },
+    {
+      "name": "POS draft quantity and payment selection work locally",
+      "status": "PASS"
+    },
+    {
+      "name": "POS primary action clears the mobile tab bar",
+      "status": "PASS"
+    },
+    {
+      "name": "Blocked POS save keeps tabs visible after notice resizes",
+      "status": "PASS"
+    },
+    {
+      "name": "Admin product draft closes without saving or changing catalog",
+      "status": "PASS"
+    }
+  ],
+  "uncaughtErrors": [],
+  "capturedAt": "2026-09-27T11:26:29.2549981+00:00"
+}

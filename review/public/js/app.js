@@ -24,6 +24,7 @@
   /* ---------------- helpers ---------------- */
   const money = n => '₹' + Math.round(Number(n) || 0).toLocaleString('en-IN');
   const esc = v => String(v ?? '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+  const productText = value => String(value || '').replace(/\\r\\n|\\n|\\r/g, '\n');
   const routePart = value => encodeURIComponent(String(value ?? ''));
   const readRoutePart = value => { try { return decodeURIComponent(String(value ?? '')); } catch { return ''; } };
   const clamp = (n, a, b) => Math.min(b, Math.max(a, n));
@@ -375,8 +376,8 @@
   /* Bottom foot of a product card — normal state (stock line + add button) */
   const footNormal = p => `
           ${stockLine(p)}
-          ${inStockOf(p) ? `<button class="add-btn add-btn--round" data-add="${p.id}" title="Add to cart" aria-label="Add ${esc(p.shortName)} to cart">${I.cart}<span>Add to Cart</span></button>`
-          : `<button class="add-btn add-btn--round" disabled title="Sold out" aria-label="Sold out">${I.cart}<span>Sold</span></button>`}`;
+          ${inStockOf(p) ? `<button class="add-btn add-btn--product" data-add="${p.id}" title="Add to cart" aria-label="Add ${esc(p.shortName)} to cart"><span>Add to Cart</span></button>`
+          : `<button class="add-btn add-btn--product" disabled title="Sold out" aria-label="Sold out"><span>Sold</span></button>`}`;
 
   /* Bottom foot of a product card — quantity controls when already in cart */
   const footCart = (p, qty) => `
@@ -395,7 +396,6 @@
     const media = hasImg ? img : `<div class="prod-img-fallback">${catIcon(catLabel(p))}</div>`;
     const badges = [];
     if (off > 0) badges.push(`<span class="badge-off">${off}% OFF</span>`);
-    if (featuredOf(p)) badges.push(`<span class="badge-off badge-hot">${off > 0 ? 'HOT' : 'BESTSELLER'}</span>`);
     return `
     <article class="prod-card reveal" data-id="${p.id}" data-keys="${esc(cardKeys(p))}">
       <div class="prod-card__media">
@@ -584,7 +584,7 @@
     const badge = $('#cartDrawerCount');
     if (badge) { badge.textContent = count ? `${count}` : ''; badge.style.display = count ? 'inline-grid' : 'none'; }
     if (!count) {
-      body.innerHTML = `<div class="cart-empty"><div class="e-emoji">${I.cart}</div><p>Your cart is empty.<br>Let's light up something great.</p><button class="btn btn-primary start-shopping" data-shop-more>${I.shop} Start Shopping</button></div>`;
+      body.innerHTML = `<div class="cart-empty"><div class="e-emoji">${I.cart}</div><p>Your cart is empty.<br>Let's light up something great.</p><button class="btn btn-primary start-shopping" data-shop-more>Start Shopping</button></div>`;
       summary.innerHTML = '';
       $('#cartCheckoutBtn').disabled = true;
       return;
@@ -599,7 +599,7 @@
         <div class="min-order-card__sub">to reach the ${money(STORE.minOrder)} minimum order</div>
         <span class="min-order-card__track"><span class="min-order-card__fill" style="width:${Math.max(pct, 3)}%"></span></span>
         <span class="min-order-card__pct">${pct}% of minimum reached</span>
-        <button class="shop-more-btn" data-shop-more>${I.shop} Shop More</button>
+        <button class="shop-more-btn" data-shop-more>Shop More</button>
       </div>` : '';
     summary.innerHTML = `
       <div class="cart-summary">
@@ -780,7 +780,12 @@
         btn.disabled = false;
       }
     });
-    $$('#authBody [data-pw]').forEach(b => b.addEventListener('click', () => { const inp = $('#authBody #auPass'); inp.type = inp.type === 'password' ? 'text' : 'password'; }));
+    $$('#authBody [data-pw]').forEach(b => b.addEventListener('click', () => {
+      const inp = $('#authBody #auPass');
+      const show = inp.type === 'password';
+      inp.type = show ? 'text' : 'password';
+      b.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+    }));
     openModal(m);
   };
 
@@ -1134,8 +1139,8 @@
     </div>`;
 
   const pillRow = (group, pills, current = 'all') => `
-    <div class="chip-row chip-row--scroll" role="tablist" aria-label="Filter collection">
-      ${pills.map(x => `<button class="chip ${x.k === current ? 'active' : ''}" data-pill="${esc(x.k)}" data-pillgroup="${esc(group)}" role="tab" aria-selected="${x.k === current}">${x.n}</button>`).join('')}
+    <div class="chip-row chip-row--scroll" role="group" aria-label="Filter collection">
+      ${pills.map(x => `<button class="chip ${x.k === current ? 'active' : ''}" data-pill="${esc(x.k)}" data-pillgroup="${esc(group)}" aria-pressed="${x.k === current}">${x.n}</button>`).join('')}
     </div>`;
 
   /* ==================== views ==================== */
@@ -1195,8 +1200,8 @@
           <h1>Light Up Every <span class="grad-text">Celebration</span></h1>
           <p class="hero-lede">Premium quality crackers for every occasion — PESO-certified and factory-direct from Sivakasi, delivered to your doorstep across Hyderabad &amp; Secunderabad.</p>
           <div class="hero-cta">
-            <a class="btn btn-primary btn-lg" href="#/products">${I.gift} Shop Now</a>
-            <a class="btn btn-glass btn-lg" href="#/products?sort=discount">Explore Crackers ${I.arrow}</a>
+            <a class="btn btn-primary btn-lg" href="#/products">Shop Now</a>
+            <a class="btn btn-secondary btn-lg" href="#/products?sort=discount">Explore Crackers</a>
           </div>
           <div class="hero-stats">
             <div class="stat"><div class="num">${allProducts().length}+</div><div class="lbl">Products</div></div>
@@ -1506,7 +1511,7 @@
             ${off ? `<span class="off">-${off}% OFF</span>` : ''}
           </div>
 
-          <p class="desc-note">${esc(p.note || p.desc || 'Premium quality fireworks from certified factories.')}</p>
+          <p class="desc-note">${esc(productText(p.note || p.desc || 'Premium quality fireworks from certified factories.'))}</p>
 
           ${p.compareAt > priceOf(p) ? `<div class="savings-note">${I.check} You save <b>${money((p.compareAt - priceOf(p)) * qty)}</b> on this order</div>` : ''}
 
@@ -1519,8 +1524,8 @@
               <b id="pdQty">${qty}</b>
               <button id="pdPlus" aria-label="Increase">+</button>
             </div>
-            <button class="btn btn-primary" id="pdAdd" ${inStockOf(p) ? '' : 'disabled'}>${I.cart} Add to cart</button>
-            <button class="btn btn-ghost" id="pdBuyNow" ${inStockOf(p) ? '' : 'disabled'}>${I.bolt} Buy now</button>
+            <button class="btn btn-primary" id="pdAdd" ${inStockOf(p) ? '' : 'disabled'}>Add to cart</button>
+            <button class="btn btn-secondary" id="pdBuyNow" ${inStockOf(p) ? '' : 'disabled'}>Buy now</button>
             <button class="icon-btn" id="pdWish" aria-label="Toggle wishlist" aria-pressed="${saved(p.id)}">${saved(p.id) ? I.heartF : I.heart}</button>
           </div>` : ''}
 
@@ -1553,7 +1558,7 @@
     const { count, subtotal, festivePct, festiveAmt, saving, delivery, total } = cartTotals();
     if (!count) {
       return `<div class="page-head reveal"><h1>Your cart</h1></div>
-        <div class="empty-state reveal"><div class="e-emoji">${I.cart}</div><h3>Your cart is empty</h3><p>Let's find something brilliant to light up the night.</p><a class="btn btn-primary" href="#/products">${I.shop} Start Shopping</a></div>`;
+        <div class="empty-state reveal"><div class="e-emoji">${I.cart}</div><h3>Your cart is empty</h3><p>Let's find something brilliant to light up the night.</p><a class="btn btn-primary" href="#/products">Start Shopping</a></div>`;
     }
     const lines = cart.map(c => { const p = prodById(c.id); return p ? cartLine(p, c.qty) : ''; }).join('');
     const minLeft = Math.max(0, STORE.minOrder - subtotal);
@@ -1564,7 +1569,7 @@
         <div class="min-order-card__sub">to reach the ${money(STORE.minOrder)} minimum order</div>
         <span class="min-order-card__track"><span class="min-order-card__fill" style="width:${Math.max(pct, 3)}%"></span></span>
         <span class="min-order-card__pct">${pct}% of minimum reached</span>
-        <button class="shop-more-btn" data-shop-more>${I.shop} Shop More</button>
+        <button class="shop-more-btn" data-shop-more>Shop More</button>
       </div>` : '';
     return `
       <div class="page-head reveal"><h1>Your cart</h1><p>${count} ${count === 1 ? 'item' : 'items'} · Apply a valid coupon at checkout, if you have one.</p></div>
@@ -1573,7 +1578,7 @@
           <div style="display:flex;flex-direction:column;gap:12px">${lines}</div>
           <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
             <button class="btn btn-ghost btn-sm" id="clearCart">Clear cart</button>
-            <a class="btn btn-glass btn-sm" href="#/products">Continue shopping ${I.arrow}</a>
+            <a class="btn btn-glass btn-sm" href="#/products">Continue shopping</a>
           </div>
         </div>
         <div class="glass-panel reveal" style="position:sticky;top:calc(var(--nav-h) + 20px)">
@@ -1586,8 +1591,8 @@
             </div>
           </div>
           ${minCard}
-          <button class="btn btn-primary btn-block" id="goCheckout" ${subtotal < STORE.minOrder ? 'disabled' : ''}>Proceed to checkout ${I.arrow}</button>
-          <p style="font-size:12.5px;color:var(--muted);margin-top:12px;display:flex;gap:8px;align-items:center;justify-content:center">${I.lock} Safe checkout. No prepayment needed.</p>
+          <button class="btn btn-primary btn-block" id="goCheckout" ${subtotal < STORE.minOrder ? 'disabled' : ''}>Proceed to checkout</button>
+          <p class="checkout-note">No prepayment needed. Pay on delivery.</p>
         </div>
       </div>`;
   };
@@ -1631,25 +1636,24 @@
     const t = cartTotals();
     const v = (k, ph = '') => `<input type="text" id="ck_${k}" value="${esc(d[k] || '')}" placeholder="${ph}">`;
     const stepTabs = `
-      <div class="stepper">
-        <span class="step-pill ${step === 1 ? 'active' : ''} ${step > 1 ? 'done' : ''}"><span class="n">${step > 1 ? '✓' : '1'}</span> Details</span>
-        <span class="step-sep"></span>
-        <span class="step-pill ${step === 2 ? 'active' : ''} ${step > 2 ? 'done' : ''}"><span class="n">${step > 2 ? '✓' : '2'}</span> Payment</span>
-        <span class="step-sep"></span>
-        <span class="step-pill ${step === 3 ? 'active' : ''}"><span class="n">3</span> Review</span>
-      </div>`;
+      <ol class="checkout-steps" aria-label="Checkout progress">
+        ${['Details', 'Payment', 'Review'].map((label, index) => {
+          const number = index + 1;
+          return `<li class="checkout-step${step > number ? ' is-complete' : ''}"${step === number ? ' aria-current="step"' : ''}><span class="checkout-step__number" aria-hidden="true">${step > number ? I.check : number}</span><span><span class="sr-only">Step ${number}: </span>${label}${step > number ? '<span class="sr-only">, completed</span>' : ''}</span></li>`;
+        }).join('')}
+      </ol>`;
 
     let body = '';
     if (step === 1) {
       body = `
         <div class="layout-2col" style="margin-top:6px">
           <div class="glass-panel reveal">
-            <h2>Contact &amp; delivery</h2><p class="panel-sub">Where should we bring the sparkle?</p>
+            <h2>Contact &amp; delivery</h2><p class="panel-sub">Enter your contact details and delivery address.</p>
             <div class="form-grid">
               <div class="form-field full"><label for="ck_name">Full name <span class="req">*</span></label>${v('name', 'e.g. Rahul Sharma')}</div>
               <div class="form-field"><label for="ck_phone">Mobile <span class="req">*</span></label>
-                <div style="display:flex"><span style="display:flex;align-items:center;padding:0 12px;background:var(--surface);border:1.5px solid var(--glass-border-2);border-right:none;border-radius:12px 0 0 12px;font-weight:700;color:var(--muted)">+91</span>
-                ${`<input type="tel" id="ck_phone" value="${esc(d.phone || '')}" placeholder="10-digit number" maxlength="10" style="border-radius:0 12px 12px 0">`}</div>
+                <div class="phone-entry"><span>+91</span>
+                ${`<input type="tel" id="ck_phone" value="${esc(d.phone || '')}" placeholder="10-digit number" maxlength="10">`}</div>
               </div>
               <div class="form-field"><label for="ck_email">Email</label>${`<input type="email" id="ck_email" value="${esc(d.email || '')}" placeholder="Your email (optional)">`}</div>
               <div class="form-field full"><label for="ck_address">Address <span class="req">*</span></label><textarea id="ck_address" rows="2" placeholder="House no, street, colony…">${esc(d.address || '')}</textarea></div>
@@ -1657,9 +1661,9 @@
               <div class="form-field"><label for="ck_city">City <span class="req">*</span></label>${v('city', d.city || 'Hyderabad')}</div>
               <div class="form-field"><label for="ck_pincode">Pincode <span class="req">*</span></label>${v('pincode', '500001')}</div>
             </div>
-            <div style="margin-top:20px;display:flex;gap:10px;justify-content:flex-end">
+            <div class="checkout-actions">
               <a class="btn btn-ghost" href="#/cart">Back to cart</a>
-              <button class="btn btn-primary" id="ckNext1">Continue to payment ${I.arrow}</button>
+              <button class="btn btn-primary" id="ckNext1">Continue to payment</button>
             </div>
           </div>
           ${checkoutSummaryPanel()}
@@ -1675,9 +1679,9 @@
               <div class="pay-option ${st.payment === 'COD' ? 'selected' : ''}" data-pay="COD" role="radio" tabindex="0" aria-checked="${st.payment === 'COD'}"><span class="radio"></span><span class="p-emoji">${I.cash}</span><span><b>Cash on Delivery</b><p>Pay in cash when your order arrives.</p></span></div>
               <div class="pay-option ${st.payment === 'UPI' ? 'selected' : ''}" data-pay="UPI" role="radio" tabindex="0" aria-checked="${st.payment === 'UPI'}"><span class="radio"></span><span class="p-emoji">${I.phone}</span><span><b>UPI on Delivery</b><p>Scan &amp; pay with any UPI app at the door.</p></span></div>
             </div>
-            <div style="margin-top:24px;display:flex;gap:10px">
+            <div class="checkout-actions">
               <button class="btn btn-ghost" id="ckBack1">← Back</button>
-              <button class="btn btn-primary btn-block" id="ckNext2">Review order ${I.arrow}</button>
+              <button class="btn btn-primary" id="ckNext2">Review order</button>
             </div>
           </div>
           ${checkoutSummaryPanel()}
@@ -1688,7 +1692,7 @@
       body = `
         <div class="layout-2col" style="margin-top:6px">
           <div class="glass-panel reveal">
-            <h2>Review &amp; place order</h2><p class="panel-sub">Almost there — one tap and we're on it.</p>
+            <h2>Review &amp; place order</h2><p class="panel-sub">Check your items and delivery details before placing your order.</p>
             <div class="summary-line"><span>Deliver to</span><span class="r">${esc(d.name)} · ${esc(d.phone)}</span></div>
             <div class="summary-line"><span>Address</span><span class="r">${esc(d.address)}${d.area ? ', ' + esc(d.area) : ''}, ${esc(d.city)} — ${esc(d.pincode)}</span></div>
             <div class="summary-line"><span>Payment</span><span class="r">${esc(st.payment === 'COD' ? 'Cash on Delivery' : 'UPI on Delivery')}</span></div>
@@ -1696,9 +1700,9 @@
             <div style="margin-top:14px" class="order-items-list">
               ${cart.map(c => { const p = prodById(c.id); return `<div class="order-item">${p.image ? `<img src="${esc(p.image)}" alt="">` : `<div style="width:46px;height:46px;border-radius:9px;background:var(--bg);display:grid;place-items:center">${catIcon(catLabel(p))}</div>`}<span>${esc(p.shortName)} × ${esc(c.qty)}</span><span class="q">${money(priceOf(p) * c.qty)}</span></div>`; }).join('')}
             </div>
-            <div style="display:flex;gap:10px;margin-top:22px">
+            <div class="checkout-actions">
               <button class="btn btn-ghost" id="ckBack2">← Back</button>
-              <button class="btn btn-primary btn-block" id="ckPlace">${I.lock} Place order · ${money(Math.max(0, t.subtotal - (checkoutCoupon.code ? checkoutCoupon.discount : 0)))}</button>
+              <button class="btn btn-primary" id="ckPlace">Place order · ${money(Math.max(0, t.subtotal - (checkoutCoupon.code ? checkoutCoupon.discount : 0)))}</button>
             </div>
           </div>
           ${checkoutSummaryPanel()}
@@ -1726,9 +1730,9 @@
       <div class="sum-row"><span>You save</span><span class="save">${money(t.saving + couponAmt)}</span></div>
       <div style="margin-top:12px;border-top:1px solid var(--glass-border-2);padding-top:12px">
         <label for="ckCouponInput" style="font-size:13px;color:var(--ink-soft);display:block;margin-bottom:6px">Have a coupon?</label>
-        <div style="display:flex;gap:6px">
-          <input id="ckCouponInput" type="text" placeholder="Enter code" value="${esc(checkoutCoupon.code || '')}" ${checkoutCoupon.code ? 'disabled' : ''} style="flex:1;padding:8px 12px;border:1.5px solid var(--glass-border-2);border-radius:10px;background:var(--surface);font-size:13px">
-          <button id="ckApplyCoupon" class="btn ${checkoutCoupon.code ? 'btn-ghost' : 'btn-primary'}" style="padding:8px 14px;font-size:13px;border-radius:10px;white-space:nowrap">${checkoutCoupon.code ? 'Remove' : 'Apply'}</button>
+        <div class="coupon-entry">
+          <input id="ckCouponInput" type="text" placeholder="Enter code" value="${esc(checkoutCoupon.code || '')}" ${checkoutCoupon.code ? 'disabled' : ''}>
+          <button id="ckApplyCoupon" class="btn btn-secondary">${checkoutCoupon.code ? 'Remove' : 'Apply'}</button>
         </div>
         <div id="ckCouponMsg" style="margin-top:6px;font-size:12px">${checkoutCoupon.code ? `<span style="color:#2E7D32">✓ Coupon <b>${esc(checkoutCoupon.code)}</b> applied (−${money(checkoutCoupon.discount)})</span>` : ''}</div>
       </div>
@@ -1788,7 +1792,7 @@
       </div>
 
       <div class="no-print" style="text-align:center;margin-top:26px">
-        <a class="btn btn-glass" href="#/products">Continue shopping ${I.arrow}</a>
+        <a class="btn btn-glass" href="#/products">Continue shopping</a>
       </div>`;
   };
 
@@ -1823,7 +1827,7 @@
         ${timeline(order)}
         <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
           <a class="btn btn-ghost btn-sm" href="#/my-orders">My orders</a>
-          <a class="btn btn-glass btn-sm" href="#/reorder/${esc(routePart(order.id))}">Reorder ${I.arrow}</a>
+          <a class="btn btn-glass btn-sm" href="#/reorder/${esc(routePart(order.id))}">Reorder</a>
         </div>
       </div>`;
   };
@@ -1843,7 +1847,7 @@
     return `
       <div class="page-head reveal"><h1>Your wishlist</h1><p>${items.length} saved ${items.length === 1 ? 'item' : 'items'} — grab them before they sell out.</p></div>
       ${productGrid(items, { emptyTitle: 'Nothing saved yet', emptyText: 'Tap the heart on any product to save it here.' })}
-      ${items.length ? `<div style="text-align:center;margin-top:24px"><a class="btn btn-primary" href="#/products">${I.gift} Explore more products</a></div>` : ''}`;
+      ${items.length ? `<div style="text-align:center;margin-top:24px"><a class="btn btn-primary" href="#/products">Explore more products</a></div>` : ''}`;
   };
 
   views.myOrders = () => {
@@ -1896,7 +1900,7 @@
           <div class="form-field"><label for="cfName">Your name</label><input type="text" id="cfName" placeholder="Name"></div>
           <div class="form-field"><label for="cfPhone">Phone</label><input type="tel" id="cfPhone" placeholder="10-digit mobile" maxlength="10"></div>
           <div class="form-field full"><label for="cfMsg">Message</label><textarea id="cfMsg" rows="3" placeholder="How can we help?"></textarea></div>
-          <div class="form-field full" style="display:flex;gap:12px"><button class="btn btn-primary" type="submit">${I.mail} Send message</button><a class="btn btn-glass" href="https://wa.me/919248088588" target="_blank" rel="noopener">${I.wa} Chat on WhatsApp</a></div>
+          <div class="form-field full" style="display:flex;gap:12px"><button class="btn btn-primary" type="submit">Send message</button><a class="btn btn-glass" href="https://wa.me/919248088588" target="_blank" rel="noopener">${I.wa} Chat on WhatsApp</a></div>
         </form>
       </div>`,
     },
@@ -2210,10 +2214,10 @@
           </div>
           <div class="at-right">
             <span class="at-chip at-srv">${PREVIEW ? 'Local preview' : 'Admin console'}</span>
-            <button class="at-icon" data-theme-btn title="Toggle dark mode">${admPrefs.theme === 'dark' ? I2.sun : I2.moon}</button>
-            <button class="at-icon at-bell" data-bell title="Notifications">${I2.bell}<b class="at-bell-n" data-bell-badge>${bellUnread() || ''}</b></button>
+            <button class="at-icon" data-theme-btn title="Toggle dark mode" aria-label="Toggle dark mode">${admPrefs.theme === 'dark' ? I2.sun : I2.moon}</button>
+            <button class="at-icon at-bell" data-bell title="Notifications" aria-label="Notifications">${I2.bell}<b class="at-bell-n" data-bell-badge>${bellUnread() || ''}</b></button>
             <div class="at-av" data-avme>
-              <button class="at-av-btn" data-av-btn><span class="av-ic">${adminGravatar(u)}</span><span class="at-av-meta"><b>${esc(u.name)}</b><small>${u.role === 'admin' ? 'Administrator' : 'Staff'}</small></span></button>
+              <button class="at-av-btn" data-av-btn aria-label="Account menu"><span class="av-ic">${adminGravatar(u)}</span><span class="at-av-meta"><b>${esc(u.name)}</b><small>${u.role === 'admin' ? 'Administrator' : 'Staff'}</small></span></button>
               <div class="at-av-menu" id="avMenu">
                 <a href="${publicRoute('#/my-orders')}">${I2.user} My storefront account</a>
                 <button data-theme-btn2>${I2.sun} Switch to ${admPrefs.theme === 'dark' ? 'light' : 'dark'} mode</button>
@@ -2264,7 +2268,7 @@
       <div class="ad-head ad-head--dashboard">
         <div><h1>Store overview</h1>
           <p class="panel-sub">${new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })} · Sales, orders, and catalog activity.</p></div>
-        <div class="ad-head-cta"><a class="btn btn-ghost" href="${PUBLIC_ENTRY}">${I2.grid} View store</a><button class="btn btn-primary" data-qa="add-product">${I2.plus} Add Product</button></div>
+        <div class="ad-head-cta"><a class="btn btn-ghost" href="${PUBLIC_ENTRY}">View store</a><button class="btn btn-primary" data-qa="add-product">${I2.plus} Add Product</button></div>
       </div>
 
       <div class="kpi-grid">
@@ -2488,7 +2492,7 @@
             <option value="10" ${stockOf(p) === 10 ? 'selected' : ''}>In stock (10)</option>
             <option value="999" ${stockOf(p) === 999 ? 'selected' : ''}>Abundant (999)</option>
           </select></td>
-          <td style="text-align:center"><input type="checkbox" class="feat-box" data-feat="${p.id}" ${featuredOf(p) ? 'checked' : ''} aria-label="Toggle featured for ${esc(p.shortName)}"></td>
+          <td style="text-align:center"><label class="admin-check"><input type="checkbox" class="feat-box" data-feat="${p.id}" ${featuredOf(p) ? 'checked' : ''} aria-label="Toggle featured for ${esc(p.shortName)}"></label></td>
           <td style="text-align:center;white-space:nowrap"><button type="button" class="icon-btn" data-edit-prod="${p.id}" title="Edit product" aria-label="Edit ${esc(p.shortName)}">${I2.edit}</button>${p.isExtra ? `<button type="button" class="icon-btn" data-del-prod="${p.id}" title="Delete" aria-label="Delete ${esc(p.shortName)}">${I2.trash}</button>` : ''}</td>
         </tr>`).join('')}</tbody>
       </table></div>`;
@@ -2573,7 +2577,7 @@
           <label>Rating <input id="apRate" type="number" min="0" max="5" step="0.1" value="4.5"></label>
         </div>
         <label>Short note <input id="apNote" type="text" placeholder="A one-line selling point"></label>
-        <div class="add-actions"><button class="btn btn-primary" data-save-product>${I2.plus} Save product</button><button class="btn btn-ghost" data-goto="products">Cancel</button></div>
+        <div class="add-actions"><button class="btn btn-primary" data-save-product>Save product</button><button class="btn btn-ghost" data-goto="products">Cancel</button></div>
       </div>
     </div>`;
   };
@@ -2585,9 +2589,9 @@
         ${safeImageSrc(currentImage) ? `<img src="${esc(safeImageSrc(currentImage))}" alt="">` : '<div class="img-ph">' + I2.image + '<span>No image</span></div>'}
       </div>
       <div class="img-controls">
-        <label class="btn btn-ghost sm img-file"><span id="${prefix}fileLbl">${I2.upload} ${currentImage ? 'Upload / Replace image' : 'Upload from device'}</span><input id="${prefix}File" type="file" accept="image/jpeg,image/png,image/webp" hidden></label>
+        <label class="btn btn-ghost sm img-file"><span id="${prefix}fileLbl">${I2.upload} ${currentImage ? 'Upload / Replace image' : 'Upload from device'}</span><input id="${prefix}File" type="file" accept="image/jpeg,image/png,image/webp" class="sr-only"></label>
         <div class="img-hint">Background is removed automatically. JPG / PNG / WebP, max 5 MB.</div>
-        <div class="img-url-line"><span>or paste image URL</span><input id="${prefix}Url" type="text" placeholder="https://…/image.jpg" value="${currentImage ? esc(currentImage) : ''}"></div>
+        <div class="img-url-line"><span>or paste image URL</span><input id="${prefix}Url" type="text" aria-label="Product image URL" placeholder="https://…/image.jpg" value="${currentImage ? esc(currentImage) : ''}"></div>
         <div class="img-load" id="${prefix}Load" hidden><span class="spinner"></span>Processing image…</div>
         <div class="img-err" id="${prefix}Err" hidden></div>
       </div>
@@ -2820,7 +2824,7 @@
         </div>
         <footer class="ep-actions">
           <button class="btn btn-ghost" data-close-edit>Cancel</button>
-          <button class="ep-save" data-save-edit>${I.check} Update Product</button>
+          <button class="ep-save" data-save-edit>Update Product</button>
         </footer>
       </div>
     </div>`;
@@ -2990,7 +2994,7 @@
   const panelPos = () => {
     const { subtotal, saving, items } = posSums();
     const dateStr = new Date().toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
-    const pill = (id, label) => `<button type="button" class="pos-pill ${posCat === id ? 'on' : ''}" data-pos-cat="${id}">${label}</button>`;
+    const pill = (id, label) => `<button type="button" class="pos-pill ${posCat === id ? 'on' : ''}" data-pos-cat="${id}" aria-pressed="${posCat === id}">${label}</button>`;
     const pills = pill('all', 'All') + CATS.map(c => pill(c.id, esc(c.name))).join('');
     return `<div class="pos-root" data-postheme="${posPrefs.theme === 'light' ? 'light' : 'dark'}" data-mview="catalog">
       <header class="pos-top">
@@ -2998,10 +3002,10 @@
         <div class="pos-brand"><b>Billing Counter</b><span>Hyderabad &amp; Secunderabad · ${dateStr}</span></div>
         <div class="pos-search">${I2.search}<input id="posQ" type="text" placeholder="Search products…" value="${esc(posQ)}" autocomplete="off"></div>
         <div class="pos-top__actions">
-          <button type="button" class="pos-btn pos-btn--ghost" id="posHold" title="Hold this bill">${I2.download}<span>Hold</span></button>
+          <button type="button" class="pos-btn pos-btn--ghost" id="posHold" title="Hold this bill"><span>Hold</span></button>
           <button type="button" class="pos-btn pos-btn--ghost pos-held" id="posHeld" title="Held bills"><span>Held</span><b class="pos-held-n" id="posHeldCount">${heldBills.length || ''}</b></button>
           <button type="button" class="pos-btn pos-btn--primary" id="posNew">${I2.plus}<span>New Bill</span></button>
-          <button type="button" class="pos-btn pos-btn--ghost pos-ico-btn" id="posTheme" title="Toggle POS theme">${posPrefs.theme === 'light' ? I2.moon : I2.sun}</button>
+          <button type="button" class="pos-btn pos-btn--ghost pos-ico-btn" id="posTheme" title="Toggle POS theme" aria-label="Toggle POS theme">${posPrefs.theme === 'light' ? I2.moon : I2.sun}</button>
         </div>
         <div class="pos-top__totals"><span id="posTopCount">${items}${items === 1 ? ' item' : ' items'}</span><b id="posTopTotal">${money(subtotal)}</b></div>
         <div class="pos-heldpop" id="posHeldPop" hidden></div>
@@ -3018,7 +3022,7 @@
               <option value="newest" ${posSortK === 'newest' ? 'selected' : ''}>Newest</option>
             </select>
           </div>
-          <div class="pos-pills" id="posPills">${pills}</div>
+          <div class="pos-pills" id="posPills" role="group" aria-label="Filter products by category">${pills}</div>
           <div class="pos-prods" id="posProds">${posProdsHTML()}</div>
         </section>
         <aside class="pos-billpanel" data-pane="bill">
@@ -3031,23 +3035,23 @@
           <div class="pos-sums">
             <div class="pos-sumrow"><span>Subtotal</span><b id="posSubtotal">${money(subtotal)}</b></div>
             <div class="pos-sumrow pos-sumrow--save" id="posSavingRow" ${saving ? '' : 'hidden'}><span>MRP savings</span><b>− ${money(saving)}</b></div>
-            <div class="pos-sumrow pos-sumrow--disc"><span>Discount ₹</span><input id="posDiscount" type="number" min="0" step="1" placeholder="0" inputmode="numeric"></div>
+            <div class="pos-sumrow pos-sumrow--disc"><span>Discount ₹</span><input id="posDiscount" type="number" min="0" step="1" placeholder="0" inputmode="numeric" aria-label="Bill discount in rupees"></div>
             <div class="pos-grand"><span>Grand Total</span><b id="posTotal">${money(subtotal)}</b></div>
           </div>
-          <div class="pos-pay">
-            <button type="button" class="pos-paybtn ${posPayMode === 'COD' ? 'on' : ''}" data-pos-pay="COD">${I.cash} Cash</button>
-            <button type="button" class="pos-paybtn ${posPayMode === 'UPI' ? 'on' : ''}" data-pos-pay="UPI">UPI</button>
-            <button type="button" class="pos-paybtn ${posPayMode === 'CARD' ? 'on' : ''}" data-pos-pay="CARD">Card</button>
+          <div class="pos-pay" role="group" aria-label="Payment method">
+            <button type="button" class="pos-paybtn ${posPayMode === 'COD' ? 'on' : ''}" data-pos-pay="COD" aria-pressed="${posPayMode === 'COD'}">Cash</button>
+            <button type="button" class="pos-paybtn ${posPayMode === 'UPI' ? 'on' : ''}" data-pos-pay="UPI" aria-pressed="${posPayMode === 'UPI'}">UPI</button>
+            <button type="button" class="pos-paybtn ${posPayMode === 'CARD' ? 'on' : ''}" data-pos-pay="CARD" aria-pressed="${posPayMode === 'CARD'}">Card</button>
           </div>
           <div class="pos-place">
-            <button type="button" class="pos-btn pos-btn--primary pos-btn--lg" id="posPlace">${I.check} Generate Bill</button>
-            <button type="button" class="pos-btn pos-btn--ghost pos-btn--lg pos-wa" id="posWa" title="Send bill on WhatsApp">${I.wa}</button>
+            <button type="button" class="pos-btn pos-btn--primary pos-btn--lg" id="posPlace">Generate Bill</button>
+            <button type="button" class="pos-btn pos-btn--ghost pos-btn--lg pos-wa" id="posWa" title="Send bill on WhatsApp" aria-label="Send bill on WhatsApp">${I.wa}</button>
           </div>
         </aside>
       </div>
-      <div class="pos-mtabs" role="tablist">
-        <button type="button" class="pos-mtab on" data-mtab="catalog">Products</button>
-        <button type="button" class="pos-mtab" data-mtab="bill">Bill<b class="pos-mtab__n" id="posMtabCount">${items || ''}</b></button>
+      <div class="pos-mtabs" role="group" aria-label="Billing view">
+        <button type="button" class="pos-mtab on" data-mtab="catalog" aria-pressed="true">Products</button>
+        <button type="button" class="pos-mtab" data-mtab="bill" aria-pressed="false">Bill<b class="pos-mtab__n" id="posMtabCount">${items || ''}</b></button>
       </div>
     </div>`;
   };
@@ -3605,7 +3609,7 @@
       });
       $$('.pos-pill').forEach(b => b.onclick = () => {
         posCat = b.getAttribute('data-pos-cat') || 'all';
-        $$('.pos-pill').forEach(x => x.classList.toggle('on', x === b));
+        $$('.pos-pill').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); });
         rerenderProds();
       });
       const psort = $('#posSort');
@@ -3631,12 +3635,12 @@
       if (din) din.oninput = () => refreshPosBill(false);
       $$('[data-pos-pay]').forEach(b => b.onclick = () => {
         posPayMode = b.getAttribute('data-pos-pay') || 'COD';
-        $$('[data-pos-pay]').forEach(x => x.classList.toggle('on', x === b));
+        $$('[data-pos-pay]').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); });
       });
       $$('[data-mtab]').forEach(b => b.onclick = () => {
         const r = $('.pos-root');
         if (r) r.dataset.mview = b.getAttribute('data-mtab') || 'catalog';
-        $$('.pos-mtab').forEach(x => x.classList.toggle('on', x === b));
+        $$('.pos-mtab').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); });
       });
       const th = $('#posTheme');
       if (th) th.onclick = () => {
@@ -3903,7 +3907,7 @@
 
   views.notFound = () => `
     <div class="page-head reveal"><h1>Page not found</h1></div>
-    <div class="empty-state reveal"><div class="e-emoji">${I.fileQ}</div><h3>This spark fizzled</h3><p>The page you're looking for doesn't exist.</p><a class="btn btn-primary" href="#/">${I.gift} Back to home</a></div>`;
+    <div class="empty-state reveal"><div class="e-emoji">${I.fileQ}</div><h3>This spark fizzled</h3><p>The page you're looking for doesn't exist.</p><a class="btn btn-primary" href="#/">Back to home</a></div>`;
 
   /* ==================== router ==================== */
   let currentRoute = null;
@@ -4082,7 +4086,7 @@
   };
 
   const setupReveal = () => {
-    if (reduceMotion) return;
+    if (reduceMotion) { $$('.reveal:not(.in)').forEach(el => el.classList.add('in')); return; }
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     $$('.reveal:not(.in)').forEach(el => io.observe(el));
   };
@@ -4252,10 +4256,10 @@
     if (!show) { rail.innerHTML = ''; return; }
     const st = m.name === 'products' ? shopState(currentRoute) : { cats: [] };
     const active = st.cats.length === 1 ? st.cats[0] : (st.cats.length ? '' : 'all');
-    const pill = (id, name, n) => `<button class="cat-pill ${active === id ? 'active' : ''}" data-cat="${esc(id)}" aria-current="${active === id}">${esc(name)}${n != null ? `<span class="cp-n">${n}</span>` : ''}</button>`;
+    const pill = (id, name, n) => `<button class="cat-pill ${active === id ? 'active' : ''}" data-cat="${esc(id)}" aria-current="${active === id}" aria-label="${esc(name)}${n != null ? ', ' + n + ' products' : ''}">${esc(name)}${n != null ? `<span class="cp-n" aria-hidden="true">${n}</span>` : ''}</button>`;
     rail.innerHTML = pill('all', 'All Categories', allProducts().length)
       + CATS.map(c => pill(c.id, c.name, allProducts().filter(p => p.cats.includes(c.id)).length)).join('')
-      + `<button class="cat-pill ${location.hash.includes('sort=newest') ? 'active' : ''}" data-railsort="newest">New Arrivals</button>`;
+      + `<button class="cat-pill ${location.hash.includes('sort=newest') ? 'active' : ''}" data-railsort="newest" aria-current="${location.hash.includes('sort=newest')}">New Arrivals</button>`;
   };
 
   /* In-place collection pills (homepage New Arrivals / Featured) */
@@ -4267,7 +4271,7 @@
       if (row) $$('[data-pillgroup]', row).forEach(b => {
         const on = b === btn;
         b.classList.toggle('active', on);
-        b.setAttribute('aria-selected', on);
+        b.setAttribute('aria-pressed', on);
       });
       const grid = $('#' + group + 'Grid') || (row && row.parentElement && row.parentElement.querySelector('.prod-grid'));
       if (!grid) return;
@@ -4375,7 +4379,7 @@
       const setQ = n => { if (btnQ) btnQ.textContent = n; };
       if (min) min.onclick = () => { let n = Math.max(1, (parseInt(btnQ.textContent) || 1) - 1); setQ(n); };
       if (plu) plu.onclick = () => { const n = Math.min(50, Math.max(1, Math.floor(stockOf(p))), (parseInt(btnQ.textContent) || 1) + 1); setQ(n); };
-      if (add) add.onclick = () => { const n = parseInt(btnQ.textContent) || 1; if (!addToCart(p.id, n)) return; add.innerHTML = I.check + ' Added'; add.classList.add('added'); setTimeout(() => { add.innerHTML = I.cart + ' Add to cart'; add.classList.remove('added'); }, 1200); };
+      if (add) add.onclick = () => { const n = parseInt(btnQ.textContent) || 1; if (!addToCart(p.id, n)) return; add.textContent = 'Added'; add.classList.add('added'); setTimeout(() => { add.textContent = 'Add to cart'; add.classList.remove('added'); }, 1200); };
       if (buy) buy.onclick = () => { const n = parseInt(btnQ.textContent) || 1; addToCart(p.id, n); const t = cartTotals(); if (t.subtotal < STORE.minOrder) { toast(`Minimum order value is ${money(STORE.minOrder)}. Please add ${money(STORE.minOrder - t.subtotal)} more to continue.`, 'err'); return; } location.hash = '#/checkout'; };
       if (wish) wish.onclick = () => toggleWish(p.id);
     }

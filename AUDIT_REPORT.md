@@ -2,6 +2,8 @@
 
 **26 September 2026 — no deployment performed.**
 
+27 September follow-up: the global control refinement, new UI findings, fresh local checks and before/after screenshots are documented in [UI_REFINEMENT_REPORT.md](<C:/Users/Nikshit Garje/Documents/ChatGPT/crackersmela final/UI_REFINEMENT_REPORT.md>). The backend limitations below still apply.
+
 The current public UI has been recovered, audited and improved in an isolated local copy. The existing branding, blue palette, navigation, storefront layout and admin layout are preserved. The supplied backups do **not** contain the PHP backend used by the live website. Consequently this is a tested **frontend review**, not a completed full-stack repair or a production-ready release.
 
 ## Open the local result

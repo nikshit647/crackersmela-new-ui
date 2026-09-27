@@ -120,11 +120,26 @@ export function installPreviewWriteGuard() {
   document.addEventListener('DOMContentLoaded', () => markTree(document.body), { once: true });
 }
 
+// The local-only notice takes real layout space. Full-height POS panels must
+// account for its wrapping text rather than pushing their bottom tabs offscreen.
+export function installPreviewNoticeLayout() {
+  document.addEventListener('DOMContentLoaded', () => {
+    const notice = document.querySelector('.cm-preview-notice');
+    if (!notice) return;
+    const measure = () => {
+      document.documentElement.style.setProperty('--cm-preview-notice-height', `${Math.ceil(notice.getBoundingClientRect().height)}px`);
+    };
+    measure();
+    if (typeof ResizeObserver === 'function') new ResizeObserver(measure).observe(notice);
+    window.addEventListener('resize', measure, { passive: true });
+  }, { once: true });
+}
+
 function renderPreview(html, isAdmin) {
   const preview = { isAdmin, publicEntry, adminEntry, user: isAdmin ? { name: 'Local review admin', email: 'review@example.test', role: 'admin' } : null };
-  const bootstrap = `<script>window.CM_PREVIEW=${JSON.stringify(preview)};if(window.CM_PREVIEW.user)Object.freeze(window.CM_PREVIEW.user);Object.freeze(window.CM_PREVIEW);(${installPreviewWriteGuard.toString()})();</script>`;
+  const bootstrap = `<script>window.CM_PREVIEW=${JSON.stringify(preview)};if(window.CM_PREVIEW.user)Object.freeze(window.CM_PREVIEW.user);Object.freeze(window.CM_PREVIEW);(${installPreviewWriteGuard.toString()})();(${installPreviewNoticeLayout.toString()})();</script>`;
   const notice = `<aside class="cm-preview-notice" role="note" aria-label="Local preview limitations"><span id="cm-preview-message" role="status" aria-live="polite"><strong>Local UI preview</strong> — backend unavailable; changes cannot be saved.</span><nav aria-label="Local preview sites"><a href="${publicEntry}">Storefront</a><a href="${adminEntry}">Admin preview</a></nav></aside>`;
-  const noticeStyle = `<style>.cm-preview-notice{position:relative;z-index:0;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 20px;padding:9px 16px;background:#fff7df;color:#5a4000;border-bottom:1px solid #ead7a3;font:12px/1.5 system-ui,sans-serif;text-align:center}.cm-preview-notice nav{display:flex;gap:14px}.cm-preview-notice a{color:#354f79;text-decoration:underline;text-underline-offset:2px}.cm-preview-notice a:focus-visible{outline:2px solid currentColor;outline-offset:3px}[data-cm-preview-unavailable]{cursor:not-allowed;opacity:.65}@media print{.cm-preview-notice{display:none}}</style>`;
+  const noticeStyle = `<style>.cm-preview-notice{position:relative;z-index:0;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 20px;padding:9px 16px;background:#fff7df;color:#5a4000;border-bottom:1px solid #ead7a3;font:12px/1.5 system-ui,sans-serif;text-align:center}.cm-preview-notice nav{display:flex;gap:14px}.cm-preview-notice a{color:#354f79;text-decoration:underline;text-underline-offset:2px}.cm-preview-notice a:focus-visible{outline:2px solid currentColor;outline-offset:3px}[data-cm-preview-unavailable]{cursor:not-allowed;opacity:.65}html body.pos-mode .app-shell,html body.pos-mode .admin-shell,html body.pos-mode .admin-body{height:calc(100vh - var(--cm-preview-notice-height,0px));height:calc(100dvh - var(--cm-preview-notice-height,0px));min-height:0}@media print{.cm-preview-notice{display:none}}</style>`;
   return html
     // The preview never loads production authentication or analytics SDKs.
     .replace(/<script\b[^>]*\bsrc=["'](?:https?:)?\/\/[^"']*["'][^>]*>[\s\S]*?<\/script\s*>/gi, '')

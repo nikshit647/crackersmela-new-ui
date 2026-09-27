@@ -1,0 +1,86 @@
+[
+  {
+    "view": "desktop-home",
+    "beforeGradients": 9,
+    "afterGradients": 0,
+    "beforeShadows": 10,
+    "afterShadows": 1
+  },
+  {
+    "view": "desktop-catalog",
+    "beforeGradients": 11,
+    "afterGradients": 0,
+    "beforeShadows": 18,
+    "afterShadows": 2
+  },
+  {
+    "view": "desktop-product",
+    "beforeGradients": 8,
+    "afterGradients": 0,
+    "beforeShadows": 10,
+    "afterShadows": 1
+  },
+  {
+    "view": "desktop-cart",
+    "beforeGradients": 8,
+    "afterGradients": 0,
+    "beforeShadows": 10,
+    "afterShadows": 1
+  },
+  {
+    "view": "desktop-checkout-address",
+    "beforeGradients": 7,
+    "afterGradients": 0,
+    "beforeShadows": 16,
+    "afterShadows": 1
+  },
+  {
+    "view": "desktop-checkout-payment",
+    "beforeGradients": 8,
+    "afterGradients": 0,
+    "beforeShadows": 10,
+    "afterShadows": 1
+  },
+  {
+    "view": "desktop-checkout-review",
+    "beforeGradients": 8,
+    "afterGradients": 0,
+    "beforeShadows": 10,
+    "afterShadows": 1
+  },
+  {
+    "view": "mobile-catalog",
+    "beforeGradients": 21,
+    "afterGradients": 0,
+    "beforeShadows": 27,
+    "afterShadows": 2
+  },
+  {
+    "view": "mobile-filter",
+    "beforeGradients": 21,
+    "afterGradients": 0,
+    "beforeShadows": 27,
+    "afterShadows": 2
+  },
+  {
+    "view": "desktop-admin-dashboard",
+    "beforeGradients": 3,
+    "afterGradients": 0,
+    "beforeShadows": 6,
+    "afterShadows": 0
+  },
+  {
+    "view": "desktop-admin-products",
+    "beforeGradients": 3,
+    "afterGradients": 0,
+    "beforeShadows": 4,
+    "afterShadows": 0
+  },
+  {
+    "view": "desktop-admin-edit",
+    "beforeGradients": 3,
+    "afterGradients": 0,
+    "beforeShadows": 5,
+    "afterShadows": 0
+  }
+]
