@@ -7977,6 +7977,7 @@ textarea:focus-visible,
   object-fit: contain;
   flex-shrink: 0;
 }
+.navbar .logo-img { width: 302.5px; }
 .logo-img--drawer { width: 172px; }
 .logo-img--footer { width: 205px; }
 .logo-img--invoice { width: 162px; }
@@ -7998,6 +7999,7 @@ textarea:focus-visible,
 @media (max-width: 900px) {
   .nav-links { display: none; }
   .logo-img { width: min(36vw, 160px); max-width: 100%; }
+  .navbar .logo-img { width: min(49.5vw, 220px); }
   .logo-img--drawer { width: 172px; }
   .logo-img--footer { width: 188px; }
 }
