@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "scope": "Isolated local copy; synthetic authentication; no production mutations or mail",
+  "checks": [
+    {
+      "name": "Reset restores the canonical catalog order",
+      "status": "PASS"
+    },
+    {
+      "name": "Reset stores that canonical order globally at the root",
+      "status": "PASS"
+    },
+    {
+      "name": "Reorder stores the order once, on the document root",
+      "status": "PASS"
+    },
+    {
+      "name": "No section keeps a private copy of the order",
+      "status": "PASS"
+    },
+    {
+      "name": "Product ordering is a separate, untouched field",
+      "status": "PASS"
+    },
+    {
+      "name": "Save Draft keeps the global order across a reload",
+      "status": "PASS"
+    },
+    {
+      "name": "The stored order still lives only at the root after a reload",
+      "status": "PASS"
+    },
+    {
+      "name": "The published global order is what the storefront applies",
+      "status": "PASS"
+    },
+    {
+      "name": "Mega-menu #navCatMenu shows the published order",
+      "status": "PASS"
+    },
+    {
+      "name": "Mega-menu counts still belong to their own category",
+      "status": "PASS"
+    },
+    {
+      "name": "Sidebar #filterCol follows the same global order",
+      "status": "PASS"
+    },
+    {
+      "name": "Sidebar counts still belong to their own category",
+      "status": "PASS"
+    },
+    {
+      "name": "Sidebar order and mega-menu order agree",
+      "status": "PASS"
+    },
+    {
+      "name": "Footer shows the first six of the published order",
+      "status": "PASS"
+    },
+    {
+      "name": "Mega-menu link opens its own category",
+      "status": "PASS"
+    },
+    {
+      "name": "Sidebar filter reflects the category just chosen",
+      "status": "PASS"
+    },
+    {
+      "name": "Filtered grid contains only that category",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile drawer follows the same global order",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile rail #catRail follows the same global order",
+      "status": "PASS"
+    },
+    {
+      "name": "Reset stores the catalog order globally",
+      "status": "PASS"
+    },
+    {
+      "name": "Reset is undoable through the normal history",
+      "status": "PASS"
+    },
+    {
+      "name": "Published reset returns every surface to the catalog order",
+      "status": "PASS"
+    },
+    {
+      "name": "No uncaught browser errors",
+      "status": "PASS"
+    },
+    {
+      "name": "No browser console errors",
+      "status": "PASS"
+    }
+  ],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\category-order-global-browser-1791455159264"
+}

@@ -1,0 +1,625 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "placed at 740px",
+      "status": "PASS",
+      "buttons": [
+        {
+          "bottom": 1237.34375,
+          "href": "https://crackersmela.com/track/CM-TEST-7ITEMS",
+          "left": 98,
+          "right": 284.03125,
+          "top": 1190.34375
+        },
+        {
+          "bottom": 1237.34375,
+          "href": "https://crackersmela.com/track/CM-TEST-7ITEMS?invoice=1",
+          "left": 290.03125,
+          "right": 482.1875,
+          "top": 1190.34375
+        }
+      ],
+      "money": [
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹120.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹120.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹180.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹180.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹375.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹375.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹390.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹390.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹245.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹245.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹340.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹340.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹650.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹650.00"
+        }
+      ],
+      "pageWidth": 740,
+      "rows": 7,
+      "total": "₹2,275.00",
+      "width": 740,
+      "screenshot": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\customer-email-items\\placed-desktop-740.png"
+    },
+    {
+      "name": "placed at 360px",
+      "status": "PASS",
+      "buttons": [
+        {
+          "bottom": 1329.34375,
+          "href": "https://crackersmela.com/track/CM-TEST-7ITEMS",
+          "left": 22,
+          "right": 338,
+          "top": 1282.34375
+        },
+        {
+          "bottom": 1386.34375,
+          "href": "https://crackersmela.com/track/CM-TEST-7ITEMS?invoice=1",
+          "left": 22,
+          "right": 338,
+          "top": 1339.34375
+        }
+      ],
+      "money": [
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹120.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹120.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹180.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹180.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹375.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹375.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹390.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹390.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹245.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹245.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹340.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹340.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹650.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹650.00"
+        }
+      ],
+      "pageWidth": 360,
+      "rows": 7,
+      "total": "₹2,275.00",
+      "width": 360,
+      "screenshot": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\customer-email-items\\placed-mobile-360.png"
+    },
+    {
+      "name": "placed at 390px",
+      "status": "PASS",
+      "buttons": [
+        {
+          "bottom": 1329.34375,
+          "href": "https://crackersmela.com/track/CM-TEST-7ITEMS",
+          "left": 22,
+          "right": 368,
+          "top": 1282.34375
+        },
+        {
+          "bottom": 1386.34375,
+          "href": "https://crackersmela.com/track/CM-TEST-7ITEMS?invoice=1",
+          "left": 22,
+          "right": 368,
+          "top": 1339.34375
+        }
+      ],
+      "money": [
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹120.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹120.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹180.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹180.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹375.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹375.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹390.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹390.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹245.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹245.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹340.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹340.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹650.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹650.00"
+        }
+      ],
+      "pageWidth": 390,
+      "rows": 7,
+      "total": "₹2,275.00",
+      "width": 390,
+      "screenshot": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\customer-email-items\\placed-mobile-390.png"
+    },
+    {
+      "name": "single-item at 360px",
+      "status": "PASS",
+      "buttons": [
+        {
+          "bottom": 960.03125,
+          "href": "https://crackersmela.com/track/CM-TEST-7ITEMS",
+          "left": 22,
+          "right": 338,
+          "top": 913.03125
+        },
+        {
+          "bottom": 1017.03125,
+          "href": "https://crackersmela.com/track/CM-TEST-7ITEMS?invoice=1",
+          "left": 22,
+          "right": 338,
+          "top": 970.03125
+        }
+      ],
+      "money": [
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹123.45"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹369.99"
+        }
+      ],
+      "pageWidth": 360,
+      "rows": 1,
+      "total": "₹319.77",
+      "width": 360,
+      "screenshot": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\customer-email-items\\single-item-mobile-360.png"
+    },
+    {
+      "name": "cancelled at 360px",
+      "status": "PASS",
+      "buttons": [
+        {
+          "bottom": 1181.46875,
+          "href": "https://crackersmela.com/track/CM-TEST-7ITEMS",
+          "left": 22,
+          "right": 338,
+          "top": 1134.46875
+        },
+        {
+          "bottom": 1238.46875,
+          "href": "https://crackersmela.com/track/CM-TEST-7ITEMS?invoice=1",
+          "left": 22,
+          "right": 338,
+          "top": 1191.46875
+        }
+      ],
+      "money": [
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹120.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹120.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹180.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹180.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹375.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹375.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹390.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹390.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹245.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹245.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹340.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹340.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹650.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹650.00"
+        }
+      ],
+      "pageWidth": 360,
+      "rows": 7,
+      "total": "₹2,275.00",
+      "width": 360,
+      "screenshot": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\customer-email-items\\cancelled-mobile-360.png"
+    },
+    {
+      "name": "long-name at 360px",
+      "status": "PASS",
+      "buttons": [
+        {
+          "bottom": 1617.34375,
+          "href": "https://crackersmela.com/track/CM-TEST-7ITEMS",
+          "left": 22,
+          "right": 338,
+          "top": 1570.34375
+        },
+        {
+          "bottom": 1674.34375,
+          "href": "https://crackersmela.com/track/CM-TEST-7ITEMS?invoice=1",
+          "left": 22,
+          "right": 338,
+          "top": 1627.34375
+        }
+      ],
+      "money": [
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹99,999.99"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹49,99,999.50"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹180.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹180.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹375.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹375.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹390.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹390.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹245.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹245.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹340.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹340.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹650.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹650.00"
+        }
+      ],
+      "pageWidth": 360,
+      "rows": 7,
+      "total": "₹2,275.00",
+      "width": 360,
+      "screenshot": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\customer-email-items\\long-name-mobile-360.png"
+    },
+    {
+      "name": "long-name at 740px",
+      "status": "PASS",
+      "buttons": [
+        {
+          "bottom": 1381.34375,
+          "href": "https://crackersmela.com/track/CM-TEST-7ITEMS",
+          "left": 98,
+          "right": 284.03125,
+          "top": 1334.34375
+        },
+        {
+          "bottom": 1381.34375,
+          "href": "https://crackersmela.com/track/CM-TEST-7ITEMS?invoice=1",
+          "left": 290.03125,
+          "right": 482.1875,
+          "top": 1334.34375
+        }
+      ],
+      "money": [
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹99,999.99"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹49,99,999.50"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹180.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹180.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹375.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹375.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹390.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹390.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹245.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹245.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹340.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹340.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹650.00"
+        },
+        {
+          "fits": true,
+          "lines": 1,
+          "text": "₹650.00"
+        }
+      ],
+      "pageWidth": 740,
+      "rows": 7,
+      "total": "₹2,275.00",
+      "width": 740,
+      "screenshot": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\customer-email-items\\long-name-desktop-740.png"
+    }
+  ],
+  "scope": "Rendered local HTML in Chromium. Real Gmail, Outlook and Apple Mail delivery was not attempted; layout uses tables and inline styles. No SMTP."
+}

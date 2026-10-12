@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Desktop edit preserves previously inherited native Tablet and Mobile fonts",
+      "status": "PASS"
+    },
+    {
+      "name": "All three devices keep independent font sizes",
+      "status": "PASS"
+    },
+    {
+      "name": "Undo and redo change only the selected device override",
+      "status": "PASS"
+    },
+    {
+      "name": "Section spacing and height edits remain on Desktop",
+      "status": "PASS"
+    },
+    {
+      "name": "Hide and show act on the active device and preserve other sizes",
+      "status": "PASS"
+    },
+    {
+      "name": "Image movement and fit remain isolated to Desktop and Tablet",
+      "status": "PASS"
+    },
+    {
+      "name": "Product grid column edits preserve the other two device layouts",
+      "status": "PASS"
+    },
+    {
+      "name": "Home uses the existing numbered reorder mode and move controls",
+      "status": "PASS"
+    },
+    {
+      "name": "Reordering retains every native product card object",
+      "status": "PASS"
+    },
+    {
+      "name": "Responsive and Home ordering changes stay in the private draft",
+      "status": "PASS"
+    },
+    {
+      "name": "Save and reload preserve all three device overrides and Home order",
+      "status": "PASS"
+    },
+    {
+      "name": "Published storefront renders the saved device fonts at each breakpoint",
+      "status": "PASS"
+    },
+    {
+      "name": "Published Home uses its saved section order",
+      "status": "PASS"
+    },
+    {
+      "name": "The original Add to cart handler still works after Home reordering",
+      "status": "PASS"
+    }
+  ],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\cms-responsive-browser-1791168251974"
+}

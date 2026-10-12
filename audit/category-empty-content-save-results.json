@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Catalog contains all 11 existing categories",
+      "status": "PASS"
+    },
+    {
+      "name": "Home category section starts with a real empty content object",
+      "status": "PASS"
+    },
+    {
+      "name": "Home Save draft succeeds with empty category content and saved global order",
+      "status": "PASS"
+    },
+    {
+      "name": "Home Save draft preserves the authoritative category order",
+      "status": "PASS"
+    },
+    {
+      "name": "Saving preserves empty category content as an object",
+      "status": "PASS"
+    },
+    {
+      "name": "Home Publish succeeds after empty-content Save",
+      "status": "PASS"
+    },
+    {
+      "name": "Home Publish preserves the authoritative category order",
+      "status": "PASS"
+    },
+    {
+      "name": "Home editor refresh preserves the successfully saved edit",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh public Home renders the saved and published edit",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh public Home keeps all canonical categories in saved order",
+      "status": "PASS"
+    },
+    {
+      "name": "Empty-content Save and Publish never modify commerce records",
+      "status": "PASS"
+    },
+    {
+      "name": "No uncaught browser errors after Home Save and Publish",
+      "status": "PASS"
+    },
+    {
+      "name": "No browser console errors after Home Save and Publish",
+      "status": "PASS"
+    }
+  ],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\category-save-live-1791460571028",
+  "fixtureUrl": "http://127.0.0.1:4314",
+  "emptyContentSave": true
+}

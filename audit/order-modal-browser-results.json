@@ -1,0 +1,7 @@
+{
+  "status": "FAIL",
+  "checks": [],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\order-modal-browser-1791548231562",
+  "failure": "Error: Browser action failed: wait\n    at run (file:///C:/Users/Nikshit%20Garje/Documents/ChatGPT/crackersmela%20final/tests/order-modal-browser-test.mjs:19:201)\n    at wait (file:///C:/Users/Nikshit%20Garje/Documents/ChatGPT/crackersmela%20final/tests/order-modal-browser-test.mjs:21:18)\n    at file:///C:/Users/Nikshit%20Garje/Documents/ChatGPT/crackersmela%20final/tests/order-modal-browser-test.mjs:32:326\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)",
+  "scope": "Private localhost fixture; synthetic order only; mail disabled; test order removed by ID."
+}

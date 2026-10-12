@@ -1,0 +1,6259 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "one-item-1440x900 has no horizontal page overflow",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 52,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 1152.171875,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 1123.171875,
+            "y": 24
+          },
+          "body": {
+            "bottom": 412.53125,
+            "clientHeight": 336,
+            "height": 335.53125,
+            "right": 1440,
+            "scrollHeight": 336,
+            "width": 439,
+            "x": 1001,
+            "y": 77
+          },
+          "checkout": {
+            "bottom": 842,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 1420,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 1021,
+            "y": 796
+          },
+          "couponEntry": {
+            "bottom": 523.71875,
+            "clientHeight": 42,
+            "height": 42,
+            "right": 1409,
+            "scrollHeight": 42,
+            "width": 377,
+            "x": 1032,
+            "y": 481.71875
+          },
+          "couponHeading": {
+            "bottom": 447.53125,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 1409,
+            "scrollHeight": 23,
+            "width": 377,
+            "x": 1032,
+            "y": 424.53125
+          },
+          "couponToggle": {
+            "bottom": 575.71875,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 1409,
+            "scrollHeight": 40,
+            "width": 377,
+            "x": 1032,
+            "y": 535.71875
+          },
+          "coupons": {
+            "bottom": 599.71875,
+            "clientHeight": 187,
+            "height": 187.1875,
+            "right": 1440,
+            "scrollHeight": 187,
+            "width": 439,
+            "x": 1001,
+            "y": 412.53125
+          },
+          "fullCart": {
+            "bottom": 888,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 1420,
+            "scrollHeight": 40,
+            "width": 399,
+            "x": 1021,
+            "y": 848
+          },
+          "heading": {
+            "bottom": 52,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 1152.171875,
+            "scrollHeight": 28,
+            "width": 131.171875,
+            "x": 1021,
+            "y": 24
+          },
+          "offers": {
+            "bottom": 860.71875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 1409,
+            "scrollHeight": 1511,
+            "width": 377,
+            "x": 1032,
+            "y": 580.71875
+          },
+          "panel": {
+            "bottom": 900,
+            "clientHeight": 900,
+            "height": 900,
+            "right": 1440,
+            "scrollHeight": 900,
+            "width": 440,
+            "x": 1000,
+            "y": 0
+          },
+          "total": {
+            "bottom": 684.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 1420,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 1021,
+            "y": 639.5625
+          }
+        },
+        "height": 900,
+        "pageOverflow": false,
+        "width": 1440
+      }
+    },
+    {
+      "name": "one-item-1440x900 checkout and full-cart actions stay visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 52,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 1152.171875,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 1123.171875,
+            "y": 24
+          },
+          "body": {
+            "bottom": 412.53125,
+            "clientHeight": 336,
+            "height": 335.53125,
+            "right": 1440,
+            "scrollHeight": 336,
+            "width": 439,
+            "x": 1001,
+            "y": 77
+          },
+          "checkout": {
+            "bottom": 842,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 1420,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 1021,
+            "y": 796
+          },
+          "couponEntry": {
+            "bottom": 523.71875,
+            "clientHeight": 42,
+            "height": 42,
+            "right": 1409,
+            "scrollHeight": 42,
+            "width": 377,
+            "x": 1032,
+            "y": 481.71875
+          },
+          "couponHeading": {
+            "bottom": 447.53125,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 1409,
+            "scrollHeight": 23,
+            "width": 377,
+            "x": 1032,
+            "y": 424.53125
+          },
+          "couponToggle": {
+            "bottom": 575.71875,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 1409,
+            "scrollHeight": 40,
+            "width": 377,
+            "x": 1032,
+            "y": 535.71875
+          },
+          "coupons": {
+            "bottom": 599.71875,
+            "clientHeight": 187,
+            "height": 187.1875,
+            "right": 1440,
+            "scrollHeight": 187,
+            "width": 439,
+            "x": 1001,
+            "y": 412.53125
+          },
+          "fullCart": {
+            "bottom": 888,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 1420,
+            "scrollHeight": 40,
+            "width": 399,
+            "x": 1021,
+            "y": 848
+          },
+          "heading": {
+            "bottom": 52,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 1152.171875,
+            "scrollHeight": 28,
+            "width": 131.171875,
+            "x": 1021,
+            "y": 24
+          },
+          "offers": {
+            "bottom": 860.71875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 1409,
+            "scrollHeight": 1511,
+            "width": 377,
+            "x": 1032,
+            "y": 580.71875
+          },
+          "panel": {
+            "bottom": 900,
+            "clientHeight": 900,
+            "height": 900,
+            "right": 1440,
+            "scrollHeight": 900,
+            "width": 440,
+            "x": 1000,
+            "y": 0
+          },
+          "total": {
+            "bottom": 684.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 1420,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 1021,
+            "y": 639.5625
+          }
+        },
+        "height": 900,
+        "pageOverflow": false,
+        "width": 1440
+      }
+    },
+    {
+      "name": "one-item-1440x900 total stays visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 52,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 1152.171875,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 1123.171875,
+            "y": 24
+          },
+          "body": {
+            "bottom": 412.53125,
+            "clientHeight": 336,
+            "height": 335.53125,
+            "right": 1440,
+            "scrollHeight": 336,
+            "width": 439,
+            "x": 1001,
+            "y": 77
+          },
+          "checkout": {
+            "bottom": 842,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 1420,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 1021,
+            "y": 796
+          },
+          "couponEntry": {
+            "bottom": 523.71875,
+            "clientHeight": 42,
+            "height": 42,
+            "right": 1409,
+            "scrollHeight": 42,
+            "width": 377,
+            "x": 1032,
+            "y": 481.71875
+          },
+          "couponHeading": {
+            "bottom": 447.53125,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 1409,
+            "scrollHeight": 23,
+            "width": 377,
+            "x": 1032,
+            "y": 424.53125
+          },
+          "couponToggle": {
+            "bottom": 575.71875,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 1409,
+            "scrollHeight": 40,
+            "width": 377,
+            "x": 1032,
+            "y": 535.71875
+          },
+          "coupons": {
+            "bottom": 599.71875,
+            "clientHeight": 187,
+            "height": 187.1875,
+            "right": 1440,
+            "scrollHeight": 187,
+            "width": 439,
+            "x": 1001,
+            "y": 412.53125
+          },
+          "fullCart": {
+            "bottom": 888,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 1420,
+            "scrollHeight": 40,
+            "width": 399,
+            "x": 1021,
+            "y": 848
+          },
+          "heading": {
+            "bottom": 52,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 1152.171875,
+            "scrollHeight": 28,
+            "width": 131.171875,
+            "x": 1021,
+            "y": 24
+          },
+          "offers": {
+            "bottom": 860.71875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 1409,
+            "scrollHeight": 1511,
+            "width": 377,
+            "x": 1032,
+            "y": 580.71875
+          },
+          "panel": {
+            "bottom": 900,
+            "clientHeight": 900,
+            "height": 900,
+            "right": 1440,
+            "scrollHeight": 900,
+            "width": 440,
+            "x": 1000,
+            "y": 0
+          },
+          "total": {
+            "bottom": 684.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 1420,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 1021,
+            "y": 639.5625
+          }
+        },
+        "height": 900,
+        "pageOverflow": false,
+        "width": 1440
+      }
+    },
+    {
+      "name": "one-item-1440x900 coupon heading or controls stay visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 52,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 1152.171875,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 1123.171875,
+            "y": 24
+          },
+          "body": {
+            "bottom": 412.53125,
+            "clientHeight": 336,
+            "height": 335.53125,
+            "right": 1440,
+            "scrollHeight": 336,
+            "width": 439,
+            "x": 1001,
+            "y": 77
+          },
+          "checkout": {
+            "bottom": 842,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 1420,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 1021,
+            "y": 796
+          },
+          "couponEntry": {
+            "bottom": 523.71875,
+            "clientHeight": 42,
+            "height": 42,
+            "right": 1409,
+            "scrollHeight": 42,
+            "width": 377,
+            "x": 1032,
+            "y": 481.71875
+          },
+          "couponHeading": {
+            "bottom": 447.53125,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 1409,
+            "scrollHeight": 23,
+            "width": 377,
+            "x": 1032,
+            "y": 424.53125
+          },
+          "couponToggle": {
+            "bottom": 575.71875,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 1409,
+            "scrollHeight": 40,
+            "width": 377,
+            "x": 1032,
+            "y": 535.71875
+          },
+          "coupons": {
+            "bottom": 599.71875,
+            "clientHeight": 187,
+            "height": 187.1875,
+            "right": 1440,
+            "scrollHeight": 187,
+            "width": 439,
+            "x": 1001,
+            "y": 412.53125
+          },
+          "fullCart": {
+            "bottom": 888,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 1420,
+            "scrollHeight": 40,
+            "width": 399,
+            "x": 1021,
+            "y": 848
+          },
+          "heading": {
+            "bottom": 52,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 1152.171875,
+            "scrollHeight": 28,
+            "width": 131.171875,
+            "x": 1021,
+            "y": 24
+          },
+          "offers": {
+            "bottom": 860.71875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 1409,
+            "scrollHeight": 1511,
+            "width": 377,
+            "x": 1032,
+            "y": 580.71875
+          },
+          "panel": {
+            "bottom": 900,
+            "clientHeight": 900,
+            "height": 900,
+            "right": 1440,
+            "scrollHeight": 900,
+            "width": 440,
+            "x": 1000,
+            "y": 0
+          },
+          "total": {
+            "bottom": 684.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 1420,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 1021,
+            "y": 639.5625
+          }
+        },
+        "height": 900,
+        "pageOverflow": false,
+        "width": 1440
+      }
+    },
+    {
+      "name": "one-item-1440x900 count stays aligned",
+      "pass": true,
+      "detail": {
+        "badge": {
+          "bottom": 52,
+          "clientHeight": 26,
+          "height": 28,
+          "right": 1152.171875,
+          "scrollHeight": 26,
+          "width": 29,
+          "x": 1123.171875,
+          "y": 24
+        },
+        "body": {
+          "bottom": 412.53125,
+          "clientHeight": 336,
+          "height": 335.53125,
+          "right": 1440,
+          "scrollHeight": 336,
+          "width": 439,
+          "x": 1001,
+          "y": 77
+        },
+        "checkout": {
+          "bottom": 842,
+          "clientHeight": 44,
+          "height": 46,
+          "right": 1420,
+          "scrollHeight": 44,
+          "width": 399,
+          "x": 1021,
+          "y": 796
+        },
+        "couponEntry": {
+          "bottom": 523.71875,
+          "clientHeight": 42,
+          "height": 42,
+          "right": 1409,
+          "scrollHeight": 42,
+          "width": 377,
+          "x": 1032,
+          "y": 481.71875
+        },
+        "couponHeading": {
+          "bottom": 447.53125,
+          "clientHeight": 23,
+          "height": 23,
+          "right": 1409,
+          "scrollHeight": 23,
+          "width": 377,
+          "x": 1032,
+          "y": 424.53125
+        },
+        "couponToggle": {
+          "bottom": 575.71875,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 1409,
+          "scrollHeight": 40,
+          "width": 377,
+          "x": 1032,
+          "y": 535.71875
+        },
+        "coupons": {
+          "bottom": 599.71875,
+          "clientHeight": 187,
+          "height": 187.1875,
+          "right": 1440,
+          "scrollHeight": 187,
+          "width": 439,
+          "x": 1001,
+          "y": 412.53125
+        },
+        "fullCart": {
+          "bottom": 888,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 1420,
+          "scrollHeight": 40,
+          "width": 399,
+          "x": 1021,
+          "y": 848
+        },
+        "heading": {
+          "bottom": 52,
+          "clientHeight": 28,
+          "height": 28,
+          "right": 1152.171875,
+          "scrollHeight": 28,
+          "width": 131.171875,
+          "x": 1021,
+          "y": 24
+        },
+        "offers": {
+          "bottom": 860.71875,
+          "clientHeight": 280,
+          "height": 280,
+          "right": 1409,
+          "scrollHeight": 1511,
+          "width": 377,
+          "x": 1032,
+          "y": 580.71875
+        },
+        "panel": {
+          "bottom": 900,
+          "clientHeight": 900,
+          "height": 900,
+          "right": 1440,
+          "scrollHeight": 900,
+          "width": 440,
+          "x": 1000,
+          "y": 0
+        },
+        "total": {
+          "bottom": 684.15625,
+          "clientHeight": 44,
+          "height": 44.59375,
+          "right": 1420,
+          "scrollHeight": 44,
+          "width": 399,
+          "x": 1021,
+          "y": 639.5625
+        }
+      }
+    },
+    {
+      "name": "offers-open-1440x900 has no horizontal page overflow",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 52,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 1152.171875,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 1123.171875,
+            "y": 24
+          },
+          "body": {
+            "bottom": 245,
+            "clientHeight": 168,
+            "height": 168,
+            "right": 1440,
+            "scrollHeight": 168,
+            "width": 439,
+            "x": 1001,
+            "y": 77
+          },
+          "checkout": {
+            "bottom": 842,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 1420,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 1021,
+            "y": 796
+          },
+          "couponEntry": {
+            "bottom": 356.1875,
+            "clientHeight": 42,
+            "height": 42,
+            "right": 1409,
+            "scrollHeight": 42,
+            "width": 377,
+            "x": 1032,
+            "y": 314.1875
+          },
+          "couponHeading": {
+            "bottom": 280,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 1409,
+            "scrollHeight": 23,
+            "width": 377,
+            "x": 1032,
+            "y": 257
+          },
+          "couponToggle": {
+            "bottom": 408.1875,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 1409,
+            "scrollHeight": 40,
+            "width": 377,
+            "x": 1032,
+            "y": 368.1875
+          },
+          "coupons": {
+            "bottom": 599.71875,
+            "clientHeight": 355,
+            "height": 354.71875,
+            "right": 1440,
+            "scrollHeight": 472,
+            "width": 439,
+            "x": 1001,
+            "y": 245
+          },
+          "fullCart": {
+            "bottom": 888,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 1420,
+            "scrollHeight": 40,
+            "width": 399,
+            "x": 1021,
+            "y": 848
+          },
+          "heading": {
+            "bottom": 52,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 1152.171875,
+            "scrollHeight": 28,
+            "width": 131.171875,
+            "x": 1021,
+            "y": 24
+          },
+          "offers": {
+            "bottom": 693.1875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 1409,
+            "scrollHeight": 1511,
+            "width": 377,
+            "x": 1032,
+            "y": 413.1875
+          },
+          "panel": {
+            "bottom": 900,
+            "clientHeight": 900,
+            "height": 900,
+            "right": 1440,
+            "scrollHeight": 900,
+            "width": 440,
+            "x": 1000,
+            "y": 0
+          },
+          "total": {
+            "bottom": 684.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 1420,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 1021,
+            "y": 639.5625
+          }
+        },
+        "height": 900,
+        "pageOverflow": false,
+        "width": 1440
+      }
+    },
+    {
+      "name": "offers-open-1440x900 checkout and full-cart actions stay visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 52,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 1152.171875,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 1123.171875,
+            "y": 24
+          },
+          "body": {
+            "bottom": 245,
+            "clientHeight": 168,
+            "height": 168,
+            "right": 1440,
+            "scrollHeight": 168,
+            "width": 439,
+            "x": 1001,
+            "y": 77
+          },
+          "checkout": {
+            "bottom": 842,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 1420,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 1021,
+            "y": 796
+          },
+          "couponEntry": {
+            "bottom": 356.1875,
+            "clientHeight": 42,
+            "height": 42,
+            "right": 1409,
+            "scrollHeight": 42,
+            "width": 377,
+            "x": 1032,
+            "y": 314.1875
+          },
+          "couponHeading": {
+            "bottom": 280,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 1409,
+            "scrollHeight": 23,
+            "width": 377,
+            "x": 1032,
+            "y": 257
+          },
+          "couponToggle": {
+            "bottom": 408.1875,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 1409,
+            "scrollHeight": 40,
+            "width": 377,
+            "x": 1032,
+            "y": 368.1875
+          },
+          "coupons": {
+            "bottom": 599.71875,
+            "clientHeight": 355,
+            "height": 354.71875,
+            "right": 1440,
+            "scrollHeight": 472,
+            "width": 439,
+            "x": 1001,
+            "y": 245
+          },
+          "fullCart": {
+            "bottom": 888,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 1420,
+            "scrollHeight": 40,
+            "width": 399,
+            "x": 1021,
+            "y": 848
+          },
+          "heading": {
+            "bottom": 52,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 1152.171875,
+            "scrollHeight": 28,
+            "width": 131.171875,
+            "x": 1021,
+            "y": 24
+          },
+          "offers": {
+            "bottom": 693.1875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 1409,
+            "scrollHeight": 1511,
+            "width": 377,
+            "x": 1032,
+            "y": 413.1875
+          },
+          "panel": {
+            "bottom": 900,
+            "clientHeight": 900,
+            "height": 900,
+            "right": 1440,
+            "scrollHeight": 900,
+            "width": 440,
+            "x": 1000,
+            "y": 0
+          },
+          "total": {
+            "bottom": 684.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 1420,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 1021,
+            "y": 639.5625
+          }
+        },
+        "height": 900,
+        "pageOverflow": false,
+        "width": 1440
+      }
+    },
+    {
+      "name": "offers-open-1440x900 total stays visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 52,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 1152.171875,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 1123.171875,
+            "y": 24
+          },
+          "body": {
+            "bottom": 245,
+            "clientHeight": 168,
+            "height": 168,
+            "right": 1440,
+            "scrollHeight": 168,
+            "width": 439,
+            "x": 1001,
+            "y": 77
+          },
+          "checkout": {
+            "bottom": 842,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 1420,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 1021,
+            "y": 796
+          },
+          "couponEntry": {
+            "bottom": 356.1875,
+            "clientHeight": 42,
+            "height": 42,
+            "right": 1409,
+            "scrollHeight": 42,
+            "width": 377,
+            "x": 1032,
+            "y": 314.1875
+          },
+          "couponHeading": {
+            "bottom": 280,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 1409,
+            "scrollHeight": 23,
+            "width": 377,
+            "x": 1032,
+            "y": 257
+          },
+          "couponToggle": {
+            "bottom": 408.1875,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 1409,
+            "scrollHeight": 40,
+            "width": 377,
+            "x": 1032,
+            "y": 368.1875
+          },
+          "coupons": {
+            "bottom": 599.71875,
+            "clientHeight": 355,
+            "height": 354.71875,
+            "right": 1440,
+            "scrollHeight": 472,
+            "width": 439,
+            "x": 1001,
+            "y": 245
+          },
+          "fullCart": {
+            "bottom": 888,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 1420,
+            "scrollHeight": 40,
+            "width": 399,
+            "x": 1021,
+            "y": 848
+          },
+          "heading": {
+            "bottom": 52,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 1152.171875,
+            "scrollHeight": 28,
+            "width": 131.171875,
+            "x": 1021,
+            "y": 24
+          },
+          "offers": {
+            "bottom": 693.1875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 1409,
+            "scrollHeight": 1511,
+            "width": 377,
+            "x": 1032,
+            "y": 413.1875
+          },
+          "panel": {
+            "bottom": 900,
+            "clientHeight": 900,
+            "height": 900,
+            "right": 1440,
+            "scrollHeight": 900,
+            "width": 440,
+            "x": 1000,
+            "y": 0
+          },
+          "total": {
+            "bottom": 684.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 1420,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 1021,
+            "y": 639.5625
+          }
+        },
+        "height": 900,
+        "pageOverflow": false,
+        "width": 1440
+      }
+    },
+    {
+      "name": "offers-open-1440x900 coupon heading or controls stay visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 52,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 1152.171875,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 1123.171875,
+            "y": 24
+          },
+          "body": {
+            "bottom": 245,
+            "clientHeight": 168,
+            "height": 168,
+            "right": 1440,
+            "scrollHeight": 168,
+            "width": 439,
+            "x": 1001,
+            "y": 77
+          },
+          "checkout": {
+            "bottom": 842,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 1420,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 1021,
+            "y": 796
+          },
+          "couponEntry": {
+            "bottom": 356.1875,
+            "clientHeight": 42,
+            "height": 42,
+            "right": 1409,
+            "scrollHeight": 42,
+            "width": 377,
+            "x": 1032,
+            "y": 314.1875
+          },
+          "couponHeading": {
+            "bottom": 280,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 1409,
+            "scrollHeight": 23,
+            "width": 377,
+            "x": 1032,
+            "y": 257
+          },
+          "couponToggle": {
+            "bottom": 408.1875,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 1409,
+            "scrollHeight": 40,
+            "width": 377,
+            "x": 1032,
+            "y": 368.1875
+          },
+          "coupons": {
+            "bottom": 599.71875,
+            "clientHeight": 355,
+            "height": 354.71875,
+            "right": 1440,
+            "scrollHeight": 472,
+            "width": 439,
+            "x": 1001,
+            "y": 245
+          },
+          "fullCart": {
+            "bottom": 888,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 1420,
+            "scrollHeight": 40,
+            "width": 399,
+            "x": 1021,
+            "y": 848
+          },
+          "heading": {
+            "bottom": 52,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 1152.171875,
+            "scrollHeight": 28,
+            "width": 131.171875,
+            "x": 1021,
+            "y": 24
+          },
+          "offers": {
+            "bottom": 693.1875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 1409,
+            "scrollHeight": 1511,
+            "width": 377,
+            "x": 1032,
+            "y": 413.1875
+          },
+          "panel": {
+            "bottom": 900,
+            "clientHeight": 900,
+            "height": 900,
+            "right": 1440,
+            "scrollHeight": 900,
+            "width": 440,
+            "x": 1000,
+            "y": 0
+          },
+          "total": {
+            "bottom": 684.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 1420,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 1021,
+            "y": 639.5625
+          }
+        },
+        "height": 900,
+        "pageOverflow": false,
+        "width": 1440
+      }
+    },
+    {
+      "name": "offers-open-1440x900 count stays aligned",
+      "pass": true,
+      "detail": {
+        "badge": {
+          "bottom": 52,
+          "clientHeight": 26,
+          "height": 28,
+          "right": 1152.171875,
+          "scrollHeight": 26,
+          "width": 29,
+          "x": 1123.171875,
+          "y": 24
+        },
+        "body": {
+          "bottom": 245,
+          "clientHeight": 168,
+          "height": 168,
+          "right": 1440,
+          "scrollHeight": 168,
+          "width": 439,
+          "x": 1001,
+          "y": 77
+        },
+        "checkout": {
+          "bottom": 842,
+          "clientHeight": 44,
+          "height": 46,
+          "right": 1420,
+          "scrollHeight": 44,
+          "width": 399,
+          "x": 1021,
+          "y": 796
+        },
+        "couponEntry": {
+          "bottom": 356.1875,
+          "clientHeight": 42,
+          "height": 42,
+          "right": 1409,
+          "scrollHeight": 42,
+          "width": 377,
+          "x": 1032,
+          "y": 314.1875
+        },
+        "couponHeading": {
+          "bottom": 280,
+          "clientHeight": 23,
+          "height": 23,
+          "right": 1409,
+          "scrollHeight": 23,
+          "width": 377,
+          "x": 1032,
+          "y": 257
+        },
+        "couponToggle": {
+          "bottom": 408.1875,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 1409,
+          "scrollHeight": 40,
+          "width": 377,
+          "x": 1032,
+          "y": 368.1875
+        },
+        "coupons": {
+          "bottom": 599.71875,
+          "clientHeight": 355,
+          "height": 354.71875,
+          "right": 1440,
+          "scrollHeight": 472,
+          "width": 439,
+          "x": 1001,
+          "y": 245
+        },
+        "fullCart": {
+          "bottom": 888,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 1420,
+          "scrollHeight": 40,
+          "width": 399,
+          "x": 1021,
+          "y": 848
+        },
+        "heading": {
+          "bottom": 52,
+          "clientHeight": 28,
+          "height": 28,
+          "right": 1152.171875,
+          "scrollHeight": 28,
+          "width": 131.171875,
+          "x": 1021,
+          "y": 24
+        },
+        "offers": {
+          "bottom": 693.1875,
+          "clientHeight": 280,
+          "height": 280,
+          "right": 1409,
+          "scrollHeight": 1511,
+          "width": 377,
+          "x": 1032,
+          "y": 413.1875
+        },
+        "panel": {
+          "bottom": 900,
+          "clientHeight": 900,
+          "height": 900,
+          "right": 1440,
+          "scrollHeight": 900,
+          "width": 440,
+          "x": 1000,
+          "y": 0
+        },
+        "total": {
+          "bottom": 684.15625,
+          "clientHeight": 44,
+          "height": 44.59375,
+          "right": 1420,
+          "scrollHeight": 44,
+          "width": 399,
+          "x": 1021,
+          "y": 639.5625
+        }
+      }
+    },
+    {
+      "name": "Expanded offers keep one complete product control row 1440x900",
+      "pass": true
+    },
+    {
+      "name": "Coupon input is reachable 1440x900",
+      "pass": true
+    },
+    {
+      "name": "one-item-820x1024 has no horizontal page overflow",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 52,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 522.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 493.859375,
+            "y": 24
+          },
+          "body": {
+            "bottom": 534.53125,
+            "clientHeight": 458,
+            "height": 457.53125,
+            "right": 820,
+            "scrollHeight": 458,
+            "width": 439,
+            "x": 381,
+            "y": 77
+          },
+          "checkout": {
+            "bottom": 966,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 800,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 401,
+            "y": 920
+          },
+          "couponEntry": {
+            "bottom": 647.71875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 789,
+            "scrollHeight": 44,
+            "width": 377,
+            "x": 412,
+            "y": 603.71875
+          },
+          "couponHeading": {
+            "bottom": 569.53125,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 789,
+            "scrollHeight": 23,
+            "width": 377,
+            "x": 412,
+            "y": 546.53125
+          },
+          "couponToggle": {
+            "bottom": 699.71875,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 789,
+            "scrollHeight": 40,
+            "width": 377,
+            "x": 412,
+            "y": 659.71875
+          },
+          "coupons": {
+            "bottom": 723.71875,
+            "clientHeight": 189,
+            "height": 189.1875,
+            "right": 820,
+            "scrollHeight": 189,
+            "width": 439,
+            "x": 381,
+            "y": 534.53125
+          },
+          "fullCart": {
+            "bottom": 1012,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 800,
+            "scrollHeight": 40,
+            "width": 399,
+            "x": 401,
+            "y": 972
+          },
+          "heading": {
+            "bottom": 52,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 522.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 401,
+            "y": 24
+          },
+          "offers": {
+            "bottom": 984.71875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 789,
+            "scrollHeight": 1511,
+            "width": 377,
+            "x": 412,
+            "y": 704.71875
+          },
+          "panel": {
+            "bottom": 1024,
+            "clientHeight": 1024,
+            "height": 1024,
+            "right": 820,
+            "scrollHeight": 1024,
+            "width": 440,
+            "x": 380,
+            "y": 0
+          },
+          "total": {
+            "bottom": 808.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 800,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 401,
+            "y": 763.5625
+          }
+        },
+        "height": 1024,
+        "pageOverflow": false,
+        "width": 820
+      }
+    },
+    {
+      "name": "one-item-820x1024 checkout and full-cart actions stay visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 52,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 522.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 493.859375,
+            "y": 24
+          },
+          "body": {
+            "bottom": 534.53125,
+            "clientHeight": 458,
+            "height": 457.53125,
+            "right": 820,
+            "scrollHeight": 458,
+            "width": 439,
+            "x": 381,
+            "y": 77
+          },
+          "checkout": {
+            "bottom": 966,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 800,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 401,
+            "y": 920
+          },
+          "couponEntry": {
+            "bottom": 647.71875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 789,
+            "scrollHeight": 44,
+            "width": 377,
+            "x": 412,
+            "y": 603.71875
+          },
+          "couponHeading": {
+            "bottom": 569.53125,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 789,
+            "scrollHeight": 23,
+            "width": 377,
+            "x": 412,
+            "y": 546.53125
+          },
+          "couponToggle": {
+            "bottom": 699.71875,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 789,
+            "scrollHeight": 40,
+            "width": 377,
+            "x": 412,
+            "y": 659.71875
+          },
+          "coupons": {
+            "bottom": 723.71875,
+            "clientHeight": 189,
+            "height": 189.1875,
+            "right": 820,
+            "scrollHeight": 189,
+            "width": 439,
+            "x": 381,
+            "y": 534.53125
+          },
+          "fullCart": {
+            "bottom": 1012,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 800,
+            "scrollHeight": 40,
+            "width": 399,
+            "x": 401,
+            "y": 972
+          },
+          "heading": {
+            "bottom": 52,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 522.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 401,
+            "y": 24
+          },
+          "offers": {
+            "bottom": 984.71875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 789,
+            "scrollHeight": 1511,
+            "width": 377,
+            "x": 412,
+            "y": 704.71875
+          },
+          "panel": {
+            "bottom": 1024,
+            "clientHeight": 1024,
+            "height": 1024,
+            "right": 820,
+            "scrollHeight": 1024,
+            "width": 440,
+            "x": 380,
+            "y": 0
+          },
+          "total": {
+            "bottom": 808.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 800,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 401,
+            "y": 763.5625
+          }
+        },
+        "height": 1024,
+        "pageOverflow": false,
+        "width": 820
+      }
+    },
+    {
+      "name": "one-item-820x1024 total stays visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 52,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 522.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 493.859375,
+            "y": 24
+          },
+          "body": {
+            "bottom": 534.53125,
+            "clientHeight": 458,
+            "height": 457.53125,
+            "right": 820,
+            "scrollHeight": 458,
+            "width": 439,
+            "x": 381,
+            "y": 77
+          },
+          "checkout": {
+            "bottom": 966,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 800,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 401,
+            "y": 920
+          },
+          "couponEntry": {
+            "bottom": 647.71875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 789,
+            "scrollHeight": 44,
+            "width": 377,
+            "x": 412,
+            "y": 603.71875
+          },
+          "couponHeading": {
+            "bottom": 569.53125,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 789,
+            "scrollHeight": 23,
+            "width": 377,
+            "x": 412,
+            "y": 546.53125
+          },
+          "couponToggle": {
+            "bottom": 699.71875,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 789,
+            "scrollHeight": 40,
+            "width": 377,
+            "x": 412,
+            "y": 659.71875
+          },
+          "coupons": {
+            "bottom": 723.71875,
+            "clientHeight": 189,
+            "height": 189.1875,
+            "right": 820,
+            "scrollHeight": 189,
+            "width": 439,
+            "x": 381,
+            "y": 534.53125
+          },
+          "fullCart": {
+            "bottom": 1012,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 800,
+            "scrollHeight": 40,
+            "width": 399,
+            "x": 401,
+            "y": 972
+          },
+          "heading": {
+            "bottom": 52,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 522.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 401,
+            "y": 24
+          },
+          "offers": {
+            "bottom": 984.71875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 789,
+            "scrollHeight": 1511,
+            "width": 377,
+            "x": 412,
+            "y": 704.71875
+          },
+          "panel": {
+            "bottom": 1024,
+            "clientHeight": 1024,
+            "height": 1024,
+            "right": 820,
+            "scrollHeight": 1024,
+            "width": 440,
+            "x": 380,
+            "y": 0
+          },
+          "total": {
+            "bottom": 808.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 800,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 401,
+            "y": 763.5625
+          }
+        },
+        "height": 1024,
+        "pageOverflow": false,
+        "width": 820
+      }
+    },
+    {
+      "name": "one-item-820x1024 coupon heading or controls stay visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 52,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 522.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 493.859375,
+            "y": 24
+          },
+          "body": {
+            "bottom": 534.53125,
+            "clientHeight": 458,
+            "height": 457.53125,
+            "right": 820,
+            "scrollHeight": 458,
+            "width": 439,
+            "x": 381,
+            "y": 77
+          },
+          "checkout": {
+            "bottom": 966,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 800,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 401,
+            "y": 920
+          },
+          "couponEntry": {
+            "bottom": 647.71875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 789,
+            "scrollHeight": 44,
+            "width": 377,
+            "x": 412,
+            "y": 603.71875
+          },
+          "couponHeading": {
+            "bottom": 569.53125,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 789,
+            "scrollHeight": 23,
+            "width": 377,
+            "x": 412,
+            "y": 546.53125
+          },
+          "couponToggle": {
+            "bottom": 699.71875,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 789,
+            "scrollHeight": 40,
+            "width": 377,
+            "x": 412,
+            "y": 659.71875
+          },
+          "coupons": {
+            "bottom": 723.71875,
+            "clientHeight": 189,
+            "height": 189.1875,
+            "right": 820,
+            "scrollHeight": 189,
+            "width": 439,
+            "x": 381,
+            "y": 534.53125
+          },
+          "fullCart": {
+            "bottom": 1012,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 800,
+            "scrollHeight": 40,
+            "width": 399,
+            "x": 401,
+            "y": 972
+          },
+          "heading": {
+            "bottom": 52,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 522.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 401,
+            "y": 24
+          },
+          "offers": {
+            "bottom": 984.71875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 789,
+            "scrollHeight": 1511,
+            "width": 377,
+            "x": 412,
+            "y": 704.71875
+          },
+          "panel": {
+            "bottom": 1024,
+            "clientHeight": 1024,
+            "height": 1024,
+            "right": 820,
+            "scrollHeight": 1024,
+            "width": 440,
+            "x": 380,
+            "y": 0
+          },
+          "total": {
+            "bottom": 808.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 800,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 401,
+            "y": 763.5625
+          }
+        },
+        "height": 1024,
+        "pageOverflow": false,
+        "width": 820
+      }
+    },
+    {
+      "name": "one-item-820x1024 count stays aligned",
+      "pass": true,
+      "detail": {
+        "badge": {
+          "bottom": 52,
+          "clientHeight": 26,
+          "height": 28,
+          "right": 522.859375,
+          "scrollHeight": 26,
+          "width": 29,
+          "x": 493.859375,
+          "y": 24
+        },
+        "body": {
+          "bottom": 534.53125,
+          "clientHeight": 458,
+          "height": 457.53125,
+          "right": 820,
+          "scrollHeight": 458,
+          "width": 439,
+          "x": 381,
+          "y": 77
+        },
+        "checkout": {
+          "bottom": 966,
+          "clientHeight": 44,
+          "height": 46,
+          "right": 800,
+          "scrollHeight": 44,
+          "width": 399,
+          "x": 401,
+          "y": 920
+        },
+        "couponEntry": {
+          "bottom": 647.71875,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 789,
+          "scrollHeight": 44,
+          "width": 377,
+          "x": 412,
+          "y": 603.71875
+        },
+        "couponHeading": {
+          "bottom": 569.53125,
+          "clientHeight": 23,
+          "height": 23,
+          "right": 789,
+          "scrollHeight": 23,
+          "width": 377,
+          "x": 412,
+          "y": 546.53125
+        },
+        "couponToggle": {
+          "bottom": 699.71875,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 789,
+          "scrollHeight": 40,
+          "width": 377,
+          "x": 412,
+          "y": 659.71875
+        },
+        "coupons": {
+          "bottom": 723.71875,
+          "clientHeight": 189,
+          "height": 189.1875,
+          "right": 820,
+          "scrollHeight": 189,
+          "width": 439,
+          "x": 381,
+          "y": 534.53125
+        },
+        "fullCart": {
+          "bottom": 1012,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 800,
+          "scrollHeight": 40,
+          "width": 399,
+          "x": 401,
+          "y": 972
+        },
+        "heading": {
+          "bottom": 52,
+          "clientHeight": 28,
+          "height": 28,
+          "right": 522.859375,
+          "scrollHeight": 28,
+          "width": 121.859375,
+          "x": 401,
+          "y": 24
+        },
+        "offers": {
+          "bottom": 984.71875,
+          "clientHeight": 280,
+          "height": 280,
+          "right": 789,
+          "scrollHeight": 1511,
+          "width": 377,
+          "x": 412,
+          "y": 704.71875
+        },
+        "panel": {
+          "bottom": 1024,
+          "clientHeight": 1024,
+          "height": 1024,
+          "right": 820,
+          "scrollHeight": 1024,
+          "width": 440,
+          "x": 380,
+          "y": 0
+        },
+        "total": {
+          "bottom": 808.15625,
+          "clientHeight": 44,
+          "height": 44.59375,
+          "right": 800,
+          "scrollHeight": 44,
+          "width": 399,
+          "x": 401,
+          "y": 763.5625
+        }
+      }
+    },
+    {
+      "name": "offers-open-820x1024 has no horizontal page overflow",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 52,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 522.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 493.859375,
+            "y": 24
+          },
+          "body": {
+            "bottom": 263.71875,
+            "clientHeight": 187,
+            "height": 186.71875,
+            "right": 820,
+            "scrollHeight": 187,
+            "width": 439,
+            "x": 381,
+            "y": 77
+          },
+          "checkout": {
+            "bottom": 966,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 800,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 401,
+            "y": 920
+          },
+          "couponEntry": {
+            "bottom": 376.90625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 789,
+            "scrollHeight": 44,
+            "width": 377,
+            "x": 412,
+            "y": 332.90625
+          },
+          "couponHeading": {
+            "bottom": 298.71875,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 789,
+            "scrollHeight": 23,
+            "width": 377,
+            "x": 412,
+            "y": 275.71875
+          },
+          "couponToggle": {
+            "bottom": 428.90625,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 789,
+            "scrollHeight": 40,
+            "width": 377,
+            "x": 412,
+            "y": 388.90625
+          },
+          "coupons": {
+            "bottom": 723.71875,
+            "clientHeight": 460,
+            "height": 460,
+            "right": 820,
+            "scrollHeight": 474,
+            "width": 439,
+            "x": 381,
+            "y": 263.71875
+          },
+          "fullCart": {
+            "bottom": 1012,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 800,
+            "scrollHeight": 40,
+            "width": 399,
+            "x": 401,
+            "y": 972
+          },
+          "heading": {
+            "bottom": 52,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 522.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 401,
+            "y": 24
+          },
+          "offers": {
+            "bottom": 713.90625,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 789,
+            "scrollHeight": 1511,
+            "width": 377,
+            "x": 412,
+            "y": 433.90625
+          },
+          "panel": {
+            "bottom": 1024,
+            "clientHeight": 1024,
+            "height": 1024,
+            "right": 820,
+            "scrollHeight": 1024,
+            "width": 440,
+            "x": 380,
+            "y": 0
+          },
+          "total": {
+            "bottom": 808.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 800,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 401,
+            "y": 763.5625
+          }
+        },
+        "height": 1024,
+        "pageOverflow": false,
+        "width": 820
+      }
+    },
+    {
+      "name": "offers-open-820x1024 checkout and full-cart actions stay visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 52,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 522.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 493.859375,
+            "y": 24
+          },
+          "body": {
+            "bottom": 263.71875,
+            "clientHeight": 187,
+            "height": 186.71875,
+            "right": 820,
+            "scrollHeight": 187,
+            "width": 439,
+            "x": 381,
+            "y": 77
+          },
+          "checkout": {
+            "bottom": 966,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 800,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 401,
+            "y": 920
+          },
+          "couponEntry": {
+            "bottom": 376.90625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 789,
+            "scrollHeight": 44,
+            "width": 377,
+            "x": 412,
+            "y": 332.90625
+          },
+          "couponHeading": {
+            "bottom": 298.71875,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 789,
+            "scrollHeight": 23,
+            "width": 377,
+            "x": 412,
+            "y": 275.71875
+          },
+          "couponToggle": {
+            "bottom": 428.90625,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 789,
+            "scrollHeight": 40,
+            "width": 377,
+            "x": 412,
+            "y": 388.90625
+          },
+          "coupons": {
+            "bottom": 723.71875,
+            "clientHeight": 460,
+            "height": 460,
+            "right": 820,
+            "scrollHeight": 474,
+            "width": 439,
+            "x": 381,
+            "y": 263.71875
+          },
+          "fullCart": {
+            "bottom": 1012,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 800,
+            "scrollHeight": 40,
+            "width": 399,
+            "x": 401,
+            "y": 972
+          },
+          "heading": {
+            "bottom": 52,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 522.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 401,
+            "y": 24
+          },
+          "offers": {
+            "bottom": 713.90625,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 789,
+            "scrollHeight": 1511,
+            "width": 377,
+            "x": 412,
+            "y": 433.90625
+          },
+          "panel": {
+            "bottom": 1024,
+            "clientHeight": 1024,
+            "height": 1024,
+            "right": 820,
+            "scrollHeight": 1024,
+            "width": 440,
+            "x": 380,
+            "y": 0
+          },
+          "total": {
+            "bottom": 808.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 800,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 401,
+            "y": 763.5625
+          }
+        },
+        "height": 1024,
+        "pageOverflow": false,
+        "width": 820
+      }
+    },
+    {
+      "name": "offers-open-820x1024 total stays visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 52,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 522.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 493.859375,
+            "y": 24
+          },
+          "body": {
+            "bottom": 263.71875,
+            "clientHeight": 187,
+            "height": 186.71875,
+            "right": 820,
+            "scrollHeight": 187,
+            "width": 439,
+            "x": 381,
+            "y": 77
+          },
+          "checkout": {
+            "bottom": 966,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 800,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 401,
+            "y": 920
+          },
+          "couponEntry": {
+            "bottom": 376.90625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 789,
+            "scrollHeight": 44,
+            "width": 377,
+            "x": 412,
+            "y": 332.90625
+          },
+          "couponHeading": {
+            "bottom": 298.71875,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 789,
+            "scrollHeight": 23,
+            "width": 377,
+            "x": 412,
+            "y": 275.71875
+          },
+          "couponToggle": {
+            "bottom": 428.90625,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 789,
+            "scrollHeight": 40,
+            "width": 377,
+            "x": 412,
+            "y": 388.90625
+          },
+          "coupons": {
+            "bottom": 723.71875,
+            "clientHeight": 460,
+            "height": 460,
+            "right": 820,
+            "scrollHeight": 474,
+            "width": 439,
+            "x": 381,
+            "y": 263.71875
+          },
+          "fullCart": {
+            "bottom": 1012,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 800,
+            "scrollHeight": 40,
+            "width": 399,
+            "x": 401,
+            "y": 972
+          },
+          "heading": {
+            "bottom": 52,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 522.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 401,
+            "y": 24
+          },
+          "offers": {
+            "bottom": 713.90625,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 789,
+            "scrollHeight": 1511,
+            "width": 377,
+            "x": 412,
+            "y": 433.90625
+          },
+          "panel": {
+            "bottom": 1024,
+            "clientHeight": 1024,
+            "height": 1024,
+            "right": 820,
+            "scrollHeight": 1024,
+            "width": 440,
+            "x": 380,
+            "y": 0
+          },
+          "total": {
+            "bottom": 808.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 800,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 401,
+            "y": 763.5625
+          }
+        },
+        "height": 1024,
+        "pageOverflow": false,
+        "width": 820
+      }
+    },
+    {
+      "name": "offers-open-820x1024 coupon heading or controls stay visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 52,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 522.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 493.859375,
+            "y": 24
+          },
+          "body": {
+            "bottom": 263.71875,
+            "clientHeight": 187,
+            "height": 186.71875,
+            "right": 820,
+            "scrollHeight": 187,
+            "width": 439,
+            "x": 381,
+            "y": 77
+          },
+          "checkout": {
+            "bottom": 966,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 800,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 401,
+            "y": 920
+          },
+          "couponEntry": {
+            "bottom": 376.90625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 789,
+            "scrollHeight": 44,
+            "width": 377,
+            "x": 412,
+            "y": 332.90625
+          },
+          "couponHeading": {
+            "bottom": 298.71875,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 789,
+            "scrollHeight": 23,
+            "width": 377,
+            "x": 412,
+            "y": 275.71875
+          },
+          "couponToggle": {
+            "bottom": 428.90625,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 789,
+            "scrollHeight": 40,
+            "width": 377,
+            "x": 412,
+            "y": 388.90625
+          },
+          "coupons": {
+            "bottom": 723.71875,
+            "clientHeight": 460,
+            "height": 460,
+            "right": 820,
+            "scrollHeight": 474,
+            "width": 439,
+            "x": 381,
+            "y": 263.71875
+          },
+          "fullCart": {
+            "bottom": 1012,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 800,
+            "scrollHeight": 40,
+            "width": 399,
+            "x": 401,
+            "y": 972
+          },
+          "heading": {
+            "bottom": 52,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 522.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 401,
+            "y": 24
+          },
+          "offers": {
+            "bottom": 713.90625,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 789,
+            "scrollHeight": 1511,
+            "width": 377,
+            "x": 412,
+            "y": 433.90625
+          },
+          "panel": {
+            "bottom": 1024,
+            "clientHeight": 1024,
+            "height": 1024,
+            "right": 820,
+            "scrollHeight": 1024,
+            "width": 440,
+            "x": 380,
+            "y": 0
+          },
+          "total": {
+            "bottom": 808.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 800,
+            "scrollHeight": 44,
+            "width": 399,
+            "x": 401,
+            "y": 763.5625
+          }
+        },
+        "height": 1024,
+        "pageOverflow": false,
+        "width": 820
+      }
+    },
+    {
+      "name": "offers-open-820x1024 count stays aligned",
+      "pass": true,
+      "detail": {
+        "badge": {
+          "bottom": 52,
+          "clientHeight": 26,
+          "height": 28,
+          "right": 522.859375,
+          "scrollHeight": 26,
+          "width": 29,
+          "x": 493.859375,
+          "y": 24
+        },
+        "body": {
+          "bottom": 263.71875,
+          "clientHeight": 187,
+          "height": 186.71875,
+          "right": 820,
+          "scrollHeight": 187,
+          "width": 439,
+          "x": 381,
+          "y": 77
+        },
+        "checkout": {
+          "bottom": 966,
+          "clientHeight": 44,
+          "height": 46,
+          "right": 800,
+          "scrollHeight": 44,
+          "width": 399,
+          "x": 401,
+          "y": 920
+        },
+        "couponEntry": {
+          "bottom": 376.90625,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 789,
+          "scrollHeight": 44,
+          "width": 377,
+          "x": 412,
+          "y": 332.90625
+        },
+        "couponHeading": {
+          "bottom": 298.71875,
+          "clientHeight": 23,
+          "height": 23,
+          "right": 789,
+          "scrollHeight": 23,
+          "width": 377,
+          "x": 412,
+          "y": 275.71875
+        },
+        "couponToggle": {
+          "bottom": 428.90625,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 789,
+          "scrollHeight": 40,
+          "width": 377,
+          "x": 412,
+          "y": 388.90625
+        },
+        "coupons": {
+          "bottom": 723.71875,
+          "clientHeight": 460,
+          "height": 460,
+          "right": 820,
+          "scrollHeight": 474,
+          "width": 439,
+          "x": 381,
+          "y": 263.71875
+        },
+        "fullCart": {
+          "bottom": 1012,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 800,
+          "scrollHeight": 40,
+          "width": 399,
+          "x": 401,
+          "y": 972
+        },
+        "heading": {
+          "bottom": 52,
+          "clientHeight": 28,
+          "height": 28,
+          "right": 522.859375,
+          "scrollHeight": 28,
+          "width": 121.859375,
+          "x": 401,
+          "y": 24
+        },
+        "offers": {
+          "bottom": 713.90625,
+          "clientHeight": 280,
+          "height": 280,
+          "right": 789,
+          "scrollHeight": 1511,
+          "width": 377,
+          "x": 412,
+          "y": 433.90625
+        },
+        "panel": {
+          "bottom": 1024,
+          "clientHeight": 1024,
+          "height": 1024,
+          "right": 820,
+          "scrollHeight": 1024,
+          "width": 440,
+          "x": 380,
+          "y": 0
+        },
+        "total": {
+          "bottom": 808.15625,
+          "clientHeight": 44,
+          "height": 44.59375,
+          "right": 800,
+          "scrollHeight": 44,
+          "width": 399,
+          "x": 401,
+          "y": 763.5625
+        }
+      }
+    },
+    {
+      "name": "Expanded offers keep one complete product control row 820x1024",
+      "pass": true
+    },
+    {
+      "name": "Coupon input is reachable 820x1024",
+      "pass": true
+    },
+    {
+      "name": "one-item-390x844 has no horizontal page overflow",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 48,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 109.859375,
+            "y": 20
+          },
+          "body": {
+            "bottom": 354.53125,
+            "clientHeight": 286,
+            "height": 285.53125,
+            "right": 390,
+            "scrollHeight": 286,
+            "width": 389,
+            "x": 1,
+            "y": 69
+          },
+          "checkout": {
+            "bottom": 786,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 740
+          },
+          "couponEntry": {
+            "bottom": 466.71875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 422.71875
+          },
+          "couponHeading": {
+            "bottom": 388.53125,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 365,
+            "scrollHeight": 23,
+            "width": 339,
+            "x": 26,
+            "y": 365.53125
+          },
+          "couponToggle": {
+            "bottom": 522.71875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 478.71875
+          },
+          "coupons": {
+            "bottom": 543.71875,
+            "clientHeight": 189,
+            "height": 189.1875,
+            "right": 390,
+            "scrollHeight": 189,
+            "width": 389,
+            "x": 1,
+            "y": 354.53125
+          },
+          "fullCart": {
+            "bottom": 832,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 792
+          },
+          "heading": {
+            "bottom": 48,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 17,
+            "y": 20
+          },
+          "offers": {
+            "bottom": 807.71875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 365,
+            "scrollHeight": 1547,
+            "width": 339,
+            "x": 26,
+            "y": 527.71875
+          },
+          "panel": {
+            "bottom": 844,
+            "clientHeight": 844,
+            "height": 844,
+            "right": 390,
+            "scrollHeight": 844,
+            "width": 390,
+            "x": 0,
+            "y": 0
+          },
+          "total": {
+            "bottom": 628.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 583.5625
+          }
+        },
+        "height": 844,
+        "pageOverflow": false,
+        "width": 390
+      }
+    },
+    {
+      "name": "one-item-390x844 checkout and full-cart actions stay visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 48,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 109.859375,
+            "y": 20
+          },
+          "body": {
+            "bottom": 354.53125,
+            "clientHeight": 286,
+            "height": 285.53125,
+            "right": 390,
+            "scrollHeight": 286,
+            "width": 389,
+            "x": 1,
+            "y": 69
+          },
+          "checkout": {
+            "bottom": 786,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 740
+          },
+          "couponEntry": {
+            "bottom": 466.71875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 422.71875
+          },
+          "couponHeading": {
+            "bottom": 388.53125,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 365,
+            "scrollHeight": 23,
+            "width": 339,
+            "x": 26,
+            "y": 365.53125
+          },
+          "couponToggle": {
+            "bottom": 522.71875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 478.71875
+          },
+          "coupons": {
+            "bottom": 543.71875,
+            "clientHeight": 189,
+            "height": 189.1875,
+            "right": 390,
+            "scrollHeight": 189,
+            "width": 389,
+            "x": 1,
+            "y": 354.53125
+          },
+          "fullCart": {
+            "bottom": 832,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 792
+          },
+          "heading": {
+            "bottom": 48,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 17,
+            "y": 20
+          },
+          "offers": {
+            "bottom": 807.71875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 365,
+            "scrollHeight": 1547,
+            "width": 339,
+            "x": 26,
+            "y": 527.71875
+          },
+          "panel": {
+            "bottom": 844,
+            "clientHeight": 844,
+            "height": 844,
+            "right": 390,
+            "scrollHeight": 844,
+            "width": 390,
+            "x": 0,
+            "y": 0
+          },
+          "total": {
+            "bottom": 628.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 583.5625
+          }
+        },
+        "height": 844,
+        "pageOverflow": false,
+        "width": 390
+      }
+    },
+    {
+      "name": "one-item-390x844 total stays visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 48,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 109.859375,
+            "y": 20
+          },
+          "body": {
+            "bottom": 354.53125,
+            "clientHeight": 286,
+            "height": 285.53125,
+            "right": 390,
+            "scrollHeight": 286,
+            "width": 389,
+            "x": 1,
+            "y": 69
+          },
+          "checkout": {
+            "bottom": 786,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 740
+          },
+          "couponEntry": {
+            "bottom": 466.71875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 422.71875
+          },
+          "couponHeading": {
+            "bottom": 388.53125,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 365,
+            "scrollHeight": 23,
+            "width": 339,
+            "x": 26,
+            "y": 365.53125
+          },
+          "couponToggle": {
+            "bottom": 522.71875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 478.71875
+          },
+          "coupons": {
+            "bottom": 543.71875,
+            "clientHeight": 189,
+            "height": 189.1875,
+            "right": 390,
+            "scrollHeight": 189,
+            "width": 389,
+            "x": 1,
+            "y": 354.53125
+          },
+          "fullCart": {
+            "bottom": 832,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 792
+          },
+          "heading": {
+            "bottom": 48,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 17,
+            "y": 20
+          },
+          "offers": {
+            "bottom": 807.71875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 365,
+            "scrollHeight": 1547,
+            "width": 339,
+            "x": 26,
+            "y": 527.71875
+          },
+          "panel": {
+            "bottom": 844,
+            "clientHeight": 844,
+            "height": 844,
+            "right": 390,
+            "scrollHeight": 844,
+            "width": 390,
+            "x": 0,
+            "y": 0
+          },
+          "total": {
+            "bottom": 628.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 583.5625
+          }
+        },
+        "height": 844,
+        "pageOverflow": false,
+        "width": 390
+      }
+    },
+    {
+      "name": "one-item-390x844 coupon heading or controls stay visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 48,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 109.859375,
+            "y": 20
+          },
+          "body": {
+            "bottom": 354.53125,
+            "clientHeight": 286,
+            "height": 285.53125,
+            "right": 390,
+            "scrollHeight": 286,
+            "width": 389,
+            "x": 1,
+            "y": 69
+          },
+          "checkout": {
+            "bottom": 786,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 740
+          },
+          "couponEntry": {
+            "bottom": 466.71875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 422.71875
+          },
+          "couponHeading": {
+            "bottom": 388.53125,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 365,
+            "scrollHeight": 23,
+            "width": 339,
+            "x": 26,
+            "y": 365.53125
+          },
+          "couponToggle": {
+            "bottom": 522.71875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 478.71875
+          },
+          "coupons": {
+            "bottom": 543.71875,
+            "clientHeight": 189,
+            "height": 189.1875,
+            "right": 390,
+            "scrollHeight": 189,
+            "width": 389,
+            "x": 1,
+            "y": 354.53125
+          },
+          "fullCart": {
+            "bottom": 832,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 792
+          },
+          "heading": {
+            "bottom": 48,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 17,
+            "y": 20
+          },
+          "offers": {
+            "bottom": 807.71875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 365,
+            "scrollHeight": 1547,
+            "width": 339,
+            "x": 26,
+            "y": 527.71875
+          },
+          "panel": {
+            "bottom": 844,
+            "clientHeight": 844,
+            "height": 844,
+            "right": 390,
+            "scrollHeight": 844,
+            "width": 390,
+            "x": 0,
+            "y": 0
+          },
+          "total": {
+            "bottom": 628.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 583.5625
+          }
+        },
+        "height": 844,
+        "pageOverflow": false,
+        "width": 390
+      }
+    },
+    {
+      "name": "one-item-390x844 count stays aligned",
+      "pass": true,
+      "detail": {
+        "badge": {
+          "bottom": 48,
+          "clientHeight": 26,
+          "height": 28,
+          "right": 138.859375,
+          "scrollHeight": 26,
+          "width": 29,
+          "x": 109.859375,
+          "y": 20
+        },
+        "body": {
+          "bottom": 354.53125,
+          "clientHeight": 286,
+          "height": 285.53125,
+          "right": 390,
+          "scrollHeight": 286,
+          "width": 389,
+          "x": 1,
+          "y": 69
+        },
+        "checkout": {
+          "bottom": 786,
+          "clientHeight": 44,
+          "height": 46,
+          "right": 374,
+          "scrollHeight": 44,
+          "width": 357,
+          "x": 17,
+          "y": 740
+        },
+        "couponEntry": {
+          "bottom": 466.71875,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 365,
+          "scrollHeight": 44,
+          "width": 339,
+          "x": 26,
+          "y": 422.71875
+        },
+        "couponHeading": {
+          "bottom": 388.53125,
+          "clientHeight": 23,
+          "height": 23,
+          "right": 365,
+          "scrollHeight": 23,
+          "width": 339,
+          "x": 26,
+          "y": 365.53125
+        },
+        "couponToggle": {
+          "bottom": 522.71875,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 365,
+          "scrollHeight": 44,
+          "width": 339,
+          "x": 26,
+          "y": 478.71875
+        },
+        "coupons": {
+          "bottom": 543.71875,
+          "clientHeight": 189,
+          "height": 189.1875,
+          "right": 390,
+          "scrollHeight": 189,
+          "width": 389,
+          "x": 1,
+          "y": 354.53125
+        },
+        "fullCart": {
+          "bottom": 832,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 374,
+          "scrollHeight": 40,
+          "width": 357,
+          "x": 17,
+          "y": 792
+        },
+        "heading": {
+          "bottom": 48,
+          "clientHeight": 28,
+          "height": 28,
+          "right": 138.859375,
+          "scrollHeight": 28,
+          "width": 121.859375,
+          "x": 17,
+          "y": 20
+        },
+        "offers": {
+          "bottom": 807.71875,
+          "clientHeight": 280,
+          "height": 280,
+          "right": 365,
+          "scrollHeight": 1547,
+          "width": 339,
+          "x": 26,
+          "y": 527.71875
+        },
+        "panel": {
+          "bottom": 844,
+          "clientHeight": 844,
+          "height": 844,
+          "right": 390,
+          "scrollHeight": 844,
+          "width": 390,
+          "x": 0,
+          "y": 0
+        },
+        "total": {
+          "bottom": 628.15625,
+          "clientHeight": 44,
+          "height": 44.59375,
+          "right": 374,
+          "scrollHeight": 44,
+          "width": 357,
+          "x": 17,
+          "y": 583.5625
+        }
+      }
+    },
+    {
+      "name": "offers-open-390x844 has no horizontal page overflow",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 48,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 109.859375,
+            "y": 20
+          },
+          "body": {
+            "bottom": 237,
+            "clientHeight": 168,
+            "height": 168,
+            "right": 390,
+            "scrollHeight": 168,
+            "width": 389,
+            "x": 1,
+            "y": 69
+          },
+          "checkout": {
+            "bottom": 786,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 740
+          },
+          "couponEntry": {
+            "bottom": 349.1875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 305.1875
+          },
+          "couponHeading": {
+            "bottom": 271,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 365,
+            "scrollHeight": 23,
+            "width": 339,
+            "x": 26,
+            "y": 248
+          },
+          "couponToggle": {
+            "bottom": 405.1875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 361.1875
+          },
+          "coupons": {
+            "bottom": 543.71875,
+            "clientHeight": 307,
+            "height": 306.71875,
+            "right": 390,
+            "scrollHeight": 474,
+            "width": 389,
+            "x": 1,
+            "y": 237
+          },
+          "fullCart": {
+            "bottom": 832,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 792
+          },
+          "heading": {
+            "bottom": 48,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 17,
+            "y": 20
+          },
+          "offers": {
+            "bottom": 690.1875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 365,
+            "scrollHeight": 1547,
+            "width": 339,
+            "x": 26,
+            "y": 410.1875
+          },
+          "panel": {
+            "bottom": 844,
+            "clientHeight": 844,
+            "height": 844,
+            "right": 390,
+            "scrollHeight": 844,
+            "width": 390,
+            "x": 0,
+            "y": 0
+          },
+          "total": {
+            "bottom": 628.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 583.5625
+          }
+        },
+        "height": 844,
+        "pageOverflow": false,
+        "width": 390
+      }
+    },
+    {
+      "name": "offers-open-390x844 checkout and full-cart actions stay visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 48,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 109.859375,
+            "y": 20
+          },
+          "body": {
+            "bottom": 237,
+            "clientHeight": 168,
+            "height": 168,
+            "right": 390,
+            "scrollHeight": 168,
+            "width": 389,
+            "x": 1,
+            "y": 69
+          },
+          "checkout": {
+            "bottom": 786,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 740
+          },
+          "couponEntry": {
+            "bottom": 349.1875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 305.1875
+          },
+          "couponHeading": {
+            "bottom": 271,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 365,
+            "scrollHeight": 23,
+            "width": 339,
+            "x": 26,
+            "y": 248
+          },
+          "couponToggle": {
+            "bottom": 405.1875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 361.1875
+          },
+          "coupons": {
+            "bottom": 543.71875,
+            "clientHeight": 307,
+            "height": 306.71875,
+            "right": 390,
+            "scrollHeight": 474,
+            "width": 389,
+            "x": 1,
+            "y": 237
+          },
+          "fullCart": {
+            "bottom": 832,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 792
+          },
+          "heading": {
+            "bottom": 48,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 17,
+            "y": 20
+          },
+          "offers": {
+            "bottom": 690.1875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 365,
+            "scrollHeight": 1547,
+            "width": 339,
+            "x": 26,
+            "y": 410.1875
+          },
+          "panel": {
+            "bottom": 844,
+            "clientHeight": 844,
+            "height": 844,
+            "right": 390,
+            "scrollHeight": 844,
+            "width": 390,
+            "x": 0,
+            "y": 0
+          },
+          "total": {
+            "bottom": 628.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 583.5625
+          }
+        },
+        "height": 844,
+        "pageOverflow": false,
+        "width": 390
+      }
+    },
+    {
+      "name": "offers-open-390x844 total stays visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 48,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 109.859375,
+            "y": 20
+          },
+          "body": {
+            "bottom": 237,
+            "clientHeight": 168,
+            "height": 168,
+            "right": 390,
+            "scrollHeight": 168,
+            "width": 389,
+            "x": 1,
+            "y": 69
+          },
+          "checkout": {
+            "bottom": 786,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 740
+          },
+          "couponEntry": {
+            "bottom": 349.1875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 305.1875
+          },
+          "couponHeading": {
+            "bottom": 271,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 365,
+            "scrollHeight": 23,
+            "width": 339,
+            "x": 26,
+            "y": 248
+          },
+          "couponToggle": {
+            "bottom": 405.1875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 361.1875
+          },
+          "coupons": {
+            "bottom": 543.71875,
+            "clientHeight": 307,
+            "height": 306.71875,
+            "right": 390,
+            "scrollHeight": 474,
+            "width": 389,
+            "x": 1,
+            "y": 237
+          },
+          "fullCart": {
+            "bottom": 832,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 792
+          },
+          "heading": {
+            "bottom": 48,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 17,
+            "y": 20
+          },
+          "offers": {
+            "bottom": 690.1875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 365,
+            "scrollHeight": 1547,
+            "width": 339,
+            "x": 26,
+            "y": 410.1875
+          },
+          "panel": {
+            "bottom": 844,
+            "clientHeight": 844,
+            "height": 844,
+            "right": 390,
+            "scrollHeight": 844,
+            "width": 390,
+            "x": 0,
+            "y": 0
+          },
+          "total": {
+            "bottom": 628.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 583.5625
+          }
+        },
+        "height": 844,
+        "pageOverflow": false,
+        "width": 390
+      }
+    },
+    {
+      "name": "offers-open-390x844 coupon heading or controls stay visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 48,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 109.859375,
+            "y": 20
+          },
+          "body": {
+            "bottom": 237,
+            "clientHeight": 168,
+            "height": 168,
+            "right": 390,
+            "scrollHeight": 168,
+            "width": 389,
+            "x": 1,
+            "y": 69
+          },
+          "checkout": {
+            "bottom": 786,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 740
+          },
+          "couponEntry": {
+            "bottom": 349.1875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 305.1875
+          },
+          "couponHeading": {
+            "bottom": 271,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 365,
+            "scrollHeight": 23,
+            "width": 339,
+            "x": 26,
+            "y": 248
+          },
+          "couponToggle": {
+            "bottom": 405.1875,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 361.1875
+          },
+          "coupons": {
+            "bottom": 543.71875,
+            "clientHeight": 307,
+            "height": 306.71875,
+            "right": 390,
+            "scrollHeight": 474,
+            "width": 389,
+            "x": 1,
+            "y": 237
+          },
+          "fullCart": {
+            "bottom": 832,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 792
+          },
+          "heading": {
+            "bottom": 48,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 17,
+            "y": 20
+          },
+          "offers": {
+            "bottom": 690.1875,
+            "clientHeight": 280,
+            "height": 280,
+            "right": 365,
+            "scrollHeight": 1547,
+            "width": 339,
+            "x": 26,
+            "y": 410.1875
+          },
+          "panel": {
+            "bottom": 844,
+            "clientHeight": 844,
+            "height": 844,
+            "right": 390,
+            "scrollHeight": 844,
+            "width": 390,
+            "x": 0,
+            "y": 0
+          },
+          "total": {
+            "bottom": 628.15625,
+            "clientHeight": 44,
+            "height": 44.59375,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 583.5625
+          }
+        },
+        "height": 844,
+        "pageOverflow": false,
+        "width": 390
+      }
+    },
+    {
+      "name": "offers-open-390x844 count stays aligned",
+      "pass": true,
+      "detail": {
+        "badge": {
+          "bottom": 48,
+          "clientHeight": 26,
+          "height": 28,
+          "right": 138.859375,
+          "scrollHeight": 26,
+          "width": 29,
+          "x": 109.859375,
+          "y": 20
+        },
+        "body": {
+          "bottom": 237,
+          "clientHeight": 168,
+          "height": 168,
+          "right": 390,
+          "scrollHeight": 168,
+          "width": 389,
+          "x": 1,
+          "y": 69
+        },
+        "checkout": {
+          "bottom": 786,
+          "clientHeight": 44,
+          "height": 46,
+          "right": 374,
+          "scrollHeight": 44,
+          "width": 357,
+          "x": 17,
+          "y": 740
+        },
+        "couponEntry": {
+          "bottom": 349.1875,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 365,
+          "scrollHeight": 44,
+          "width": 339,
+          "x": 26,
+          "y": 305.1875
+        },
+        "couponHeading": {
+          "bottom": 271,
+          "clientHeight": 23,
+          "height": 23,
+          "right": 365,
+          "scrollHeight": 23,
+          "width": 339,
+          "x": 26,
+          "y": 248
+        },
+        "couponToggle": {
+          "bottom": 405.1875,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 365,
+          "scrollHeight": 44,
+          "width": 339,
+          "x": 26,
+          "y": 361.1875
+        },
+        "coupons": {
+          "bottom": 543.71875,
+          "clientHeight": 307,
+          "height": 306.71875,
+          "right": 390,
+          "scrollHeight": 474,
+          "width": 389,
+          "x": 1,
+          "y": 237
+        },
+        "fullCart": {
+          "bottom": 832,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 374,
+          "scrollHeight": 40,
+          "width": 357,
+          "x": 17,
+          "y": 792
+        },
+        "heading": {
+          "bottom": 48,
+          "clientHeight": 28,
+          "height": 28,
+          "right": 138.859375,
+          "scrollHeight": 28,
+          "width": 121.859375,
+          "x": 17,
+          "y": 20
+        },
+        "offers": {
+          "bottom": 690.1875,
+          "clientHeight": 280,
+          "height": 280,
+          "right": 365,
+          "scrollHeight": 1547,
+          "width": 339,
+          "x": 26,
+          "y": 410.1875
+        },
+        "panel": {
+          "bottom": 844,
+          "clientHeight": 844,
+          "height": 844,
+          "right": 390,
+          "scrollHeight": 844,
+          "width": 390,
+          "x": 0,
+          "y": 0
+        },
+        "total": {
+          "bottom": 628.15625,
+          "clientHeight": 44,
+          "height": 44.59375,
+          "right": 374,
+          "scrollHeight": 44,
+          "width": 357,
+          "x": 17,
+          "y": 583.5625
+        }
+      }
+    },
+    {
+      "name": "Expanded offers keep one complete product control row 390x844",
+      "pass": true
+    },
+    {
+      "name": "Coupon input is reachable 390x844",
+      "pass": true
+    },
+    {
+      "name": "one-item-390x568 has no horizontal page overflow",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 44,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 109.859375,
+            "y": 16
+          },
+          "body": {
+            "bottom": 224.375,
+            "clientHeight": 163,
+            "height": 163.375,
+            "right": 390,
+            "scrollHeight": 163,
+            "width": 389,
+            "x": 1,
+            "y": 61
+          },
+          "checkout": {
+            "bottom": 520,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 474
+          },
+          "couponEntry": {
+            "bottom": 336.5625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 292.5625
+          },
+          "couponHeading": {
+            "bottom": 258.375,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 365,
+            "scrollHeight": 23,
+            "width": 339,
+            "x": 26,
+            "y": 235.375
+          },
+          "couponToggle": {
+            "bottom": 392.5625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 348.5625
+          },
+          "coupons": {
+            "bottom": 413.5625,
+            "clientHeight": 189,
+            "height": 189.1875,
+            "right": 390,
+            "scrollHeight": 189,
+            "width": 389,
+            "x": 1,
+            "y": 224.375
+          },
+          "fullCart": {
+            "bottom": 560,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 520
+          },
+          "heading": {
+            "bottom": 44,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 17,
+            "y": 16
+          },
+          "offers": {
+            "bottom": 624.75,
+            "clientHeight": 227,
+            "height": 227.1875,
+            "right": 365,
+            "scrollHeight": 1547,
+            "width": 339,
+            "x": 26,
+            "y": 397.5625
+          },
+          "panel": {
+            "bottom": 568,
+            "clientHeight": 568,
+            "height": 568,
+            "right": 390,
+            "scrollHeight": 568,
+            "width": 390,
+            "x": 0,
+            "y": 0
+          },
+          "total": {
+            "bottom": 366.15625,
+            "clientHeight": 40,
+            "height": 41,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 325.15625
+          }
+        },
+        "height": 568,
+        "pageOverflow": false,
+        "width": 390
+      }
+    },
+    {
+      "name": "one-item-390x568 checkout and full-cart actions stay visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 44,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 109.859375,
+            "y": 16
+          },
+          "body": {
+            "bottom": 224.375,
+            "clientHeight": 163,
+            "height": 163.375,
+            "right": 390,
+            "scrollHeight": 163,
+            "width": 389,
+            "x": 1,
+            "y": 61
+          },
+          "checkout": {
+            "bottom": 520,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 474
+          },
+          "couponEntry": {
+            "bottom": 336.5625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 292.5625
+          },
+          "couponHeading": {
+            "bottom": 258.375,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 365,
+            "scrollHeight": 23,
+            "width": 339,
+            "x": 26,
+            "y": 235.375
+          },
+          "couponToggle": {
+            "bottom": 392.5625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 348.5625
+          },
+          "coupons": {
+            "bottom": 413.5625,
+            "clientHeight": 189,
+            "height": 189.1875,
+            "right": 390,
+            "scrollHeight": 189,
+            "width": 389,
+            "x": 1,
+            "y": 224.375
+          },
+          "fullCart": {
+            "bottom": 560,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 520
+          },
+          "heading": {
+            "bottom": 44,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 17,
+            "y": 16
+          },
+          "offers": {
+            "bottom": 624.75,
+            "clientHeight": 227,
+            "height": 227.1875,
+            "right": 365,
+            "scrollHeight": 1547,
+            "width": 339,
+            "x": 26,
+            "y": 397.5625
+          },
+          "panel": {
+            "bottom": 568,
+            "clientHeight": 568,
+            "height": 568,
+            "right": 390,
+            "scrollHeight": 568,
+            "width": 390,
+            "x": 0,
+            "y": 0
+          },
+          "total": {
+            "bottom": 366.15625,
+            "clientHeight": 40,
+            "height": 41,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 325.15625
+          }
+        },
+        "height": 568,
+        "pageOverflow": false,
+        "width": 390
+      }
+    },
+    {
+      "name": "one-item-390x568 total stays visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 44,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 109.859375,
+            "y": 16
+          },
+          "body": {
+            "bottom": 224.375,
+            "clientHeight": 163,
+            "height": 163.375,
+            "right": 390,
+            "scrollHeight": 163,
+            "width": 389,
+            "x": 1,
+            "y": 61
+          },
+          "checkout": {
+            "bottom": 520,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 474
+          },
+          "couponEntry": {
+            "bottom": 336.5625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 292.5625
+          },
+          "couponHeading": {
+            "bottom": 258.375,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 365,
+            "scrollHeight": 23,
+            "width": 339,
+            "x": 26,
+            "y": 235.375
+          },
+          "couponToggle": {
+            "bottom": 392.5625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 348.5625
+          },
+          "coupons": {
+            "bottom": 413.5625,
+            "clientHeight": 189,
+            "height": 189.1875,
+            "right": 390,
+            "scrollHeight": 189,
+            "width": 389,
+            "x": 1,
+            "y": 224.375
+          },
+          "fullCart": {
+            "bottom": 560,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 520
+          },
+          "heading": {
+            "bottom": 44,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 17,
+            "y": 16
+          },
+          "offers": {
+            "bottom": 624.75,
+            "clientHeight": 227,
+            "height": 227.1875,
+            "right": 365,
+            "scrollHeight": 1547,
+            "width": 339,
+            "x": 26,
+            "y": 397.5625
+          },
+          "panel": {
+            "bottom": 568,
+            "clientHeight": 568,
+            "height": 568,
+            "right": 390,
+            "scrollHeight": 568,
+            "width": 390,
+            "x": 0,
+            "y": 0
+          },
+          "total": {
+            "bottom": 366.15625,
+            "clientHeight": 40,
+            "height": 41,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 325.15625
+          }
+        },
+        "height": 568,
+        "pageOverflow": false,
+        "width": 390
+      }
+    },
+    {
+      "name": "one-item-390x568 coupon heading or controls stay visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 44,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 109.859375,
+            "y": 16
+          },
+          "body": {
+            "bottom": 224.375,
+            "clientHeight": 163,
+            "height": 163.375,
+            "right": 390,
+            "scrollHeight": 163,
+            "width": 389,
+            "x": 1,
+            "y": 61
+          },
+          "checkout": {
+            "bottom": 520,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 474
+          },
+          "couponEntry": {
+            "bottom": 336.5625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 292.5625
+          },
+          "couponHeading": {
+            "bottom": 258.375,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 365,
+            "scrollHeight": 23,
+            "width": 339,
+            "x": 26,
+            "y": 235.375
+          },
+          "couponToggle": {
+            "bottom": 392.5625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 348.5625
+          },
+          "coupons": {
+            "bottom": 413.5625,
+            "clientHeight": 189,
+            "height": 189.1875,
+            "right": 390,
+            "scrollHeight": 189,
+            "width": 389,
+            "x": 1,
+            "y": 224.375
+          },
+          "fullCart": {
+            "bottom": 560,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 520
+          },
+          "heading": {
+            "bottom": 44,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 17,
+            "y": 16
+          },
+          "offers": {
+            "bottom": 624.75,
+            "clientHeight": 227,
+            "height": 227.1875,
+            "right": 365,
+            "scrollHeight": 1547,
+            "width": 339,
+            "x": 26,
+            "y": 397.5625
+          },
+          "panel": {
+            "bottom": 568,
+            "clientHeight": 568,
+            "height": 568,
+            "right": 390,
+            "scrollHeight": 568,
+            "width": 390,
+            "x": 0,
+            "y": 0
+          },
+          "total": {
+            "bottom": 366.15625,
+            "clientHeight": 40,
+            "height": 41,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 325.15625
+          }
+        },
+        "height": 568,
+        "pageOverflow": false,
+        "width": 390
+      }
+    },
+    {
+      "name": "one-item-390x568 count stays aligned",
+      "pass": true,
+      "detail": {
+        "badge": {
+          "bottom": 44,
+          "clientHeight": 26,
+          "height": 28,
+          "right": 138.859375,
+          "scrollHeight": 26,
+          "width": 29,
+          "x": 109.859375,
+          "y": 16
+        },
+        "body": {
+          "bottom": 224.375,
+          "clientHeight": 163,
+          "height": 163.375,
+          "right": 390,
+          "scrollHeight": 163,
+          "width": 389,
+          "x": 1,
+          "y": 61
+        },
+        "checkout": {
+          "bottom": 520,
+          "clientHeight": 44,
+          "height": 46,
+          "right": 374,
+          "scrollHeight": 44,
+          "width": 357,
+          "x": 17,
+          "y": 474
+        },
+        "couponEntry": {
+          "bottom": 336.5625,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 365,
+          "scrollHeight": 44,
+          "width": 339,
+          "x": 26,
+          "y": 292.5625
+        },
+        "couponHeading": {
+          "bottom": 258.375,
+          "clientHeight": 23,
+          "height": 23,
+          "right": 365,
+          "scrollHeight": 23,
+          "width": 339,
+          "x": 26,
+          "y": 235.375
+        },
+        "couponToggle": {
+          "bottom": 392.5625,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 365,
+          "scrollHeight": 44,
+          "width": 339,
+          "x": 26,
+          "y": 348.5625
+        },
+        "coupons": {
+          "bottom": 413.5625,
+          "clientHeight": 189,
+          "height": 189.1875,
+          "right": 390,
+          "scrollHeight": 189,
+          "width": 389,
+          "x": 1,
+          "y": 224.375
+        },
+        "fullCart": {
+          "bottom": 560,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 374,
+          "scrollHeight": 40,
+          "width": 357,
+          "x": 17,
+          "y": 520
+        },
+        "heading": {
+          "bottom": 44,
+          "clientHeight": 28,
+          "height": 28,
+          "right": 138.859375,
+          "scrollHeight": 28,
+          "width": 121.859375,
+          "x": 17,
+          "y": 16
+        },
+        "offers": {
+          "bottom": 624.75,
+          "clientHeight": 227,
+          "height": 227.1875,
+          "right": 365,
+          "scrollHeight": 1547,
+          "width": 339,
+          "x": 26,
+          "y": 397.5625
+        },
+        "panel": {
+          "bottom": 568,
+          "clientHeight": 568,
+          "height": 568,
+          "right": 390,
+          "scrollHeight": 568,
+          "width": 390,
+          "x": 0,
+          "y": 0
+        },
+        "total": {
+          "bottom": 366.15625,
+          "clientHeight": 40,
+          "height": 41,
+          "right": 374,
+          "scrollHeight": 40,
+          "width": 357,
+          "x": 17,
+          "y": 325.15625
+        }
+      }
+    },
+    {
+      "name": "offers-open-390x568 has no horizontal page overflow",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 44,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 109.859375,
+            "y": 16
+          },
+          "body": {
+            "bottom": 99.375,
+            "clientHeight": 163,
+            "height": 163.375,
+            "right": 390,
+            "scrollHeight": 163,
+            "width": 389,
+            "x": 1,
+            "y": -64
+          },
+          "checkout": {
+            "bottom": 520,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 474
+          },
+          "couponEntry": {
+            "bottom": 211.5625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 167.5625
+          },
+          "couponHeading": {
+            "bottom": 133.375,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 365,
+            "scrollHeight": 23,
+            "width": 339,
+            "x": 26,
+            "y": 110.375
+          },
+          "couponToggle": {
+            "bottom": 267.5625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 223.5625
+          },
+          "coupons": {
+            "bottom": 520.75,
+            "clientHeight": 421,
+            "height": 421.375,
+            "right": 390,
+            "scrollHeight": 421,
+            "width": 389,
+            "x": 1,
+            "y": 99.375
+          },
+          "fullCart": {
+            "bottom": 560,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 520
+          },
+          "heading": {
+            "bottom": 44,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 17,
+            "y": 16
+          },
+          "offers": {
+            "bottom": 499.75,
+            "clientHeight": 227,
+            "height": 227.1875,
+            "right": 365,
+            "scrollHeight": 1547,
+            "width": 339,
+            "x": 26,
+            "y": 272.5625
+          },
+          "panel": {
+            "bottom": 568,
+            "clientHeight": 568,
+            "height": 568,
+            "right": 390,
+            "scrollHeight": 568,
+            "width": 390,
+            "x": 0,
+            "y": 0
+          },
+          "total": {
+            "bottom": 366.15625,
+            "clientHeight": 40,
+            "height": 41,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 325.15625
+          }
+        },
+        "height": 568,
+        "pageOverflow": false,
+        "width": 390
+      }
+    },
+    {
+      "name": "offers-open-390x568 checkout and full-cart actions stay visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 44,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 109.859375,
+            "y": 16
+          },
+          "body": {
+            "bottom": 99.375,
+            "clientHeight": 163,
+            "height": 163.375,
+            "right": 390,
+            "scrollHeight": 163,
+            "width": 389,
+            "x": 1,
+            "y": -64
+          },
+          "checkout": {
+            "bottom": 520,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 474
+          },
+          "couponEntry": {
+            "bottom": 211.5625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 167.5625
+          },
+          "couponHeading": {
+            "bottom": 133.375,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 365,
+            "scrollHeight": 23,
+            "width": 339,
+            "x": 26,
+            "y": 110.375
+          },
+          "couponToggle": {
+            "bottom": 267.5625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 223.5625
+          },
+          "coupons": {
+            "bottom": 520.75,
+            "clientHeight": 421,
+            "height": 421.375,
+            "right": 390,
+            "scrollHeight": 421,
+            "width": 389,
+            "x": 1,
+            "y": 99.375
+          },
+          "fullCart": {
+            "bottom": 560,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 520
+          },
+          "heading": {
+            "bottom": 44,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 17,
+            "y": 16
+          },
+          "offers": {
+            "bottom": 499.75,
+            "clientHeight": 227,
+            "height": 227.1875,
+            "right": 365,
+            "scrollHeight": 1547,
+            "width": 339,
+            "x": 26,
+            "y": 272.5625
+          },
+          "panel": {
+            "bottom": 568,
+            "clientHeight": 568,
+            "height": 568,
+            "right": 390,
+            "scrollHeight": 568,
+            "width": 390,
+            "x": 0,
+            "y": 0
+          },
+          "total": {
+            "bottom": 366.15625,
+            "clientHeight": 40,
+            "height": 41,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 325.15625
+          }
+        },
+        "height": 568,
+        "pageOverflow": false,
+        "width": 390
+      }
+    },
+    {
+      "name": "offers-open-390x568 total stays visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 44,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 109.859375,
+            "y": 16
+          },
+          "body": {
+            "bottom": 99.375,
+            "clientHeight": 163,
+            "height": 163.375,
+            "right": 390,
+            "scrollHeight": 163,
+            "width": 389,
+            "x": 1,
+            "y": -64
+          },
+          "checkout": {
+            "bottom": 520,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 474
+          },
+          "couponEntry": {
+            "bottom": 211.5625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 167.5625
+          },
+          "couponHeading": {
+            "bottom": 133.375,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 365,
+            "scrollHeight": 23,
+            "width": 339,
+            "x": 26,
+            "y": 110.375
+          },
+          "couponToggle": {
+            "bottom": 267.5625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 223.5625
+          },
+          "coupons": {
+            "bottom": 520.75,
+            "clientHeight": 421,
+            "height": 421.375,
+            "right": 390,
+            "scrollHeight": 421,
+            "width": 389,
+            "x": 1,
+            "y": 99.375
+          },
+          "fullCart": {
+            "bottom": 560,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 520
+          },
+          "heading": {
+            "bottom": 44,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 17,
+            "y": 16
+          },
+          "offers": {
+            "bottom": 499.75,
+            "clientHeight": 227,
+            "height": 227.1875,
+            "right": 365,
+            "scrollHeight": 1547,
+            "width": 339,
+            "x": 26,
+            "y": 272.5625
+          },
+          "panel": {
+            "bottom": 568,
+            "clientHeight": 568,
+            "height": 568,
+            "right": 390,
+            "scrollHeight": 568,
+            "width": 390,
+            "x": 0,
+            "y": 0
+          },
+          "total": {
+            "bottom": 366.15625,
+            "clientHeight": 40,
+            "height": 41,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 325.15625
+          }
+        },
+        "height": 568,
+        "pageOverflow": false,
+        "width": 390
+      }
+    },
+    {
+      "name": "offers-open-390x568 coupon heading or controls stay visible",
+      "pass": true,
+      "detail": {
+        "boxes": {
+          "badge": {
+            "bottom": 44,
+            "clientHeight": 26,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 26,
+            "width": 29,
+            "x": 109.859375,
+            "y": 16
+          },
+          "body": {
+            "bottom": 99.375,
+            "clientHeight": 163,
+            "height": 163.375,
+            "right": 390,
+            "scrollHeight": 163,
+            "width": 389,
+            "x": 1,
+            "y": -64
+          },
+          "checkout": {
+            "bottom": 520,
+            "clientHeight": 44,
+            "height": 46,
+            "right": 374,
+            "scrollHeight": 44,
+            "width": 357,
+            "x": 17,
+            "y": 474
+          },
+          "couponEntry": {
+            "bottom": 211.5625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 167.5625
+          },
+          "couponHeading": {
+            "bottom": 133.375,
+            "clientHeight": 23,
+            "height": 23,
+            "right": 365,
+            "scrollHeight": 23,
+            "width": 339,
+            "x": 26,
+            "y": 110.375
+          },
+          "couponToggle": {
+            "bottom": 267.5625,
+            "clientHeight": 44,
+            "height": 44,
+            "right": 365,
+            "scrollHeight": 44,
+            "width": 339,
+            "x": 26,
+            "y": 223.5625
+          },
+          "coupons": {
+            "bottom": 520.75,
+            "clientHeight": 421,
+            "height": 421.375,
+            "right": 390,
+            "scrollHeight": 421,
+            "width": 389,
+            "x": 1,
+            "y": 99.375
+          },
+          "fullCart": {
+            "bottom": 560,
+            "clientHeight": 40,
+            "height": 40,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 520
+          },
+          "heading": {
+            "bottom": 44,
+            "clientHeight": 28,
+            "height": 28,
+            "right": 138.859375,
+            "scrollHeight": 28,
+            "width": 121.859375,
+            "x": 17,
+            "y": 16
+          },
+          "offers": {
+            "bottom": 499.75,
+            "clientHeight": 227,
+            "height": 227.1875,
+            "right": 365,
+            "scrollHeight": 1547,
+            "width": 339,
+            "x": 26,
+            "y": 272.5625
+          },
+          "panel": {
+            "bottom": 568,
+            "clientHeight": 568,
+            "height": 568,
+            "right": 390,
+            "scrollHeight": 568,
+            "width": 390,
+            "x": 0,
+            "y": 0
+          },
+          "total": {
+            "bottom": 366.15625,
+            "clientHeight": 40,
+            "height": 41,
+            "right": 374,
+            "scrollHeight": 40,
+            "width": 357,
+            "x": 17,
+            "y": 325.15625
+          }
+        },
+        "height": 568,
+        "pageOverflow": false,
+        "width": 390
+      }
+    },
+    {
+      "name": "offers-open-390x568 count stays aligned",
+      "pass": true,
+      "detail": {
+        "badge": {
+          "bottom": 44,
+          "clientHeight": 26,
+          "height": 28,
+          "right": 138.859375,
+          "scrollHeight": 26,
+          "width": 29,
+          "x": 109.859375,
+          "y": 16
+        },
+        "body": {
+          "bottom": 99.375,
+          "clientHeight": 163,
+          "height": 163.375,
+          "right": 390,
+          "scrollHeight": 163,
+          "width": 389,
+          "x": 1,
+          "y": -64
+        },
+        "checkout": {
+          "bottom": 520,
+          "clientHeight": 44,
+          "height": 46,
+          "right": 374,
+          "scrollHeight": 44,
+          "width": 357,
+          "x": 17,
+          "y": 474
+        },
+        "couponEntry": {
+          "bottom": 211.5625,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 365,
+          "scrollHeight": 44,
+          "width": 339,
+          "x": 26,
+          "y": 167.5625
+        },
+        "couponHeading": {
+          "bottom": 133.375,
+          "clientHeight": 23,
+          "height": 23,
+          "right": 365,
+          "scrollHeight": 23,
+          "width": 339,
+          "x": 26,
+          "y": 110.375
+        },
+        "couponToggle": {
+          "bottom": 267.5625,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 365,
+          "scrollHeight": 44,
+          "width": 339,
+          "x": 26,
+          "y": 223.5625
+        },
+        "coupons": {
+          "bottom": 520.75,
+          "clientHeight": 421,
+          "height": 421.375,
+          "right": 390,
+          "scrollHeight": 421,
+          "width": 389,
+          "x": 1,
+          "y": 99.375
+        },
+        "fullCart": {
+          "bottom": 560,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 374,
+          "scrollHeight": 40,
+          "width": 357,
+          "x": 17,
+          "y": 520
+        },
+        "heading": {
+          "bottom": 44,
+          "clientHeight": 28,
+          "height": 28,
+          "right": 138.859375,
+          "scrollHeight": 28,
+          "width": 121.859375,
+          "x": 17,
+          "y": 16
+        },
+        "offers": {
+          "bottom": 499.75,
+          "clientHeight": 227,
+          "height": 227.1875,
+          "right": 365,
+          "scrollHeight": 1547,
+          "width": 339,
+          "x": 26,
+          "y": 272.5625
+        },
+        "panel": {
+          "bottom": 568,
+          "clientHeight": 568,
+          "height": 568,
+          "right": 390,
+          "scrollHeight": 568,
+          "width": 390,
+          "x": 0,
+          "y": 0
+        },
+        "total": {
+          "bottom": 366.15625,
+          "clientHeight": 40,
+          "height": 41,
+          "right": 374,
+          "scrollHeight": 40,
+          "width": 357,
+          "x": 17,
+          "y": 325.15625
+        }
+      }
+    },
+    {
+      "name": "Coupon input is reachable 390x568",
+      "pass": true
+    }
+  ],
+  "layouts": [
+    {
+      "label": "one-item-1440x900",
+      "boxes": {
+        "badge": {
+          "bottom": 52,
+          "clientHeight": 26,
+          "height": 28,
+          "right": 1152.171875,
+          "scrollHeight": 26,
+          "width": 29,
+          "x": 1123.171875,
+          "y": 24
+        },
+        "body": {
+          "bottom": 412.53125,
+          "clientHeight": 336,
+          "height": 335.53125,
+          "right": 1440,
+          "scrollHeight": 336,
+          "width": 439,
+          "x": 1001,
+          "y": 77
+        },
+        "checkout": {
+          "bottom": 842,
+          "clientHeight": 44,
+          "height": 46,
+          "right": 1420,
+          "scrollHeight": 44,
+          "width": 399,
+          "x": 1021,
+          "y": 796
+        },
+        "couponEntry": {
+          "bottom": 523.71875,
+          "clientHeight": 42,
+          "height": 42,
+          "right": 1409,
+          "scrollHeight": 42,
+          "width": 377,
+          "x": 1032,
+          "y": 481.71875
+        },
+        "couponHeading": {
+          "bottom": 447.53125,
+          "clientHeight": 23,
+          "height": 23,
+          "right": 1409,
+          "scrollHeight": 23,
+          "width": 377,
+          "x": 1032,
+          "y": 424.53125
+        },
+        "couponToggle": {
+          "bottom": 575.71875,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 1409,
+          "scrollHeight": 40,
+          "width": 377,
+          "x": 1032,
+          "y": 535.71875
+        },
+        "coupons": {
+          "bottom": 599.71875,
+          "clientHeight": 187,
+          "height": 187.1875,
+          "right": 1440,
+          "scrollHeight": 187,
+          "width": 439,
+          "x": 1001,
+          "y": 412.53125
+        },
+        "fullCart": {
+          "bottom": 888,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 1420,
+          "scrollHeight": 40,
+          "width": 399,
+          "x": 1021,
+          "y": 848
+        },
+        "heading": {
+          "bottom": 52,
+          "clientHeight": 28,
+          "height": 28,
+          "right": 1152.171875,
+          "scrollHeight": 28,
+          "width": 131.171875,
+          "x": 1021,
+          "y": 24
+        },
+        "offers": {
+          "bottom": 860.71875,
+          "clientHeight": 280,
+          "height": 280,
+          "right": 1409,
+          "scrollHeight": 1511,
+          "width": 377,
+          "x": 1032,
+          "y": 580.71875
+        },
+        "panel": {
+          "bottom": 900,
+          "clientHeight": 900,
+          "height": 900,
+          "right": 1440,
+          "scrollHeight": 900,
+          "width": 440,
+          "x": 1000,
+          "y": 0
+        },
+        "total": {
+          "bottom": 684.15625,
+          "clientHeight": 44,
+          "height": 44.59375,
+          "right": 1420,
+          "scrollHeight": 44,
+          "width": 399,
+          "x": 1021,
+          "y": 639.5625
+        }
+      },
+      "height": 900,
+      "pageOverflow": false,
+      "width": 1440
+    },
+    {
+      "label": "offers-open-1440x900",
+      "boxes": {
+        "badge": {
+          "bottom": 52,
+          "clientHeight": 26,
+          "height": 28,
+          "right": 1152.171875,
+          "scrollHeight": 26,
+          "width": 29,
+          "x": 1123.171875,
+          "y": 24
+        },
+        "body": {
+          "bottom": 245,
+          "clientHeight": 168,
+          "height": 168,
+          "right": 1440,
+          "scrollHeight": 168,
+          "width": 439,
+          "x": 1001,
+          "y": 77
+        },
+        "checkout": {
+          "bottom": 842,
+          "clientHeight": 44,
+          "height": 46,
+          "right": 1420,
+          "scrollHeight": 44,
+          "width": 399,
+          "x": 1021,
+          "y": 796
+        },
+        "couponEntry": {
+          "bottom": 356.1875,
+          "clientHeight": 42,
+          "height": 42,
+          "right": 1409,
+          "scrollHeight": 42,
+          "width": 377,
+          "x": 1032,
+          "y": 314.1875
+        },
+        "couponHeading": {
+          "bottom": 280,
+          "clientHeight": 23,
+          "height": 23,
+          "right": 1409,
+          "scrollHeight": 23,
+          "width": 377,
+          "x": 1032,
+          "y": 257
+        },
+        "couponToggle": {
+          "bottom": 408.1875,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 1409,
+          "scrollHeight": 40,
+          "width": 377,
+          "x": 1032,
+          "y": 368.1875
+        },
+        "coupons": {
+          "bottom": 599.71875,
+          "clientHeight": 355,
+          "height": 354.71875,
+          "right": 1440,
+          "scrollHeight": 472,
+          "width": 439,
+          "x": 1001,
+          "y": 245
+        },
+        "fullCart": {
+          "bottom": 888,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 1420,
+          "scrollHeight": 40,
+          "width": 399,
+          "x": 1021,
+          "y": 848
+        },
+        "heading": {
+          "bottom": 52,
+          "clientHeight": 28,
+          "height": 28,
+          "right": 1152.171875,
+          "scrollHeight": 28,
+          "width": 131.171875,
+          "x": 1021,
+          "y": 24
+        },
+        "offers": {
+          "bottom": 693.1875,
+          "clientHeight": 280,
+          "height": 280,
+          "right": 1409,
+          "scrollHeight": 1511,
+          "width": 377,
+          "x": 1032,
+          "y": 413.1875
+        },
+        "panel": {
+          "bottom": 900,
+          "clientHeight": 900,
+          "height": 900,
+          "right": 1440,
+          "scrollHeight": 900,
+          "width": 440,
+          "x": 1000,
+          "y": 0
+        },
+        "total": {
+          "bottom": 684.15625,
+          "clientHeight": 44,
+          "height": 44.59375,
+          "right": 1420,
+          "scrollHeight": 44,
+          "width": 399,
+          "x": 1021,
+          "y": 639.5625
+        }
+      },
+      "height": 900,
+      "pageOverflow": false,
+      "width": 1440
+    },
+    {
+      "label": "one-item-820x1024",
+      "boxes": {
+        "badge": {
+          "bottom": 52,
+          "clientHeight": 26,
+          "height": 28,
+          "right": 522.859375,
+          "scrollHeight": 26,
+          "width": 29,
+          "x": 493.859375,
+          "y": 24
+        },
+        "body": {
+          "bottom": 534.53125,
+          "clientHeight": 458,
+          "height": 457.53125,
+          "right": 820,
+          "scrollHeight": 458,
+          "width": 439,
+          "x": 381,
+          "y": 77
+        },
+        "checkout": {
+          "bottom": 966,
+          "clientHeight": 44,
+          "height": 46,
+          "right": 800,
+          "scrollHeight": 44,
+          "width": 399,
+          "x": 401,
+          "y": 920
+        },
+        "couponEntry": {
+          "bottom": 647.71875,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 789,
+          "scrollHeight": 44,
+          "width": 377,
+          "x": 412,
+          "y": 603.71875
+        },
+        "couponHeading": {
+          "bottom": 569.53125,
+          "clientHeight": 23,
+          "height": 23,
+          "right": 789,
+          "scrollHeight": 23,
+          "width": 377,
+          "x": 412,
+          "y": 546.53125
+        },
+        "couponToggle": {
+          "bottom": 699.71875,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 789,
+          "scrollHeight": 40,
+          "width": 377,
+          "x": 412,
+          "y": 659.71875
+        },
+        "coupons": {
+          "bottom": 723.71875,
+          "clientHeight": 189,
+          "height": 189.1875,
+          "right": 820,
+          "scrollHeight": 189,
+          "width": 439,
+          "x": 381,
+          "y": 534.53125
+        },
+        "fullCart": {
+          "bottom": 1012,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 800,
+          "scrollHeight": 40,
+          "width": 399,
+          "x": 401,
+          "y": 972
+        },
+        "heading": {
+          "bottom": 52,
+          "clientHeight": 28,
+          "height": 28,
+          "right": 522.859375,
+          "scrollHeight": 28,
+          "width": 121.859375,
+          "x": 401,
+          "y": 24
+        },
+        "offers": {
+          "bottom": 984.71875,
+          "clientHeight": 280,
+          "height": 280,
+          "right": 789,
+          "scrollHeight": 1511,
+          "width": 377,
+          "x": 412,
+          "y": 704.71875
+        },
+        "panel": {
+          "bottom": 1024,
+          "clientHeight": 1024,
+          "height": 1024,
+          "right": 820,
+          "scrollHeight": 1024,
+          "width": 440,
+          "x": 380,
+          "y": 0
+        },
+        "total": {
+          "bottom": 808.15625,
+          "clientHeight": 44,
+          "height": 44.59375,
+          "right": 800,
+          "scrollHeight": 44,
+          "width": 399,
+          "x": 401,
+          "y": 763.5625
+        }
+      },
+      "height": 1024,
+      "pageOverflow": false,
+      "width": 820
+    },
+    {
+      "label": "offers-open-820x1024",
+      "boxes": {
+        "badge": {
+          "bottom": 52,
+          "clientHeight": 26,
+          "height": 28,
+          "right": 522.859375,
+          "scrollHeight": 26,
+          "width": 29,
+          "x": 493.859375,
+          "y": 24
+        },
+        "body": {
+          "bottom": 263.71875,
+          "clientHeight": 187,
+          "height": 186.71875,
+          "right": 820,
+          "scrollHeight": 187,
+          "width": 439,
+          "x": 381,
+          "y": 77
+        },
+        "checkout": {
+          "bottom": 966,
+          "clientHeight": 44,
+          "height": 46,
+          "right": 800,
+          "scrollHeight": 44,
+          "width": 399,
+          "x": 401,
+          "y": 920
+        },
+        "couponEntry": {
+          "bottom": 376.90625,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 789,
+          "scrollHeight": 44,
+          "width": 377,
+          "x": 412,
+          "y": 332.90625
+        },
+        "couponHeading": {
+          "bottom": 298.71875,
+          "clientHeight": 23,
+          "height": 23,
+          "right": 789,
+          "scrollHeight": 23,
+          "width": 377,
+          "x": 412,
+          "y": 275.71875
+        },
+        "couponToggle": {
+          "bottom": 428.90625,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 789,
+          "scrollHeight": 40,
+          "width": 377,
+          "x": 412,
+          "y": 388.90625
+        },
+        "coupons": {
+          "bottom": 723.71875,
+          "clientHeight": 460,
+          "height": 460,
+          "right": 820,
+          "scrollHeight": 474,
+          "width": 439,
+          "x": 381,
+          "y": 263.71875
+        },
+        "fullCart": {
+          "bottom": 1012,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 800,
+          "scrollHeight": 40,
+          "width": 399,
+          "x": 401,
+          "y": 972
+        },
+        "heading": {
+          "bottom": 52,
+          "clientHeight": 28,
+          "height": 28,
+          "right": 522.859375,
+          "scrollHeight": 28,
+          "width": 121.859375,
+          "x": 401,
+          "y": 24
+        },
+        "offers": {
+          "bottom": 713.90625,
+          "clientHeight": 280,
+          "height": 280,
+          "right": 789,
+          "scrollHeight": 1511,
+          "width": 377,
+          "x": 412,
+          "y": 433.90625
+        },
+        "panel": {
+          "bottom": 1024,
+          "clientHeight": 1024,
+          "height": 1024,
+          "right": 820,
+          "scrollHeight": 1024,
+          "width": 440,
+          "x": 380,
+          "y": 0
+        },
+        "total": {
+          "bottom": 808.15625,
+          "clientHeight": 44,
+          "height": 44.59375,
+          "right": 800,
+          "scrollHeight": 44,
+          "width": 399,
+          "x": 401,
+          "y": 763.5625
+        }
+      },
+      "height": 1024,
+      "pageOverflow": false,
+      "width": 820
+    },
+    {
+      "label": "one-item-390x844",
+      "boxes": {
+        "badge": {
+          "bottom": 48,
+          "clientHeight": 26,
+          "height": 28,
+          "right": 138.859375,
+          "scrollHeight": 26,
+          "width": 29,
+          "x": 109.859375,
+          "y": 20
+        },
+        "body": {
+          "bottom": 354.53125,
+          "clientHeight": 286,
+          "height": 285.53125,
+          "right": 390,
+          "scrollHeight": 286,
+          "width": 389,
+          "x": 1,
+          "y": 69
+        },
+        "checkout": {
+          "bottom": 786,
+          "clientHeight": 44,
+          "height": 46,
+          "right": 374,
+          "scrollHeight": 44,
+          "width": 357,
+          "x": 17,
+          "y": 740
+        },
+        "couponEntry": {
+          "bottom": 466.71875,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 365,
+          "scrollHeight": 44,
+          "width": 339,
+          "x": 26,
+          "y": 422.71875
+        },
+        "couponHeading": {
+          "bottom": 388.53125,
+          "clientHeight": 23,
+          "height": 23,
+          "right": 365,
+          "scrollHeight": 23,
+          "width": 339,
+          "x": 26,
+          "y": 365.53125
+        },
+        "couponToggle": {
+          "bottom": 522.71875,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 365,
+          "scrollHeight": 44,
+          "width": 339,
+          "x": 26,
+          "y": 478.71875
+        },
+        "coupons": {
+          "bottom": 543.71875,
+          "clientHeight": 189,
+          "height": 189.1875,
+          "right": 390,
+          "scrollHeight": 189,
+          "width": 389,
+          "x": 1,
+          "y": 354.53125
+        },
+        "fullCart": {
+          "bottom": 832,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 374,
+          "scrollHeight": 40,
+          "width": 357,
+          "x": 17,
+          "y": 792
+        },
+        "heading": {
+          "bottom": 48,
+          "clientHeight": 28,
+          "height": 28,
+          "right": 138.859375,
+          "scrollHeight": 28,
+          "width": 121.859375,
+          "x": 17,
+          "y": 20
+        },
+        "offers": {
+          "bottom": 807.71875,
+          "clientHeight": 280,
+          "height": 280,
+          "right": 365,
+          "scrollHeight": 1547,
+          "width": 339,
+          "x": 26,
+          "y": 527.71875
+        },
+        "panel": {
+          "bottom": 844,
+          "clientHeight": 844,
+          "height": 844,
+          "right": 390,
+          "scrollHeight": 844,
+          "width": 390,
+          "x": 0,
+          "y": 0
+        },
+        "total": {
+          "bottom": 628.15625,
+          "clientHeight": 44,
+          "height": 44.59375,
+          "right": 374,
+          "scrollHeight": 44,
+          "width": 357,
+          "x": 17,
+          "y": 583.5625
+        }
+      },
+      "height": 844,
+      "pageOverflow": false,
+      "width": 390
+    },
+    {
+      "label": "offers-open-390x844",
+      "boxes": {
+        "badge": {
+          "bottom": 48,
+          "clientHeight": 26,
+          "height": 28,
+          "right": 138.859375,
+          "scrollHeight": 26,
+          "width": 29,
+          "x": 109.859375,
+          "y": 20
+        },
+        "body": {
+          "bottom": 237,
+          "clientHeight": 168,
+          "height": 168,
+          "right": 390,
+          "scrollHeight": 168,
+          "width": 389,
+          "x": 1,
+          "y": 69
+        },
+        "checkout": {
+          "bottom": 786,
+          "clientHeight": 44,
+          "height": 46,
+          "right": 374,
+          "scrollHeight": 44,
+          "width": 357,
+          "x": 17,
+          "y": 740
+        },
+        "couponEntry": {
+          "bottom": 349.1875,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 365,
+          "scrollHeight": 44,
+          "width": 339,
+          "x": 26,
+          "y": 305.1875
+        },
+        "couponHeading": {
+          "bottom": 271,
+          "clientHeight": 23,
+          "height": 23,
+          "right": 365,
+          "scrollHeight": 23,
+          "width": 339,
+          "x": 26,
+          "y": 248
+        },
+        "couponToggle": {
+          "bottom": 405.1875,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 365,
+          "scrollHeight": 44,
+          "width": 339,
+          "x": 26,
+          "y": 361.1875
+        },
+        "coupons": {
+          "bottom": 543.71875,
+          "clientHeight": 307,
+          "height": 306.71875,
+          "right": 390,
+          "scrollHeight": 474,
+          "width": 389,
+          "x": 1,
+          "y": 237
+        },
+        "fullCart": {
+          "bottom": 832,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 374,
+          "scrollHeight": 40,
+          "width": 357,
+          "x": 17,
+          "y": 792
+        },
+        "heading": {
+          "bottom": 48,
+          "clientHeight": 28,
+          "height": 28,
+          "right": 138.859375,
+          "scrollHeight": 28,
+          "width": 121.859375,
+          "x": 17,
+          "y": 20
+        },
+        "offers": {
+          "bottom": 690.1875,
+          "clientHeight": 280,
+          "height": 280,
+          "right": 365,
+          "scrollHeight": 1547,
+          "width": 339,
+          "x": 26,
+          "y": 410.1875
+        },
+        "panel": {
+          "bottom": 844,
+          "clientHeight": 844,
+          "height": 844,
+          "right": 390,
+          "scrollHeight": 844,
+          "width": 390,
+          "x": 0,
+          "y": 0
+        },
+        "total": {
+          "bottom": 628.15625,
+          "clientHeight": 44,
+          "height": 44.59375,
+          "right": 374,
+          "scrollHeight": 44,
+          "width": 357,
+          "x": 17,
+          "y": 583.5625
+        }
+      },
+      "height": 844,
+      "pageOverflow": false,
+      "width": 390
+    },
+    {
+      "label": "one-item-390x568",
+      "boxes": {
+        "badge": {
+          "bottom": 44,
+          "clientHeight": 26,
+          "height": 28,
+          "right": 138.859375,
+          "scrollHeight": 26,
+          "width": 29,
+          "x": 109.859375,
+          "y": 16
+        },
+        "body": {
+          "bottom": 224.375,
+          "clientHeight": 163,
+          "height": 163.375,
+          "right": 390,
+          "scrollHeight": 163,
+          "width": 389,
+          "x": 1,
+          "y": 61
+        },
+        "checkout": {
+          "bottom": 520,
+          "clientHeight": 44,
+          "height": 46,
+          "right": 374,
+          "scrollHeight": 44,
+          "width": 357,
+          "x": 17,
+          "y": 474
+        },
+        "couponEntry": {
+          "bottom": 336.5625,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 365,
+          "scrollHeight": 44,
+          "width": 339,
+          "x": 26,
+          "y": 292.5625
+        },
+        "couponHeading": {
+          "bottom": 258.375,
+          "clientHeight": 23,
+          "height": 23,
+          "right": 365,
+          "scrollHeight": 23,
+          "width": 339,
+          "x": 26,
+          "y": 235.375
+        },
+        "couponToggle": {
+          "bottom": 392.5625,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 365,
+          "scrollHeight": 44,
+          "width": 339,
+          "x": 26,
+          "y": 348.5625
+        },
+        "coupons": {
+          "bottom": 413.5625,
+          "clientHeight": 189,
+          "height": 189.1875,
+          "right": 390,
+          "scrollHeight": 189,
+          "width": 389,
+          "x": 1,
+          "y": 224.375
+        },
+        "fullCart": {
+          "bottom": 560,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 374,
+          "scrollHeight": 40,
+          "width": 357,
+          "x": 17,
+          "y": 520
+        },
+        "heading": {
+          "bottom": 44,
+          "clientHeight": 28,
+          "height": 28,
+          "right": 138.859375,
+          "scrollHeight": 28,
+          "width": 121.859375,
+          "x": 17,
+          "y": 16
+        },
+        "offers": {
+          "bottom": 624.75,
+          "clientHeight": 227,
+          "height": 227.1875,
+          "right": 365,
+          "scrollHeight": 1547,
+          "width": 339,
+          "x": 26,
+          "y": 397.5625
+        },
+        "panel": {
+          "bottom": 568,
+          "clientHeight": 568,
+          "height": 568,
+          "right": 390,
+          "scrollHeight": 568,
+          "width": 390,
+          "x": 0,
+          "y": 0
+        },
+        "total": {
+          "bottom": 366.15625,
+          "clientHeight": 40,
+          "height": 41,
+          "right": 374,
+          "scrollHeight": 40,
+          "width": 357,
+          "x": 17,
+          "y": 325.15625
+        }
+      },
+      "height": 568,
+      "pageOverflow": false,
+      "width": 390
+    },
+    {
+      "label": "offers-open-390x568",
+      "boxes": {
+        "badge": {
+          "bottom": 44,
+          "clientHeight": 26,
+          "height": 28,
+          "right": 138.859375,
+          "scrollHeight": 26,
+          "width": 29,
+          "x": 109.859375,
+          "y": 16
+        },
+        "body": {
+          "bottom": 99.375,
+          "clientHeight": 163,
+          "height": 163.375,
+          "right": 390,
+          "scrollHeight": 163,
+          "width": 389,
+          "x": 1,
+          "y": -64
+        },
+        "checkout": {
+          "bottom": 520,
+          "clientHeight": 44,
+          "height": 46,
+          "right": 374,
+          "scrollHeight": 44,
+          "width": 357,
+          "x": 17,
+          "y": 474
+        },
+        "couponEntry": {
+          "bottom": 211.5625,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 365,
+          "scrollHeight": 44,
+          "width": 339,
+          "x": 26,
+          "y": 167.5625
+        },
+        "couponHeading": {
+          "bottom": 133.375,
+          "clientHeight": 23,
+          "height": 23,
+          "right": 365,
+          "scrollHeight": 23,
+          "width": 339,
+          "x": 26,
+          "y": 110.375
+        },
+        "couponToggle": {
+          "bottom": 267.5625,
+          "clientHeight": 44,
+          "height": 44,
+          "right": 365,
+          "scrollHeight": 44,
+          "width": 339,
+          "x": 26,
+          "y": 223.5625
+        },
+        "coupons": {
+          "bottom": 520.75,
+          "clientHeight": 421,
+          "height": 421.375,
+          "right": 390,
+          "scrollHeight": 421,
+          "width": 389,
+          "x": 1,
+          "y": 99.375
+        },
+        "fullCart": {
+          "bottom": 560,
+          "clientHeight": 40,
+          "height": 40,
+          "right": 374,
+          "scrollHeight": 40,
+          "width": 357,
+          "x": 17,
+          "y": 520
+        },
+        "heading": {
+          "bottom": 44,
+          "clientHeight": 28,
+          "height": 28,
+          "right": 138.859375,
+          "scrollHeight": 28,
+          "width": 121.859375,
+          "x": 17,
+          "y": 16
+        },
+        "offers": {
+          "bottom": 499.75,
+          "clientHeight": 227,
+          "height": 227.1875,
+          "right": 365,
+          "scrollHeight": 1547,
+          "width": 339,
+          "x": 26,
+          "y": 272.5625
+        },
+        "panel": {
+          "bottom": 568,
+          "clientHeight": 568,
+          "height": 568,
+          "right": 390,
+          "scrollHeight": 568,
+          "width": 390,
+          "x": 0,
+          "y": 0
+        },
+        "total": {
+          "bottom": 366.15625,
+          "clientHeight": 40,
+          "height": 41,
+          "right": 374,
+          "scrollHeight": 40,
+          "width": 357,
+          "x": 17,
+          "y": 325.15625
+        }
+      },
+      "height": 568,
+      "pageOverflow": false,
+      "width": 390
+    }
+  ]
+}

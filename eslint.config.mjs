@@ -15,6 +15,8 @@ const correctness = {
 export default [
   { ignores: ['node_modules/**', 'live-*', 'audit-security-proof.cjs', 'audit-evidence/**'] },
   { files: ['review/public/js/*.js'], languageOptions: { ecmaVersion: 'latest', sourceType: 'script', globals: { ...globals.browser, gtag: 'readonly', firebase: 'readonly' } }, rules: correctness },
+  { files: ['visual-editor/js/*.js'], languageOptions: { ecmaVersion: 'latest', sourceType: 'module', globals: globals.browser }, rules: correctness },
+  { files: ['visual-editor/*.mjs'], languageOptions: { ecmaVersion: 'latest', sourceType: 'module', globals: globals.node }, rules: correctness },
   { files: ['review/*.mjs', 'tests/*.mjs', 'eslint.config.mjs'], languageOptions: { ecmaVersion: 'latest', sourceType: 'module', globals: globals.node }, rules: correctness },
   // These functions are serialized and injected into the browser by the local server.
   { files: ['review/server.mjs'], languageOptions: { globals: { ...globals.node, ...globals.browser } } },

@@ -1,0 +1,154 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Products exposes real page blocks to the existing visual editor",
+      "status": "PASS"
+    },
+    {
+      "name": "Products lists Page columns, Sidebar filters and Product area groups",
+      "status": "PASS"
+    },
+    {
+      "name": "filters contains each existing block exactly once",
+      "status": "PASS"
+    },
+    {
+      "name": "layout contains each existing block exactly once",
+      "status": "PASS"
+    },
+    {
+      "name": "products contains each existing block exactly once",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancel restores every page block preview",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancel leaves stored block order unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Dragging Category above Price updates the live page before release",
+      "status": "PASS"
+    },
+    {
+      "name": "Undo restores the original sidebar block order",
+      "status": "PASS"
+    },
+    {
+      "name": "Redo restores the dragged sidebar order",
+      "status": "PASS"
+    },
+    {
+      "name": "Panel arrows move every group to its requested order",
+      "status": "PASS"
+    },
+    {
+      "name": "Whole Products page sections reorder through the same panel",
+      "status": "PASS"
+    },
+    {
+      "name": "Block moves retain original DOM nodes and event listeners",
+      "status": "PASS"
+    },
+    {
+      "name": "Save draft and editor refresh preserve all block groups",
+      "status": "PASS"
+    },
+    {
+      "name": "Whole page section order persists after refresh",
+      "status": "PASS"
+    },
+    {
+      "name": "Block order persists in backend native section content",
+      "status": "PASS"
+    },
+    {
+      "name": "Normal Publish makes the block order public",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh public Products page shows published block order",
+      "status": "PASS"
+    },
+    {
+      "name": "Public Products page uses the saved whole section order",
+      "status": "PASS"
+    },
+    {
+      "name": "Swapped desktop columns keep the product area wide without overlap",
+      "status": "PASS",
+      "detail": {
+        "filters": 276,
+        "overflow": false,
+        "overlap": false,
+        "products": 1094,
+        "productsFirst": true
+      }
+    },
+    {
+      "name": "Category filtering retains published block order",
+      "status": "PASS"
+    },
+    {
+      "name": "Category filters remain attached to their products",
+      "status": "PASS"
+    },
+    {
+      "name": "Availability filter works after moving its block",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh mobile Products page retains every block group",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile Products page has no horizontal overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile filter drawer keeps Category, Availability and Price order",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile filter drawer controls remain within viewport",
+      "status": "PASS"
+    },
+    {
+      "name": "Product Add to cart still works after block movement",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile admin opens the Products block panel from Pages & tools",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile block handles and arrows have 44px touch targets",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile block arrow updates the live preview",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile Cancel restores saved block layout",
+      "status": "PASS"
+    },
+    {
+      "name": "Block ordering never modifies product or catalog records",
+      "status": "PASS"
+    },
+    {
+      "name": "No uncaught browser errors",
+      "status": "PASS"
+    },
+    {
+      "name": "No browser console errors",
+      "status": "PASS"
+    }
+  ],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\product-blocks-1791460175856",
+  "fixtureUrl": "http://127.0.0.1:4314"
+}

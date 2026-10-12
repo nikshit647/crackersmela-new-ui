@@ -7,3 +7,10 @@ audit/screenshots/
 *.png
 !review/public/images/**/*.png
 audit-evidence/
+# audit-artifacts/ contains verbatim copies of deployed production app.js
+# (Firebase API key + demo admin credentials). Same class as audit-evidence/.
+audit-artifacts/
+.codex-mine/
+.backup-*/
+__pycache__/
+tmp-probe.txt

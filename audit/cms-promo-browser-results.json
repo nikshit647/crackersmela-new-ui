@@ -1,0 +1,114 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Clicking real top bar opens PROMO BAR inspector",
+      "status": "PASS"
+    },
+    {
+      "name": "Selection outlines the real bar and pauses only the editing marquee",
+      "status": "PASS"
+    },
+    {
+      "name": "Original logical messages load once",
+      "status": "PASS"
+    },
+    {
+      "name": "Message text updates immediately and remains plain text",
+      "status": "PASS"
+    },
+    {
+      "name": "Long Unicode message shows a local error and cannot enter the draft",
+      "status": "PASS"
+    },
+    {
+      "name": "Markup is rejected before draft mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "Message icons and enable state update the existing marquee",
+      "status": "PASS"
+    },
+    {
+      "name": "Duplicating keeps content and creates an independent message ID",
+      "status": "PASS"
+    },
+    {
+      "name": "Delete removes only its message",
+      "status": "PASS"
+    },
+    {
+      "name": "Add and Move up change the shared message list",
+      "status": "PASS"
+    },
+    {
+      "name": "Move down matches the visible message order",
+      "status": "PASS"
+    },
+    {
+      "name": "Desktop typography spacing height background and opacity preserve Tablet and Mobile",
+      "status": "PASS"
+    },
+    {
+      "name": "Three devices retain independent styles and icon visibility through Undo and Redo",
+      "status": "PASS"
+    },
+    {
+      "name": "Reset styling preserves all shared messages",
+      "status": "PASS"
+    },
+    {
+      "name": "Native background supports solid color and custom gradient",
+      "status": "PASS"
+    },
+    {
+      "name": "Visitor preview resumes the marquee",
+      "status": "PASS"
+    },
+    {
+      "name": "Saved messages reload through the existing draft API",
+      "status": "PASS"
+    },
+    {
+      "name": "Saved device settings reload independently",
+      "status": "PASS"
+    },
+    {
+      "name": "Publish uses the saved Home page document",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh public 360px load is readable and has no horizontal overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh public 375px load is readable and has no horizontal overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh public 390px load is readable and has no horizontal overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh public 412px load is readable and has no horizontal overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh public 425px load is readable and has no horizontal overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "Public marquee advances continuously",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile navigation still opens",
+      "status": "PASS"
+    },
+    {
+      "name": "Other pages retain their own original announcement content",
+      "status": "PASS"
+    }
+  ],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\cms-promo-browser-1791200338121"
+}

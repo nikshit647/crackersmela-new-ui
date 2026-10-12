@@ -67,14 +67,16 @@
     return '';
   };
   const nobgSrc = img => /^images\/products\/[^?#]+$/.test(img || '') ? 'images/products/nobg/' + img.split('/').pop().replace(/\.(png|jpe?g)$/i, '.webp') : '';
-  const productImageMarkup = (p, w, kind = 'product') => {
+  const productImageMarkup = (p, w, kind = 'product', categoryId = '') => {
     const src = safeImageSrc(p.image);
     const category = catLabel(p);
-    if (!src) return kind === 'thumb' ? `<span class="th-fb">${catIcon(category)}</span>` : `<div class="prod-img-fallback">${catIcon(category)}</div>`;
+    if (!src) return kind === 'thumb' ? `<span class="th-fb">${catIcon(category)}</span>` : kind === 'category' ? '<span class="home-category-card__art-fallback" aria-hidden="true"></span>' : `<div class="prod-img-fallback">${catIcon(category)}</div>`;
     const nb = nobgSrc(src);
     const size = Number.isFinite(Number(w)) ? clamp(Math.round(Number(w)), 24, 1600) : 400;
     const dimensions = kind === 'thumb' ? '' : ` width="${size}" height="${size}"`;
-    return `<img src="${esc(nb || src)}" alt="${kind === 'thumb' ? '' : esc(p.shortName)}" loading="lazy"${dimensions} data-cm-image="${kind}" data-image-category="${esc(category && category.id || '')}"${nb ? ` data-fallback-src="${esc(src)}"` : ''}>`;
+    const decorative = kind === 'thumb' || kind === 'category';
+    const imageCategory = categoryId && CAT_MAP[categoryId] ? CAT_MAP[categoryId] : category;
+    return `<img src="${esc(nb || src)}" alt="${decorative ? '' : esc(p.shortName)}" loading="lazy" decoding="async"${dimensions}${kind === 'category' ? ' aria-hidden="true"' : ''} data-cm-image="${kind}" data-image-category="${esc(imageCategory && imageCategory.id || '')}"${nb ? ` data-fallback-src="${esc(src)}"` : ''}>`;
   };
   const handleProductImageError = event => {
     const img = event.target;
@@ -83,6 +85,13 @@
     if (fallback) {
       delete img.dataset.fallbackSrc;
       img.src = fallback;
+      return;
+    }
+    if (img.dataset.cmImage === 'category') {
+      const placeholder = document.createElement('span');
+      placeholder.className = 'home-category-card__art-fallback';
+      placeholder.setAttribute('aria-hidden', 'true');
+      img.replaceWith(placeholder);
       return;
     }
     const placeholder = document.createElement(img.dataset.cmImage === 'thumb' ? 'span' : 'div');
@@ -111,7 +120,8 @@
   const publicRoute = hash => IS_ADMIN_HOST ? PUBLIC_ENTRY.split('#')[0] + hash : hash;
   const CM_SYNC_KEY = ''; // The exposed production key must be revoked on the server.
   const ORDERS_API = 'orders-api.php';
-  const EMAIL_API = 'email-api.php';
+  /* Transactional email is sent by the backend from the stored order, never by
+     the browser. The endpoint stays for a manual staff resend only. */
 
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -424,13 +434,35 @@
     ? `<div class="prod-grid ${opts.cols === 3 ? 'prod-grid--3' : opts.cols === 5 ? 'prod-grid--5' : ''}">${list.map(p => productCard(p, opts)).join('')}</div>`
     : `<div class="empty-state reveal"><div class="e-emoji">${I.searchX}</div><h3>${esc(opts.emptyTitle || 'Nothing here yet')}</h3><p>${esc(opts.emptyText || 'Try a different search or category.')}</p></div>`;
 
-  const catCard = c => {
-    const count = allProducts().filter(p => p.cats && p.cats.includes(c.id)).length;
-    return `<div class="cat-card reveal" data-cat="${c.id}" role="link" tabindex="0" aria-label="${esc(c.name)} — ${count} products">
-      <div class="cat-card__icon">${catIcon(c)}</div>
-      <h3>${esc(c.name)}</h3><p>${esc(c.blurb)}</p>
-      <span class="cat-count">${count} products →</span>
-    </div>`;
+  // Curated from real products that belong to each existing category. These
+  // IDs select existing transparent catalog cutouts; the original artwork is
+  // never recolored or altered. The member fallback keeps the card resilient
+  // if a preferred SKU is later removed from the catalog.
+  const CATEGORY_ART_PRODUCT = Object.freeze({
+    'gift-boxes': 108,
+    'kids-special': 97,
+    sparklers: 42,
+    'flower-pots': 30,
+    chakkars: 160,
+    garlands: 85,
+    fancy: 101,
+    rockets: 120,
+    bombs: 90,
+    'guns-rolls': 184,
+    'night-outs': 141,
+  });
+
+  const catCard = (c, catalogue = allProducts()) => {
+    const members = catalogue.filter(p => Array.isArray(p.cats) && p.cats.includes(c.id) && safeImageSrc(p.image));
+    const preferred = CATEGORY_ART_PRODUCT[c.id];
+    const representative = members.find(p => Number(p.id) === preferred) || members[0] || null;
+    const count = catalogue.filter(p => Array.isArray(p.cats) && p.cats.includes(c.id)).length;
+    const href = publicRoute('#/products?cat=' + encodeURIComponent(c.id));
+    return `<a class="home-category-card reveal" href="${esc(href)}">
+      <span class="home-category-card__art" aria-hidden="true">${representative ? productImageMarkup(representative, 112, 'category', c.id) : ''}</span>
+      <span class="home-category-card__copy"><h3>${esc(c.name)}</h3><span class="home-category-card__count">${count} ${count === 1 ? 'item' : 'items'}</span></span>
+      <span class="home-category-card__arrow" aria-hidden="true">${I.arrow}</span>
+    </a>`;
   };
 
   const countdown = (end, id) => {
@@ -662,6 +694,10 @@
   /* ==================== auth integration pending ==================== */
   // Authentication is deliberately unavailable until the deployed PHP source can
   // supply server-verified sessions. Do not restore localStorage/password fallbacks.
+  // These preview-only stubs keep the invoice downloader type-safe while the
+  // production build replaces this region with the real session bootstrap.
+  let csrfToken = '';
+  const ensureCsrf = async () => null;
   const firebaseReady = () => false;
   const fbInit = () => {};
   const authUnavailable = async () => ({ ok: false, error: 'Sign-in is unavailable in this local review. The authentication server has not been connected.' });
@@ -672,7 +708,7 @@
     stopFeed();
     privateDataRevision += 1;
     orders = []; users = {}; activity = []; heldBills = []; posCart = [];
-    checkoutState.data = {}; checkoutState.touched = {}; checkoutState.step = 1;
+    checkoutState.data = {}; checkoutState.billing = {}; checkoutState.billingSame = true; checkoutState.touched = {}; checkoutState.step = 1;
     checkoutCoupon = { code: null, discount: 0 };
     clearPrivateCaches();
     if (firebaseReady() && firebase.auth().currentUser) { try { firebase.auth().signOut(); } catch (e) {} }
@@ -793,6 +829,9 @@
   const closeAuth = () => { const m = $('#authModal'); m.classList.remove('open'); m.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
 
   /* ==================== orders ==================== */
+  /* Canonical statuses. `cancelled` is a terminal state handled separately by
+     the tracker and the email, so it is listed but never advances the
+     delivery progression. */
   const STATUSES = [
     { key: 'placed', label: 'Order Placed', note: 'We received your order' },
     { key: 'confirmed', label: 'Confirmed', note: 'Verified & accepted by the team' },
@@ -800,11 +839,17 @@
     { key: 'shipped', label: 'Shipped', note: 'Handed over to our delivery partner' },
     { key: 'out_for_delivery', label: 'Out for Delivery', note: 'Nearest the house — stay nearby' },
     { key: 'delivered', label: 'Delivered', note: 'Enjoy the celebration, stay safe!' },
+    { key: 'cancelled', label: 'Cancelled', note: 'This order will not be delivered' },
   ];
+
+  /* The five delivery stages shown to customers. Order Placed is a received
+     state, not a delivery stage. */
+  const DELIVERY_STAGES = ['confirmed', 'packed', 'shipped', 'out_for_delivery', 'delivered'];
+  const isCancelled = s => s === 'cancelled';
 
   const statusIndex = s => STATUSES.findIndex(x => x.key === s);
 
-  const placeOrder = async (customer, shipping, payment) => {
+  const placeOrder = async (customer, shipping, billing, payment) => {
     if (cart.some(c => { const p = prodById(c.id); return !p || !inStockOf(p) || !Number.isInteger(c.qty) || c.qty < 1 || c.qty > stockOf(p); })) {
       toast('Some items are no longer available in the requested quantity. Please review your cart.', 'err');
       return null;
@@ -826,7 +871,7 @@
       log: [{ status: 'placed', at: now }],
       items: lines,
       totals: { subtotal: t.subtotal, festiveAmt: 0, festivePct: 0, saving: t.saving, delivery: 0, couponAmt: checkoutCoupon.code ? checkoutCoupon.discount : 0, couponCode: checkoutCoupon.code || '', total: Math.max(0, t.subtotal - (checkoutCoupon.code ? checkoutCoupon.discount : 0)) },
-      customer, shipping, payment,
+      customer, shipping, billing, payment,
       email: customer.email,
     };
     // Keep the cart until the order service explicitly acknowledges it. The real
@@ -965,8 +1010,15 @@
       })
       .catch(() => {});
 
-  /* ---- background removal on a data URL (client-side, no server needed) ---- */
-  const removeBackground = (img, scale = 0.5) => {
+  /* ---- background removal on a data URL (client-side, no server needed) ----
+     Only the flat backdrop that actually touches the image border is removed.
+     Earlier revisions keyed transparency off per-pixel brightness, which also
+     wiped the product itself (anything darker than ~v226 became fully
+     transparent) and stored an essentially blank, black-looking file.
+     This version flood-fills the backdrop from the edges against a single
+     reference colour measured from the border, so interior detail is never
+     touched, and returns null when the original should be uploaded as-is. */
+  const removeBackground = img => {
     const W = Math.max(320, Math.min(1100, img.naturalWidth));
     const H = Math.round(W * (img.naturalHeight / Math.max(1, img.naturalWidth)));
     const c = document.createElement('canvas');
@@ -975,24 +1027,65 @@
     x.drawImage(img, 0, 0, W, H);
     const idt = x.getImageData(0, 0, W, H);
     const d = idt.data;
-    for (let i = 0; i < d.length; i += 4) {
-      let r = d[i], g = d[i + 1], b = d[i + 2];
-      const mx = Math.max(r, g, b), mn = Math.min(r, g, b);
-      const v = mx, s = mx ? (mx - mn) / mx : 0;
-      const isWhite = v > 235 && s < 0.10;
-      const isGrey = mn > 130 && s < 0.06;
-      if (isWhite || isGrey) {
-        d[i + 3] = 0;
-      } else {
-        const bg = (r + g + b) / 3 * 0.9;
-        const a = Math.max(0, Math.min(255, (v - 225) * 14));
-        d[i] = Math.min(255, r + 30); d[i + 1] = Math.min(255, g + 30); d[i + 2] = Math.min(255, b + 30);
-        d[i + 3] = a < 22 ? 0 : Math.min(255, a);
-        void bg;
+    const px = W * H;
+
+    /* One fixed reference colour taken from the opaque border pixels. Using a
+       single reference (instead of comparing each pixel with the previous one)
+       is what stops the fill from creeping along anti-aliased edges and eating
+       into the product. */
+    const edge = [];
+    for (let bx = 0; bx < W; bx++) { edge.push(bx); edge.push((H - 1) * W + bx); }
+    for (let by = 0; by < H; by++) { edge.push(by * W); edge.push(by * W + W - 1); }
+    const rs = [], gs = [], bs = [];
+    for (const k of edge) {
+      if (d[k * 4 + 3] > 8) { rs.push(d[k * 4]); gs.push(d[k * 4 + 1]); bs.push(d[k * 4 + 2]); }
+    }
+    const mid = arr => { arr.sort((a, b) => a - b); return arr.length ? arr[arr.length >> 1] : 0; };
+    const refR = mid(rs), refG = mid(gs), refB = mid(bs);
+    const haveRef = rs.length > 0;
+    /* 46 absorbs soft shadows and gentle backdrop gradients without reaching
+       the first real colour step of the product. */
+    const TOL = 46;
+    const isBackdrop = i => d[i + 3] <= 8
+      || (haveRef && Math.abs(d[i] - refR) <= TOL
+        && Math.abs(d[i + 1] - refG) <= TOL
+        && Math.abs(d[i + 2] - refB) <= TOL);
+
+    const bg = new Uint8Array(px);
+    const stack = [];
+    const seed = (sx, sy) => {
+      const k = sy * W + sx;
+      if (bg[k] || !isBackdrop(k * 4)) return;
+      bg[k] = 1;
+      stack.push(k);
+    };
+    for (let bx = 0; bx < W; bx++) { seed(bx, 0); seed(bx, H - 1); }
+    for (let by = 0; by < H; by++) { seed(0, by); seed(W - 1, by); }
+    while (stack.length) {
+      const k = stack.pop();
+      const sx = k % W;
+      const sy = (k - sx) / W;
+      for (let dy = -1; dy <= 1; dy++) {
+        for (let dx = -1; dx <= 1; dx++) {
+          if (!dx && !dy) continue;
+          const nx = sx + dx;
+          const ny = sy + dy;
+          if (nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
+          const nk = ny * W + nx;
+          if (bg[nk]) continue;
+          if (isBackdrop(nk * 4)) { bg[nk] = 1; stack.push(nk); }
+        }
       }
     }
+
+    /* If this would erase essentially the whole frame, keep the original. */
+    let removed = 0;
+    for (let k = 0; k < px; k++) if (bg[k]) removed++;
+    if (!removed || removed / px > 0.95) return null;
+
+    for (let k = 0; k < px; k++) if (bg[k]) d[k * 4 + 3] = 0;
     x.putImageData(idt, 0, 0);
-    return c.toDataURL('image/webp', 0.85);
+    return c.toDataURL('image/webp', 0.92);
   };
 
   /* ---- product image upload helper (upload to server, optional bg removal) ---- */
@@ -1043,12 +1136,15 @@
           reject(new Error('Image dimensions are too large. Resize the image and try again.'));
           return;
         }
-        const dataUrl = removeBackground(img);
+        let dataUrl = null;
+        try { dataUrl = removeBackground(img); } catch { dataUrl = null; }
         URL.revokeObjectURL(url);
-        const blob = dataURLtoBlob(dataUrl);
-        const processed = new File([blob], 'product.webp', { type: 'image/webp' });
-        uploadFile(processed).then(resolve, reject);
-      } catch (e) { URL.revokeObjectURL(url); reject(new Error('Could not process image')); }
+        /* null means "no safe cutout" - upload the original bytes untouched. */
+        const upload = dataUrl
+          ? uploadFile(new File([dataURLtoBlob(dataUrl)], 'product.webp', { type: 'image/webp' }))
+          : uploadFile(file);
+        upload.then(j => resolve({ ...j, bgRemoved: !!dataUrl }), reject);
+      } catch { URL.revokeObjectURL(url); reject(new Error('Could not process image')); }
     };
     img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Could not read image')); };
     img.src = url;
@@ -1069,12 +1165,21 @@
   };
 
   const timeline = order => {
-    const cur = statusIndex(order.status);
-    return `<div class="timeline">${STATUSES.map((s, i) => {
-      const ev = order.log.find(l => l.status === s.key);
-      const cls = i < cur ? 'done' : i === cur ? 'next' : '';
+    if (isCancelled(order.status)) {
+      return `<div class="timeline">${STATUSES.filter(s => DELIVERY_STAGES.includes(s.key)).map(s => `
+        <div class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__body"><h4>${s.label}</h4><p>Not applicable — this order was cancelled.</p><time>—</time></div>
+        </div>`).join('')}</div>`;
+    }
+    const cur = DELIVERY_STAGES.indexOf(order.status);
+    return `<div class="timeline">${DELIVERY_STAGES.map((key, i) => {
+      const s = STATUSES.find(x => x.key === key) || { label: key, note: '' };
+      const log = Array.isArray(order.log) ? order.log : [];
+      const ev = log.find(l => l && l.status === key);
+      const cls = cur < 0 ? '' : (i < cur ? 'done' : i === cur ? 'next' : '');
       return `<div class="timeline__item ${cls}">
-        <div class="timeline__dot">${i < cur ? I.check : s.key === 'out_for_delivery' ? I.truck : ''}</div>
+        <div class="timeline__dot">${cur >= 0 && i < cur ? I.check : (key === 'out_for_delivery' && cur >= i ? I.truck : '')}</div>
         <div class="timeline__body">
           <h4>${s.label}</h4><p>${s.note}</p>
           ${ev ? `<time>${fmtDate(ev.at)}</time>` : '<time>—</time>'}
@@ -1127,7 +1232,7 @@
 
   /* ---------------- shared homepage/shop blocks ---------------- */
   const BENEFITS = [
-    { i: I.shield, t: '100% Original Products', s: 'PESO-certified, safety-tested stock only' },
+    { i: I.shield, t: '100% Original Products', s: 'STANDARD Licensed dealer, safety-tested stock only' },
     { i: I.lock, t: 'Secure Payments', s: 'Protected checkout · Pay on delivery' },
     { i: I.truck, t: 'Fast Delivery', s: 'Hyderabad & Secunderabad, doorstep' },
     { i: I.phone, t: 'Customer Support', s: 'Real humans on call, 9am – 9pm' },
@@ -1147,7 +1252,8 @@
   const views = {};
 
   views.home = () => {
-    const stock = allProducts().filter(inStockOf);
+    const catalogue = allProducts();
+    const stock = catalogue.filter(inStockOf);
     const withImg = stock.filter(p => p.image);
 
     /* hero composition — real catalog photography, deterministic */
@@ -1162,10 +1268,6 @@
       { k: 'all', n: 'All' }, { k: 'rockets', n: 'Rockets' }, { k: 'sparklers', n: 'Sparklers' },
       { k: 'flower-pots', n: 'Fountains' }, { k: 'night-outs', n: 'Sky Shots' },
       { k: 'gift-boxes', n: 'Combos' }, { k: 'chakkars', n: 'Chakkars' },
-    ];
-    const featuredPills = [
-      { k: 'all', n: 'All' }, { k: 'best', n: 'Best Sellers' }, { k: 'rockets', n: 'Rockets' },
-      { k: 'flower-pots', n: 'Fountains' }, { k: 'gift-boxes', n: 'Combos' }, { k: 'night-outs', n: 'Sky Shots' },
     ];
 
     /* Only offer a pill when the live catalog can actually fill it */
@@ -1186,9 +1288,7 @@
     };
 
     const arrivalTabs = livePills(arrivalPills);
-    const featuredTabs = livePills(featuredPills);
     const arrivals = collectFor((a, b) => b.id - a.id, arrivalTabs);
-    const featured = collectFor((a, b) => (featuredOf(b) - featuredOf(a)) || (b.salesCount - a.salesCount), featuredTabs);
 
     return `
     <!-- ========== 2. HERO ========== -->
@@ -1198,7 +1298,7 @@
         <div class="hero-copy">
           <span class="hero-eyebrow"><span class="dot"></span>Celebrate Brighter</span>
           <h1>Light Up Every <span class="grad-text">Celebration</span></h1>
-          <p class="hero-lede">Premium quality crackers for every occasion — PESO-certified and factory-direct from Sivakasi, delivered to your doorstep across Hyderabad &amp; Secunderabad.</p>
+          <p class="hero-lede">Premium quality crackers for every occasion — STANDARD Licensed dealer and factory-direct from Sivakasi, delivered to your doorstep across Hyderabad &amp; Secunderabad.</p>
           <div class="hero-cta">
             <a class="btn btn-primary btn-lg" href="#/products">Shop Now</a>
             <a class="btn btn-secondary btn-lg" href="#/products?sort=discount">Explore Crackers</a>
@@ -1218,29 +1318,24 @@
               <img src="${esc(p.image)}" alt="${esc(p.shortName)}" loading="eager" decoding="async">
               <span class="hero-shot__tag"><b>${esc(p.shortName)}</b><span>${money(priceOf(p))}</span></span>
             </a>`).join('')}
-            <div class="hero-chip hero-chip--tl"><span class="hc-ic">${I.shield}</span><span>PESO Certified<small>Licensed dealer</small></span></div>
+            <div class="hero-chip hero-chip--tl"><span class="hc-ic">${I.shield}</span><span>STANDARD <small>Licensed dealer</small></span></div>
             <div class="hero-chip hero-chip--br"><span class="hc-ic">${I.truck}</span><span>Minimum order<small>Orders ${money(STORE.freeDeliveryAbove)}+</small></span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ========== 3. TRUST / BENEFITS ========== -->
-    <section class="section" id="trust">
-      <div class="section__head section__head--center">
-        <div>
-          <span class="section__tag">Why shoppers pick us</span>
-          <h2 class="section__title">Your Trusted <span class="grad-text">Celebration Partner</span></h2>
-          <p class="section__sub">Everything you need for a bright, safe and joyful festival — sourced responsibly and priced fairly.</p>
+    <!-- ========== 3. SHOP BY CATEGORY ========== -->
+    <section class="section home-categories" id="shop-categories" aria-labelledby="home-categories-title">
+      <div class="home-categories__panel">
+        <header class="home-categories__head">
+          <span class="home-categories__eyebrow"><span aria-hidden="true"></span>Explore<span aria-hidden="true"></span></span>
+          <h2 id="home-categories-title">Shop by Categories</h2>
+          <p>Handpicked ranges for every celebration</p>
+        </header>
+        <div class="home-category-grid" aria-label="Shop fireworks by category">
+          ${CATS.map(c => catCard(c, catalogue)).join('')}
         </div>
-      </div>
-      <div class="trust-strip">
-        ${[
-          { i: I.shield, t: '100% Original Products', s: 'Licensed, safety-tested Sivakasi stock' },
-          { i: I.cash, t: 'Best Prices', s: 'Factory-direct rates, no middlemen' },
-          { i: I.lock, t: 'Secure Payments', s: 'Protected checkout · COD available' },
-          { i: I.truck, t: 'Fast Delivery', s: `Free above ${money(STORE.freeDeliveryAbove)}` },
-        ].map(x => `<div class="trust-card reveal"><div class="t-icon">${x.i}</div><div><h3>${esc(x.t)}</h3><p>${esc(x.s)}</p></div></div>`).join('')}
       </div>
     </section>
 
@@ -1257,23 +1352,6 @@
       ${pillRow('arrivals', arrivalTabs)}
       <div class="prod-grid prod-grid--5" id="arrivalsGrid" data-cap="10">
         ${arrivals.map(p => productCard(p)).join('')}
-      </div>
-    </section>
-
-    <!-- ========== 5. FEATURED PRODUCTS ========== -->
-
-    <section class="section" id="featured">
-      <div class="section__head">
-        <div>
-          <span class="section__tag">Hand-picked</span>
-          <h2 class="section__title">Featured <span class="grad-text">Products</span></h2>
-          <p class="section__sub">Crowd favourites that light up every celebration — the ones that go first.</p>
-        </div>
-        <a class="section__link" href="#/products?sort=bestsellers">View all ${I.arrow}</a>
-      </div>
-      ${pillRow('featured', featuredTabs)}
-      <div class="prod-grid prod-grid--5" id="featuredGrid" data-cap="10">
-        ${featured.map(p => productCard(p)).join('')}
       </div>
     </section>
 
@@ -1500,7 +1578,7 @@
           <h1>${esc(p.shortName)}</h1>
           <div class="badge-row">
             <div class="rating-row">${stars(p.rating)}<span>${p.rating.toFixed(1)} · ${p.reviews} reviews</span></div>
-            <span class="meta-pill">${I.shield} PESO certified</span>
+            <span class="meta-pill">${I.shield} STANDARD certified product</span>
             <span class="meta-pill">${I.bolt} Brand new stock</span>
             ${p.sku ? `<span class="meta-pill">SKU ${esc(p.sku)}</span>` : ''}
           </div>
@@ -1598,18 +1676,45 @@
   };
 
   /* ---------- Checkout ---------- */
-  const checkoutState = { step: 1, data: {}, payment: 'COD', touched: {} };
+  const checkoutState = { step: 1, data: {}, billing: {}, billingSame: true, payment: 'COD', touched: {} };
+
+  /* Billing address is optional at rest: orders created before this field
+     existed keep working, and a missing billing block is simply not validated. */
+  const checkoutBilling = (d) => {
+    const b = checkoutState.billing || {};
+    return {
+      name: String(b.name || '').trim(),
+      phone: String(b.phone || '').trim(),
+      address: String(b.address || '').trim(),
+      area: String(b.area || '').trim(),
+      city: String(b.city || '').trim(),
+      state: String(b.state || '').trim(),
+      pincode: String(b.pincode || '').trim(),
+      sameAsDelivery: checkoutState.billingSame !== false,
+    };
+  };
 
   const checkoutValidate = (s) => {
     const d = s.data;
     const errs = [];
     if (!d.name || String(d.name).trim().length < 3) errs.push('Full name is required');
     if (!/^[6-9]\d{9}$/.test(String(d.phone || ''))) errs.push('Enter a valid 10-digit mobile number');
-    if (d.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) errs.push('Enter a valid email');
+    if (!String(d.email || '').trim()) errs.push('Email is required');
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(d.email).trim())) errs.push('Please enter a valid email address');
     if (!d.address || String(d.address).trim().length < 8) errs.push('Enter a complete delivery address');
     if (!d.city) errs.push('City is required');
     if (!/^\d{6}$/.test(String(d.pincode || ''))) errs.push('Enter a valid 6-digit pincode');
     if (s.step === 1 && !cart.length) errs.push('Your cart is empty');
+    // Billing details are only required once the customer unchecks "same as delivery".
+    if (s.billingSame === false) {
+      const b = checkoutBilling(d);
+      if (!b.name || b.name.length < 3) errs.push('Billing full name is required');
+      if (!/^[6-9]\d{9}$/.test(b.phone)) errs.push('Enter a valid 10-digit billing mobile number');
+      if (b.address.length < 8) errs.push('Enter a complete billing address');
+      if (!b.city) errs.push('Billing city is required');
+      if (!b.state) errs.push('Billing state is required');
+      if (!/^\d{6}$/.test(b.pincode)) errs.push('Enter a valid 6-digit billing pincode');
+    }
     return errs;
   };
 
@@ -1627,6 +1732,8 @@
     checkoutCoupon = { code: null, discount: 0 };
     checkoutState.step = 1;
     checkoutState.coupon = checkoutCoupon;
+    if (!checkoutState.billing) checkoutState.billing = {};
+    if (checkoutState.billingSame !== false) checkoutState.billingSame = true;
     return checkoutStepHTML(1);
   };
 
@@ -1645,25 +1752,56 @@
 
     let body = '';
     if (step === 1) {
+      const bSame = st.billingSame !== false;
+      const b = st.billing || {};
+      const billingOneLine = [d.name, d.address, d.area, d.city, d.pincode].filter(Boolean).join(', ');
+      const bv = (k, ph = '') => `<input type="text" id="ck_b_${k}" value="${esc(b[k] || '')}" placeholder="${ph}">`;
       body = `
         <div class="layout-2col" style="margin-top:6px">
-          <div class="glass-panel reveal">
-            <h2>Contact &amp; delivery</h2><p class="panel-sub">Enter your contact details and delivery address.</p>
-            <div class="form-grid">
-              <div class="form-field full"><label for="ck_name">Full name <span class="req">*</span></label>${v('name', 'e.g. Rahul Sharma')}</div>
-              <div class="form-field"><label for="ck_phone">Mobile <span class="req">*</span></label>
-                <div class="phone-entry"><span>+91</span>
-                ${`<input type="tel" id="ck_phone" value="${esc(d.phone || '')}" placeholder="10-digit number" maxlength="10">`}</div>
+          <div class="checkout-stack">
+            <div class="glass-panel reveal">
+              <span class="checkout-card__tag">${I.truck} Delivery address</span>
+              <h2>Contact &amp; delivery</h2><p class="panel-sub">Where your order will be delivered.</p>
+              <div class="form-grid">
+                <div class="form-field full"><label for="ck_name">Full name <span class="req">*</span></label>${v('name', 'e.g. Rahul Sharma')}</div>
+                <div class="form-field"><label for="ck_phone">Mobile <span class="req">*</span></label>
+                  <div class="phone-entry"><span>+91</span>
+                  ${`<input type="tel" id="ck_phone" value="${esc(d.phone || '')}" placeholder="10-digit number" maxlength="10">`}</div>
+                </div>
+                <div class="form-field"><label for="ck_email">Email <span class="req">*</span></label>${`<input type="email" id="ck_email" value="${esc(d.email || '')}" placeholder="Your email" aria-required="true">`}</div>
+                <div class="form-field full"><label for="ck_address">Address <span class="req">*</span></label><textarea id="ck_address" rows="2" placeholder="House no, street, colony…">${esc(d.address || '')}</textarea></div>
+                <div class="form-field"><label for="ck_area">Area / Landmark</label>${v('area', 'e.g. Beside City Mall')}</div>
+                <div class="form-field"><label for="ck_city">City <span class="req">*</span></label>${v('city', d.city || 'Hyderabad')}</div>
+                <div class="form-field"><label for="ck_pincode">Pincode <span class="req">*</span></label>${v('pincode', '500001')}</div>
               </div>
-              <div class="form-field"><label for="ck_email">Email</label>${`<input type="email" id="ck_email" value="${esc(d.email || '')}" placeholder="Your email (optional)">`}</div>
-              <div class="form-field full"><label for="ck_address">Address <span class="req">*</span></label><textarea id="ck_address" rows="2" placeholder="House no, street, colony…">${esc(d.address || '')}</textarea></div>
-              <div class="form-field"><label for="ck_area">Area / Landmark</label>${v('area', 'e.g. Beside City Mall')}</div>
-              <div class="form-field"><label for="ck_city">City <span class="req">*</span></label>${v('city', d.city || 'Hyderabad')}</div>
-              <div class="form-field"><label for="ck_pincode">Pincode <span class="req">*</span></label>${v('pincode', '500001')}</div>
             </div>
-            <div class="checkout-actions">
-              <a class="btn btn-ghost" href="#/cart">Back to cart</a>
-              <button class="btn btn-primary" id="ckNext1">Continue to payment</button>
+
+            <div class="glass-panel reveal">
+              <span class="checkout-card__tag checkout-card__tag--billing">${I.lock} Billing address</span>
+              <h2>Billing details</h2><p class="panel-sub">Printed on your invoice and GST details.</p>
+              <label class="check-row checkout-billing__toggle" for="ck_billing_same">
+                <input type="checkbox" id="ck_billing_same"${bSame ? ' checked' : ''}>
+                <span>Billing address same as delivery address</span>
+              </label>
+              <div class="checkout-billing__note" id="ckBillingNote"${bSame ? '' : ' hidden'}>
+                ${I.check}<span>We'll use your delivery address for billing.${billingOneLine ? ' Currently: <b>' + esc(billingOneLine) + '</b>' : ''}</span>
+              </div>
+              <div class="form-grid checkout-billing__fields" id="ckBillingFields"${bSame ? ' hidden' : ''}>
+                <div class="form-field full"><label for="ck_b_name">Full name <span class="req">*</span></label>${bv('name', 'e.g. Rahul Sharma')}</div>
+                <div class="form-field"><label for="ck_b_phone">Mobile <span class="req">*</span></label>
+                  <div class="phone-entry"><span>+91</span>
+                  ${`<input type="tel" id="ck_b_phone" value="${esc(b.phone || '')}" placeholder="10-digit number" maxlength="10">`}</div>
+                </div>
+                <div class="form-field"><label for="ck_b_pincode">Pincode <span class="req">*</span></label>${bv('pincode', '500001')}</div>
+                <div class="form-field full"><label for="ck_b_address">Address <span class="req">*</span></label><textarea id="ck_b_address" rows="2" placeholder="House no, street, colony…">${esc(b.address || '')}</textarea></div>
+                <div class="form-field"><label for="ck_b_area">Area / Landmark</label>${bv('area', 'e.g. Beside City Mall')}</div>
+                <div class="form-field"><label for="ck_b_city">City <span class="req">*</span></label>${bv('city', 'Hyderabad')}</div>
+                <div class="form-field"><label for="ck_b_state">State <span class="req">*</span></label>${bv('state', 'Telangana')}</div>
+              </div>
+              <div class="checkout-actions">
+                <a class="btn btn-ghost" href="#/cart">Back to cart</a>
+                <button class="btn btn-primary" id="ckNext1">Continue to payment</button>
+              </div>
             </div>
           </div>
           ${checkoutSummaryPanel()}
@@ -1689,12 +1827,17 @@
     }
 
     if (step === 3) {
+      const bk = checkoutBilling(st.data);
+      const bLine = bk.sameAsDelivery
+        ? 'Same as delivery address'
+        : `${bk.name} · ${bk.phone} — ${bk.address}${bk.area ? ', ' + bk.area : ''}, ${bk.city}, ${bk.state} — ${bk.pincode}`;
       body = `
         <div class="layout-2col" style="margin-top:6px">
           <div class="glass-panel reveal">
             <h2>Review &amp; place order</h2><p class="panel-sub">Check your items and delivery details before placing your order.</p>
             <div class="summary-line"><span>Deliver to</span><span class="r">${esc(d.name)} · ${esc(d.phone)}</span></div>
-            <div class="summary-line"><span>Address</span><span class="r">${esc(d.address)}${d.area ? ', ' + esc(d.area) : ''}, ${esc(d.city)} — ${esc(d.pincode)}</span></div>
+            <div class="summary-line"><span>Delivery address</span><span class="r">${esc(d.address)}${d.area ? ', ' + esc(d.area) : ''}, ${esc(d.city)} — ${esc(d.pincode)}</span></div>
+            <div class="summary-line"><span>Billing address</span><span class="r">${esc(bLine)}</span></div>
             <div class="summary-line"><span>Payment</span><span class="r">${esc(st.payment === 'COD' ? 'Cash on Delivery' : 'UPI on Delivery')}</span></div>
             <div class="summary-line"><span>Email</span><span class="r">${esc(d.email || '—')}</span></div>
             <div style="margin-top:14px" class="order-items-list">
@@ -1753,7 +1896,7 @@
         <h1>Order placed!</h1>
         <p>Your fireworks are being packed with extra care.</p>
         <div class="order-code" title="Use this code to track your order"><b class="order-code-text">${esc(order.code)}</b> <button class="icon-btn" style="width:32px;height:32px" id="copyCode" aria-label="Copy order code">${I.copy}</button></div>
-        <p style="font-size:13px;color:var(--muted);margin-top:8px">SMS &amp; email alerts sent to ${esc(order.customer.phone)} &amp; ${esc(order.customer.email)}</p>
+        <p style="font-size:13px;color:var(--muted);margin-top:8px">${order.customer.email ? `Confirmation sent to ${esc(order.customer.email)}` : `Order updates sent to ${esc(order.customer.phone)}`}</p>
         <div style="display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap">
           <a class="btn btn-primary" href="#/track?id=${esc(routePart(order.code))}">${I.truck} Track order</a>
           <button class="btn btn-glass" id="printInvoice">${I.print} Print / Download invoice</button>
@@ -1809,6 +1952,10 @@
       </div>`;
   };
 
+  /* Renders the tracking card. In production the server returns a minimal
+     projection (code, status, quantity, total, payment, timeline, invoice link)
+     with no internal order id, products or prices. The local preview keeps full
+     order objects, so both shapes are supported. */
   const trackRender = code => {
     const box = $('#trackResult'); if (!box) return;
     const order = findOrder(code);
@@ -1816,18 +1963,30 @@
       box.innerHTML = `<div class="empty-state" style="padding:26px"><div class="e-emoji">${I.searchX}</div><h3>Order not found</h3><p>Double-check the code or reach us on WhatsApp ${STORE.phones.join(' / ')}.</p></div>`;
       return;
     }
-    const t = order.totals;
+    const items = Array.isArray(order.items) ? order.items : [];
+    const qty = Number.isFinite(Number(order.quantity))
+      ? Number(order.quantity)
+      : items.reduce((a, b) => a + (Number(b && b.qty) || 0), 0);
+    const total = Number.isFinite(Number(order.total)) ? Number(order.total) : (order.totals && order.totals.total) || 0;
+    const pay = order.payment || (order.totals && order.totals.payment) || 'COD';
+    const payment = pay === 'COD' ? 'Cash on Delivery' : (pay === 'CARD' ? 'Card' : 'UPI on Delivery');
+    const area = order.deliveryArea || [order.shipping && order.shipping.address, order.shipping && order.shipping.city, order.shipping && order.shipping.pincode].filter(Boolean).join(', ');
+    const logSource = Array.isArray(order.timeline) ? order.timeline : (Array.isArray(order.log) ? order.log : []);
+    const cancelled = isCancelled(order.status);
+    const label = (STATUSES.find(s => s.key === order.status) || {}).label || order.status;
+    const invoiceHref = order.invoiceUrl ? String(order.invoiceUrl) : '';
     box.innerHTML = `
       <div class="glass-panel" style="margin-top:18px">
+        ${cancelled ? `<div style="background:rgba(224,70,75,.09);border:1px solid rgba(224,70,75,.28);border-radius:9px;padding:12px 14px;font-size:13.5px;color:#B04A4A;margin-bottom:16px"><b>Order cancelled</b><br>This order will not be delivered.</div>` : ''}
         <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:16px">
-          <div><div class="order-code" style="margin-top:0">${esc(order.code)}</div><p style="font-size:13px;color:var(--muted)">Placed ${fmtDate(order.placedAt)} · ${esc(order.items.reduce((a, b) => a + b.qty, 0))} items</p></div>
-          <div style="text-align:right"><span class="tag ${order.status === 'delivered' ? 'in' : ''}">${esc((STATUSES.find(s => s.key === order.status) || {}).label || order.status)}</span><div style="font-weight:800;color:var(--primary-deep);margin-top:6px">${money(t.total)}</div></div>
+          <div><div class="order-code" style="margin-top:0">${esc(order.code)}</div><p style="font-size:13px;color:var(--muted)">Placed ${fmtDate(order.placedAt)} · ${esc(qty)} ${qty === 1 ? 'item' : 'items'}</p></div>
+          <div style="text-align:right"><span class="tag ${order.status === 'delivered' ? 'in' : ''}">${esc(label)}</span><div style="font-weight:800;color:var(--primary-deep);margin-top:6px">${money(total)}</div></div>
         </div>
-        <div style="background:rgba(33,150,243,.1);border-radius:9px;padding:10px 14px;font-size:13px;color:var(--ink-soft);margin-bottom:16px">Delivering to: ${esc(order.shipping.address)}, ${esc(order.shipping.city)} — ${esc(order.shipping.pincode)} · ${esc(order.payment === 'COD' ? 'Cash on Delivery' : 'UPI on Delivery')}</div>
-        ${timeline(order)}
+        ${area ? `<div style="background:rgba(33,150,243,.1);border-radius:9px;padding:10px 14px;font-size:13px;color:var(--ink-soft);margin-bottom:16px">Delivering to: ${esc(area)} · ${esc(payment)}</div>` : ''}
+        ${timeline({ status: order.status, log: logSource })}
         <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
+          ${invoiceHref ? `<a class="btn btn-glass btn-sm" href="${esc(invoiceHref)}">${I.print} Download invoice</a>` : ''}
           <a class="btn btn-ghost btn-sm" href="#/my-orders">My orders</a>
-          <a class="btn btn-glass btn-sm" href="#/reorder/${esc(routePart(order.id))}">Reorder</a>
         </div>
       </div>`;
   };
@@ -1879,7 +2038,7 @@
         <h2>Celebrations are our business</h2>
         <p>CrackersMela started with a simple belief: a good celebration should be safe, affordable and unforgettable. For every season we hand-pick certified stock directly from licensed factories in Sivakasi — Tamil Nadu's fireworks capital — so you get the freshest, loudest, brightest crackers without the mandi markup.</p>
         <h2>What makes us different</h2>
-        <ul><li><b>PESO-certified stock</b> — every box is licensed, tested and legal.</li><li><b>Factory-direct prices</b> — no middlemen, no inflated rates.</li><li><b>Doorstep delivery</b> across Hyderabad &amp; Secunderabad, same/next day.</li><li><b>People who care</b> — real support on call and WhatsApp.</li></ul>
+        <ul><li><b>STANDARD Licensed dealer stock</b> — every box is licensed, tested and legal.</li><li><b>Factory-direct prices</b> — no middlemen, no inflated rates.</li><li><b>Doorstep delivery</b> across Hyderabad &amp; Secunderabad, same/next day.</li><li><b>People who care</b> — real support on call and WhatsApp.</li></ul>
         <h2>Our promise</h2>
         <p>If a product isn't up to the mark, we make it right. Celebrating together means protecting each other — so we'll always help you burst safely.</p>`,
     },
@@ -1908,7 +2067,7 @@
       title: 'FAQ', lede: 'Quick answers to the questions we get most.',
       body: `<div class="glass-panel">
         ${[
-          ['Is it legal to buy fireworks in Telangana?', 'Yes. We sell licensed, PESO-approved stock for permitted festival windows. In Telangana, crackers can be burst for 2 hours on Deepavali and other permitted days per the pollution-control board rules.'],
+          ['Is it legal to buy fireworks in Telangana?', 'Yes. We sell licensed, STANDARD Licensed dealer stock for permitted festival windows. In Telangana, crackers can be burst for 2 hours on Deepavali and other permitted days per the pollution-control board rules.'],
           ['Where do you deliver?', 'We deliver across Hyderabad and Secunderabad. The minimum order is ₹2,500, and no delivery fee is added.'],
           ['Can I pay at the door?', 'Absolutely — cash or UPI on delivery. No prepayment needed.'],
           ['What if I want bulk quantities for an event?', 'Great! Wholesale &amp; event orders get special rates. Head to the Wholesale page or message us on WhatsApp with quantity and we\'ll quote within the hour.'],
@@ -1955,7 +2114,7 @@
       title: 'Terms of service', lede: 'The fine print, written plainly.',
       body: `<div class="content-card">
         <h2>Products &amp; pricing</h2>
-        <p>All products shown are licensed and PESO-certified. Prices, offers and availability may change; the price shown at checkout is final.</p>
+        <p>All products shown are licensed and STANDARD Licensed dealer. Prices, offers and availability may change; the price shown at checkout is final.</p>
         <h2>Orders</h2>
         <p>Order confirmation is sent via SMS/email with a tracking code. We may cancel any order if stock is unavailable, and refund you in full.</p>
         <h2>Age &amp; use</h2>
@@ -2045,6 +2204,7 @@
     moon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
     exit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>',
     menu: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>',
+    more: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="12" cy="19" r="1.9"/></svg>',
     edit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/><path d="m15 5 4 4"/></svg>',
     upload: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M5 20h14"/></svg>',
     image: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>',
@@ -2325,7 +2485,7 @@
       <div class="glass g-card g-tbl">
         <div class="panel-row"><h3>Recent Orders</h3><button class="link-btn" data-goto="orders">View All ${I.arrow}</button></div>
         ${recentList.length ? `<div class="table-wrap"><table class="data-table">
-          <thead><tr><th>Code</th><th>Customer</th><th style="text-align:right">Total</th><th>Payment</th><th>Status</th><th>When</th></tr></thead>
+          <thead><tr><th class="pick-cell"><span class="sr-only">Select</span></th><th>Code</th><th>Customer</th><th style="text-align:right">Total</th><th>Payment</th><th>Status</th><th>When</th><th></th></tr></thead>
           <tbody>${recentList.map(o => orderRow(o)).join('')}</tbody>
         </table></div>` : `<div class="empty-state" style="padding:22px"><div class="e-emoji">${I.box}</div><h3>No orders yet</h3><p>Orders from the storefront appear here instantly.</p></div>`}
       </div>
@@ -2376,13 +2536,23 @@
     return Object.entries(unitsBy).map(([id, qty]) => ({ p: allProducts().find(x => x.id === Number(id)), qty })).filter(x => x.p).sort((a, b) => b.qty - a.qty).slice(0, 5);
   };
 
-  const orderRow = (o, expandId = '') => `<tr>
+  const orderRow = (o, expandId = '', picked = false) => `<tr${picked ? ' class="adm-row--picked"' : ''}>
+    <td class="pick-cell"><input type="checkbox" class="adm-pick" data-pick="${esc(o.id)}" ${picked ? 'checked' : ''} aria-label="Select order ${esc(o.code)}"></td>
     <td class="row-name"><button type="button" class="link-btn order-code-btn" data-code-detail="${esc(o.id)}"><span class="order-code">${esc(o.code)}</span><span class="order-expand" aria-hidden="true">${expandId === o.id ? '▴' : '▾'}</span></button></td>
     <td class="order-customer">${esc(o.customer.name)}<span class="order-customer__phone">${esc(o.customer.phone)}</span></td>
     <td class="order-total">${money(o.totals.total)}</td>
     <td><span class="pay-chip ${o.payment === 'COD' ? 'cod' : 'upi'}">${esc(o.payment === 'COD' ? 'COD' : 'UPI')}</span></td>
     <td><select class="pill-sel pill-sel--${STATUS_PILL[o.status] || 'pending'}" data-status="${esc(o.id)}" aria-label="Status for ${esc(o.code)}">${STATUSES.map(s => `<option value="${s.key}" ${s.key === o.status ? 'selected' : ''}>${s.label}</option>`).join('')}</select></td>
     <td class="order-date"><time datetime="${esc(o.placedAt)}">${fmtDate(o.placedAt)}</time></td>
+    <td class="order-actions"><div class="row-act">
+      <button type="button" class="icon-btn" data-invoice="${esc(o.id)}" title="Download invoice" aria-label="Download invoice for ${esc(o.code)}">${I2.download}</button>
+      <div class="row-menu" data-row-menu>
+      <button type="button" class="icon-btn" data-row-menu-toggle="${esc(o.id)}" aria-haspopup="menu" aria-expanded="false" title="Order actions" aria-label="Actions for ${esc(o.code)}">${I2.more || I2.menu}</button>
+      <div class="row-menu__list" role="menu" hidden>
+        <button type="button" role="menuitem" data-code-detail="${esc(o.id)}">${I2.sheet} View order</button>
+        <button type="button" role="menuitem" data-invoice="${esc(o.id)}" data-invoice-code="${esc(o.code)}">${I2.download} Download invoice</button>
+      </div>
+    </div></div></td>
   </tr>${expandId === o.id ? orderDetailRow(o) : ''}`;
 
   const thumb = p => productImageMarkup(p, undefined, 'thumb');
@@ -2417,7 +2587,7 @@
   };
 
   const orderDetailRow = o => `<tr class="odetail" data-oid="${esc(o.id)}">
-      <td colspan="6"><div class="odetail-inner">
+      <td colspan="8"><div class="odetail-inner">
         <div class="odetail-left"><h4>Items</h4>
           ${(o.items || []).map(it => `<div class="odetail-line"><span>${esc(it.name)} × ${esc(it.qty)}</span><b>${money(it.price * it.qty)}</b></div>`).join('')}
           <div class="odetail-sums">
@@ -2440,6 +2610,7 @@
   const toggleOrderDetail = id => {
     const panel = $('#staffPanel');
     if (!panel) return;
+    closeRowMenus();
     const btn = $$('[data-code-detail]', panel).find(button => button.getAttribute('data-code-detail') === String(id));
     const open = btn && (btn.textContent || '').includes('▴');
     panel.innerHTML = staffOrders(open ? '' : id);
@@ -2447,21 +2618,96 @@
   };
 
   let admOrderFilter = 'all';
+  // Orders selected for a bulk invoice download. Kept outside the render so it
+  // survives re-renders such as a status change or a panel switch.
+  let admPicked = new Set();
+  const clearAdmPicked = () => { admPicked = new Set(); };
+
+  const INVOICE_API = 'invoice-api.php';
+
+  const closeRowMenus = (except) => {
+    $$('[data-row-menu]').forEach(m => {
+      if (except && m.contains(except)) return;
+      const list = m.querySelector('.row-menu__list');
+      const btn = m.querySelector('[data-row-menu-toggle]');
+      if (list) list.hidden = true;
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+  };
+
+  // Downloads one invoice or a ZIP of several. The PDF is produced server side
+  // from the stored order, so nothing about the customer or totals is sent from
+  // here. The CSRF token travels in the query string because a plain download
+  // cannot carry a request header.
+  const downloadInvoices = async (ids, trigger) => {
+    const list = (ids || []).filter(Boolean);
+    if (!list.length) { toast('Select at least one order first.', 'err', true); return; }
+    if (!csrfToken) await ensureCsrf();
+    const label = trigger ? trigger.innerHTML : '';
+    if (trigger) { trigger.disabled = true; trigger.innerHTML = '<span class="spinner"></span><span>Generating invoice…</span>'; }
+    try {
+      const one = list.length === 1;
+      const url = one
+        ? INVOICE_API + '?a=invoice&id=' + encodeURIComponent(list[0]) + '&csrf=' + encodeURIComponent(csrfToken)
+        : INVOICE_API + '?a=invoice&ids=' + encodeURIComponent(list.join(',')) + '&csrf=' + encodeURIComponent(csrfToken);
+      const res = await fetch(url, { cache: 'no-store', credentials: 'same-origin' });
+      if (!res.ok) {
+        let message = 'The invoice could not be generated. Please try again.';
+        try {
+          const data = await res.json();
+          if (data && typeof data.error === 'string' && data.error) message = data.error;
+        } catch { /* a non-JSON error body keeps the default message */ }
+        throw new Error(message);
+      }
+      const blob = await res.blob();
+      const name = one ? invoiceFileName(list[0]) : 'Invoices.zip';
+      const href = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = href;
+      a.download = name;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(href), 4000);
+      toast(one ? 'Invoice downloaded' : list.length + ' invoices downloaded in a ZIP', 'ok', true);
+      if (!one) {
+        clearAdmPicked();
+        const panel = $('#staffPanel');
+        if (panel && adminPanel === 'orders') { panel.innerHTML = staffOrders(); wireAdmin(); }
+      }
+    } catch (error) {
+      toast(error && error.message ? error.message : 'The invoice could not be generated.', 'err', true);
+    } finally {
+      if (trigger) { trigger.disabled = false; trigger.innerHTML = label; }
+    }
+  };
+
+  const invoiceFileName = id => {
+    const o = orders.find(x => x && x.id === id);
+    const code = o && o.code ? String(o.code).replace(/[^A-Za-z0-9_-]/g, '') : '';
+    return 'Invoice-' + (code || 'order') + '.pdf';
+  };
+
   const staffOrders = (expandId = '') => {
     const q = (admQ || '').toLowerCase();
     let list = [...orders];
     if (admOrderFilter !== 'all') list = list.filter(o => o.status === admOrderFilter);
     if (q) list = list.filter(o => (o.code + ' ' + (o.customer.name || '') + ' ' + (o.customer.phone || '')).toLowerCase().includes(q));
+    const shown = list.map(o => o.id);
+    const pickedShown = shown.filter(id => admPicked.has(id)).length;
+    const allPicked = shown.length > 0 && pickedShown === shown.length;
+    const selected = [...admPicked].filter(id => orders.some(o => o.id === id));
     return `
       ${adminPageHead('Orders', 'Review purchases and update fulfillment status.')}
       <div class="tbl-tools">
         <div class="at-search mini">${I2.search}<input id="admOrderQ" type="text" placeholder="Search code, name, phone…" value="${esc(q)}"></div>
         <select class="filter-select" id="admOrderF"><option value="all">All statuses</option>${STATUSES.map(s => `<option value="${s.key}" ${admOrderFilter === s.key ? 'selected' : ''}>${s.label}</option>`).join('')}</select>
         <span class="panel-sub">${list.length} of ${orders.length} orders</span>
+        <button type="button" class="btn btn-sm adm-bulk-btn" data-invoice-bulk ${selected.length ? '' : 'disabled'}>${I2.download} Download ${selected.length ? selected.length : ''} invoice${selected.length === 1 ? '' : 's'}</button>
       </div>
-      ${list.length ? `<div class="table-wrap"><table class="data-table">
-        <thead><tr><th>Code</th><th>Customer</th><th style="text-align:right">Total</th><th>Payment</th><th>Status</th><th>When</th></tr></thead>
-        <tbody>${list.map(o => orderRow(o, expandId)).join('')}</tbody>
+      ${list.length ? `<div class="table-wrap"><table class="data-table adm-orders">
+        <thead><tr><th class="pick-cell"><input type="checkbox" class="adm-pick-all" data-pick-all ${allPicked ? 'checked' : ''} aria-label="Select all listed orders"></th><th>Code</th><th>Customer</th><th style="text-align:right">Total</th><th>Payment</th><th>Status</th><th>When</th><th></th></tr></thead>
+        <tbody>${list.map(o => orderRow(o, expandId, admPicked.has(o.id))).join('')}</tbody>
       </table></div>` : `<div class="empty-state"><div class="e-emoji">${I.box}</div><h3>No orders yet</h3><p>Orders from the storefront appear here instantly.</p></div>`}`;
   };
 
@@ -2619,6 +2865,12 @@
     if (fileInput) fileInput.onchange = () => {
       const f = fileInput.files && fileInput.files[0];
       setMsg(loadEl, true); setMsg(errEl, false);
+      /* Show the picked file straight away, before any processing or upload. */
+      if (f && preview) {
+        const local = URL.createObjectURL(f);
+        preview.innerHTML = `<img src="${esc(local)}" alt="Image preview">`;
+        setTimeout(() => URL.revokeObjectURL(local), 30000);
+      }
       const run = promise => promise.then(j => {
         setMsg(loadEl, false);
         const safeSrc = safeImageSrc(j.url);
@@ -3488,6 +3740,57 @@
       bindSearch('#admOrderQ', q => { admQ = q; });
       const f = $('#admOrderF');
       if (f) f.onchange = () => { admOrderFilter = f.value; admQ = ''; reRender(); };
+      // Invoice actions: per-row menu, selection, and the bulk download.
+      const panel = $('#staffPanel');
+      if (panel) {
+        panel.onclick = ev => {
+          const t = ev.target;
+          if (!t) return;
+          const toggle = t.closest('[data-row-menu-toggle]');
+          if (toggle) {
+            ev.preventDefault(); ev.stopPropagation();
+            const wrap = toggle.closest('[data-row-menu]');
+            const list = wrap ? wrap.querySelector('.row-menu__list') : null;
+            const willOpen = list ? list.hidden : false;
+            closeRowMenus(wrap);
+            if (list) { list.hidden = !willOpen; toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false'); }
+            return;
+          }
+          const inv = t.closest('[data-invoice]');
+          if (inv) {
+            ev.preventDefault(); ev.stopPropagation();
+            closeRowMenus();
+            downloadInvoices([inv.getAttribute('data-invoice')], inv);
+            return;
+          }
+          // Checkboxes are handled in onchange only. A click on one fires both
+          // events, so handling it here as well would toggle it twice.
+          if (t.closest('[data-pick],[data-pick-all]')) return;
+          const bulk = t.closest('[data-invoice-bulk]');
+          if (bulk && !bulk.disabled) {
+            ev.preventDefault();
+            downloadInvoices([...admPicked], bulk);
+            return;
+          }
+          // Any other click inside the panel dismisses an open row menu.
+          if (t.closest('[data-row-menu]')) return;
+          closeRowMenus();
+        };
+        panel.onchange = ev => {
+          const t = ev.target;
+          if (!t) return;
+          if (t.matches('[data-pick]')) {
+            const id = t.getAttribute('data-pick');
+            if (t.checked) admPicked.add(id); else admPicked.delete(id);
+            reRender();
+          } else if (t.matches('[data-pick-all]')) {
+            const boxes = $$('[data-pick]', panel);
+            if (t.checked) boxes.forEach(b => admPicked.add(b.getAttribute('data-pick')));
+            else boxes.forEach(b => admPicked.delete(b.getAttribute('data-pick')));
+            reRender();
+          }
+        };
+      }
     } else if (adminPanel === 'products') {
       bindSearch('#admPq', q => { admQ = q; });
       $$('[data-edit-prod]').forEach(b => b.onclick = () => {
@@ -3871,12 +4174,9 @@
         o.log = o.log.filter(l => statusIndex(l.status) <= statusIndex(s.value));
         if (!o.log.some(l => l.status === s.value)) o.log.push({ status: s.value, at: new Date().toISOString() });
         save(); toast(`Order ${o.code} → ${(STATUSES.find(x => x.key === s.value) || {}).label}`);
+        /* The server decides whether this was a genuine transition and sends
+           the customer email itself. Nothing is triggered from the browser. */
         syncUpdateStatus(o);
-        const custEmail = (o.customer || {}).email || o.email || '';
-        if (custEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(custEmail)) {
-          const st = STATUSES.find(x => x.key === s.value) || {};
-          fetch(EMAIL_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ a: 'status-update', key: CM_SYNC_KEY, order: o, statusLabel: st.label || s.value, statusNote: st.note || '' }) }).catch(() => {});
-        }
         if (adminPanel === 'orders') { const sp = $('#staffPanel'); if (sp) { sp.innerHTML = staffOrders(); wireAdmin(); } }
       }
     });
@@ -3943,6 +4243,15 @@
     }
     if (!location.hash && location.pathname === '/products') {
       history.replaceState(null, '', '#/products');
+      return route();
+    }
+    /* Clean /track/ORDER_CODE links are used by the transactional emails. The
+       code is only a prefill: the mobile number is still required before any
+       order detail is shown. */
+    if (!location.hash && /^\/track(?:\/|$)/.test(location.pathname)) {
+      const code = decodeURIComponent(location.pathname.replace(/^\/track\/?/, '').split('/')[0] || '');
+      const suffix = new URLSearchParams(location.search).get('invoice') ? '&invoice=1' : '';
+      history.replaceState(null, '', '#/track' + (code ? '?id=' + encodeURIComponent(code) + suffix : ''));
       return route();
     }
 
@@ -4044,7 +4353,7 @@
     const pageName = name === 'content' ? (params[0] || 'about') : name;
     const product = pageName === 'product' ? prodBySlug(params[0] || '') : null;
     const title = product ? `${product.seoTitle || product.shortName} | Crackers in Hyderabad | CrackersMela` : ({ home: 'CrackersMela | Premium Crackers & Fireworks in Hyderabad', products: 'Buy Crackers & Fireworks Online in Hyderabad | CrackersMela', priceList: 'Crackers Price List | Hyderabad | CrackersMela', about: 'About CrackersMela | Hyderabad Fireworks Store', contact: 'Contact CrackersMela | Fireworks Delivery in Hyderabad', faq: 'Fireworks FAQ | CrackersMela Hyderabad' }[pageName] || 'CrackersMela | Fireworks in Hyderabad');
-    const desc = product ? (product.seoDesc || `${product.shortName} from CrackersMela. Shop PESO-certified fireworks with delivery across Hyderabad and Secunderabad.`) : ({ home: 'Shop PESO-certified crackers and fireworks online with delivery across Hyderabad, Secunderabad and Telangana service areas.', products: 'Explore crackers, firecrackers, flower pots, sparklers and fireworks from CrackersMela, delivered across Hyderabad and Secunderabad.', priceList: 'Browse the current CrackersMela fireworks price list for Hyderabad delivery.', contact: 'Contact CrackersMela for crackers delivery, product questions, bulk orders and fireworks support in Hyderabad.' }[pageName] || 'CrackersMela offers licensed, PESO-certified fireworks and crackers for Hyderabad celebrations.');
+    const desc = product ? (product.seoDesc || `${product.shortName} from CrackersMela. Shop STANDARD Licensed dealer fireworks with delivery across Hyderabad and Secunderabad.`) : ({ home: 'Shop STANDARD Licensed dealer crackers and fireworks online with delivery across Hyderabad, Secunderabad and Telangana service areas.', products: 'Explore crackers, firecrackers, flower pots, sparklers and fireworks from CrackersMela, delivered across Hyderabad and Secunderabad.', priceList: 'Browse the current CrackersMela fireworks price list for Hyderabad delivery.', contact: 'Contact CrackersMela for crackers delivery, product questions, bulk orders and fireworks support in Hyderabad.' }[pageName] || 'CrackersMela offers licensed, STANDARD Licensed dealer fireworks and crackers for Hyderabad celebrations.');
     const canonical = product ? `https://crackersmela.com/product/${encodeURIComponent(product.slug || product.id)}` : `https://crackersmela.com/${pageName === 'home' ? '' : pageName}`;
     document.title = title;
     const setMeta = (selector, attrs, content) => { let el = document.head.querySelector(selector); if (!el) { el = document.createElement('meta'); Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v)); document.head.appendChild(el); } el.setAttribute('content', content); };
@@ -4441,7 +4750,70 @@
       const g = id => $('#ck_' + id).value.trim();
       st.data = { name: g('name'), phone: g('phone'), email: g('email').toLowerCase(), address: g('address'), area: g('area'), city: g('city') || 'Hyderabad', pincode: g('pincode') };
       st.touched.email = st.touched.email || !!st.data.email;
+      // Only trust the billing inputs when they are actually editable. While the
+      // toggle is on they are disabled, so the mirrored state is authoritative.
+      if (st.billingSame === false) {
+        const gb = id => { const e = $('#ck_b_' + id); return e ? e.value.trim() : ''; };
+        st.billing = { name: gb('name'), phone: gb('phone'), address: gb('address'), area: gb('area'), city: gb('city'), state: gb('state'), pincode: gb('pincode') };
+      }
     };
+    /* Mirror the delivery address into the billing block while the toggle is on,
+       so billing can never drift out of sync with what will actually be used. */
+    const syncBillingFromDelivery = () => {
+      if (st.billingSame === false) return;
+      st.billing = { name: st.data.name, phone: st.data.phone, address: st.data.address, area: st.data.area, city: st.data.city, state: st.billing.state || 'Telangana', pincode: st.data.pincode };
+      const put = (id, val) => { const e = $('#ck_b_' + id); if (e) e.value = val || ''; };
+      put('name', st.billing.name); put('phone', st.billing.phone); put('address', st.billing.address);
+      put('area', st.billing.area); put('city', st.billing.city); put('pincode', st.billing.pincode);
+      put('state', st.billing.state);
+    };
+    const paintBilling = () => {
+      const same = st.billingSame !== false;
+      const fields = $('#ckBillingFields');
+      const note = $('#ckBillingNote');
+      const box = $('#ck_billing_same');
+      if (box) box.checked = same;
+      if (fields) fields.hidden = same;
+      if (note) {
+        note.hidden = !same;
+        if (same) {
+          const line = [st.data.name, st.data.address, st.data.area, st.data.city, st.data.pincode].filter(Boolean).join(', ');
+          note.innerHTML = `${I.check}<span>We'll use your delivery address for billing.${line ? ' Currently: <b>' + esc(line) + '</b>' : ''}</span>`;
+        }
+      }
+      $$('#ckBillingFields input, #ckBillingFields textarea').forEach(el => { el.disabled = same; });
+    };
+    const billingBox = $('#ck_billing_same');
+    if (billingBox) billingBox.onchange = () => {
+      const nowSame = billingBox.checked;
+      if (nowSame === (st.billingSame !== false)) return;
+      if (nowSame) {
+        // Re-enabling discards any separate billing edits and re-syncs to delivery.
+        st.billingSame = true;
+        syncBillingFromDelivery();
+      } else {
+        // Disabling pre-fills from delivery so the customer only edits what differs.
+        st.billingSame = false;
+        const put = (id, val) => { const e = $('#ck_b_' + id); if (e) e.value = val || ''; };
+        put('name', st.data.name); put('phone', st.data.phone); put('address', st.data.address);
+        put('area', st.data.area); put('city', st.data.city); put('pincode', st.data.pincode);
+        put('state', st.billing.state || 'Telangana');
+        st.billing = { name: st.data.name, phone: st.data.phone, address: st.data.address, area: st.data.area, city: st.data.city, state: st.billing.state || 'Telangana', pincode: st.data.pincode };
+      }
+      paintBilling();
+    };
+    ['#ck_name', '#ck_phone', '#ck_address', '#ck_area', '#ck_city', '#ck_pincode'].forEach(sel => {
+      const el = $(sel);
+      if (!el) return;
+      el.addEventListener('input', () => {
+        const g = id => { const n = $('#ck_' + id); return n ? n.value.trim() : ''; };
+        st.data = { name: g('name'), phone: g('phone'), email: g('email').toLowerCase(), address: g('address'), area: g('area'), city: g('city') || 'Hyderabad', pincode: g('pincode') };
+        syncBillingFromDelivery();
+        paintBilling();
+      });
+    });
+    if (st.billingSame !== false) syncBillingFromDelivery();
+    paintBilling();
     const eml = $('#ck_email');
     if (eml) eml.onblur = () => { st.touched.email = true; };
     const n1 = $('#ckNext1');
@@ -4505,7 +4877,7 @@
       place.disabled = true;
       place.textContent = 'Placing order…';
       let order;
-      try { order = await placeOrder(st.data, st.data, st.payment); }
+      try { order = await placeOrder(st.data, st.data, checkoutBilling(st.data), st.payment); }
       finally { place.disabled = false; place.innerHTML = label; }
       if (!order) return;
       checkoutCoupon = { code: null, discount: 0 };

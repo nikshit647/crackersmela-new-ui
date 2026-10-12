@@ -1,0 +1,118 @@
+{
+  "status": "PASS",
+  "release": "20261008-editor4",
+  "stage": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\deploy-20261008-editor4",
+  "sourceFiles": 17,
+  "privateFiles": 5,
+  "manifestSha256": "c58a951995d4d4ede8b6a5dadcb75ef67957adad378361119743eb5f34ff84be",
+  "payloadSha256": "45e5f2307f86fce6ba38a12dfaf36a0e18e24294f3c5242e87dddf54ec385465",
+  "prepareSha256": "5e4f5b71f150ca12571c8c4177a4d233939e2919ff50b07c136718f3d94707fd",
+  "installerSha256": "276517818c3dbd5d1304da66f2e9d07105b9a8d3327913a51cea48522fc74bef",
+  "storeSnapshotsIncluded": false,
+  "networkAccess": false,
+  "deployed": false,
+  "files": [
+    {
+      "path": "js/app.js",
+      "sha256": "6bb8242e07ffd4f3d8023aca73d3295c642fedcd271b70df90e0365bfee09a1d",
+      "sourceMatches": true,
+      "overlayMatches": null
+    },
+    {
+      "path": "js/cms-runtime.js",
+      "sha256": "dd64655be00633cc3251f0ef4728b77164eb7a25916a6373219c56a4da43c467",
+      "sourceMatches": true,
+      "overlayMatches": true
+    },
+    {
+      "path": "js/cms-preview.js",
+      "sha256": "7a42de26b18c6127ab81600d48da2773695e5788879ca8de58f3d7c338bb3467",
+      "sourceMatches": true,
+      "overlayMatches": true
+    },
+    {
+      "path": "js/visual-editor.js",
+      "sha256": "7a1e9b490966ba08593c69eb5f525c2299fad0e14cfe0ffdb784181cb66244b9",
+      "sourceMatches": true,
+      "overlayMatches": true
+    },
+    {
+      "path": "css/cms-content.css",
+      "sha256": "8bf7e1bc5e764be5dc2f657c6c168daf9a34b128683b430db2be858006808333",
+      "sourceMatches": true,
+      "overlayMatches": true
+    },
+    {
+      "path": "css/visual-editor.css",
+      "sha256": "787f1f36548a58593cad4b59db72a90a2e0b1e92d270e55f779a02f1470c3db3",
+      "sourceMatches": true,
+      "overlayMatches": true
+    },
+    {
+      "path": "cm-cms.php",
+      "sha256": "ac5908b265f31d6baa40bb6e83899de70ef4453a7357b8d7aa809cb0070e0d4f",
+      "sourceMatches": true,
+      "overlayMatches": true
+    },
+    {
+      "path": "cms-api.php",
+      "sha256": "df77a9ab3d55c4420f070b4174196e9fb954c54a63ad4e73b59a2ffc4daba7ec",
+      "sourceMatches": true,
+      "overlayMatches": true
+    },
+    {
+      "path": "cms-page.php",
+      "sha256": "b7304c880cf778f6564d14a5eabdc4b0c82d57eb035fef48518da8da624d746c",
+      "sourceMatches": true,
+      "overlayMatches": true
+    },
+    {
+      "path": "sitemap.php",
+      "sha256": "ffb50ffaf5093e0a33a35d66b057e6ccf414530e1d4cf056aeb2457ce3f380a8",
+      "sourceMatches": true,
+      "overlayMatches": null
+    },
+    {
+      "path": "cm-seo.php",
+      "sha256": "71f4ba57449958ce65b7c0df98e896b4fd4330f28ed605abdc71fd494f980a2e",
+      "sourceMatches": true,
+      "overlayMatches": null
+    },
+    {
+      "path": "seo-page.php",
+      "sha256": "a05d17e65a6f3ab13d5773aff08b89e76d69e66ce0e52a5aa31724f7c166e8e8",
+      "sourceMatches": true,
+      "overlayMatches": null
+    },
+    {
+      "path": "js/seo-content.js",
+      "sha256": "247d81a720f09f437d21dcdaf8e380697ef531aad62d7cb7ee475b5bcecc72d7",
+      "sourceMatches": true,
+      "overlayMatches": null
+    },
+    {
+      "path": "js/seo-runtime.js",
+      "sha256": "6296459a1ec7ec0c669a23b8fa13cd548ccb241bf508c0cce70310e6ef4e19e1",
+      "sourceMatches": true,
+      "overlayMatches": null
+    },
+    {
+      "path": "visual-preview.php",
+      "sha256": "957059217fa627b3285a4b808b467fcb0b2c9035642e40220d07cb5ee4427390",
+      "sourceMatches": true,
+      "overlayMatches": true
+    },
+    {
+      "path": "editor-shell.html",
+      "sha256": "e62f2f23119735034ab1ef60b3d37c100d87afd8ea07e49bc394ad9369a3ab14",
+      "sourceMatches": true,
+      "overlayMatches": true
+    },
+    {
+      "path": "index.html",
+      "sha256": "be7d0009a201010f405c26e845edc656d328447c6d8045200f8022d875a8d899",
+      "sourceMatches": true,
+      "overlayMatches": null
+    }
+  ]
+}

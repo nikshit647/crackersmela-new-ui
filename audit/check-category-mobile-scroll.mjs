@@ -1,0 +1,40 @@
+import assert from 'node:assert/strict';
+import {execFileSync,spawn} from 'node:child_process';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import path from 'node:path';
+const fixture=JSON.parse(await readFile('audit-evidence/cms-shared-navigation-fixture.json','utf8'));
+const base=fixture.baseUrl;
+const binary=path.join(process.env.APPDATA,'npm/node_modules/agent-browser/bin/agent-browser-win32-x64.exe');
+const session='category-scroll-probe', namespace='nav-category-mobile-scroll';
+const args=['--pin-tab','--namespace',namespace,'--session',session];
+const run=(...a)=>{const r=JSON.parse(execFileSync(binary,[...args,...a,'--json'],{encoding:'utf8',windowsHide:true,timeout:45000,maxBuffer:8*1024*1024}));assert.equal(r.success,true,r.error);return r.data;};
+const evaluate=code=>run('eval','-b',Buffer.from(code).toString('base64')).result;
+const wait=code=>run('wait','--fn',code);
+const fexpr=code=>`(()=>{const win=document.querySelector('#siteFrame')?.contentWindow,doc=win?.document;return !!doc&&(${code});})()`;
+const read=code=>evaluate(fexpr(code));
+const fwait=code=>wait(fexpr(code));
+const frameClick=selector=>{const p=evaluate(`(()=>{const frame=document.querySelector('#siteFrame'),node=frame.contentDocument.querySelector(${JSON.stringify(selector)});node.scrollIntoView({block:'center',behavior:'instant'});const a=node.getBoundingClientRect(),b=frame.getBoundingClientRect(),scale=b.width/frame.offsetWidth;return{x:b.left+(a.left+a.width/2)*scale,y:b.top+(a.top+a.height/2)*scale};})()`);run('mouse','move',String(Math.round(p.x)),String(Math.round(p.y)));run('mouse','down');run('mouse','up');};
+const metrics=()=>read(`({bodyInline:doc.body.style.overflow,bodyComputed:win.getComputedStyle(doc.body).overflow,bodyHeight:doc.body.scrollHeight,viewport:win.innerHeight,scroll:win.scrollY,filterPosition:win.getComputedStyle(doc.querySelector('#filterCol')).position,filterOverflow:win.getComputedStyle(doc.querySelector('#filterCol')).overflowY,filterOpen:doc.querySelector('#filterCol').classList.contains('open'),mode:doc.body.classList.contains('cms-category-filter-editing')})`);
+const launch=()=>new Promise((resolve,reject)=>{const child=spawn(binary,[...args,'open',base,'--json'],{windowsHide:true,stdio:['ignore','pipe','pipe']});let out='',err='',done=false;const finish=(error)=>{if(done)return;done=true;clearTimeout(timer);child.stdout.destroy();child.stderr.destroy();child.unref();error?reject(error):resolve();};const timer=setTimeout(()=>finish(new Error(err||'Launch timeout')),45000);child.stdout.on('data',chunk=>{out+=chunk;try{const r=JSON.parse(out);finish(r.success?null:new Error(r.error));}catch{}});child.stderr.on('data',chunk=>err+=chunk);child.on('error',finish);});
+await launch();run('set','viewport','390','900');
+const sr=await fetch(base+'/staff-auth.php?a=session'),sd=await sr.json(),cookie=sr.headers.getSetCookie().find(x=>x.startsWith('cm_staff='))?.split(';')[0];assert.ok(cookie);
+const lr=await fetch(base+'/staff-auth.php?a=login',{method:'POST',headers:{Cookie:cookie,Origin:base,'Content-Type':'application/json','X-CSRF-Token':sd.csrfToken},body:JSON.stringify({email:fixture.email,password:fixture.password})});assert.equal(lr.ok,true);
+const auth=lr.headers.getSetCookie().find(x=>x.startsWith('cm_staff='))?.split(';')[0]||cookie;run('cookies','set','cm_staff',auth.slice(9),'--url',base,'--httpOnly','--sameSite','Lax');
+run('open',base+'/visual-editor?page=products');fwait("win.CMCms?.page()==='products'&&doc.body.classList.contains('cms-editing')");wait("document.querySelector('#loading').hidden");
+run('click','[data-device="mobile"]');run('click','#preview');fwait('win.CM_EDITOR_INTERACTIVE===true');frameClick('#filterFab');fwait("doc.querySelector('#filterCol').classList.contains('open')");
+const result={visitor:metrics()};
+run('click','#preview');fwait('win.CM_EDITOR_INTERACTIVE===false');
+result.edit=metrics();
+frameClick('[data-cms-category-target="filter"]');fwait("doc.body.classList.contains('cms-category-filter-editing')");
+result.reorder=metrics();
+await mkdir('audit-evidence/mobile-category-scroll',{recursive:true});
+run('screenshot',path.resolve('audit-evidence/mobile-category-scroll/reorder.png'));
+// Real mouse wheel over the iframe tests whether the page scrolls normally.
+const p=evaluate("(()=>{const r=document.querySelector('#siteFrame').getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+Math.min(250,r.height/2)}})()");run('mouse','move',String(Math.round(p.x)),String(Math.round(p.y)));run('scroll','down','500');
+result.afterWheel=metrics();
+if(process.env.CM_SCROLL_PATCH==='1'){
+  evaluate(fexpr("(()=>{const s=doc.createElement('style');s.textContent='@media(max-width:980px){body.cms-category-filter-editing{overflow:auto!important}}';doc.head.append(s);return true;})()"));
+  run('scroll','down','500');result.patched=metrics();
+}
+frameClick('[data-cms-category-cancel]');fwait("!doc.body.classList.contains('cms-category-filter-editing')");result.cancel=metrics();
+await writeFile('audit/category-mobile-scroll-results.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result,null,2));

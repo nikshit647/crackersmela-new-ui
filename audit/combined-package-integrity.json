@@ -1,0 +1,253 @@
+{
+  "generatedAt": "2026-10-05T12:06:45.276679Z",
+  "status": "PASS",
+  "package": "audit-evidence/combined-review-package-20261005T120636.649388Z",
+  "manifestSha256": "41bc8d6bd174ac00e2dcf4212708567adb20860c89027ffade33841e77645850",
+  "scope": "Independent local verification of generated manifests, archive bytes, current source/baseline, known private-file and refresh-helper exclusions, and immutable original preservation. No deployment or external request.",
+  "counts": {
+    "changedFiles": 60,
+    "productionChanged": 45,
+    "overlayChanged": 15,
+    "added": 19,
+    "deleted": 0,
+    "rollbackEntries": 41,
+    "overlayMirrors": 15,
+    "unbaselinedSupportingFiles": 6
+  },
+  "checks": [
+    {
+      "name": "Summary hash matches exact saved manifest bytes",
+      "passed": true,
+      "sha256": "41bc8d6bd174ac00e2dcf4212708567adb20860c89027ffade33841e77645850"
+    },
+    {
+      "name": "Audit manifest mirror is byte-identical",
+      "passed": true
+    },
+    {
+      "name": "Manifest uses literal LF bytes on Windows",
+      "passed": true
+    },
+    {
+      "name": "Manifest changed-file paths are unique",
+      "passed": true
+    },
+    {
+      "name": "Summary counts match manifest",
+      "passed": true
+    },
+    {
+      "name": "Artifact bytes and hash: combined-work.patch",
+      "passed": true
+    },
+    {
+      "name": "Artifact bytes and hash: candidate-changed-files.zip",
+      "passed": true
+    },
+    {
+      "name": "Artifact bytes and hash: rollback-changed-files.zip",
+      "passed": true
+    },
+    {
+      "name": "All declared before file bytes match baseline",
+      "passed": true,
+      "checkedFiles": 78
+    },
+    {
+      "name": "All declared after file bytes match current source",
+      "passed": true,
+      "checkedFiles": 78
+    },
+    {
+      "name": "ZIP has exactly the declared unique entries: candidate-changed-files.zip",
+      "passed": true
+    },
+    {
+      "name": "ZIP CRC integrity: candidate-changed-files.zip",
+      "passed": true
+    },
+    {
+      "name": "Every ZIP entry equals its exact source/baseline bytes: candidate-changed-files.zip",
+      "passed": true,
+      "checkedFiles": 60
+    },
+    {
+      "name": "ZIP has exactly the declared unique entries: rollback-changed-files.zip",
+      "passed": true
+    },
+    {
+      "name": "ZIP CRC integrity: rollback-changed-files.zip",
+      "passed": true
+    },
+    {
+      "name": "Every ZIP entry equals its exact source/baseline bytes: rollback-changed-files.zip",
+      "passed": true,
+      "checkedFiles": 41
+    },
+    {
+      "name": "Overlay mirror inventory is complete",
+      "passed": true,
+      "checkedFiles": 15
+    },
+    {
+      "name": "Every overlay mirror matches bytes and both declared hashes",
+      "passed": true,
+      "checkedFiles": 15
+    },
+    {
+      "name": "All eleven correct category SVGs exist, are referenced, and are packaged",
+      "passed": true,
+      "names": [
+        "bombs.svg",
+        "chakkars.svg",
+        "fancy.svg",
+        "flower-pots.svg",
+        "garlands.svg",
+        "gift-boxes.svg",
+        "guns-rolls.svg",
+        "kids-special.svg",
+        "night-outs.svg",
+        "rockets.svg",
+        "sparklers.svg"
+      ]
+    },
+    {
+      "name": "Six pre-existing supporting assets remain inventoried with current bytes",
+      "passed": true,
+      "checkedFiles": 6
+    },
+    {
+      "name": "No known private-store or credential-file paths in payload",
+      "passed": true,
+      "matches": []
+    },
+    {
+      "name": "No local refresh-helper or old preview-disable markers in payload",
+      "passed": true,
+      "matches": []
+    },
+    {
+      "name": "No embedded private-key blocks in payload",
+      "passed": true,
+      "matches": []
+    },
+    {
+      "name": "No candidate/overlay/baseline symlinks",
+      "passed": true
+    },
+    {
+      "name": "Frozen original package, summary and manifest remain byte-identical",
+      "passed": true,
+      "checkedFiles": 7
+    },
+    {
+      "name": "Previous frozen combined package remains byte-identical",
+      "passed": true,
+      "checkedFiles": 5
+    },
+    {
+      "name": "Invoice font correction is included with exact baseline and source bytes",
+      "passed": true
+    },
+    {
+      "name": "Rollback additions/removals inventory is exact",
+      "passed": true
+    }
+  ],
+  "artifacts": {
+    "combined-work.patch": {
+      "bytes": 1983260,
+      "sha256": "5a6362350971dd64ceff925a2fd87f7747432ae78cec5b4d34540357232d09e2"
+    },
+    "candidate-changed-files.zip": {
+      "bytes": 466516,
+      "sha256": "09fdedc736c896c2b103329286ec4755373063523edf44da301fbe56e569ff82"
+    },
+    "rollback-changed-files.zip": {
+      "bytes": 373465,
+      "sha256": "846daa38b8194e45af1fd121e33cb6a243c31b1385f5da3c27c1254566077737"
+    }
+  },
+  "zipContents": {
+    "candidate-changed-files.zip": {
+      "entries": 60,
+      "exactSourceBytes": true
+    },
+    "rollback-changed-files.zip": {
+      "entries": 41,
+      "exactSourceBytes": true
+    }
+  },
+  "rollbackRemoveAddedFiles": [
+    "production-release/css/staff-users.css",
+    "production-release/images/categories/bombs.svg",
+    "production-release/images/categories/chakkars.svg",
+    "production-release/images/categories/fancy.svg",
+    "production-release/images/categories/flower-pots.svg",
+    "production-release/images/categories/garlands.svg",
+    "production-release/images/categories/gift-boxes.svg",
+    "production-release/images/categories/guns-rolls.svg",
+    "production-release/images/categories/kids-special.svg",
+    "production-release/images/categories/night-outs.svg",
+    "production-release/images/categories/rockets.svg",
+    "production-release/images/categories/sparklers.svg",
+    "production-release/js/analytics-bootstrap.js",
+    "production-release/js/cms-responsive.js",
+    "production-release/js/vendor/firebase/10.12.2/LICENSE.txt",
+    "production-release/js/vendor/firebase/10.12.2/firebase-app-compat.js",
+    "production-release/js/vendor/firebase/10.12.2/firebase-auth-compat.js",
+    "production-release/staff-users.php",
+    "visual-editor/js/cms-responsive.js"
+  ],
+  "baselineLimit": "Selective production snapshot plus full editor overlay. Production editor-shell.html uses its saved overlay copy as a surrogate because the production baseline omitted it; its exact pre-task production rollback is not independently established.",
+  "originalPackageIntegrity": {
+    "preservedFilesSha256": {
+      "audit/three-area-package.json": "65c95f316e496fb8361dd639e5dd6c96ea4e69f18caad4472c52dbccf78959c4",
+      "audit/three-area-change-manifest.json": "4f3595224e61940c580f6d50ee031133e77ec539720146cabed846e27df0793c",
+      "audit-evidence/three-area-package-20261005T034304.405154Z/candidate-changed-files.zip": "ea9b35599e0b9bda6f080b48df48e05033048c98bf1abcf1aecd7d7e1a6558e3",
+      "audit-evidence/three-area-package-20261005T034304.405154Z/manifest.json": "4f3595224e61940c580f6d50ee031133e77ec539720146cabed846e27df0793c",
+      "audit-evidence/three-area-package-20261005T034304.405154Z/original-three-area.patch": "5ea27ef07716110113ac75130a465e85271eaa9df5d1b541387def9830008ae6",
+      "audit-evidence/three-area-package-20261005T034304.405154Z/README.md": "d8d30e87c9fa133c40789781a79b79ece9e64683886cb19007198770d4a12275",
+      "audit-evidence/three-area-package-20261005T034304.405154Z/rollback-changed-files.zip": "21e4ed2bc258e5d8b32e739a8e638406c3a8c9d9193b49fba650956fc660d7eb"
+    },
+    "historicalSummaryManifestHash": "26c1d7b4436331ba0f97ff8986af82a49cbe1961a4b1890a36b550973421b2aa",
+    "actualFrozenManifestSha256": "4f3595224e61940c580f6d50ee031133e77ec539720146cabed846e27df0793c",
+    "note": "The original summary hash covers LF-normalized JSON; the unchanged original manifest file uses CRLF. The new packager writes and hashes identical UTF-8 bytes."
+  },
+  "previousCombinedPackageIntegrity": {
+    "package": "audit-evidence/combined-review-package-20261005T114937.556092Z",
+    "manifestSha256": "11b95e1f88e7106e42a1796ba692d70c08eadea14efa2ae93346a81d409b09e8",
+    "preservedFilesSha256": {
+      "audit-evidence/combined-review-package-20261005T114937.556092Z/candidate-changed-files.zip": "67fecb085bb7bd4aa84ec77439fce155b16c8f73a874a8c3e5387698c860a7fa",
+      "audit-evidence/combined-review-package-20261005T114937.556092Z/combined-work.patch": "0b27597c1d28e854b0814ee0685d7345ea93009997a01579a4859a7c4514fc32",
+      "audit-evidence/combined-review-package-20261005T114937.556092Z/manifest.json": "11b95e1f88e7106e42a1796ba692d70c08eadea14efa2ae93346a81d409b09e8",
+      "audit-evidence/combined-review-package-20261005T114937.556092Z/README.md": "79d92790c6884bfeb8d5a1ca8015ce2a5cbfbeb20842175f69cd6ee9c0e5b698",
+      "audit-evidence/combined-review-package-20261005T114937.556092Z/rollback-changed-files.zip": "06a22191fd16abb58297485d116c7a58e16e743d0386622257580059b1084dfd"
+    },
+    "earlierIndependentVerification": {
+      "status": "PASS",
+      "checksPassed": 26,
+      "counts": {
+        "changedFiles": 59,
+        "productionChanged": 44,
+        "overlayChanged": 15,
+        "added": 19,
+        "deleted": 0,
+        "rollbackEntries": 40,
+        "overlayMirrors": 15,
+        "unbaselinedSupportingFiles": 6
+      }
+    }
+  },
+  "builderVerification": {
+    "forwardPatchExactBytes": true,
+    "reversePatchExactBytesAgainstDeclaredBaseline": true,
+    "allOverlayMirrorsMatch": true
+  },
+  "limits": [
+    "Changed-file review package, not a complete installation bundle.",
+    "ZIP byte verification does not constitute production PHP/runtime/browser verification.",
+    "Rollback ZIP restores existing changed files; added-file removal requires reverse patch or the recorded removal list.",
+    "Private-file checks cover known paths and private-key blocks, not a new comprehensive secret/security audit."
+  ]
+}

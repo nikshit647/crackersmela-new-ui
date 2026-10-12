@@ -1,0 +1,57 @@
+{
+  "visitor": {
+    "bodyComputed": "hidden",
+    "bodyHeight": 22787,
+    "bodyInline": "hidden",
+    "filterOpen": true,
+    "filterOverflow": "auto",
+    "filterPosition": "fixed",
+    "mode": false,
+    "scroll": 40,
+    "viewport": 746
+  },
+  "edit": {
+    "bodyComputed": "hidden",
+    "bodyHeight": 22787,
+    "bodyInline": "hidden",
+    "filterOpen": true,
+    "filterOverflow": "auto",
+    "filterPosition": "fixed",
+    "mode": false,
+    "scroll": 40,
+    "viewport": 611
+  },
+  "reorder": {
+    "bodyComputed": "auto",
+    "bodyHeight": 24681,
+    "bodyInline": "hidden",
+    "filterOpen": true,
+    "filterOverflow": "visible",
+    "filterPosition": "relative",
+    "mode": true,
+    "scroll": 62,
+    "viewport": 611
+  },
+  "afterWheel": {
+    "bodyComputed": "auto",
+    "bodyHeight": 24681,
+    "bodyInline": "hidden",
+    "filterOpen": true,
+    "filterOverflow": "visible",
+    "filterPosition": "relative",
+    "mode": true,
+    "scroll": 3884,
+    "viewport": 611
+  },
+  "cancel": {
+    "bodyComputed": "hidden",
+    "bodyHeight": 22787,
+    "bodyInline": "hidden",
+    "filterOpen": true,
+    "filterOverflow": "auto",
+    "filterPosition": "fixed",
+    "mode": false,
+    "scroll": 395,
+    "viewport": 611
+  }
+}

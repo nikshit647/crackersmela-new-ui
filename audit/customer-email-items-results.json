@@ -1,0 +1,288 @@
+{
+    "status": "PASS",
+    "checks": [
+        {
+            "name": "placed: only this customer receives the order",
+            "pass": true
+        },
+        {
+            "name": "placed: every one of seven stored lines appears in HTML and text",
+            "pass": true
+        },
+        {
+            "name": "placed: unit and line amounts use the stored snapshot",
+            "pass": true
+        },
+        {
+            "name": "placed: stored subtotal, discount, delivery and final total appear",
+            "pass": true
+        },
+        {
+            "name": "placed: branding, payment, tracking and protected invoice action remain",
+            "pass": true
+        },
+        {
+            "name": "placed: itemization precedes total and actions",
+            "pass": true
+        },
+        {
+            "name": "placed: customer mail exposes no secret or admin link",
+            "pass": true
+        },
+        {
+            "name": "placed: original status information remains",
+            "pass": true
+        },
+        {
+            "name": "placed: fake transport accepts both MIME alternatives",
+            "pass": true
+        },
+        {
+            "name": "confirmed: only this customer receives the order",
+            "pass": true
+        },
+        {
+            "name": "confirmed: every one of seven stored lines appears in HTML and text",
+            "pass": true
+        },
+        {
+            "name": "confirmed: unit and line amounts use the stored snapshot",
+            "pass": true
+        },
+        {
+            "name": "confirmed: stored subtotal, discount, delivery and final total appear",
+            "pass": true
+        },
+        {
+            "name": "confirmed: branding, payment, tracking and protected invoice action remain",
+            "pass": true
+        },
+        {
+            "name": "confirmed: itemization precedes total and actions",
+            "pass": true
+        },
+        {
+            "name": "confirmed: customer mail exposes no secret or admin link",
+            "pass": true
+        },
+        {
+            "name": "confirmed: original status information remains",
+            "pass": true
+        },
+        {
+            "name": "confirmed: fake transport accepts both MIME alternatives",
+            "pass": true
+        },
+        {
+            "name": "packed: only this customer receives the order",
+            "pass": true
+        },
+        {
+            "name": "packed: every one of seven stored lines appears in HTML and text",
+            "pass": true
+        },
+        {
+            "name": "packed: unit and line amounts use the stored snapshot",
+            "pass": true
+        },
+        {
+            "name": "packed: stored subtotal, discount, delivery and final total appear",
+            "pass": true
+        },
+        {
+            "name": "packed: branding, payment, tracking and protected invoice action remain",
+            "pass": true
+        },
+        {
+            "name": "packed: itemization precedes total and actions",
+            "pass": true
+        },
+        {
+            "name": "packed: customer mail exposes no secret or admin link",
+            "pass": true
+        },
+        {
+            "name": "packed: original status information remains",
+            "pass": true
+        },
+        {
+            "name": "packed: fake transport accepts both MIME alternatives",
+            "pass": true
+        },
+        {
+            "name": "shipped: only this customer receives the order",
+            "pass": true
+        },
+        {
+            "name": "shipped: every one of seven stored lines appears in HTML and text",
+            "pass": true
+        },
+        {
+            "name": "shipped: unit and line amounts use the stored snapshot",
+            "pass": true
+        },
+        {
+            "name": "shipped: stored subtotal, discount, delivery and final total appear",
+            "pass": true
+        },
+        {
+            "name": "shipped: branding, payment, tracking and protected invoice action remain",
+            "pass": true
+        },
+        {
+            "name": "shipped: itemization precedes total and actions",
+            "pass": true
+        },
+        {
+            "name": "shipped: customer mail exposes no secret or admin link",
+            "pass": true
+        },
+        {
+            "name": "shipped: original status information remains",
+            "pass": true
+        },
+        {
+            "name": "shipped: fake transport accepts both MIME alternatives",
+            "pass": true
+        },
+        {
+            "name": "out_for_delivery: only this customer receives the order",
+            "pass": true
+        },
+        {
+            "name": "out_for_delivery: every one of seven stored lines appears in HTML and text",
+            "pass": true
+        },
+        {
+            "name": "out_for_delivery: unit and line amounts use the stored snapshot",
+            "pass": true
+        },
+        {
+            "name": "out_for_delivery: stored subtotal, discount, delivery and final total appear",
+            "pass": true
+        },
+        {
+            "name": "out_for_delivery: branding, payment, tracking and protected invoice action remain",
+            "pass": true
+        },
+        {
+            "name": "out_for_delivery: itemization precedes total and actions",
+            "pass": true
+        },
+        {
+            "name": "out_for_delivery: customer mail exposes no secret or admin link",
+            "pass": true
+        },
+        {
+            "name": "out_for_delivery: original status information remains",
+            "pass": true
+        },
+        {
+            "name": "out_for_delivery: fake transport accepts both MIME alternatives",
+            "pass": true
+        },
+        {
+            "name": "delivered: only this customer receives the order",
+            "pass": true
+        },
+        {
+            "name": "delivered: every one of seven stored lines appears in HTML and text",
+            "pass": true
+        },
+        {
+            "name": "delivered: unit and line amounts use the stored snapshot",
+            "pass": true
+        },
+        {
+            "name": "delivered: stored subtotal, discount, delivery and final total appear",
+            "pass": true
+        },
+        {
+            "name": "delivered: branding, payment, tracking and protected invoice action remain",
+            "pass": true
+        },
+        {
+            "name": "delivered: itemization precedes total and actions",
+            "pass": true
+        },
+        {
+            "name": "delivered: customer mail exposes no secret or admin link",
+            "pass": true
+        },
+        {
+            "name": "delivered: original status information remains",
+            "pass": true
+        },
+        {
+            "name": "delivered: fake transport accepts both MIME alternatives",
+            "pass": true
+        },
+        {
+            "name": "cancelled: only this customer receives the order",
+            "pass": true
+        },
+        {
+            "name": "cancelled: every one of seven stored lines appears in HTML and text",
+            "pass": true
+        },
+        {
+            "name": "cancelled: unit and line amounts use the stored snapshot",
+            "pass": true
+        },
+        {
+            "name": "cancelled: stored subtotal, discount, delivery and final total appear",
+            "pass": true
+        },
+        {
+            "name": "cancelled: branding, payment, tracking and protected invoice action remain",
+            "pass": true
+        },
+        {
+            "name": "cancelled: itemization precedes total and actions",
+            "pass": true
+        },
+        {
+            "name": "cancelled: customer mail exposes no secret or admin link",
+            "pass": true
+        },
+        {
+            "name": "cancelled: original status information remains",
+            "pass": true
+        },
+        {
+            "name": "cancelled: fake transport accepts both MIME alternatives",
+            "pass": true
+        },
+        {
+            "name": "Repeated quantities use order-creation paise arithmetic",
+            "pass": true
+        },
+        {
+            "name": "Historical names are escaped in HTML and never replaced from the catalog",
+            "pass": true
+        },
+        {
+            "name": "Free delivery renders without treating comparison savings as another discount",
+            "pass": true
+        },
+        {
+            "name": "Explicit historical line total and final total are preserved without repricing",
+            "pass": true
+        },
+        {
+            "name": "Stored counter discounts and invoice other charges remain distinct",
+            "pass": true
+        },
+        {
+            "name": "Orders with no customer address still skip customer mail",
+            "pass": true
+        },
+        {
+            "name": "Internal notification stays separate and unchanged",
+            "pass": true
+        }
+    ],
+    "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final/audit-evidence/customer-email-items",
+    "transport": "fake",
+    "scope": "Synthetic stored-order snapshots; no SMTP or real email"
+}

@@ -1,0 +1,205 @@
+{
+  "status": "FAIL",
+  "scope": "Isolated local copy; synthetic authentication; no production mutations or mail",
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\cms-product-reorder-1791454251470",
+  "checks": [
+    {
+      "name": "Products opens inside the existing visual website editor",
+      "status": "PASS"
+    },
+    {
+      "name": "Normal editor contains the exact real public product records",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing private draft ordering is preserved on editor load",
+      "status": "PASS"
+    },
+    {
+      "name": "Normal editing cannot accidentally reorder products",
+      "status": "PASS"
+    },
+    {
+      "name": "Reorder Products explicitly enables numbered real cards",
+      "status": "PASS"
+    },
+    {
+      "name": "Insertion marker and live position numbers are visible while dragging",
+      "status": "PASS"
+    },
+    {
+      "name": "Product 10 moves directly to position 2 across grid rows",
+      "status": "PASS"
+    },
+    {
+      "name": "Dragging shows Unsaved changes",
+      "status": "PASS"
+    },
+    {
+      "name": "Dragging does not change the published CMS version",
+      "status": "PASS"
+    },
+    {
+      "name": "Insertion marker and live position numbers are visible while dragging",
+      "status": "PASS"
+    },
+    {
+      "name": "Product 5 inserts between products 1 and 2",
+      "status": "PASS"
+    },
+    {
+      "name": "Undo and redo restore exact grid ordering",
+      "status": "PASS"
+    },
+    {
+      "name": "Done Reordering removes badges and drag controls",
+      "status": "PASS"
+    }
+  ],
+  "error": "Command failed: C:\\Users\\Nikshit Garje\\AppData\\Roaming\\npm\\node_modules\\agent-browser\\bin\\agent-browser-win32-x64.exe --session cms-product-reorder-qa wait --fn (()=>{const win=document.querySelector('#siteFrame')?.contentWindow,doc=win?.document;return !!doc&&(doc.querySelector('#catRail [data-cat=\"gift-boxes\"]')?.getAttribute('aria-current')==='true');})() --json",
+  "diagnosis": {
+    "errors": {
+      "errors": [],
+      "lifecycle": {
+        "effectiveLaunch": {
+          "browserLaunched": true,
+          "engine": "chrome",
+          "launchHash": 7707568497978554000
+        },
+        "launched": false,
+        "relaunchedBrowser": false,
+        "restartedBackground": false,
+        "restoreStatus": "not_configured",
+        "reused": true,
+        "saveStatus": "not_attempted"
+      }
+    },
+    "ui": {
+      "error": "Reload saved draft",
+      "frameHash": "#/products",
+      "order": {
+        "all": [
+          124,
+          120,
+          141,
+          123,
+          90,
+          26,
+          149,
+          86,
+          51,
+          144,
+          42,
+          166,
+          103,
+          194,
+          36,
+          98,
+          160,
+          97,
+          126,
+          32,
+          125,
+          218,
+          31,
+          93,
+          186,
+          217,
+          30,
+          92,
+          185,
+          216,
+          29,
+          91,
+          122,
+          184,
+          215,
+          28,
+          121,
+          183,
+          214,
+          27,
+          89,
+          182,
+          213,
+          88,
+          150,
+          181,
+          212,
+          87,
+          180,
+          211,
+          55,
+          148,
+          54,
+          85,
+          147,
+          53,
+          84,
+          146,
+          52,
+          145,
+          50,
+          143,
+          49,
+          111,
+          142,
+          48,
+          110,
+          234,
+          47,
+          109,
+          46,
+          108,
+          45,
+          107,
+          44,
+          106,
+          43,
+          105,
+          167,
+          104,
+          41,
+          165,
+          40,
+          102,
+          164,
+          39,
+          101,
+          163,
+          225,
+          38,
+          100,
+          162,
+          193,
+          224,
+          37,
+          99,
+          161,
+          223,
+          191,
+          222,
+          35,
+          128,
+          190,
+          221,
+          34,
+          96,
+          127,
+          189,
+          220,
+          33,
+          95,
+          188,
+          219,
+          94,
+          187
+        ]
+      },
+      "status": "✓ Saved · 8 Oct, 03:41 pm",
+      "toolbar": "<div class=\"panel-head\"><div><span class=\"eyebrow\">Filters</span><h2>Section</h2></div><button class=\"icon-button\" data-deselect=\"\" title=\"Deselect\" aria-label=\"Deselect\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M18 6 6 18M6 6l12 12\"></path></svg></button></div><div class=\"editing-scope\" role=\"status\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"13\" rx=\"2\"></rect><path d=\"M8 21h8M12 17v4\"></path></svg><strong>Editing Desktop</strong><span>Style changes affect this device only.</span></div><div class=\"context-group\"><strong class=\"context-kind\">Section</strong><details class=\"context-popover\"><summary>Background</summary><div class=\"context-popover-body\"><label class=\"color-control\"><span>Color</span><input type=\"color\" aria-label=\"Color\" data-field=\"backgroundColor\" data-scope=\"style\" value=\"#ffffff\"><span class=\"color-value\">#FFFFFF</span></label><div class=\"gradient-controls\"><label class=\"check-field\"><input type=\"checkbox\" data-field=\"enabled\" data-scope=\"effect-gradient\">Gradient</label><div class=\"gradient-colors\" hidden=\"\"><label class=\"color-control\"><span>Start color</span><input type=\"color\" aria-label=\"Start color\" data-field=\"start\" data-scope=\"effect-gradient\" value=\"#7c3aed\"><span class=\"color-value\">#7C3AED</span></label><label class=\"color-control\"><span>End color</span><input type=\"color\" aria-label=\"End color\" data-field=\"end\" data-scope=\"effect-gradient\" value=\"#ec4899\"><span class=\"color-value\">#EC4899</span></label><label class=\"field\"><span>Direction</span><select data-field=\"angle\" data-scope=\"effect-gradient\"><option value=\"0\">Up</option><option value=\"90\" selected=\"\">Right</option><option value=\"180\">Down</option><option value=\"270\">Left</option><option value=\"135\">Diagonal</option></select></label></div></div><button class=\"button button-outline\" data-media=\"background\">Choose image</button></div></details><details class=\"context-popover\"><summary>Spacing</summary><div class=\"context-popover-body\"><div class=\"field-grid\"><label class=\"field\"><span>Top <small>px</small></span><input data-simple-style=\"paddingTop\" data-unit=\"px\" type=\"number\" min=\"0\" max=\"500\" step=\"1\" value=\"0\" placeholder=\"Auto\" autocomplete=\"off\"></label><label class=\"field\"><span>Bottom <small>px</small></span><input data-simple-style=\"paddingBottom\" data-unit=\"px\" type=\"number\" min=\"0\" max=\"500\" step=\"1\" value=\"0\" placeholder=\"Auto\" autocomplete=\"off\"></label><label class=\"field\"><span>Left <small>px</small></span><input data-simple-style=\"paddingLeft\" data-unit=\"px\" type=\"number\" min=\"0\" max=\"500\" step=\"1\" value=\"0\" placeholder=\"Auto\" autocomplete=\"off\"></label><label class=\"field\"><span>Right <small>px</small></span><input data-simple-style=\"paddingRight\" data-unit=\"px\" type=\"number\" min=\"0\" max=\"500\" step=\"1\" value=\"0\" placeholder=\"Auto\" autocomplete=\"off\"></label></div></div></details><label class=\"field context-field quick-style\"><span>Height</span><input aria-label=\"Height\" type=\"number\" min=\"1\" max=\"3000\" data-simple-style=\"minHeight\" data-unit=\"px\" value=\"\" placeholder=\"Auto\"></label><details class=\"context-popover\"><summary>Layout</summary><div class=\"context-popover-body\"><label class=\"field\"><span>Display</span><select data-field=\"display\" data-scope=\"style\"><option value=\"\">Saved base</option><option value=\"block\">block</option><option value=\"flex\">flex</option><option value=\"grid\" selected=\"\">grid</option><option value=\"none\">none</option></select></label><label class=\"field\"><span>Direction</span><select data-field=\"flexDirection\" data-scope=\"style\"><option value=\"\">Saved base</option><option value=\"row\" selected=\"\">row</option><option value=\"column\">column</option><option value=\"row-reverse\">row-reverse</option><option value=\"column-reverse\">column-reverse</option></select></label><label class=\"field\"><span>Gap <small>px</small></span><input data-simple-style=\"gap\" data-unit=\"px\" type=\"number\" min=\"0\" max=\"500\" step=\"1\" value=\"24\" placeholder=\"Auto\" autocomplete=\"off\"></label></div></details><details class=\"context-popover\"><summary>Grid</summary><div class=\"context-popover-body\"><label class=\"field\"><span>Columns on Desktop</span><input data-field=\"columns\" data-scope=\"presentation\" type=\"number\" value=\"4\" min=\"1\" max=\"6\"></label></div></details><details class=\"context-popover\"><summary>Products</summary><div class=\"context-popover-body\"><label class=\"field\"><span>Category</span><select data-field=\"category\" data-scope=\"content\"><option value=\"\" selected=\"\">All categories</option><option value=\"gift-boxes\">Gift Boxes</option><option value=\"kids-special\">Kids Special</option><option value=\"sparklers\">Sparklers</option><option value=\"flower-pots\">Flower Pots</option><option value=\"chakkars\">Chakkars</option><option value=\"garlands\">Garlands</option><option value=\"fancy\">Fancy Fireworks</option><option value=\"rockets\">Rockets &amp; Novel</option><option value=\"bombs\">Bombs</option><option value=\"guns-rolls\">Guns · Rolls · Pop</option><option value=\"night-outs\">Multicolor Shows</option></select></label><label class=\"field\"><span>Show products</span><input data-field=\"limit\" data-scope=\"content\" type=\"number\" value=\"60\" min=\"1\" max=\"48\"></label></div></details><label class=\"check-field\"><input type=\"checkbox\" data-field=\"hidden\" data-scope=\"visibility\">Hide on Desktop</label><p class=\"shared-content-note\">Text, image files, links, section order and product choices are shared across devices.</p><button class=\"text-button\" data-reset-device=\"\">Reset Desktop styling</button><div class=\"selection-actions\"><button class=\"button button-quiet \" data-section-action=\"up\" data-id=\"products:shop-layout\" aria-label=\"Move up section\" title=\"Move up\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m6 14 6-6 6 6\"></path></svg><span>Move up</span></button><button class=\"button button-quiet \" data-section-action=\"down\" data-id=\"products:shop-layout\" aria-label=\"Move down section\" title=\"Move down\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m6 10 6 6 6-6\"></path></svg><span>Move down</span></button><button class=\"button button-quiet \" data-section-action=\"duplicate\" data-id=\"products:shop-layout\" aria-label=\"Duplicate section\" title=\"Duplicate\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\"></path></svg><span>Duplicate</span></button><button class=\"button button-quiet \" data-section-action=\"visibility\" data-id=\"products:shop-layout\" aria-label=\"Hide section\" title=\"Hide\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m3 3 18 18M10 5h2c6 0 10 7 10 7s-1 3-4 5M6 6a24 24 0 0 0-4 6s4 7 10 7h2\"></path></svg><span>Hide</span></button><button class=\"button button-quiet danger\" data-section-action=\"delete\" data-id=\"products:shop-layout\" aria-label=\"Delete section\" title=\"Delete\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7M14 10v7\"></path></svg><span>Delete</span></button><button class=\"button button-primary\" data-action=\"product-reorder\">Reorder Products</button></div><button class=\"text-button context-advanced\" data-advanced=\"\">Advanced</button><span class=\"context-device\">Editing Desktop</span></div>",
+      "url": "http://127.0.0.1:4311/visual-editor?page=products"
+    }
+  },
+  "fixtureProductsRestored": true
+}

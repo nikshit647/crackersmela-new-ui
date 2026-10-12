@@ -1,0 +1,304 @@
+{
+  "checkedAt": "2026-10-06T12:35:01Z",
+  "runtime": "PHP 8.3.35 Windows; production PHP 8.1 lint remains separate",
+  "fixtureOnly": true,
+  "mailTransport": "fake",
+  "serverStopped": true,
+  "passed": 73,
+  "total": 73,
+  "results": [
+    {
+      "name": "staff signs in for status transitions",
+      "pass": true
+    },
+    {
+      "name": "new order accepted",
+      "pass": true
+    },
+    {
+      "name": "customer confirmation sent once",
+      "pass": true
+    },
+    {
+      "name": "store notification sent once",
+      "pass": true
+    },
+    {
+      "name": "confirmation subject names the order code",
+      "pass": true
+    },
+    {
+      "name": "store notification subject names the order code",
+      "pass": true
+    },
+    {
+      "name": "store notification goes to the configured store mailbox",
+      "pass": true
+    },
+    {
+      "name": "customer confirmation goes to the customer",
+      "pass": true
+    },
+    {
+      "name": "customer and store notifications are separate messages",
+      "pass": true
+    },
+    {
+      "name": "every message carries an html and a text part",
+      "pass": true
+    },
+    {
+      "name": "identical order retry is replayed, not duplicated",
+      "pass": true
+    },
+    {
+      "name": "order retry sends no further email",
+      "pass": true
+    },
+    {
+      "name": "private notification state is stripped from the public order",
+      "pass": true
+    },
+    {
+      "name": "order without a customer email is accepted",
+      "pass": true
+    },
+    {
+      "name": "order without a customer email sends no customer email",
+      "pass": true
+    },
+    {
+      "name": "order without a customer email still notifies the store",
+      "pass": true
+    },
+    {
+      "name": "staff status change to confirmed accepted",
+      "pass": true
+    },
+    {
+      "name": "status change to confirmed sends exactly one customer email",
+      "pass": true
+    },
+    {
+      "name": "status change to confirmed sends no store notification",
+      "pass": true
+    },
+    {
+      "name": "status subject for confirmed is transactional",
+      "pass": true
+    },
+    {
+      "name": "saving the same status again sends nothing",
+      "pass": true
+    },
+    {
+      "name": "staff status change to packed accepted",
+      "pass": true
+    },
+    {
+      "name": "status change to packed sends exactly one customer email",
+      "pass": true
+    },
+    {
+      "name": "status change to packed sends no store notification",
+      "pass": true
+    },
+    {
+      "name": "status subject for packed is transactional",
+      "pass": true
+    },
+    {
+      "name": "saving the same status again sends nothing",
+      "pass": true
+    },
+    {
+      "name": "staff status change to shipped accepted",
+      "pass": true
+    },
+    {
+      "name": "status change to shipped sends exactly one customer email",
+      "pass": true
+    },
+    {
+      "name": "status change to shipped sends no store notification",
+      "pass": true
+    },
+    {
+      "name": "status subject for shipped is transactional",
+      "pass": true
+    },
+    {
+      "name": "saving the same status again sends nothing",
+      "pass": true
+    },
+    {
+      "name": "staff status change to out_for_delivery accepted",
+      "pass": true
+    },
+    {
+      "name": "status change to out_for_delivery sends exactly one customer email",
+      "pass": true
+    },
+    {
+      "name": "status change to out_for_delivery sends no store notification",
+      "pass": true
+    },
+    {
+      "name": "status subject for out_for_delivery is transactional",
+      "pass": true
+    },
+    {
+      "name": "saving the same status again sends nothing",
+      "pass": true
+    },
+    {
+      "name": "staff status change to delivered accepted",
+      "pass": true
+    },
+    {
+      "name": "status change to delivered sends exactly one customer email",
+      "pass": true
+    },
+    {
+      "name": "status change to delivered sends no store notification",
+      "pass": true
+    },
+    {
+      "name": "status subject for delivered is transactional",
+      "pass": true
+    },
+    {
+      "name": "saving the same status again sends nothing",
+      "pass": true
+    },
+    {
+      "name": "payment-only edit sends no customer email",
+      "pass": true
+    },
+    {
+      "name": "reading orders and a status-less update send nothing",
+      "pass": true
+    },
+    {
+      "name": "cancellation accepted",
+      "pass": true
+    },
+    {
+      "name": "cancellation sends exactly one customer email",
+      "pass": true
+    },
+    {
+      "name": "cancellation subject is transactional",
+      "pass": true
+    },
+    {
+      "name": "cancellation is not retried automatically",
+      "pass": true
+    },
+    {
+      "name": "repeat cancellation sends nothing",
+      "pass": true
+    },
+    {
+      "name": "customer cannot trigger a status email",
+      "pass": true
+    },
+    {
+      "name": "customer attempt sent nothing",
+      "pass": true
+    },
+    {
+      "name": "legacy confirmation request is a no-op when the backend already owns the event",
+      "pass": true
+    },
+    {
+      "name": "legacy confirmation request sent nothing",
+      "pass": true
+    },
+    {
+      "name": "customer cannot use the manual resend",
+      "pass": true
+    },
+    {
+      "name": "staff manual resend sends one more message",
+      "pass": true
+    },
+    {
+      "name": "a second manual resend still sends exactly one more",
+      "pass": true
+    },
+    {
+      "name": "manual resend does not rewrite the automatic record",
+      "pass": true
+    },
+    {
+      "name": "tracking lookup with the right phone succeeds",
+      "pass": true
+    },
+    {
+      "name": "tracking response omits id",
+      "pass": true
+    },
+    {
+      "name": "tracking response omits items",
+      "pass": true
+    },
+    {
+      "name": "tracking response omits totals",
+      "pass": true
+    },
+    {
+      "name": "tracking response omits shipping",
+      "pass": true
+    },
+    {
+      "name": "tracking response omits customer",
+      "pass": true
+    },
+    {
+      "name": "tracking response omits email",
+      "pass": true
+    },
+    {
+      "name": "tracking response omits _emailEvents",
+      "pass": true
+    },
+    {
+      "name": "tracking response omits _requestHash",
+      "pass": true
+    },
+    {
+      "name": "tracking response omits customerUserId",
+      "pass": true
+    },
+    {
+      "name": "tracking response omits payment_ref",
+      "pass": true
+    },
+    {
+      "name": "tracking response carries the code",
+      "pass": true
+    },
+    {
+      "name": "tracking response carries a quantity",
+      "pass": true
+    },
+    {
+      "name": "tracking response carries the stored total",
+      "pass": true
+    },
+    {
+      "name": "tracking response carries a status timeline",
+      "pass": true
+    },
+    {
+      "name": "tracking response links the customer invoice endpoint",
+      "pass": true
+    },
+    {
+      "name": "invoice is refused before the order is verified",
+      "pass": true
+    }
+  ],
+  "serverLog": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\cm-notify-cxc_tnwq\\php-server.log"
+}

@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-10-05T03:32:48.814Z",
+  "passed": true,
+  "scope": "Three consecutive fresh browser launches after the stateless public-read backend fix. Each run performs owner login, staff CRUD and all five real role logins. Final run also verifies bounded name/avatar wrapping. Only isolated synthetic fixture data was used and restored.",
+  "totalChecks": 165,
+  "runs": [
+    {
+      "path": "audit-evidence/staff-users-browser-1791170935250/results.json",
+      "generatedAt": "2026-10-05T03:29:42.843Z",
+      "checks": 55,
+      "screenshots": 12,
+      "errors": 0
+    },
+    {
+      "path": "audit-evidence/staff-users-browser-1791171001911/results.json",
+      "generatedAt": "2026-10-05T03:30:49.354Z",
+      "checks": 55,
+      "screenshots": 12,
+      "errors": 0
+    },
+    {
+      "path": "audit-evidence/staff-users-browser-1791171073770/results.json",
+      "generatedAt": "2026-10-05T03:32:01.309Z",
+      "checks": 55,
+      "screenshots": 12,
+      "errors": 0
+    }
+  ],
+  "sourceSha256": {
+    "js/app.js": "9034e9e91e09faf8739e7c3003cd7b7e468e21bbd5672e8694205c1b1ea4bde8",
+    "css/staff-users.css": "76de59cd1aeb976dbb0c7fd44038fe569e20b4d2d5d649c60d6a16a3ee6283a7",
+    "cm-security.php": "3a85f45b7687f54c1e4a37863f484714aba72991067f07ad4cf1addaa10ff44d",
+    "customer-auth.php": "0d21784140422082d4c037c8754c4ea195339d8b96f1e0bf293ef71e8d9d0f81",
+    "cm-commerce.php": "f76e2d29e3f0d08c0627838a4b6013d859a5cbd8d5e2cc162b57141dd0f6cf39"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "checks": [
+    {
+      "name": "Anonymous category creation rejected",
+      "pass": true
+    },
+    {
+      "name": "Fixture login",
+      "pass": true
+    },
+    {
+      "name": "CSRF required",
+      "pass": true
+    },
+    {
+      "name": "Category created through PHP",
+      "pass": true
+    },
+    {
+      "name": "Persisted in existing data directory",
+      "pass": true
+    },
+    {
+      "name": "New category is in public product feed",
+      "pass": true
+    },
+    {
+      "name": "Invalid or duplicate category rejected {'name': 'Another', 'slug': 'category-qa'}",
+      "pass": true
+    },
+    {
+      "name": "Invalid or duplicate category rejected {'name': 'CATEGORY QA', 'slug': 'other-qa'}",
+      "pass": true
+    },
+    {
+      "name": "Invalid or duplicate category rejected {'name': 'New name', 'slug': 'sparklers'}",
+      "pass": true
+    },
+    {
+      "name": "Invalid or duplicate category rejected {'name': '', 'slug': 'empty'}",
+      "pass": true
+    },
+    {
+      "name": "Invalid or duplicate category rejected {'name': 'Bad slug', 'slug': '../bad'}",
+      "pass": true
+    },
+    {
+      "name": "Refresh returns saved category",
+      "pass": true
+    },
+    {
+      "name": "Created category accepted for product assignment",
+      "pass": true
+    }
+  ],
+  "passed": 13,
+  "total": 13,
+  "fixture": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\category-create-junkhowv",
+  "mailDisabled": true
+}

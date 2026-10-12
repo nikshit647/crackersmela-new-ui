@@ -1,0 +1,100 @@
+{
+  "target": "audit-evidence\\production-release",
+  "files": [
+    {
+      "file": ".htaccess",
+      "bytes": 1776,
+      "sha256": "4a44fdf6ef80cb41c089ab5aaf96720736cba8c6cdf4be50dfd92a8de0c1a6f4"
+    },
+    {
+      "file": "cm-cms.php",
+      "bytes": 31437,
+      "sha256": "46e5b92e45a0a349d34ad5991938c39d3e0820de0d254617b6a463e845b65586"
+    },
+    {
+      "file": "cms-api.php",
+      "bytes": 9848,
+      "sha256": "06209ce04a967ea5f03a1f54e6db138985471fcd015587df25f0462c760fe79f"
+    },
+    {
+      "file": "cms-media.php",
+      "bytes": 8716,
+      "sha256": "1586b8e0b9294a2992a9b6112155925df4d6bbb5e0f51c1930c5b0ad1656e4a3"
+    },
+    {
+      "file": "cms-page.php",
+      "bytes": 3473,
+      "sha256": "0cb720738a53a1d05f341eab1793ef8b557f40e5fe7246d68edaa17542b77c6d"
+    },
+    {
+      "file": "cms-sitemap.php",
+      "bytes": 988,
+      "sha256": "0e00540dd62329331cdefb8a7fec4edf5609345dd1176f942f7233f36a817a33"
+    },
+    {
+      "file": "css/cms-content.css",
+      "bytes": 10674,
+      "sha256": "d70daf8b540235ccf58a063e32fed1a1a9f0a7ebcea021842954f6fe2600540f"
+    },
+    {
+      "file": "css/visual-editor.css",
+      "bytes": 36345,
+      "sha256": "f0e9f5ca645a92e8f726e6a27bc4ca7830baa058ad43d784b36c8b50fb3c6a15"
+    },
+    {
+      "file": "editor-shell.html",
+      "bytes": 6878,
+      "sha256": "a6fbc5026f216593c76c5004e267b4cc30ce5c7ec2565062c3551349fd10ec3b"
+    },
+    {
+      "file": "index.html",
+      "bytes": 21828,
+      "sha256": "24028b593be1c4a50c237ddf4721da527e0abf25cbd8600baee1c4bd8c2eec4c"
+    },
+    {
+      "file": "js/app.js",
+      "bytes": 326159,
+      "sha256": "d5c437f7526a43ae2f96508e787d1666b9a3389cc3269d95206397f3ce773a0c"
+    },
+    {
+      "file": "js/cms-model.js",
+      "bytes": 6868,
+      "sha256": "6e619b3a7c55b2e25096a67c866c49834f8c3a31d83e43045b6da1d4c5d61a6c"
+    },
+    {
+      "file": "js/cms-preview.js",
+      "bytes": 47194,
+      "sha256": "cde1a0c6d48e7bc765ea328a4444d7401f3d9b35c7a7267637cf4814288ef777"
+    },
+    {
+      "file": "js/cms-runtime.js",
+      "bytes": 40695,
+      "sha256": "bc00bf27c9c2c28a64182acfbd778ae76207e84641915f11b4d8d3b95bb51d48"
+    },
+    {
+      "file": "js/visual-editor.js",
+      "bytes": 86464,
+      "sha256": "3571ec863f98ee0d8209846f7519b93e4d7d3dca66f61321d1ee7ce219e3ca57"
+    },
+    {
+      "file": "robots.txt",
+      "bytes": 342,
+      "sha256": "671f0b7c457ee59869c47074838da2181f33a9e6db8fc849066b224b88e1b155"
+    },
+    {
+      "file": "sitemap.php",
+      "bytes": 2968,
+      "sha256": "2a887bb5bff1c22e43e9bc3014d832bc7c4c40f343c55b598ffa91685959fdd6"
+    },
+    {
+      "file": "visual-editor.php",
+      "bytes": 1565,
+      "sha256": "2e047c276b2cbfd970ed020b42c06074f36b4ec6744c3e1d612dd7aab688a508"
+    },
+    {
+      "file": "visual-preview.php",
+      "bytes": 1657,
+      "sha256": "5553d2ea865ff55eacf5eac255657c0e312ccab5d87341387e7079c7588c9067"
+    }
+  ]
+}

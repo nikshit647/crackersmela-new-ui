@@ -1,0 +1,17 @@
+{
+  "status": "FAIL",
+  "at": "2026-10-04T12:13:09.514Z",
+  "temporaryPage": "custom-3637b9559f16bf90cf67e90dd0064b97",
+  "checks": [
+    {
+      "name": "Live authenticated editor loads the actual Home storefront",
+      "status": "PASS"
+    },
+    {
+      "name": "A real new page is created in the existing website",
+      "status": "PASS"
+    }
+  ],
+  "error": "Command failed: C:\\Users\\Nikshit Garje\\AppData\\Roaming\\npm\\node_modules\\agent-browser\\bin\\agent-browser-win32-x64.exe --session cm-editor-live-check mouse move 930 422.0859375 --json",
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-artifacts\\visual-editor"
+}

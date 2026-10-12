@@ -1,0 +1,421 @@
+{
+  "generatedAt": "2026-10-05T03:32:01.309Z",
+  "scope": "Real Users UI against the isolated local fixture; synthetic accounts/order/customer; mail disabled; fixture stores restored.",
+  "session": "staff-ui-13d9fd6ea971",
+  "fixture": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\cms-fixture-4jhxpufw",
+  "fixtureRestored": true,
+  "checks": [
+    {
+      "name": "Configured owner signs in through the real form and lands on Dashboard",
+      "status": "PASS"
+    },
+    {
+      "name": "Owner initial hydration has no forbidden requests",
+      "status": "PASS"
+    },
+    {
+      "name": "Users includes protected owner and synthetic customer order count/spend",
+      "status": "PASS"
+    },
+    {
+      "name": "Native Add dialog focuses Name",
+      "status": "PASS"
+    },
+    {
+      "name": "Role choice is associated with its access description",
+      "status": "PASS"
+    },
+    {
+      "name": "Add dialog keyboard navigation advances to Email",
+      "status": "PASS"
+    },
+    {
+      "name": "Add dialog reverse keyboard navigation returns to Name",
+      "status": "PASS"
+    },
+    {
+      "name": "Escape closes Add dialog and restores its trigger focus",
+      "status": "PASS"
+    },
+    {
+      "name": "Short password fails visibly before transport and focuses its field",
+      "status": "PASS"
+    },
+    {
+      "name": "Users form creates super_admin",
+      "status": "PASS"
+    },
+    {
+      "name": "Users form creates admin",
+      "status": "PASS"
+    },
+    {
+      "name": "Users form creates billing",
+      "status": "PASS"
+    },
+    {
+      "name": "Users form creates inventory_manager",
+      "status": "PASS"
+    },
+    {
+      "name": "Users form creates order_manager",
+      "status": "PASS"
+    },
+    {
+      "name": "Successful save restores focus after the Users table refreshes",
+      "status": "PASS"
+    },
+    {
+      "name": "admins filter and visible count agree",
+      "status": "PASS"
+    },
+    {
+      "name": "billing filter and visible count agree",
+      "status": "PASS"
+    },
+    {
+      "name": "inventory filter and visible count agree",
+      "status": "PASS"
+    },
+    {
+      "name": "orders filter and visible count agree",
+      "status": "PASS"
+    },
+    {
+      "name": "customers filter and visible count agree",
+      "status": "PASS"
+    },
+    {
+      "name": "Search narrows by email without losing input focus",
+      "status": "PASS"
+    },
+    {
+      "name": "Edit never exposes the existing password",
+      "status": "PASS"
+    },
+    {
+      "name": "Edit persists name and role without password replacement",
+      "status": "PASS"
+    },
+    {
+      "name": "Duplicate staff email produces a visible safe error",
+      "status": "PASS"
+    },
+    {
+      "name": "Deactivate persists and Inactive filter shows the account",
+      "status": "PASS"
+    },
+    {
+      "name": "Inactive staff cannot sign in and receives a safe login error",
+      "status": "PASS"
+    },
+    {
+      "name": "Reactivate restores Active status",
+      "status": "PASS"
+    },
+    {
+      "name": "Users mobile viewport has no page overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile dialog fits the viewport",
+      "status": "PASS"
+    },
+    {
+      "name": "Long account name and email wrap inside the mobile activation dialog",
+      "status": "PASS"
+    },
+    {
+      "name": "super_admin UI login retains identity and opens its landing workspace",
+      "status": "PASS"
+    },
+    {
+      "name": "super_admin navigation exposes permitted workspaces",
+      "status": "PASS"
+    },
+    {
+      "name": "super_admin hydration makes no forbidden request",
+      "status": "PASS",
+      "detail": [
+        {
+          "bodyKeys": [
+            "a",
+            "email",
+            "password"
+          ],
+          "method": "POST",
+          "path": "/staff-auth.php?a=login",
+          "status": 200
+        },
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/staff-auth.php?a=session",
+          "status": 200
+        },
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/orders-api.php?a=pull",
+          "status": 200
+        },
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/staff-users.php?a=list",
+          "status": 200
+        },
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/customer-auth.php?a=users",
+          "status": 200
+        },
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/__dev-version.json",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "name": "admin UI login retains identity and opens its landing workspace",
+      "status": "PASS"
+    },
+    {
+      "name": "admin navigation exposes permitted workspaces",
+      "status": "PASS"
+    },
+    {
+      "name": "admin hydration makes no forbidden request",
+      "status": "PASS",
+      "detail": [
+        {
+          "bodyKeys": [
+            "a",
+            "email",
+            "password"
+          ],
+          "method": "POST",
+          "path": "/staff-auth.php?a=login",
+          "status": 200
+        },
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/products-api.php?a=pull&t=1791171099797",
+          "status": 200
+        },
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/__dev-version.json",
+          "status": 200
+        },
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/staff-auth.php?a=session",
+          "status": 200
+        },
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/orders-api.php?a=pull",
+          "status": 200
+        },
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/customer-auth.php?a=users",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "name": "Admin can read customers but has no staff management controls",
+      "status": "PASS"
+    },
+    {
+      "name": "billing UI login retains identity and opens its landing workspace",
+      "status": "PASS"
+    },
+    {
+      "name": "billing navigation exposes permitted workspaces",
+      "status": "PASS"
+    },
+    {
+      "name": "billing navigation hides privileged configuration",
+      "status": "PASS"
+    },
+    {
+      "name": "billing hydration makes no forbidden request",
+      "status": "PASS",
+      "detail": [
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/__dev-version.json",
+          "status": 200
+        },
+        {
+          "bodyKeys": [
+            "a",
+            "email",
+            "password"
+          ],
+          "method": "POST",
+          "path": "/staff-auth.php?a=login",
+          "status": 200
+        },
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/staff-auth.php?a=session",
+          "status": 200
+        },
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/orders-api.php?a=pull",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "name": "Billing sees editable payment and read-only status",
+      "status": "PASS"
+    },
+    {
+      "name": "Billing payment UI persists only its granted field",
+      "status": "PASS"
+    },
+    {
+      "name": "inventory_manager UI login retains identity and opens its landing workspace",
+      "status": "PASS"
+    },
+    {
+      "name": "inventory_manager navigation exposes permitted workspaces",
+      "status": "PASS"
+    },
+    {
+      "name": "inventory_manager navigation hides privileged configuration",
+      "status": "PASS"
+    },
+    {
+      "name": "inventory_manager hydration makes no forbidden request",
+      "status": "PASS",
+      "detail": [
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/__dev-version.json",
+          "status": 200
+        },
+        {
+          "bodyKeys": [
+            "a",
+            "email",
+            "password"
+          ],
+          "method": "POST",
+          "path": "/staff-auth.php?a=login",
+          "status": 200
+        },
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/staff-auth.php?a=session",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "name": "Inventory product editor saves without sending settings",
+      "status": "PASS"
+    },
+    {
+      "name": "order_manager UI login retains identity and opens its landing workspace",
+      "status": "PASS"
+    },
+    {
+      "name": "order_manager navigation exposes permitted workspaces",
+      "status": "PASS"
+    },
+    {
+      "name": "order_manager navigation hides privileged configuration",
+      "status": "PASS"
+    },
+    {
+      "name": "order_manager hydration makes no forbidden request",
+      "status": "PASS",
+      "detail": [
+        {
+          "bodyKeys": [
+            "a",
+            "email",
+            "password"
+          ],
+          "method": "POST",
+          "path": "/staff-auth.php?a=login",
+          "status": 200
+        },
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/staff-auth.php?a=session",
+          "status": 200
+        },
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/orders-api.php?a=pull",
+          "status": 200
+        },
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/customer-auth.php?a=users",
+          "status": 200
+        },
+        {
+          "bodyKeys": [],
+          "method": "GET",
+          "path": "/__dev-version.json",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "name": "Order Manager sees editable status and read-only payment",
+      "status": "PASS"
+    },
+    {
+      "name": "Order Manager status UI persists only its granted field",
+      "status": "PASS"
+    },
+    {
+      "name": "No JavaScript page errors in integrated staff journeys",
+      "status": "PASS"
+    }
+  ],
+  "screenshots": [
+    "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\staff-users-browser-1791171073770\\01-users-desktop.png",
+    "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\staff-users-browser-1791171073770\\02-add-dialog-desktop.png",
+    "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\staff-users-browser-1791171073770\\03-all-roles-desktop.png",
+    "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\staff-users-browser-1791171073770\\04-users-mobile.png",
+    "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\staff-users-browser-1791171073770\\05-add-dialog-mobile.png",
+    "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\staff-users-browser-1791171073770\\04b-long-activation-mobile.png",
+    "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\staff-users-browser-1791171073770\\06-role-super_admin.png",
+    "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\staff-users-browser-1791171073770\\06-role-admin.png",
+    "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\staff-users-browser-1791171073770\\06-role-billing-pos.png",
+    "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\staff-users-browser-1791171073770\\06-role-billing.png",
+    "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\staff-users-browser-1791171073770\\06-role-inventory_manager.png",
+    "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\staff-users-browser-1791171073770\\06-role-order_manager.png"
+  ],
+  "console": [],
+  "errors": [],
+  "failure": null,
+  "passed": true
+}

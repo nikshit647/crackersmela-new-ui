@@ -1,0 +1,119 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Category section remains selectable in the existing editor",
+      "status": "PASS"
+    },
+    {
+      "name": "Automatic category count explains its source and keeps simple style controls",
+      "status": "PASS"
+    },
+    {
+      "name": "Automatic count cannot enter inline text editing",
+      "status": "PASS"
+    },
+    {
+      "name": "Advanced count inspector omits the editable text field",
+      "status": "PASS"
+    },
+    {
+      "name": "Advanced count typography controls remain available",
+      "status": "PASS"
+    },
+    {
+      "name": "Clicking category heading opens its existing text property",
+      "status": "PASS"
+    },
+    {
+      "name": "Category text edits, undo and redo update the canvas",
+      "status": "PASS"
+    },
+    {
+      "name": "Category mobile styles remain independent of desktop styles",
+      "status": "PASS"
+    },
+    {
+      "name": "Category draft persists through the real CMS API",
+      "status": "PASS"
+    },
+    {
+      "name": "Saved draft does not change the public version",
+      "status": "PASS"
+    },
+    {
+      "name": "Visitor preview keeps the SVG family and all category links",
+      "status": "PASS"
+    },
+    {
+      "name": "Category publication exposes the saved text",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh storefront renders the published category edit and artwork",
+      "status": "PASS"
+    },
+    {
+      "name": "Original category content and styles restored in the private fixture",
+      "status": "PASS"
+    },
+    {
+      "name": "Add/cart drawer at 360px",
+      "status": "PASS"
+    },
+    {
+      "name": "Add/cart drawer at 375px",
+      "status": "PASS"
+    },
+    {
+      "name": "Add/cart drawer at 390px",
+      "status": "PASS"
+    },
+    {
+      "name": "Add/cart drawer at 412px",
+      "status": "PASS"
+    },
+    {
+      "name": "Add/cart drawer at 425px",
+      "status": "PASS"
+    },
+    {
+      "name": "Add/cart drawer at 768px",
+      "status": "PASS"
+    },
+    {
+      "name": "Add/cart drawer at 1024px",
+      "status": "PASS"
+    },
+    {
+      "name": "Add/cart drawer at 1280px",
+      "status": "PASS"
+    },
+    {
+      "name": "Product detail remains functional after category navigation",
+      "status": "PASS"
+    },
+    {
+      "name": "Product detail add preserves the selected product",
+      "status": "PASS"
+    },
+    {
+      "name": "Full cart permits checkout above the existing minimum",
+      "status": "PASS"
+    },
+    {
+      "name": "Checkout customer and delivery form loads",
+      "status": "PASS"
+    },
+    {
+      "name": "Synthetic cart cleared through normal UI",
+      "status": "PASS"
+    },
+    {
+      "name": "Editor and commerce smoke have no uncaught exceptions",
+      "status": "PASS"
+    }
+  ],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\category-editor-1791200818688",
+  "scope": "Private fixture only; original category document restored; no order or mail sent"
+}

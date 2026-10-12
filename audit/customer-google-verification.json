@@ -1,0 +1,125 @@
+{
+  "scope": "Actual production verifier with real synthetic RSA signatures and offline certificate transport; no Google or production requests",
+  "checks": [
+    {
+      "name": "Malformed token rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Oversized token rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Unsigned algorithm rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "HMAC algorithm confusion rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Wrong token type rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Missing signing key ID rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Wrong Firebase audience rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Wrong issuer rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Expired signed token rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "String expiry rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Future issued-at rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Missing subject rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Unverified signed email rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Non-Google provider rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid claims do not request certificates",
+      "status": "PASS"
+    },
+    {
+      "name": "Valid RS256 signature establishes signed identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Display name strips control characters",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh cached certificate prevents network request",
+      "status": "PASS"
+    },
+    {
+      "name": "Untrusted private-key signature rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Tampered identity claims rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid signed email rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Unknown certificate key rejected after refresh",
+      "status": "PASS"
+    },
+    {
+      "name": "Certificate request uses fixed Google HTTPS endpoint and disables redirects",
+      "status": "PASS"
+    },
+    {
+      "name": "Certificate request sends no token or identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Rotated key refreshes certificate and verifies signature",
+      "status": "PASS"
+    },
+    {
+      "name": "Bounded stale certificate works during provider outage",
+      "status": "PASS"
+    },
+    {
+      "name": "Expired certificate cache and outage fail closed",
+      "status": "PASS"
+    },
+    {
+      "name": "Malformed certificate cache fails closed",
+      "status": "PASS"
+    },
+    {
+      "name": "Empty certificate maps rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Oversized certificate maps rejected",
+      "status": "PASS"
+    }
+  ]
+}

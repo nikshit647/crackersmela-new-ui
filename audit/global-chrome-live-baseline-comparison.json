@@ -1,0 +1,168 @@
+{
+  "capturedFiles": 23,
+  "matches": 23,
+  "divergent": [],
+  "files": [
+    {
+      "path": "cm-cms.php",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "a0694b5feb671f4238e49e7d98979720b2914f330dd1ce37e99b69795ad9eb57",
+      "archivedSha256": "a0694b5feb671f4238e49e7d98979720b2914f330dd1ce37e99b69795ad9eb57",
+      "baseline": "deploy-20261007-full1/upload/production-release/cm-cms.php"
+    },
+    {
+      "path": "cm-coupons.php",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "932294d4a172c3fc1d19e420d6b75eb422f2f8e71ec7ea212ec7cf0561cada7b",
+      "archivedSha256": "932294d4a172c3fc1d19e420d6b75eb422f2f8e71ec7ea212ec7cf0561cada7b",
+      "baseline": "deploy-20261007-full1/upload/production-release/cm-coupons.php"
+    },
+    {
+      "path": "cm-seo.php",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "9d969cd01dda97e99f47d8bcb4ba255a4d472996bdaf6c5fbc43bb9c8f97fee4",
+      "archivedSha256": "9d969cd01dda97e99f47d8bcb4ba255a4d472996bdaf6c5fbc43bb9c8f97fee4",
+      "baseline": "deploy-20261007-full1/upload/production-release/cm-seo.php"
+    },
+    {
+      "path": "cms-api.php",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "afec930945f34cb356e7925735760ecf7b8fc4dadff9c4d90b43c79c301f2e49",
+      "archivedSha256": "afec930945f34cb356e7925735760ecf7b8fc4dadff9c4d90b43c79c301f2e49",
+      "baseline": "deploy-20261006/candidate.zip!production-release/cms-api.php"
+    },
+    {
+      "path": "cms-page.php",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "a91215ff067f1dccc89dee75707556217c269e07fa3775b569df4eb7615d4d2d",
+      "archivedSha256": "a91215ff067f1dccc89dee75707556217c269e07fa3775b569df4eb7615d4d2d",
+      "baseline": "deploy-20261007-full1/upload/production-release/cms-page.php"
+    },
+    {
+      "path": "coupons-api.php",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "051f362a971ae9044bcfbaf40e5ade9f7c36fdee82433e90284097ab388d7411",
+      "archivedSha256": "051f362a971ae9044bcfbaf40e5ade9f7c36fdee82433e90284097ab388d7411",
+      "baseline": "deploy-20261007-full1/upload/production-release/coupons-api.php"
+    },
+    {
+      "path": "css/cms-content.css",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "c2670276fbc5c379a141f971e38dab2d062e67a12358c535b9be9561f4f97e44",
+      "archivedSha256": "c2670276fbc5c379a141f971e38dab2d062e67a12358c535b9be9561f4f97e44",
+      "baseline": "deploy-20261006/candidate.zip!production-release/css/cms-content.css"
+    },
+    {
+      "path": "css/coupons.css",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "2e6eb18d299ab38774136b16562c8c0ce776f60e6fb62c2286efa6096b8691c7",
+      "archivedSha256": "2e6eb18d299ab38774136b16562c8c0ce776f60e6fb62c2286efa6096b8691c7",
+      "baseline": "deploy-20261007-full1/upload/production-release/css/coupons.css"
+    },
+    {
+      "path": "css/styles.css",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "645d4f1a9e58804a8a7a42982f9ffcd1bdb3b30b529ca1e74cc2b5e1949fab76",
+      "archivedSha256": "645d4f1a9e58804a8a7a42982f9ffcd1bdb3b30b529ca1e74cc2b5e1949fab76",
+      "baseline": "deploy-20261007-full1/upload/production-release/css/styles.css"
+    },
+    {
+      "path": "css/visual-editor.css",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "a2cc30a0fa7eed7a3d6dce6f8783f72aa0c4e073dd5f6ef93cb38d086924fee8",
+      "archivedSha256": "a2cc30a0fa7eed7a3d6dce6f8783f72aa0c4e073dd5f6ef93cb38d086924fee8",
+      "baseline": "deploy-20261007-full1/upload/production-release/css/visual-editor.css"
+    },
+    {
+      "path": "editor-shell.html",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "32f6b2cc34c085685577947b7e7b931dda8e7baa81af14ee092a55b2c5606d81",
+      "archivedSha256": "32f6b2cc34c085685577947b7e7b931dda8e7baa81af14ee092a55b2c5606d81",
+      "baseline": "deploy-20261007-full1/upload/production-release/editor-shell.html"
+    },
+    {
+      "path": "index.html",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "6c498e7b30595d6ab20f9662d855b257f31557dd6665596c8b003279206cf0fe",
+      "archivedSha256": "6c498e7b30595d6ab20f9662d855b257f31557dd6665596c8b003279206cf0fe",
+      "baseline": "deploy-20261007-full1/upload/production-release/index.html"
+    },
+    {
+      "path": "js/app.js",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "36f9f07f80e5f8f25326c358ae2030ae75b3906042d2ca4b950b9d66a5dde1ac",
+      "archivedSha256": "36f9f07f80e5f8f25326c358ae2030ae75b3906042d2ca4b950b9d66a5dde1ac",
+      "baseline": "deploy-20261007-full1/upload/production-release/js/app.js"
+    },
+    {
+      "path": "js/cms-model.js",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "5427ce41c20c57beeeeb10056f1b007eb7bfedf1bccc9cffeee2bae75086e838",
+      "archivedSha256": "5427ce41c20c57beeeeb10056f1b007eb7bfedf1bccc9cffeee2bae75086e838",
+      "baseline": "deploy-20261006/candidate.zip!production-release/js/cms-model.js"
+    },
+    {
+      "path": "js/cms-preview.js",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "03d961e9d82f6919b410289a2ff082d412cd3279392da07fda44814d5588077f",
+      "archivedSha256": "03d961e9d82f6919b410289a2ff082d412cd3279392da07fda44814d5588077f",
+      "baseline": "deploy-20261006/candidate.zip!production-release/js/cms-preview.js"
+    },
+    {
+      "path": "js/cms-runtime.js",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "22be73b92ee3b03909d83847a29a93d01943694374868640ea137a71fcba3fd6",
+      "archivedSha256": "22be73b92ee3b03909d83847a29a93d01943694374868640ea137a71fcba3fd6",
+      "baseline": "deploy-20261007-full1/upload/production-release/js/cms-runtime.js"
+    },
+    {
+      "path": "js/coupons.js",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "43ef7a4e4aa85bb4fd179944f22e5291fc8e28620377e4cf18dff0bc5ea36a1c",
+      "archivedSha256": "43ef7a4e4aa85bb4fd179944f22e5291fc8e28620377e4cf18dff0bc5ea36a1c",
+      "baseline": "deploy-20261007-full1/upload/production-release/js/coupons.js"
+    },
+    {
+      "path": "js/seo-content.js",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "b64c43a276d50f863400d809fff67a78c7680395857471b175a0a810c926a38c",
+      "archivedSha256": "b64c43a276d50f863400d809fff67a78c7680395857471b175a0a810c926a38c",
+      "baseline": "deploy-20261007-full1/upload/production-release/js/seo-content.js"
+    },
+    {
+      "path": "js/seo-runtime.js",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "28b23cbc1ec7f50a1f5ba0f79b683022b93d8e85c29d6a39612ef85f9a385d22",
+      "archivedSha256": "28b23cbc1ec7f50a1f5ba0f79b683022b93d8e85c29d6a39612ef85f9a385d22",
+      "baseline": "deploy-20261007-full1/upload/production-release/js/seo-runtime.js"
+    },
+    {
+      "path": "js/visual-editor.js",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "727916dfd23d99b53062ff08369b75a2b1fb131da6f4410be33feb500a499c2f",
+      "archivedSha256": "727916dfd23d99b53062ff08369b75a2b1fb131da6f4410be33feb500a499c2f",
+      "baseline": "deploy-20261006/candidate.zip!production-release/js/visual-editor.js"
+    },
+    {
+      "path": "seo-page.php",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "2b94d6705af7a728e8f10d03178d3fe3383c02293924451a1f56a89b5537617a",
+      "archivedSha256": "2b94d6705af7a728e8f10d03178d3fe3383c02293924451a1f56a89b5537617a",
+      "baseline": "deploy-20261007-full1/upload/production-release/seo-page.php"
+    },
+    {
+      "path": "sitemap.php",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "0e5650b284f3d4b5b84a4ba5dcb81682f4cc37c521f8c1740fdc5cfe37446545",
+      "archivedSha256": "0e5650b284f3d4b5b84a4ba5dcb81682f4cc37c521f8c1740fdc5cfe37446545",
+      "baseline": "deploy-20261007-full1/upload/production-release/sitemap.php"
+    },
+    {
+      "path": "visual-preview.php",
+      "matchesArchivedBaseline": true,
+      "liveSha256": "c6c364c5f869bc8e59e5997f0cc98cf21c77f5b19f28ae18c669cdad5e8b1fd7",
+      "archivedSha256": "c6c364c5f869bc8e59e5997f0cc98cf21c77f5b19f28ae18c669cdad5e8b1fd7",
+      "baseline": "deploy-20261006/candidate.zip!production-release/visual-preview.php"
+    }
+  ]
+}

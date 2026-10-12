@@ -497,7 +497,7 @@ textarea {
 
 .nav-inner {
   width: 100%;
-  padding: 0 12px 0 18px;
+  padding: 0 12px 0 8px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1530,63 +1530,6 @@ body.is-authed #userIconBtn {
 .hero-chip--br {
   bottom: 9%;
   right: -3%;
-}
-
-/* ---------- Trust strip ---------- */
-.trust-strip {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.trust-card {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 20px 20px;
-  border-radius: var(--r-card);
-  background: var(--glass-med-bg);
-  backdrop-filter: var(--glass-med-blur);
-  -webkit-backdrop-filter: var(--glass-med-blur);
-  border: 1px solid var(--glass-med-border);
-  box-shadow: var(--el-1);
-  transition: transform 0.24s var(--ease), box-shadow 0.24s var(--ease), background 0.24s var(--ease);
-}
-
-.trust-card:hover {
-  transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.86);
-  box-shadow: var(--el-2);
-}
-
-.trust-card .t-icon {
-  width: 50px;
-  height: 50px;
-  flex-shrink: 0;
-  border-radius: 16px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(150deg, rgba(33, 150, 243, 0.18), rgba(13, 71, 161, 0.14));
-  color: var(--primary-deep);
-}
-
-.trust-card .t-icon svg {
-  width: 23px;
-  height: 23px;
-}
-
-.trust-card :is(h3, h4) {
-  font-size: 14.5px;
-  font-weight: 750;
-  color: var(--primary-deep);
-  line-height: 1.3;
-}
-
-.trust-card p {
-  font-size: 12.5px;
-  color: var(--muted);
-  line-height: 1.45;
-  margin-top: 2px;
 }
 
 /* ---------- Category cards ---------- */
@@ -5293,7 +5236,7 @@ body.is-authed #userIconBtn {
   /* Tablet navbar: the full pill search + named account chip no longer fit
      beside the centre links, so both collapse to round icon buttons. */
   .nav-inner {
-    padding: 0 10px 0 14px;
+    padding: 0 10px 0 8px;
     gap: 4px;
   }
 
@@ -5329,7 +5272,6 @@ body.is-authed #userIconBtn {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .trust-strip,
   .benefits-strip,
   .why-grid,
   .steps-grid {
@@ -5564,8 +5506,7 @@ body.is-authed #userIconBtn {
   .prod-grid,
   .prod-grid--3,
   .prod-grid--5,
-  .shop-layout .prod-grid,
-  .trust-strip {
+.shop-layout .prod-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
@@ -6953,7 +6894,6 @@ body::before {
 .content-card,
 .glass-panel,
 .filter-card,
-.trust-card,
 .offer-card,
 .step-card,
 .testi-card,
@@ -7040,7 +6980,6 @@ textarea:focus-visible,
   }
   .prod-card,
   .cat-card,
-  .trust-card,
   .offer-card,
   .step-card,
   .testi-card,
@@ -7178,7 +7117,6 @@ textarea:focus-visible,
 .content-card,
 .glass-panel,
 .filter-card,
-.trust-card,
 .offer-card,
 .step-card,
 .testi-card,
@@ -7389,8 +7327,8 @@ textarea:focus-visible,
 ============================================================ */
 @media (max-width: 900px) {
   .nav-inner {
-    padding: 0 8px;
-    gap: 6px;
+    padding: 0 10px 0 6px;
+    gap: 4px;
   }
 
   .mobile-toggle {
@@ -7419,10 +7357,10 @@ textarea:focus-visible,
     position: static;
     transform: none;
     margin: 0;
-    gap: 7px;
+    gap: 4px;
     flex: 1 1 auto;
     min-width: 0;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .nav-actions {
@@ -7501,7 +7439,6 @@ textarea:focus-visible,
    hairline border + inner edge-light + blue-tinted lift. */
 .prod-card,
 .cat-card,
-.trust-card,
 .offer-card,
 .step-card,
 .testi-card,
@@ -7525,7 +7462,6 @@ textarea:focus-visible,
 /* ---------- 3. Floating card: hover elevation + blue glow ---------- */
 .prod-card:hover,
 .cat-card:hover,
-.trust-card:hover,
 .offer-card:hover,
 .step-card:hover,
 .testi-card:hover,
@@ -7820,7 +7756,6 @@ textarea:focus-visible,
   }
   .prod-card,
   .cat-card,
-  .trust-card,
   .offer-card,
   .step-card,
   .testi-card,
@@ -7835,7 +7770,6 @@ textarea:focus-visible,
   }
   .prod-card:hover,
   .cat-card:hover,
-  .trust-card:hover,
   .offer-card:hover {
     transform: translateY(-2px);
   }
@@ -7856,7 +7790,6 @@ textarea:focus-visible,
   }
   .prod-card,
   .cat-card,
-  .trust-card,
   .offer-card,
   .step-card,
   .testi-card,
@@ -7869,7 +7802,6 @@ textarea:focus-visible,
   }
   .prod-card:hover,
   .cat-card:hover,
-  .trust-card:hover,
   .offer-card:hover,
   .step-card:hover,
   .testi-card:hover,
@@ -7977,7 +7909,7 @@ textarea:focus-visible,
   object-fit: contain;
   flex-shrink: 0;
 }
-.navbar .logo-img { width: 302.5px; }
+.navbar .logo-img { width: 272.25px; }
 .logo-img--drawer { width: 172px; }
 .logo-img--footer { width: 205px; }
 .logo-img--invoice { width: 162px; }
@@ -7992,14 +7924,14 @@ textarea:focus-visible,
   flex: 0 0 auto;
 }
 
-/* Mobile: big centered logo, flanking icons, no microscopic scaling.
+/* Mobile: left-aligned logo, flanking icons, no microscopic scaling.
    Logo lives in the flex row (flex-1 band) so it picks up the exact
    space the toggle/actions leave free � never overlapping on narrow
    phones. Secondary nav links live in the drawer below 900px. */
 @media (max-width: 900px) {
   .nav-links { display: none; }
-  .logo-img { width: min(36vw, 160px); max-width: 100%; }
-  .navbar .logo-img { width: min(49.5vw, 220px); }
+  .logo-img { width: min(29.16vw, 129.6px); max-width: 100%; }
+  .navbar .logo-img { width: min(40.1vw, 178px); }
   .logo-img--drawer { width: 172px; }
   .logo-img--footer { width: 188px; }
 }
@@ -8064,27 +7996,27 @@ textarea:focus-visible,
    New Arrivals + Featured product sections � premium chips
    Scoped so it refines only these product sections (cascade wins).
    ============================================================ */
-#new-arrivals,
-#featured {
+#new-arrivals {
+
   --chip-h: 44px;
   --chip-active: linear-gradient(135deg, #1E88E5 0%, #2196F3 100%);
 }
 
 /* Comfortable, consistent vertical rhythm:
    description ? chips ? grid */
-#new-arrivals .chip-row,
-#featured .chip-row {
+#new-arrivals .chip-row {
+
   margin-top: 14px;
 }
 
-#new-arrivals .prod-grid,
-#featured .prod-grid {
+#new-arrivals .prod-grid {
+
   margin-top: 26px;
 }
 
 /* Chips: one clean row on desktop, tappable equal-height pills */
-#new-arrivals .chip-row--scroll,
-#featured .chip-row--scroll {
+#new-arrivals .chip-row--scroll {
+
   flex-wrap: nowrap;
   overflow-x: auto;
   scroll-snap-type: x proximity;
@@ -8093,13 +8025,13 @@ textarea:focus-visible,
   margin-bottom: -6px;
 }
 
-#new-arrivals .chip-row--scroll::-webkit-scrollbar,
-#featured .chip-row--scroll::-webkit-scrollbar {
+#new-arrivals .chip-row--scroll::-webkit-scrollbar {
+
   display: none;
 }
 
-#new-arrivals .chip-row--scroll .chip,
-#featured .chip-row--scroll .chip {
+#new-arrivals .chip-row--scroll .chip {
+
   flex: 0 0 auto;
   scroll-snap-align: start;
 }
@@ -8108,8 +8040,8 @@ textarea:focus-visible,
    The section is white, so translucent white alone is invisible.
    We add a visible blue-tinted surface, a crisp rim, and a real drop
    shadow so each pill reads as a distinct elevated control. */
-#new-arrivals .chip,
-#featured .chip {
+#new-arrivals .chip {
+
   height: var(--chip-h);
   padding: 0 22px;
   border-radius: 999px;
@@ -8131,8 +8063,8 @@ textarea:focus-visible,
     box-shadow 220ms ease, color 220ms ease, border-color 220ms ease;
 }
 
-#new-arrivals .chip:hover,
-#featured .chip:hover {
+#new-arrivals .chip:hover {
+
   transform: translateY(-2px);
   background: linear-gradient(145deg, #ffffff, rgba(199, 224, 247, 0.95));
   border-color: rgba(33, 150, 243, 0.45);
@@ -8143,8 +8075,8 @@ textarea:focus-visible,
     inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
-#new-arrivals .chip:active,
-#featured .chip:active {
+#new-arrivals .chip:active {
+
   transform: scale(0.98);
   box-shadow:
     0 1px 2px rgba(13, 71, 161, 0.08),
@@ -8152,8 +8084,8 @@ textarea:focus-visible,
 }
 
 /* Active "All" � elevated blue glass, clearly dominant */
-#new-arrivals .chip.active,
-#featured .chip.active {
+#new-arrivals .chip.active {
+
   color: #fff;
   background: linear-gradient(145deg, #42A5F5, #1565C0);
   border-color: rgba(21, 101, 192, 0.9);
@@ -8164,8 +8096,8 @@ textarea:focus-visible,
     inset 0 -2px 4px rgba(13, 71, 161, 0.18);
 }
 
-#new-arrivals .chip.active:hover,
-#featured .chip.active:hover {
+#new-arrivals .chip.active:hover {
+
   transform: translateY(-2px);
   background: linear-gradient(145deg, #4FB3FF, #1565C0);
   box-shadow:
@@ -8175,8 +8107,8 @@ textarea:focus-visible,
     inset 0 -2px 4px rgba(13, 71, 161, 0.18);
 }
 
-#new-arrivals .chip.active:active,
-#featured .chip.active:active {
+#new-arrivals .chip.active:active {
+
   transform: scale(0.98);
   box-shadow:
     0 4px 12px rgba(33, 150, 243, 0.35),
@@ -8185,8 +8117,8 @@ textarea:focus-visible,
 
 /* Mobile: keep horizontal scroll, slightly ease shadow cost */
 @media (max-width: 767px) {
-  #new-arrivals .chip,
-  #featured .chip {
+  #new-arrivals .chip {
+
     backdrop-filter: blur(14px) saturate(150%);
     -webkit-backdrop-filter: blur(14px) saturate(150%);
     box-shadow:
@@ -8194,8 +8126,8 @@ textarea:focus-visible,
       0 5px 12px rgba(13, 71, 161, 0.14),
       inset 0 1px 0 rgba(255, 255, 255, 0.95);
   }
-  #new-arrivals .chip.active,
-  #featured .chip.active {
+  #new-arrivals .chip.active {
+
     box-shadow:
       0 6px 14px rgba(33, 150, 243, 0.4),
       inset 0 1px 0 rgba(255, 255, 255, 0.35),
@@ -8205,25 +8137,25 @@ textarea:focus-visible,
 
 /* Honour reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  #new-arrivals .chip,
-  #featured .chip {
+  #new-arrivals .chip {
+
     transition: none;
   }
   #new-arrivals .chip:hover,
-  #featured .chip:hover,
+
   #new-arrivals .chip:active,
-  #featured .chip:active,
+
   #new-arrivals .chip.active:hover,
-  #featured .chip.active:hover,
-  #new-arrivals .chip.active:active,
-  #featured .chip.active:active {
+
+  #new-arrivals .chip.active:active {
+
     transform: none;
   }
 }
 
 /* Subtle, secondary description alongside the section title */
-#new-arrivals .section__sub,
-#featured .section__sub {
+#new-arrivals .section__sub {
+
   font-size: 14.5px;
   color: var(--muted);
   margin-top: 10px;
@@ -8338,14 +8270,6 @@ textarea:focus-visible,
   }
 }
 
-/* Fix 320px horizontal overflow: trust-card flex text block min-width */
-.trust-card > :not(.t-icon) {
-  min-width: 0;
-}
-.trust-card :is(h3, h4),
-.trust-card p {
-  overflow-wrap: anywhere;
-}
 /* ============================================================
    Vector icon pass — consistent Lucide-style icon family,
    replaces emoji glyphs across the UI (navbar, promo, category
@@ -10730,3 +10654,385 @@ body.cm-dialog-open .analytics-consent { visibility: hidden; }
 .content-copy > h2:first-child { margin-top: 0; }
 .content-copy > ul { padding-left: 1.25rem; margin: 0 0 20px; }
 .content-copy > ul > li + li { margin-top: 8px; }
+
+/* ---- Orders: row actions menu, selection, invoice download ---- */
+.admin-shell .table-wrap .data-table { min-width: 860px; }
+.admin-shell .data-table th.pick-cell,
+.admin-shell .data-table td.pick-cell { width: 34px; padding-right: 0; text-align: center; }
+.admin-shell .data-table td.pick-cell input[type='checkbox'] {
+  width: 15px; height: 15px; margin: 0; accent-color: var(--as-accent); cursor: pointer; vertical-align: middle;
+}
+.admin-shell .data-table tr.adm-row--picked > td { background: var(--as-active); }
+.admin-shell .data-table td.order-actions { width: 78px; text-align: right; white-space: nowrap; }
+.admin-shell .row-act { display: inline-flex; align-items: center; gap: 2px; }
+.admin-shell .row-act > .icon-btn { width: 28px; height: 28px; padding: 0; }
+.admin-shell .row-act > .icon-btn svg { width: 15px; height: 15px; }
+.admin-shell .row-act > .icon-btn:hover { color: var(--as-accent); }
+.admin-shell .row-menu { position: relative; display: inline-block; }
+.admin-shell .row-menu > .icon-btn { width: 28px; height: 28px; padding: 0; }
+.admin-shell .row-menu > .icon-btn svg { width: 15px; height: 15px; }
+.admin-shell .row-menu__list {
+  position: absolute; right: 0; top: calc(100% + 4px); z-index: 40; min-width: 190px;
+  background: var(--as-surface); border: 1px solid var(--as-line);
+  border-radius: var(--as-radius); box-shadow: var(--as-shadow); padding: 4px;
+}
+.admin-shell .row-menu__list[hidden] { display: none; }
+.admin-shell .row-menu__list button {
+  display: flex; align-items: center; gap: 8px; width: 100%; text-align: left;
+  background: none; border: 0; border-radius: 4px; padding: 7px 9px;
+  font: inherit; font-size: 12.5px; color: var(--as-ink); cursor: pointer;
+}
+.admin-shell .row-menu__list button:hover { background: var(--as-hover); }
+.admin-shell .row-menu__list button svg { width: 14px; height: 14px; flex: 0 0 14px; color: var(--as-muted); }
+.admin-shell .adm-bulk-btn { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; }
+.admin-shell .adm-bulk-btn svg { width: 14px; height: 14px; }
+.admin-shell .adm-bulk-btn[disabled] { opacity: .5; cursor: not-allowed; }
+.admin-shell .sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+@media (max-width: 900px) {
+  .admin-shell .adm-bulk-btn { margin-left: 0; }
+}
+
+/* ---- Storefront category explorer ----
+   Cards stay on the existing light blue surface system; real catalog cutouts
+   provide the visual color while the UI uses the established brand accents. */
+.home-categories {
+  padding-top: clamp(44px, 5vw, 76px);
+}
+
+.home-categories__panel {
+  padding: 0;
+  color: var(--ink);
+}
+
+.home-categories__head {
+  max-width: 700px;
+  margin: 0 auto 27px;
+  text-align: center;
+}
+
+.home-categories__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 9px;
+  color: var(--primary-deep);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.home-categories__eyebrow span {
+  width: 22px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.home-categories__head h2 {
+  color: var(--primary-deep);
+  font-family: var(--font-display);
+  font-size: clamp(25px, 3.2vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.7px;
+  line-height: 1.16;
+  text-wrap: balance;
+}
+
+.home-categories__head p {
+  max-width: 560px;
+  margin: 8px auto 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.home-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  align-items: stretch;
+}
+
+.home-category-card {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr) 40px;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  min-height: 124px;
+  padding: 12px 15px;
+  color: var(--primary-deep);
+  text-decoration: none;
+  background: var(--bg-inner);
+  border: 1px solid var(--glass-border-2);
+  border-radius: 18px;
+  box-shadow: var(--shadow-1);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(33, 150, 243, 0.12);
+  transition: transform 170ms var(--ease), border-color 170ms ease, box-shadow 170ms ease, background-color 170ms ease;
+}
+
+.home-category-card__art {
+  display: grid;
+  width: 104px;
+  height: 104px;
+  place-items: center;
+  min-width: 0;
+}
+
+.home-category-card__art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 3px 5px rgba(13, 71, 161, 0.12));
+  transition: transform 170ms ease;
+}
+
+.home-category-card__art-fallback {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: var(--bg-deep);
+}
+
+.home-category-card__copy {
+  display: block;
+  min-width: 0;
+}
+
+.home-category-card__copy h3 {
+  margin: 0;
+  color: var(--primary-deep);
+  font-family: var(--font-display);
+  font-size: clamp(15px, 1.3vw, 18px);
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.home-category-card__count {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+}
+
+.home-category-card__arrow {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  color: var(--primary-deep);
+  background: var(--gold);
+  border: 1px solid rgba(13, 71, 161, 0.12);
+  border-radius: 50%;
+  transition: transform 170ms ease, background-color 170ms ease;
+}
+
+.home-category-card__arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .home-category-card:hover {
+    transform: translateY(-2px);
+    background: #fff;
+    border-color: rgba(13, 71, 161, 0.22);
+    box-shadow: var(--shadow-2);
+  }
+  .home-category-card:hover .home-category-card__art img { transform: scale(1.025); }
+  .home-category-card:hover .home-category-card__arrow {
+    transform: translateX(2px);
+    background: var(--amber);
+  }
+}
+
+.home-category-card:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+  border-color: var(--primary-deep);
+}
+
+@media (max-width: 980px) {
+  .home-category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .home-categories { padding-top: 42px; }
+  .home-categories__head { margin-bottom: 21px; }
+  .home-categories__head h2 { font-size: clamp(24px, 7vw, 31px); }
+  .home-categories__head p { max-width: 32ch; font-size: 13px; }
+  .home-category-grid { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .home-category-card {
+    grid-template-columns: 88px minmax(0, 1fr) 42px;
+    gap: 11px;
+    min-height: 104px;
+    padding: 9px 12px;
+    border-radius: 15px;
+  }
+  .home-category-card__art { width: 88px; height: 88px; }
+  .home-category-card__copy h3 { font-size: 16px; }
+  .home-category-card__arrow { width: 42px; height: 42px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-category-card,
+  .home-category-card__art img,
+  .home-category-card__arrow { transition: none; }
+  .home-category-card:hover,
+  .home-category-card:focus-visible { transform: none; }
+}
+
+/* ============ MOBILE NAVBAR — mathematically centred logo ============
+   The bar used to be a flex row where the logo took the leftover space
+   (flex:1 1 auto) and aligned its image to the left. Because the hamburger
+   (40px) and the right-hand controls (86px) are different widths, that
+   leftover space is not centred, so the logo sat left of true centre.
+
+   Three grid tracks with equal outer columns make the centre track exactly
+   centred in the whole bar, whatever the left and right controls measure
+   (badge shown or not, different devices, different breakpoints). No
+   positioning offsets or magic margins are involved. */
+@media (max-width: 900px) {
+  .nav-inner {
+    display: grid;
+    /* minmax(0,1fr) rather than plain 1fr: 1fr floors at min-content, which
+       let the wider right-hand cluster push the centre track off centre. */
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: 4px;
+    /* Symmetric side padding, otherwise the content box sits 2px left of the
+       viewport centre and the logo inherits that offset. */
+    padding-inline: 8px;
+  }
+
+  .nav-inner > .mobile-toggle {
+    grid-column: 1;
+    justify-self: start;
+    align-self: center;
+  }
+
+  .nav-inner > .logo {
+    grid-column: 2;
+    justify-self: center;
+    align-self: center;
+    /* The image itself, not a stretched box, now defines the centre. */
+    flex: 0 1 auto;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  /* Reserve the outer tracks for the controls: 16px container padding plus
+     2 x 92px (the 86px search+cart cluster plus a little breathing room).
+     This is a width floor, not a positioning offset - the logo is still
+     centred by the grid. It only engages on the narrowest phones. */
+  .nav-inner > .logo > .logo-img {
+    max-width: min(156px, calc(100vw - 216px));
+    height: auto;
+  }
+
+  .nav-inner > .nav-actions {
+    grid-column: 3;
+    justify-self: end;
+    align-self: center;
+  }
+
+  /* When search is open it replaces the whole bar, so it spans every track. */
+  body.nav-search-active .nav-search {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+  }
+}
+
+/* ============ CHECKOUT — delivery + billing address cards ============ */
+.checkout-stack {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.checkout-card__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--primary-deep);
+  background: rgba(33, 150, 243, 0.1);
+  border: 1px solid rgba(33, 150, 243, 0.24);
+  border-radius: 999px;
+  padding: 5px 12px;
+  margin-bottom: 12px;
+}
+
+.checkout-card__tag svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+}
+
+.checkout-card__tag--billing {
+  color: #0B6B4F;
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.28);
+}
+
+.checkout-billing__toggle {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 14px;
+  font-weight: 650;
+  color: var(--ink);
+  background: rgba(33, 150, 243, 0.07);
+  border: 1px solid rgba(33, 150, 243, 0.22);
+  border-radius: 13px;
+  padding: 13px 15px;
+  margin: 0 0 16px;
+}
+
+.checkout-billing__note {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  background: rgba(16, 185, 129, 0.09);
+  border: 1px dashed rgba(16, 185, 129, 0.42);
+  border-radius: 13px;
+  padding: 13px 15px;
+}
+
+.checkout-billing__note svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  margin-top: 1px;
+  color: #0B6B4F;
+}
+
+.checkout-billing__fields[hidden],
+.checkout-billing__note[hidden] {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .checkout-stack { gap: 14px; }
+}

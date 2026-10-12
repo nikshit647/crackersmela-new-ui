@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Live mobile category pills and two-column listing fit360px",
+      "status": "PASS",
+      "activeColor": "rgb(255, 255, 255)",
+      "activeRadius": "12px",
+      "categories": 12,
+      "columns": 2,
+      "pageWidth": 360,
+      "railDisplay": "flex",
+      "width": 360
+    },
+    {
+      "name": "Live category filter shows its matching product count",
+      "status": "PASS",
+      "count": 7,
+      "id": "gift-boxes"
+    },
+    {
+      "name": "Live Add updates visible cart counter and product quantity",
+      "status": "PASS"
+    },
+    {
+      "name": "Live cart drawer contains the selected product",
+      "status": "PASS"
+    },
+    {
+      "name": "Live full cart allows checkout above existing minimum",
+      "status": "PASS"
+    },
+    {
+      "name": "Live checkout form loads without order submission",
+      "status": "PASS"
+    },
+    {
+      "name": "Temporary live-browser cart cleared through UI",
+      "status": "PASS"
+    },
+    {
+      "name": "Live desktop listing hides mobile rail and fits1280px",
+      "status": "PASS"
+    },
+    {
+      "name": "Live admin entry remains sign-in protected",
+      "status": "PASS"
+    },
+    {
+      "name": "Live visual editor remains protected without staff sign-in",
+      "status": "PASS",
+      "url": "https://admin.crackersmela.com/visual-editor"
+    },
+    {
+      "name": "Live smoke has no uncaught JavaScript exceptions",
+      "status": "PASS",
+      "errors": []
+    }
+  ],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\release-live-smoke-20261006",
+  "scope": "Live read-only/admin access smoke and temporary local-browser cart. No order/customer/CMS mutation, no email sent.",
+  "networkReview": {
+    "requests": 289,
+    "expectedProtectedEditorStatus": 401,
+    "nonBlockingIssue": "Admin favicon.ico returns404; no application API/resource failures observed."
+  },
+  "consoleErrors": [],
+  "mobileScreenshot": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\release-live-smoke-20261006\\mobile-products-360-viewport.png"
+}

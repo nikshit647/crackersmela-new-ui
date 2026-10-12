@@ -1,0 +1,220 @@
+{
+  "checks": [
+    {
+      "name": "Anonymous template read rejected",
+      "pass": true
+    },
+    {
+      "name": "Fixture login",
+      "pass": true
+    },
+    {
+      "name": "Eight real defaults returned without saved overrides",
+      "pass": true
+    },
+    {
+      "name": "Internal notification excluded",
+      "pass": true
+    },
+    {
+      "name": "Actual sender details exposed without transport secrets",
+      "pass": true
+    },
+    {
+      "name": "ORDER_PLACED has all original fields",
+      "pass": true
+    },
+    {
+      "name": "ORDER_PLACED preview renders saved order structure",
+      "pass": true
+    },
+    {
+      "name": "ORDER_PLACED preview carries sender and resolved preheader",
+      "pass": true
+    },
+    {
+      "name": "ORDER_CONFIRMED has all original fields",
+      "pass": true
+    },
+    {
+      "name": "ORDER_CONFIRMED preview renders saved order structure",
+      "pass": true
+    },
+    {
+      "name": "ORDER_CONFIRMED preview carries sender and resolved preheader",
+      "pass": true
+    },
+    {
+      "name": "ORDER_PACKED has all original fields",
+      "pass": true
+    },
+    {
+      "name": "ORDER_PACKED preview renders saved order structure",
+      "pass": true
+    },
+    {
+      "name": "ORDER_PACKED preview carries sender and resolved preheader",
+      "pass": true
+    },
+    {
+      "name": "ORDER_SHIPPED has all original fields",
+      "pass": true
+    },
+    {
+      "name": "ORDER_SHIPPED preview renders saved order structure",
+      "pass": true
+    },
+    {
+      "name": "ORDER_SHIPPED preview carries sender and resolved preheader",
+      "pass": true
+    },
+    {
+      "name": "ORDER_OUT_FOR_DELIVERY has all original fields",
+      "pass": true
+    },
+    {
+      "name": "ORDER_OUT_FOR_DELIVERY preview renders saved order structure",
+      "pass": true
+    },
+    {
+      "name": "ORDER_OUT_FOR_DELIVERY preview carries sender and resolved preheader",
+      "pass": true
+    },
+    {
+      "name": "ORDER_DELIVERED has all original fields",
+      "pass": true
+    },
+    {
+      "name": "ORDER_DELIVERED preview renders saved order structure",
+      "pass": true
+    },
+    {
+      "name": "ORDER_DELIVERED preview carries sender and resolved preheader",
+      "pass": true
+    },
+    {
+      "name": "ORDER_CANCELLED has all original fields",
+      "pass": true
+    },
+    {
+      "name": "ORDER_CANCELLED preview renders saved order structure",
+      "pass": true
+    },
+    {
+      "name": "ORDER_CANCELLED preview carries sender and resolved preheader",
+      "pass": true
+    },
+    {
+      "name": "ORDER_UPDATED has all original fields",
+      "pass": true
+    },
+    {
+      "name": "ORDER_UPDATED preview renders saved order structure",
+      "pass": true
+    },
+    {
+      "name": "ORDER_UPDATED preview carries sender and resolved preheader",
+      "pass": true
+    },
+    {
+      "name": "Original received body recovered",
+      "pass": true
+    },
+    {
+      "name": "Unsaved draft renders safely and interpolates supported fields",
+      "pass": true
+    },
+    {
+      "name": "Preview does not save draft or change revision",
+      "pass": true
+    },
+    {
+      "name": "Save requires CSRF",
+      "pass": true
+    },
+    {
+      "name": "Invalid or incomplete draft rejected",
+      "pass": true
+    },
+    {
+      "name": "Invalid or incomplete draft rejected",
+      "pass": true
+    },
+    {
+      "name": "Invalid or incomplete draft rejected",
+      "pass": true
+    },
+    {
+      "name": "Invalid or incomplete draft rejected",
+      "pass": true
+    },
+    {
+      "name": "Invalid or incomplete draft rejected",
+      "pass": true
+    },
+    {
+      "name": "Invalid or incomplete draft rejected",
+      "pass": true
+    },
+    {
+      "name": "Custom template persists",
+      "pass": true
+    },
+    {
+      "name": "Refresh returns saved overrides/effective wording",
+      "pass": true
+    },
+    {
+      "name": "save-template rejects stale revision",
+      "pass": true
+    },
+    {
+      "name": "reset-template rejects stale revision",
+      "pass": true
+    },
+    {
+      "name": "Conflict preserves saved customized content",
+      "pass": true
+    },
+    {
+      "name": "Internal reset rejected",
+      "pass": true
+    },
+    {
+      "name": "Confirmed reset removes only override",
+      "pass": true
+    },
+    {
+      "name": "Reset restores original fields while preserving fallback",
+      "pass": true
+    },
+    {
+      "name": "Explicit single valid test address required",
+      "pass": true
+    },
+    {
+      "name": "Explicit single valid test address required",
+      "pass": true
+    },
+    {
+      "name": "Explicit single valid test address required",
+      "pass": true
+    },
+    {
+      "name": "Disabled sending reported truthfully",
+      "pass": true
+    },
+    {
+      "name": "Test leaves orders and outbox untouched",
+      "pass": true
+    },
+    {
+      "name": "Disabled test does not invent a send log",
+      "pass": true
+    }
+  ],
+  "passed": 53,
+  "total": 53,
+  "fixture": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\email-editor-api-4d09li2w",
+  "mailDisabled": true
+}

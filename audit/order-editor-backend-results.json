@@ -1,0 +1,152 @@
+{
+  "passed": 36,
+  "total": 36,
+  "results": [
+    {
+      "name": "staff authenticates in isolated fixture",
+      "pass": true
+    },
+    {
+      "name": "authorized staff can load the current internal note",
+      "pass": true
+    },
+    {
+      "name": "preview calculates historical and new product prices on the server",
+      "pass": true
+    },
+    {
+      "name": "preview never persists or sends mail",
+      "pass": true
+    },
+    {
+      "name": "preview enforces minimum order rule",
+      "pass": true
+    },
+    {
+      "name": "one save persists edited items and status together",
+      "pass": true
+    },
+    {
+      "name": "customer email mirror follows final saved email",
+      "pass": true
+    },
+    {
+      "name": "combined detail and status save sends only one customer update",
+      "pass": true
+    },
+    {
+      "name": "combined update suppresses a duplicate legacy status email",
+      "pass": true
+    },
+    {
+      "name": "same logical save is replayed without duplicate history or mail",
+      "pass": true
+    },
+    {
+      "name": "reusing a save identifier for different fields is rejected",
+      "pass": true
+    },
+    {
+      "name": "internal note edits do not trigger customer mail",
+      "pass": true
+    },
+    {
+      "name": "internal note content never appears in customer change summaries",
+      "pass": true
+    },
+    {
+      "name": "a later distinct customer edit sends a fresh update email",
+      "pass": true
+    },
+    {
+      "name": "no-op save makes no new history or email",
+      "pass": true
+    },
+    {
+      "name": "customer order responses never expose internal notes or save metadata",
+      "pass": true
+    },
+    {
+      "name": "preview requires staff authorization",
+      "pass": true
+    },
+    {
+      "name": "shipped item restrictions remain enforced",
+      "pass": true
+    },
+    {
+      "name": "shipped tracking and contact changes still work",
+      "pass": true
+    },
+    {
+      "name": "malformed tracking URL is rejected",
+      "pass": true
+    },
+    {
+      "name": "failed validation preserves the whole saved order",
+      "pass": true
+    },
+    {
+      "name": "terminal order edit restriction remains enforced",
+      "pass": true
+    },
+    {
+      "name": "POS discount survives repeated edits",
+      "pass": true
+    },
+    {
+      "name": "contact or note edit preserves delivery and existing festive discount",
+      "pass": true
+    },
+    {
+      "name": "unsupported coupon mode is rejected",
+      "pass": true
+    },
+    {
+      "name": "negative refund amount is rejected",
+      "pass": true
+    },
+    {
+      "name": "coupon fixture created",
+      "pass": true
+    },
+    {
+      "name": "keeping a limited coupon does not count the current order twice",
+      "pass": true
+    },
+    {
+      "name": "coupon eligibility uses the order customer instead of staff identity",
+      "pass": true
+    },
+    {
+      "name": "remove coupon does not immediately reapply automatic coupons",
+      "pass": true
+    },
+    {
+      "name": "disabled order update automation sends no mail",
+      "pass": true
+    },
+    {
+      "name": "status event remains available when update automation is disabled",
+      "pass": true
+    },
+    {
+      "name": "failed atomic save leaves the order unchanged and sends no email",
+      "pass": true
+    },
+    {
+      "name": "same request can succeed after an unpersisted failure",
+      "pass": true
+    },
+    {
+      "name": "stale concurrent dispatch cannot resend a claimed event",
+      "pass": true
+    },
+    {
+      "name": "transport failure is recorded without claiming delivery",
+      "pass": true
+    }
+  ],
+  "fixture": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\order-editor-tetqt5tv",
+  "mailTransport": "fake (local file only)"
+}

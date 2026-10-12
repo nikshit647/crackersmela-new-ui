@@ -1,0 +1,203 @@
+{
+  "status": "FAIL",
+  "baseline": true,
+  "checks": [
+    {
+      "name": "Catalog contains all 11 existing categories",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh /products reads global saved order",
+      "status": "FAIL",
+      "detail": {
+        "actual": [
+          "gift-boxes",
+          "kids-special",
+          "sparklers",
+          "flower-pots",
+          "chakkars",
+          "garlands",
+          "fancy",
+          "rockets",
+          "bombs",
+          "guns-rolls",
+          "night-outs"
+        ],
+        "expected": [
+          "night-outs",
+          "guns-rolls",
+          "bombs",
+          "rockets",
+          "fancy",
+          "garlands",
+          "chakkars",
+          "flower-pots",
+          "sparklers",
+          "kids-special",
+          "gift-boxes"
+        ]
+      }
+    },
+    {
+      "name": "Fresh /products sidebar matches saved order",
+      "status": "FAIL",
+      "detail": {
+        "actual": [
+          "gift-boxes",
+          "kids-special",
+          "sparklers",
+          "flower-pots",
+          "chakkars",
+          "garlands",
+          "fancy",
+          "rockets",
+          "bombs",
+          "guns-rolls",
+          "night-outs"
+        ],
+        "expected": [
+          "night-outs",
+          "guns-rolls",
+          "bombs",
+          "rockets",
+          "fancy",
+          "garlands",
+          "chakkars",
+          "flower-pots",
+          "sparklers",
+          "kids-special",
+          "gift-boxes"
+        ]
+      }
+    },
+    {
+      "name": "Fresh /category/sparklers reads global saved order",
+      "status": "FAIL",
+      "detail": {
+        "actual": [
+          "gift-boxes",
+          "kids-special",
+          "sparklers",
+          "flower-pots",
+          "chakkars",
+          "garlands",
+          "fancy",
+          "rockets",
+          "bombs",
+          "guns-rolls",
+          "night-outs"
+        ],
+        "expected": [
+          "night-outs",
+          "guns-rolls",
+          "bombs",
+          "rockets",
+          "fancy",
+          "garlands",
+          "chakkars",
+          "flower-pots",
+          "sparklers",
+          "kids-special",
+          "gift-boxes"
+        ]
+      }
+    },
+    {
+      "name": "Fresh /category/sparklers sidebar matches saved order",
+      "status": "FAIL",
+      "detail": {
+        "actual": [
+          "gift-boxes",
+          "kids-special",
+          "sparklers",
+          "flower-pots",
+          "chakkars",
+          "garlands",
+          "fancy",
+          "rockets",
+          "bombs",
+          "guns-rolls",
+          "night-outs"
+        ],
+        "expected": [
+          "night-outs",
+          "guns-rolls",
+          "bombs",
+          "rockets",
+          "fancy",
+          "garlands",
+          "chakkars",
+          "flower-pots",
+          "sparklers",
+          "kids-special",
+          "gift-boxes"
+        ]
+      }
+    },
+    {
+      "name": "Fresh /about reads global saved order",
+      "status": "FAIL",
+      "detail": {
+        "actual": [
+          "gift-boxes",
+          "kids-special",
+          "sparklers",
+          "flower-pots",
+          "chakkars",
+          "garlands",
+          "fancy",
+          "rockets",
+          "bombs",
+          "guns-rolls",
+          "night-outs"
+        ],
+        "expected": [
+          "night-outs",
+          "guns-rolls",
+          "bombs",
+          "rockets",
+          "fancy",
+          "garlands",
+          "chakkars",
+          "flower-pots",
+          "sparklers",
+          "kids-special",
+          "gift-boxes"
+        ]
+      }
+    },
+    {
+      "name": "Save order updates public backend immediately without Publish",
+      "status": "FAIL",
+      "detail": {
+        "actual": [
+          "night-outs",
+          "guns-rolls",
+          "bombs",
+          "rockets",
+          "fancy",
+          "garlands",
+          "chakkars",
+          "flower-pots",
+          "sparklers",
+          "kids-special",
+          "gift-boxes"
+        ],
+        "expected": [
+          "guns-rolls",
+          "night-outs",
+          "bombs",
+          "rockets",
+          "fancy",
+          "garlands",
+          "chakkars",
+          "flower-pots",
+          "sparklers",
+          "kids-special",
+          "gift-boxes"
+        ]
+      }
+    }
+  ],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\category-save-live-1791457871818"
+}

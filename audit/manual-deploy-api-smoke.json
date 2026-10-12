@@ -1,0 +1,182 @@
+{
+  "checkedAt": "2026-09-28T02:39:07.169Z",
+  "scope": "Anonymous read-only post-deployment checks; no login attempts, order creation, uploads or customer-data retention.",
+  "checks": [
+    {
+      "url": "https://crackersmela.com/staff-auth.php?a=session",
+      "method": "GET",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "cacheControl": "no-store, no-cache, must-revalidate",
+      "reflectedExternalOrigin": false,
+      "cookie": {
+        "secure": true,
+        "httpOnly": true,
+        "sameSite": "Strict",
+        "hostOnly": true
+      },
+      "anonymous": true,
+      "csrfTokenPresent": true,
+      "pass": true
+    },
+    {
+      "url": "https://crackersmela.com/customer-auth.php?a=session",
+      "method": "GET",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "cacheControl": "no-store, no-cache, must-revalidate",
+      "reflectedExternalOrigin": false,
+      "cookie": {
+        "secure": true,
+        "httpOnly": true,
+        "sameSite": "Strict",
+        "hostOnly": true
+      },
+      "anonymous": true,
+      "csrfTokenPresent": true,
+      "pass": true
+    },
+    {
+      "url": "https://crackersmela.com/customer-auth.php?a=users",
+      "method": "GET",
+      "status": 401,
+      "contentType": "application/json; charset=utf-8",
+      "cacheControl": "no-store, no-cache, must-revalidate",
+      "reflectedExternalOrigin": false,
+      "cookie": {
+        "secure": true,
+        "httpOnly": true,
+        "sameSite": "Strict",
+        "hostOnly": true
+      },
+      "pass": true
+    },
+    {
+      "url": "https://crackersmela.com/analytics-api.php?a=report",
+      "method": "GET",
+      "status": 401,
+      "contentType": "application/json; charset=utf-8",
+      "cacheControl": "no-store, no-cache, must-revalidate, private, max-age=0",
+      "reflectedExternalOrigin": false,
+      "cookie": {
+        "secure": true,
+        "httpOnly": true,
+        "sameSite": "Strict",
+        "hostOnly": true
+      },
+      "pass": true
+    },
+    {
+      "url": "https://crackersmela.com/orders-api.php?a=pull",
+      "method": "GET",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "cacheControl": "no-store, no-cache, must-revalidate",
+      "reflectedExternalOrigin": false,
+      "cookie": {
+        "secure": true,
+        "httpOnly": true,
+        "sameSite": "Strict",
+        "hostOnly": true
+      },
+      "anonymousOrdersEmpty": true,
+      "pass": true
+    },
+    {
+      "url": "https://crackersmela.com/customer-auth.php?a=session",
+      "method": "GET",
+      "externalOrigin": true,
+      "status": 403,
+      "pass": true
+    },
+    {
+      "url": "https://admin.crackersmela.com/staff-auth.php?a=session",
+      "method": "GET",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "cacheControl": "no-store, no-cache, must-revalidate",
+      "reflectedExternalOrigin": false,
+      "cookie": {
+        "secure": true,
+        "httpOnly": true,
+        "sameSite": "Strict",
+        "hostOnly": true
+      },
+      "anonymous": true,
+      "csrfTokenPresent": true,
+      "pass": true
+    },
+    {
+      "url": "https://admin.crackersmela.com/customer-auth.php?a=session",
+      "method": "GET",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "cacheControl": "no-store, no-cache, must-revalidate",
+      "reflectedExternalOrigin": false,
+      "cookie": {
+        "secure": true,
+        "httpOnly": true,
+        "sameSite": "Strict",
+        "hostOnly": true
+      },
+      "anonymous": true,
+      "csrfTokenPresent": true,
+      "pass": true
+    },
+    {
+      "url": "https://admin.crackersmela.com/customer-auth.php?a=users",
+      "method": "GET",
+      "status": 401,
+      "contentType": "application/json; charset=utf-8",
+      "cacheControl": "no-store, no-cache, must-revalidate",
+      "reflectedExternalOrigin": false,
+      "cookie": {
+        "secure": true,
+        "httpOnly": true,
+        "sameSite": "Strict",
+        "hostOnly": true
+      },
+      "pass": true
+    },
+    {
+      "url": "https://admin.crackersmela.com/analytics-api.php?a=report",
+      "method": "GET",
+      "status": 401,
+      "contentType": "application/json; charset=utf-8",
+      "cacheControl": "no-store, no-cache, must-revalidate, private, max-age=0",
+      "reflectedExternalOrigin": false,
+      "cookie": {
+        "secure": true,
+        "httpOnly": true,
+        "sameSite": "Strict",
+        "hostOnly": true
+      },
+      "pass": true
+    },
+    {
+      "url": "https://admin.crackersmela.com/orders-api.php?a=pull",
+      "method": "GET",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "cacheControl": "no-store, no-cache, must-revalidate",
+      "reflectedExternalOrigin": false,
+      "cookie": {
+        "secure": true,
+        "httpOnly": true,
+        "sameSite": "Strict",
+        "hostOnly": true
+      },
+      "anonymousOrdersEmpty": true,
+      "pass": true
+    },
+    {
+      "url": "https://admin.crackersmela.com/customer-auth.php?a=session",
+      "method": "GET",
+      "externalOrigin": true,
+      "status": 403,
+      "pass": true
+    }
+  ],
+  "passed": 12,
+  "total": 12
+}

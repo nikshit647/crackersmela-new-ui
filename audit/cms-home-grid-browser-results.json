@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Legacy Home keeps its saved four Desktop columns",
+      "status": "PASS"
+    },
+    {
+      "name": "Legacy Home uses native two columns at 360px",
+      "status": "PASS"
+    },
+    {
+      "name": "Legacy Home uses native two columns at 375px",
+      "status": "PASS"
+    },
+    {
+      "name": "Legacy Home uses native two columns at 390px",
+      "status": "PASS"
+    },
+    {
+      "name": "Legacy Home uses native two columns at 412px",
+      "status": "PASS"
+    },
+    {
+      "name": "Legacy Home uses native two columns at 425px",
+      "status": "PASS"
+    },
+    {
+      "name": "Explicit Mobile column override remains authoritative",
+      "status": "PASS"
+    },
+    {
+      "name": "Explicit Mobile column override does not change Desktop",
+      "status": "PASS"
+    },
+    {
+      "name": "Removing Mobile override restores native two columns",
+      "status": "PASS"
+    }
+  ],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\cms-home-grid-1791174157996"
+}

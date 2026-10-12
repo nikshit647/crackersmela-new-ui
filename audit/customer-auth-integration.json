@@ -1,0 +1,105 @@
+{
+  "scope": "Isolated PHP fixture only; no production customer operations",
+  "checks": [
+    {
+      "name": "Anonymous session issues CSRF without identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Local cookie is HttpOnly, Strict, host-only",
+      "status": "PASS"
+    },
+    {
+      "name": "Registration requires CSRF",
+      "status": "PASS"
+    },
+    {
+      "name": "Cross-origin mutation rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Malformed JSON rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Short password rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Registration assigns random customer identity, ignores requested role/id",
+      "status": "PASS"
+    },
+    {
+      "name": "Registration rotates session and exposes no account credentials",
+      "status": "PASS"
+    },
+    {
+      "name": "Password stored only as a slow server hash",
+      "status": "PASS"
+    },
+    {
+      "name": "Customer cannot read account list",
+      "status": "PASS"
+    },
+    {
+      "name": "Incorrect password is generic and creates no replacement identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Logout clears identity and rotates session",
+      "status": "PASS"
+    },
+    {
+      "name": "Logout discards guest order capabilities",
+      "status": "PASS"
+    },
+    {
+      "name": "Logout rotates guest idempotency capability",
+      "status": "PASS"
+    },
+    {
+      "name": "Email login is normalized and restores immutable UID",
+      "status": "PASS"
+    },
+    {
+      "name": "Duplicate registration rejected without overwrite",
+      "status": "PASS"
+    },
+    {
+      "name": "Long Unicode passphrases are accepted without truncation",
+      "status": "PASS"
+    },
+    {
+      "name": "A changed suffix of a long passphrase is rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Long Unicode password round-trip succeeds",
+      "status": "PASS"
+    },
+    {
+      "name": "Unverified Google token and submitted identity rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Synthetic staff login succeeds",
+      "status": "PASS"
+    },
+    {
+      "name": "Staff account list contains sanitized customer records only",
+      "status": "PASS"
+    },
+    {
+      "name": "Customer logout is valid when the host has a staff session",
+      "status": "PASS"
+    },
+    {
+      "name": "Customer logout also clears staff authentication on the same host",
+      "status": "PASS"
+    },
+    {
+      "name": "Per-account brute-force limiter returns 429",
+      "status": "PASS"
+    }
+  ]
+}

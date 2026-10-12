@@ -1,0 +1,99 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Global tree lists exactly Promo Bar, Header / Navigation and Footer",
+      "status": "PASS"
+    },
+    {
+      "name": "Page tree excludes all global components",
+      "status": "PASS"
+    },
+    {
+      "name": "Global rows have no drag handles or copy/delete/move controls",
+      "status": "PASS"
+    },
+    {
+      "name": "promo selection clearly indicates Global Component",
+      "status": "PASS"
+    },
+    {
+      "name": "promo remains hideable",
+      "status": "PASS"
+    },
+    {
+      "name": "promo cannot be structurally duplicated or deleted",
+      "status": "PASS"
+    },
+    {
+      "name": "header selection clearly indicates Global Component",
+      "status": "PASS"
+    },
+    {
+      "name": "header remains hideable",
+      "status": "PASS"
+    },
+    {
+      "name": "header cannot be structurally duplicated or deleted",
+      "status": "PASS"
+    },
+    {
+      "name": "footer selection clearly indicates Global Component",
+      "status": "PASS"
+    },
+    {
+      "name": "footer remains hideable",
+      "status": "PASS"
+    },
+    {
+      "name": "footer cannot be structurally duplicated or deleted",
+      "status": "PASS"
+    },
+    {
+      "name": "Selecting and inspecting globals preserves every page section",
+      "status": "PASS"
+    },
+    {
+      "name": "Nested navigation text retains the global scope indicator",
+      "status": "PASS"
+    },
+    {
+      "name": "Advanced nested navigation controls retain the global scope indicator",
+      "status": "PASS"
+    },
+    {
+      "name": "Nested footer text retains the global scope indicator",
+      "status": "PASS"
+    },
+    {
+      "name": "Promo panel describes whole-website publishing",
+      "status": "PASS"
+    },
+    {
+      "name": "Publish confirmation covers both current page and shared components",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile global tree contains all three readable rows without horizontal scrolling",
+      "status": "PASS"
+    },
+    {
+      "name": "Selecting a global component on mobile opens its editing controls",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile scope indicator is visible inside the viewport",
+      "status": "PASS"
+    },
+    {
+      "name": "No uncaught browser errors",
+      "status": "PASS"
+    },
+    {
+      "name": "No browser console errors",
+      "status": "PASS"
+    }
+  ],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\global-editor-browser-1791463607997",
+  "liveWrites": false
+}

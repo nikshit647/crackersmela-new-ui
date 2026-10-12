@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T11:22:07.395Z",
+  "generatedAt": "2026-10-10T11:16:36.285Z",
   "scope": "Isolated local preview HTTP harness only; not a production build or backend security verification.",
   "command": "node --test tests/preview-server.test.mjs",
   "status": "PASS",
@@ -10,17 +10,17 @@
     {
       "name": "4173: labeled preview, isolated identity, and browser boundary",
       "status": "PASS",
-      "durationMs": 17
+      "durationMs": 30
     },
     {
       "name": "4173: products-api.php permits a public snapshot read",
       "status": "PASS",
-      "durationMs": 4
+      "durationMs": 3
     },
     {
       "name": "4173: products-api.php rejects writes disguised as GET",
       "status": "PASS",
-      "durationMs": 1
+      "durationMs": 2
     },
     {
       "name": "4173: catalog-api.php permits a public snapshot read",
@@ -45,7 +45,7 @@
     {
       "name": "4173: upload-api.php does not fabricate backend data",
       "status": "PASS",
-      "durationMs": 0
+      "durationMs": 1
     },
     {
       "name": "4173: analytics-api.php does not fabricate backend data",
@@ -65,12 +65,12 @@
     {
       "name": "4173: PUT cannot mutate catalog snapshots",
       "status": "PASS",
-      "durationMs": 0
+      "durationMs": 1
     },
     {
       "name": "4173: PATCH cannot mutate catalog snapshots",
       "status": "PASS",
-      "durationMs": 0
+      "durationMs": 1
     },
     {
       "name": "4173: DELETE cannot mutate catalog snapshots",
@@ -90,17 +90,17 @@
     {
       "name": "4173: malformed or private path /images/%2e%2e/%2e%2e/package.json is rejected",
       "status": "PASS",
-      "durationMs": 0
+      "durationMs": 1
     },
     {
       "name": "4173: malformed or private path /%2eenv is rejected",
       "status": "PASS",
-      "durationMs": 0
+      "durationMs": 1
     },
     {
       "name": "4173: malformed or private path /images/%5c..%5cpackage.json is rejected",
       "status": "PASS",
-      "durationMs": 0
+      "durationMs": 1
     },
     {
       "name": "4173: malformed or private path /js/app.js:secret is rejected",
@@ -120,52 +120,52 @@
     {
       "name": "4173: nonpublic path /fixtures/products.json is not served",
       "status": "PASS",
-      "durationMs": 0
+      "durationMs": 1
     },
     {
       "name": "4173: nonpublic path /server.mjs is not served",
       "status": "PASS",
-      "durationMs": 0
+      "durationMs": 1
     },
     {
       "name": "4173: nonpublic path /js/config.js is not served",
       "status": "PASS",
-      "durationMs": 0
+      "durationMs": 1
     },
     {
       "name": "4173: nonpublic path /missing-page is not served",
       "status": "PASS",
-      "durationMs": 0
+      "durationMs": 1
     },
     {
       "name": "4173: nonpublic path /js/app.js.map is not served",
       "status": "PASS",
-      "durationMs": 0
+      "durationMs": 1
     },
     {
       "name": "4173: hostile Host header is rejected",
       "status": "PASS",
-      "durationMs": 0
+      "durationMs": 1
     },
     {
       "name": "4173: JavaScript is served with its safe MIME type",
       "status": "PASS",
-      "durationMs": 2
+      "durationMs": 25
     },
     {
       "name": "4173: HEAD provides metadata without response content",
       "status": "PASS",
-      "durationMs": 2
+      "durationMs": 3
     },
     {
       "name": "4174: labeled preview, isolated identity, and browser boundary",
       "status": "PASS",
-      "durationMs": 2
+      "durationMs": 4
     },
     {
       "name": "4174: products-api.php permits a public snapshot read",
       "status": "PASS",
-      "durationMs": 2
+      "durationMs": 1
     },
     {
       "name": "4174: products-api.php rejects writes disguised as GET",
@@ -175,7 +175,7 @@
     {
       "name": "4174: catalog-api.php permits a public snapshot read",
       "status": "PASS",
-      "durationMs": 2
+      "durationMs": 1
     },
     {
       "name": "4174: catalog-api.php rejects writes disguised as GET",
@@ -190,17 +190,17 @@
     {
       "name": "4174: email-api.php does not fabricate backend data",
       "status": "PASS",
-      "durationMs": 0
+      "durationMs": 1
     },
     {
       "name": "4174: upload-api.php does not fabricate backend data",
       "status": "PASS",
-      "durationMs": 0
+      "durationMs": 1
     },
     {
       "name": "4174: analytics-api.php does not fabricate backend data",
       "status": "PASS",
-      "durationMs": 0
+      "durationMs": 1
     },
     {
       "name": "4174: unknown.php does not fabricate backend data",
@@ -215,12 +215,12 @@
     {
       "name": "4174: PUT cannot mutate catalog snapshots",
       "status": "PASS",
-      "durationMs": 0
+      "durationMs": 1
     },
     {
       "name": "4174: PATCH cannot mutate catalog snapshots",
       "status": "PASS",
-      "durationMs": 0
+      "durationMs": 1
     },
     {
       "name": "4174: DELETE cannot mutate catalog snapshots",
@@ -235,7 +235,7 @@
     {
       "name": "4174: malformed or private path /../package.json is rejected",
       "status": "PASS",
-      "durationMs": 1
+      "durationMs": 0
     },
     {
       "name": "4174: malformed or private path /images/%2e%2e/%2e%2e/package.json is rejected",
@@ -255,17 +255,17 @@
     {
       "name": "4174: malformed or private path /js/app.js:secret is rejected",
       "status": "PASS",
-      "durationMs": 1
+      "durationMs": 0
     },
     {
       "name": "4174: malformed or private path /%ZZ is rejected",
       "status": "PASS",
-      "durationMs": 1
+      "durationMs": 0
     },
     {
       "name": "4174: nonpublic path /package.json is not served",
       "status": "PASS",
-      "durationMs": 1
+      "durationMs": 0
     },
     {
       "name": "4174: nonpublic path /fixtures/products.json is not served",

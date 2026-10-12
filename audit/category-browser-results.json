@@ -1,0 +1,1166 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "All 11 original category identities are rendered",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing CMS section and every editable element ID remain identical",
+      "status": "PASS",
+      "sectionId": "home:shop-categories",
+      "elementCount": 40
+    },
+    {
+      "name": "Category layout at 360px",
+      "status": "PASS",
+      "cards": [
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 326
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 326
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 326
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 326
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 326
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 326
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 326
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 326
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 326
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 326
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 326
+        }
+      ],
+      "columns": 1,
+      "overflow": false,
+      "viewport": 360
+    },
+    {
+      "name": "Category layout at 375px",
+      "status": "PASS",
+      "cards": [
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 341
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 341
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 341
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 341
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 341
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 341
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 341
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 341
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 341
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 341
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 341
+        }
+      ],
+      "columns": 1,
+      "overflow": false,
+      "viewport": 375
+    },
+    {
+      "name": "Category layout at 390px",
+      "status": "PASS",
+      "cards": [
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 356
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 356
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 356
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 356
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 356
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 356
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 356
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 356
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 356
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 356
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 356
+        }
+      ],
+      "columns": 1,
+      "overflow": false,
+      "viewport": 390
+    },
+    {
+      "name": "Category layout at 412px",
+      "status": "PASS",
+      "cards": [
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 378
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 378
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 378
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 378
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 378
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 378
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 378
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 378
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 378
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 378
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 378
+        }
+      ],
+      "columns": 1,
+      "overflow": false,
+      "viewport": 412
+    },
+    {
+      "name": "Category layout at 425px",
+      "status": "PASS",
+      "cards": [
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 391
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 391
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 391
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 391
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 391
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 391
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 391
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 391
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 391
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 391
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 110,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 391
+        }
+      ],
+      "columns": 1,
+      "overflow": false,
+      "viewport": 425
+    },
+    {
+      "name": "Category layout at 768px",
+      "status": "PASS",
+      "cards": [
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 349.640625
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 349.640625
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 349.640625
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 349.640625
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 349.640625
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 349.640625
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 349.640625
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 349.640625
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 349.640625
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 349.640625
+        },
+        {
+          "artWidth": 72,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 349.640625
+        }
+      ],
+      "columns": 2,
+      "overflow": false,
+      "viewport": 768
+    },
+    {
+      "name": "Category layout at 1024px",
+      "status": "PASS",
+      "cards": [
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 468.53125
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 468.53125
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 468.53125
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 468.53125
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 468.53125
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 468.53125
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 468.53125
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 468.53125
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 468.53125
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 468.53125
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 468.53125
+        }
+      ],
+      "columns": 2,
+      "overflow": false,
+      "viewport": 1024
+    },
+    {
+      "name": "Category layout at 1280px",
+      "status": "PASS",
+      "cards": [
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 388.9375
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 388.9375
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 388.9375
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 388.9375
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 388.9375
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 388.9375
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 388.9375
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 388.9375
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 388.9375
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 388.9375
+        },
+        {
+          "artWidth": 88,
+          "ctaHeight": 44,
+          "ctaWidth": 44,
+          "height": 132,
+          "imageLoaded": true,
+          "inside": true,
+          "oneTarget": true,
+          "titleFits": true,
+          "width": 388.9375
+        }
+      ],
+      "columns": 3,
+      "overflow": false,
+      "viewport": 1280
+    },
+    {
+      "name": "Hover provides restrained 200ms movement and a clear arrow state",
+      "status": "PASS",
+      "arrowBg": "rgb(13, 71, 161)",
+      "arrowColor": "rgb(255, 255, 255)",
+      "duration": "0.2s, 0.2s, 0.2s, 0.2s",
+      "transform": "matrix(1, 0, 0, 1, 0, -2)"
+    },
+    {
+      "name": "Keyboard focus has an unambiguous visible outline",
+      "status": "PASS",
+      "category": true,
+      "offset": "3px",
+      "outline": "3px",
+      "visible": true
+    },
+    {
+      "name": "Keyboard activation opens the intended category",
+      "status": "PASS"
+    },
+    {
+      "name": "Reduced motion removes visible category transitions and hover movement",
+      "status": "PASS",
+      "durations": [
+        "1e-05s",
+        "1e-05s",
+        "1e-05s"
+      ],
+      "matches": true,
+      "transforms": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "name": "Mobile tap/filter: Gift Boxes",
+      "status": "PASS",
+      "category": "gift-boxes",
+      "count": 7
+    },
+    {
+      "name": "Mobile tap/filter: Kids Special",
+      "status": "PASS",
+      "category": "kids-special",
+      "count": 24
+    },
+    {
+      "name": "Mobile tap/filter: Sparklers",
+      "status": "PASS",
+      "category": "sparklers",
+      "count": 12
+    },
+    {
+      "name": "Mobile tap/filter: Flower Pots",
+      "status": "PASS",
+      "category": "flower-pots",
+      "count": 20
+    },
+    {
+      "name": "Mobile tap/filter: Chakkars",
+      "status": "PASS",
+      "category": "chakkars",
+      "count": 8
+    },
+    {
+      "name": "Mobile tap/filter: Garlands",
+      "status": "PASS",
+      "category": "garlands",
+      "count": 11
+    },
+    {
+      "name": "Mobile tap/filter: Fancy Fireworks",
+      "status": "PASS",
+      "category": "fancy",
+      "count": 45
+    },
+    {
+      "name": "Mobile tap/filter: Rockets & Novel",
+      "status": "PASS",
+      "category": "rockets",
+      "count": 10
+    },
+    {
+      "name": "Mobile tap/filter: Bombs",
+      "status": "PASS",
+      "category": "bombs",
+      "count": 11
+    },
+    {
+      "name": "Mobile tap/filter: Guns · Rolls · Pop",
+      "status": "PASS",
+      "category": "guns-rolls",
+      "count": 9
+    },
+    {
+      "name": "Mobile tap/filter: Multicolor Shows",
+      "status": "PASS",
+      "category": "night-outs",
+      "count": 9
+    },
+    {
+      "name": "Card whitespace is part of the link target",
+      "status": "PASS"
+    },
+    {
+      "name": "Category browser run has no uncaught exceptions",
+      "status": "PASS",
+      "errors": []
+    }
+  ],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\category-browser-1791173238727",
+  "scope": "Private local fixture only; no orders submitted"
+}

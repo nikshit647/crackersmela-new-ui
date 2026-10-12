@@ -1,0 +1,146 @@
+{
+  "checks": [
+    {
+      "name": "/catalog-api.php?a=pull remains publicly readable",
+      "pass": true
+    },
+    {
+      "name": "/catalog-api.php?a=pull does not set a session cookie",
+      "pass": true
+    },
+    {
+      "name": "/products-api.php?a=pull remains publicly readable",
+      "pass": true
+    },
+    {
+      "name": "/products-api.php?a=pull does not set a session cookie",
+      "pass": true
+    },
+    {
+      "name": "/cms-api.php?a=published&page=home remains publicly readable",
+      "pass": true
+    },
+    {
+      "name": "/cms-api.php?a=published&page=home does not set a session cookie",
+      "pass": true
+    },
+    {
+      "name": "/cms-page.php?slug=about remains publicly readable",
+      "pass": true
+    },
+    {
+      "name": "/cms-page.php?slug=about does not set a session cookie",
+      "pass": true
+    },
+    {
+      "name": "/cms-sitemap.php remains publicly readable",
+      "pass": true
+    },
+    {
+      "name": "/cms-sitemap.php does not set a session cookie",
+      "pass": true
+    },
+    {
+      "name": "/sitemap.php remains publicly readable",
+      "pass": true
+    },
+    {
+      "name": "/sitemap.php does not set a session cookie",
+      "pass": true
+    },
+    {
+      "name": "/catalog-api.php?a=pull test dispatched both initial requests without cookies",
+      "pass": true
+    },
+    {
+      "name": "/catalog-api.php?a=pull bootstrap issues a CSRF token and protected cookie",
+      "pass": true
+    },
+    {
+      "name": "/catalog-api.php?a=pull delayed public response cannot replace bootstrap cookie",
+      "pass": true
+    },
+    {
+      "name": "/catalog-api.php?a=pull first login succeeds after concurrent public read",
+      "pass": true
+    },
+    {
+      "name": "/catalog-api.php?a=pull invalid CSRF still fails",
+      "pass": true
+    },
+    {
+      "name": "/catalog-api.php?a=pull authenticated session survives to next request",
+      "pass": true
+    },
+    {
+      "name": "/products-api.php?a=pull test dispatched both initial requests without cookies",
+      "pass": true
+    },
+    {
+      "name": "/products-api.php?a=pull bootstrap issues a CSRF token and protected cookie",
+      "pass": true
+    },
+    {
+      "name": "/products-api.php?a=pull delayed public response cannot replace bootstrap cookie",
+      "pass": true
+    },
+    {
+      "name": "/products-api.php?a=pull first login succeeds after concurrent public read",
+      "pass": true
+    },
+    {
+      "name": "/products-api.php?a=pull invalid CSRF still fails",
+      "pass": true
+    },
+    {
+      "name": "/products-api.php?a=pull authenticated session survives to next request",
+      "pass": true
+    },
+    {
+      "name": "/cms-api.php?a=published&page=home test dispatched both initial requests without cookies",
+      "pass": true
+    },
+    {
+      "name": "/cms-api.php?a=published&page=home bootstrap issues a CSRF token and protected cookie",
+      "pass": true
+    },
+    {
+      "name": "/cms-api.php?a=published&page=home delayed public response cannot replace bootstrap cookie",
+      "pass": true
+    },
+    {
+      "name": "/cms-api.php?a=published&page=home first login succeeds after concurrent public read",
+      "pass": true
+    },
+    {
+      "name": "/cms-api.php?a=published&page=home invalid CSRF still fails",
+      "pass": true
+    },
+    {
+      "name": "/cms-api.php?a=published&page=home authenticated session survives to next request",
+      "pass": true
+    },
+    {
+      "name": "customer registration creates a session",
+      "pass": true
+    },
+    {
+      "name": "customer GET session restores persisted identity before reading it",
+      "pass": true
+    },
+    {
+      "name": "ownership helper restores the session without an earlier authentication guard",
+      "pass": true
+    },
+    {
+      "name": "ownership helper expires customer and remembered-order capabilities before checking them",
+      "pass": true
+    },
+    {
+      "name": "expired customer stays signed out after ownership check",
+      "pass": true
+    }
+  ],
+  "passed": 35,
+  "total": 35
+}

@@ -110,12 +110,22 @@ test('registration and login fail honestly while the authentication backend is m
   assert.equal(register.ok, false);
   assert.match(login.error, /server has not been connected/);
 });
-test('optional checkout email stays optional after focus, but malformed email is rejected', () => {
+test('checkout email is required: empty/blank blocked, malformed rejected, valid accepted', () => {
   const c = vm.createContext({});
   vm.runInContext('const cart = [{id:1,qty:1}]; const views = {};', c);
   vm.runInContext(section('  const checkoutValidate =', '  views.checkout ='), c);
-  vm.runInContext("const state = {step:1,touched:{email:true},data:{name:'Local Test',phone:'9000000000',email:'',address:'Local test address',city:'Hyderabad',pincode:'500001'}}", c);
+  vm.runInContext("const state = {step:1,touched:{},data:{name:'Local Test',phone:'9000000000',email:'',address:'Local test address',city:'Hyderabad',pincode:'500001'}}", c);
+  assert.deepEqual(Array.from(vm.runInContext('checkoutValidate(state)', c)), ['Email is required']);
+  vm.runInContext("state.data.email = '   '", c);
+  assert.deepEqual(Array.from(vm.runInContext('checkoutValidate(state)', c)), ['Email is required']);
+  for (const bad of ['invalid', 'a@b', '@x.com', 'a b@x.com']) {
+    vm.runInContext(`state.data.email = ${JSON.stringify(bad)}`, c);
+    assert.deepEqual(Array.from(vm.runInContext('checkoutValidate(state)', c)), ['Please enter a valid email address'], bad);
+  }
+  vm.runInContext("state.data.email = 'customer@example.com'", c);
   assert.equal(vm.runInContext('checkoutValidate(state).length', c), 0);
-  vm.runInContext("state.data.email = 'invalid'", c);
-  assert.ok(Array.from(vm.runInContext('checkoutValidate(state)', c)).includes('Enter a valid email'));
+});
+test('checkout email field is labelled required and no longer optional', () => {
+  assert.match(source, /<label for="ck_email">Email <span class="req">\*<\/span><\/label>/);
+  assert.doesNotMatch(source, /Your email \(optional\)/);
 });
