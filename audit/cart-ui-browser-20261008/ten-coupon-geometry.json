@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "scenario": "Ten accepted synthetic stackable coupons",
+  "results": [
+    {
+      "body": {
+        "clientHeight": 168,
+        "scrollHeight": 168
+      },
+      "boxes": {
+        "#cartCheckoutBtn": {
+          "bottom": 642,
+          "left": 1021,
+          "right": 1420,
+          "top": 596,
+          "visible": true
+        },
+        "#cartDrawerSummary .sum-row.total": {
+          "bottom": 560.15625,
+          "left": 1021,
+          "right": 1420,
+          "top": 515.5625,
+          "visible": true
+        },
+        "#cartViewBtn": {
+          "bottom": 688,
+          "left": 1021,
+          "right": 1420,
+          "top": 648,
+          "visible": true
+        }
+      },
+      "height": 700,
+      "pageOverflow": false,
+      "width": 1440
+    },
+    {
+      "body": {
+        "clientHeight": 163,
+        "scrollHeight": 163
+      },
+      "boxes": {
+        "#cartCheckoutBtn": {
+          "bottom": 520,
+          "left": 17,
+          "right": 374,
+          "top": 474,
+          "visible": true
+        },
+        "#cartDrawerSummary .sum-row.total": {
+          "bottom": 442.15625,
+          "left": 17,
+          "right": 374,
+          "top": 401.15625,
+          "visible": true
+        },
+        "#cartViewBtn": {
+          "bottom": 560,
+          "left": 17,
+          "right": 374,
+          "top": 520,
+          "visible": true
+        }
+      },
+      "height": 568,
+      "pageOverflow": false,
+      "width": 390
+    },
+    {
+      "body": {
+        "clientHeight": 150,
+        "scrollHeight": 150
+      },
+      "boxes": {
+        "#cartCheckoutBtn": {
+          "bottom": 342,
+          "left": 425,
+          "right": 824,
+          "top": 296,
+          "visible": true
+        },
+        "#cartDrawerSummary .sum-row.total": {
+          "bottom": 264.15625,
+          "left": 425,
+          "right": 824,
+          "top": 223.15625,
+          "visible": true
+        },
+        "#cartViewBtn": {
+          "bottom": 382,
+          "left": 425,
+          "right": 824,
+          "top": 342,
+          "visible": true
+        }
+      },
+      "height": 390,
+      "pageOverflow": false,
+      "width": 844
+    }
+  ],
+  "liveWrites": false
+}

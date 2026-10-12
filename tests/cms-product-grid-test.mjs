@@ -1,0 +1,48 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync, writeFileSync, mkdtempSync, mkdirSync } from 'node:fs';
+import { resolve, join } from 'node:path';
+import { spawnSync } from 'node:child_process';
+import vm from 'node:vm';
+
+const source = resolve('audit-evidence/product-experience-20261010/source');
+const php = resolve('audit-evidence/tools/php-8.1.34/php.exe');
+const fixture = mkdtempSync(resolve('audit-evidence/cms-product-grid-'));
+const data = join(fixture, 'data'); mkdirSync(data);
+const runtime = { window: {}, document: { addEventListener() {} }, URL, location: { href: 'https://crackersmela.com/', origin: 'https://crackersmela.com' } };
+vm.createContext(runtime); vm.runInContext(readFileSync(join(source, 'js/products-data.js'), 'utf8'), runtime);
+vm.runInContext(readFileSync(join(source, 'js/product-brand.js'), 'utf8'), runtime);
+const products = runtime.window.CM_DATA.products;
+const targetId = products[0].id;
+const overrides = { [targetId]: { shortName: 'Current & safe title', note: 'Current original description', image: 'uploads/original-product.png', brand: 'Standard Fireworks' } };
+writeFileSync(join(data, 'products.json'), JSON.stringify({ extraProducts: [], productOverrides: overrides, settings: {}, rev: 1 }));
+const catalog = { priceOverrides: { [targetId]: 4321 }, stockOverrides: { [targetId]: 3 }, featOn: { [targetId]: true } };
+writeFileSync(join(data, 'catalog.json'), JSON.stringify(catalog));
+Object.assign(runtime, { priceOverrides: catalog.priceOverrides, featOn: catalog.featOn, stockOverrides: catalog.stockOverrides, PRODUCTS: products, CATS: runtime.window.CM_DATA.categories, CAT_MAP: Object.fromEntries(runtime.window.CM_DATA.categories.map(c => [c.id, c])), cartQty: () => 0, saved: () => false, publicRoute: value => value, publicPath: value => value, catIcon: () => '<svg></svg>', I: { heart: '<svg></svg>', heartF: '<svg></svg>' } });
+vm.runInContext('const stockOf=p=>stockOverrides[p.id]??p.stock; const inStockOf=p=>stockOf(p)>0&&p.inStock;', runtime);
+const app = readFileSync(join(source, 'js/app.js'), 'utf8').replace(/\r\n/g, '\n');
+vm.runInContext(app.slice(app.indexOf('  const money ='), app.indexOf('  /* Admin sub-site')), runtime);
+vm.runInContext(app.slice(app.indexOf('  const shortDesc ='), app.indexOf('  const productGrid =')), runtime);
+runtime.testProducts = products.map(product => ({ ...product, ...overrides[product.id] }));
+vm.runInContext('const allProducts=()=>testProducts.filter(p=>!p.disabled); const currentRoute=null;', runtime);
+const renderBody = app.match(/renderProducts: \(container, options = \{\}\) => \{([\s\S]*?)\n    \},\n  \}\);/)[1];
+vm.runInContext('window.renderProducts=(container, options={})=>{' + renderBody + '};', runtime);
+const scenarios = [{}, { sort: 'price-asc', limit: 60 }, { sort: 'price-desc', limit: 60 }, { sort: 'newest', limit: 60 }, { sort: 'name', limit: 60 }, { category: 'sparklers', limit: 60 }, { productIds: [products[4].id, targetId], sort: 'featured', limit: 1 }, { category: 'missing' }];
+const script = `<?php require getenv('CM_TEST_SOURCE').'/cm-page-products.php'; $out=[]; foreach(json_decode(getenv('CM_TEST_OPTIONS'),true) as $options) $out[]=cmPageProductGridHtml($options); echo json_encode($out, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);`;
+const result = spawnSync(php, [], { input: script, encoding: 'utf8', env: { ...process.env, CM_DATA_DIR: data, CM_TEST_SOURCE: source, CM_TEST_OPTIONS: JSON.stringify(scenarios), CM_DISABLE_MAIL: '1' }, windowsHide: true });
+assert.equal(result.status, 0, result.stderr); const output = JSON.parse(result.stdout);
+const ids = html => [...html.matchAll(/<article\b[^>]*data-id="(\d+)"/g)].map(match => Number(match[1]));
+const text = html => html.replace(/<!--[\s\S]*?-->/g, '').replace(/<[^>]+>/g, ' ').replace(/&#039;|&#39;/g, "'").replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\s+/g, ' ').trim();
+for (let index = 0; index < scenarios.length; index++) test('PHP card order and visible copy match runtime ' + JSON.stringify(scenarios[index]), () => {
+  const container = { innerHTML: '', querySelectorAll: () => [] };
+  runtime.window.renderProducts(container, scenarios[index]);
+  assert.deepEqual(ids(output[index]), ids(container.innerHTML));
+  assert.equal(text(output[index]), text(container.innerHTML));
+});
+test('card projection preserves original uploads, current overrides and anonymous controls', () => {
+  const html = output[6];
+  assert.match(html, /src="uploads\/original-product.png"/); assert.match(html, /Current &amp; safe title/);
+  assert.match(html, /₹4,321/); assert.match(html, /Only 3 left/); assert.match(html, /Standard Fireworks/);
+  assert.match(html, /aria-pressed="false"/); assert.doesNotMatch(html, /prod-card__foot--cart/);
+});
+writeFileSync(join(fixture, 'projection.json'), JSON.stringify({ scenarios, output }, null, 2));

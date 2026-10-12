@@ -1,0 +1,102 @@
+{
+  "checkedAt": "2026-09-27T12:10:43.084Z",
+  "scope": "Two bounded public JavaScript GETs, comparison with the earlier public snapshot, and isolated VM proofs. No production writes, API collection reads, authentication attempts, uploaded payloads, or customer data.",
+  "fetchedAssets": [
+    {
+      "url": "https://admin.crackersmela.com/js/app.js?v=20260925b",
+      "status": 200,
+      "bytes": 296732,
+      "sha256": "3f15844d901b4be52b7471377d9b833cd9d23e741fbb0a65aebf543a86256fb0",
+      "bom": true,
+      "crlf": 4500,
+      "lf": 4634,
+      "trailingNewlines": 1,
+      "contentEncoding": "br"
+    },
+    {
+      "url": "https://crackersmela.com/js/app.js?v=20260925b",
+      "status": 200,
+      "bytes": 296732,
+      "sha256": "3f15844d901b4be52b7471377d9b833cd9d23e741fbb0a65aebf543a86256fb0",
+      "bom": true,
+      "crlf": 4500,
+      "lf": 4634,
+      "trailingNewlines": 1,
+      "contentEncoding": "br"
+    }
+  ],
+  "proofs": [
+    {
+      "id": "CURRENT-AUTH-01",
+      "result": "PASS",
+      "detail": "Matching synthetic browser account/session objects pass the current client admin write guard. No server identity is consulted."
+    },
+    {
+      "id": "CURRENT-AUTH-02",
+      "result": "PASS",
+      "detail": "Current registration grants administrator role to the owner identifier without mailbox verification. Identifier and credential values are never output."
+    },
+    {
+      "id": "CURRENT-XSS-card",
+      "result": "PASS",
+      "detail": "Synthetic image URL makes the decoded current image error handler set a local boolean marker. No payload was sent to production."
+    },
+    {
+      "id": "CURRENT-XSS-thumbnail",
+      "result": "PASS",
+      "detail": "Synthetic image URL makes the decoded current image error handler set a local boolean marker. No payload was sent to production."
+    },
+    {
+      "id": "CURRENT-ORDER-ENCODING",
+      "result": "PASS",
+      "detail": "Current order-row renderer accepts raw order ID attribute markup. Server schema enforcement and cross-user exploitability remain unverified."
+    },
+    {
+      "id": "CURRENT-ROLE-PARITY",
+      "result": "PASS",
+      "detail": "An ordinary customer fails the unmodified client role check; all six staff labels share it. The first proof independently demonstrates the editable-state bypass."
+    },
+    {
+      "id": "CURRENT-READ-SIDE-EFFECT",
+      "result": "PASS",
+      "detail": "Current order pull attempts to push a synthetic local-only order when the stubbed server list is empty. Both network and push are stubs."
+    }
+  ],
+  "originalSnapshot": {
+    "bytes": 296734,
+    "sha256": "a4fd487d0849b078589362cbf47a146e0039c7b3225cccec77064b6b54ed2979",
+    "bom": true,
+    "crlf": 4501,
+    "lf": 4635,
+    "trailingNewlines": 1
+  },
+  "comparison": {
+    "domainsByteIdentical": true,
+    "rawOriginalIdentical": false,
+    "originalIsCurrentPlusTrailingCrLf": true,
+    "equalAfterBomRemoval": false,
+    "equalAfterLineEndingNormalization": true,
+    "normalizedSha256": "eee8de9f6704c7fdfa4ade4c2af54cbca29df5e4b6ed140461d8428a6da59ea3"
+  },
+  "staticEvidence": {
+    "privilegedKeyDeclarationPresent": true,
+    "actualCredentialIdentifier": "CM_SYNC_KEY",
+    "credentialDeclarationLine": 79,
+    "credentialReferencedByPrivilegedRequests": true,
+    "credentialIncludedInAnalyticsQuery": true,
+    "inlineImageHandlerLines": [
+      62,
+      64,
+      2392,
+      2932
+    ],
+    "authenticationFunctionLine": 162,
+    "localLoginFunctionLine": 676,
+    "localRegisterFunctionLine": 706,
+    "autoPromotionLine": 657,
+    "ownerRegistrationPromotionLine": 712,
+    "demoCredentialDeclarationLine": 616,
+    "previewClientDeployed": false
+  },
+  "proofStatus": "PASS"
+}

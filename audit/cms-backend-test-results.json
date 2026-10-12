@@ -1,0 +1,945 @@
+{
+  "fixtureOnly": true,
+  "passed": 234,
+  "total": 234,
+  "results": [
+    {
+      "name": "anonymous denied /cms-api.php?a=pages",
+      "pass": true
+    },
+    {
+      "name": "anonymous denied /cms-api.php?a=load&page=home",
+      "pass": true
+    },
+    {
+      "name": "anonymous denied /cms-api.php?a=revisions&page=home",
+      "pass": true
+    },
+    {
+      "name": "anonymous denied /cms-api.php?a=products",
+      "pass": true
+    },
+    {
+      "name": "anonymous denied /cms-media.php?a=list",
+      "pass": true
+    },
+    {
+      "name": "anonymous denied /visual-preview.php",
+      "pass": true
+    },
+    {
+      "name": "editor entry requires existing staff sign-in",
+      "pass": true
+    },
+    {
+      "name": "uninitialized public page falls back to current website",
+      "pass": true
+    },
+    {
+      "name": "real staff authentication works",
+      "pass": true
+    },
+    {
+      "name": "real customer fixture created",
+      "pass": true
+    },
+    {
+      "name": "customer cannot read CMS drafts",
+      "pass": true
+    },
+    {
+      "name": "customer cannot browse admin media",
+      "pass": true
+    },
+    {
+      "name": "registry contains only existing content templates",
+      "pass": true
+    },
+    {
+      "name": "product selection references canonical catalog",
+      "pass": true
+    },
+    {
+      "name": "preview serves actual template with bootstrap before app",
+      "pass": true
+    },
+    {
+      "name": "preview remains private and same-origin framed",
+      "pass": true
+    },
+    {
+      "name": "authenticated editor shell is served",
+      "pass": true
+    },
+    {
+      "name": "anonymous cannot save",
+      "pass": true
+    },
+    {
+      "name": "customer cannot publish",
+      "pass": true
+    },
+    {
+      "name": "staff save requires CSRF",
+      "pass": true
+    },
+    {
+      "name": "staff save rejects external origin",
+      "pass": true
+    },
+    {
+      "name": "draft persists typed real content",
+      "pass": true
+    },
+    {
+      "name": "responsive visual position and gradient persist",
+      "pass": true
+    },
+    {
+      "name": "image movement and responsive resize persist",
+      "pass": true
+    },
+    {
+      "name": "all simple inserted elements persist with explicit parent",
+      "pass": true
+    },
+    {
+      "name": "draft does not leak to public",
+      "pass": true
+    },
+    {
+      "name": "optimistic concurrency rejects stale save",
+      "pass": true
+    },
+    {
+      "name": "publish copies saved draft to public version",
+      "pass": true
+    },
+    {
+      "name": "public receives published content only",
+      "pass": true
+    },
+    {
+      "name": "public gets identical saved visual effects and inserted elements",
+      "pass": true
+    },
+    {
+      "name": "stale publishing cannot replace the public page",
+      "pass": true
+    },
+    {
+      "name": "subsequent draft preserves published content",
+      "pass": true
+    },
+    {
+      "name": "real revisions are enumerated",
+      "pass": true
+    },
+    {
+      "name": "restore changes draft without publishing",
+      "pass": true
+    },
+    {
+      "name": "unknown revision cannot be restored",
+      "pass": true
+    },
+    {
+      "name": "reject script text",
+      "pass": true
+    },
+    {
+      "name": "reject script link",
+      "pass": true
+    },
+    {
+      "name": "reject encoded traversal image",
+      "pass": true
+    },
+    {
+      "name": "reject CSS URL",
+      "pass": true
+    },
+    {
+      "name": "reject arbitrary CSS property",
+      "pass": true
+    },
+    {
+      "name": "reject raw HTML field",
+      "pass": true
+    },
+    {
+      "name": "reject invented product record",
+      "pass": true
+    },
+    {
+      "name": "reject unknown product reference",
+      "pass": true
+    },
+    {
+      "name": "reject duplicate section identity",
+      "pass": true
+    },
+    {
+      "name": "reject unknown page identity",
+      "pass": true
+    },
+    {
+      "name": "reject source from checkout workflow",
+      "pass": true
+    },
+    {
+      "name": "reject forged native region",
+      "pass": true
+    },
+    {
+      "name": "reject raw gradient CSS",
+      "pass": true
+    },
+    {
+      "name": "reject gradient invalid range",
+      "pass": true
+    },
+    {
+      "name": "reject unbounded visual position",
+      "pass": true
+    },
+    {
+      "name": "reject untyped visual position",
+      "pass": true
+    },
+    {
+      "name": "reject arbitrary transform effect",
+      "pass": true
+    },
+    {
+      "name": "reject raw icon markup",
+      "pass": true
+    },
+    {
+      "name": "reject insecure video URL",
+      "pass": true
+    },
+    {
+      "name": "reject executable video URL",
+      "pass": true
+    },
+    {
+      "name": "reject unsupported video page",
+      "pass": true
+    },
+    {
+      "name": "reject video path traversal",
+      "pass": true
+    },
+    {
+      "name": "reject unknown added parent",
+      "pass": true
+    },
+    {
+      "name": "reject leaf added parent",
+      "pass": true
+    },
+    {
+      "name": "reject recursive added parent",
+      "pass": true
+    },
+    {
+      "name": "reject mutual added parent cycle",
+      "pass": true
+    },
+    {
+      "name": "reject added native identity collision",
+      "pass": true
+    },
+    {
+      "name": "reject native element reparenting",
+      "pass": true
+    },
+    {
+      "name": "reject arbitrary inserted markup",
+      "pass": true
+    },
+    {
+      "name": "media inventory is paginated",
+      "pass": true
+    },
+    {
+      "name": "media metadata requires CSRF",
+      "pass": true
+    },
+    {
+      "name": "media alt metadata persists",
+      "pass": true
+    },
+    {
+      "name": "media search includes saved alt text",
+      "pass": true
+    },
+    {
+      "name": "protect referenced media /images/bundled.png",
+      "pass": true
+    },
+    {
+      "name": "protect referenced media /uploads/in-product.png",
+      "pass": true
+    },
+    {
+      "name": "protect referenced media /uploads/in-native.png",
+      "pass": true
+    },
+    {
+      "name": "protect referenced media /uploads/in-revision.png",
+      "pass": true
+    },
+    {
+      "name": "reject media path /uploads/../outside.png",
+      "pass": true
+    },
+    {
+      "name": "reject media path /uploads/%2e%2e/outside.png",
+      "pass": true
+    },
+    {
+      "name": "reject media path /uploads/%00.png",
+      "pass": true
+    },
+    {
+      "name": "reject media path https://example.invalid/a.png",
+      "pass": true
+    },
+    {
+      "name": "unused uploaded image can be deleted",
+      "pass": true
+    },
+    {
+      "name": "second page has independent version history",
+      "pass": true
+    },
+    {
+      "name": "image referenced only by revision cannot be deleted",
+      "pass": true
+    },
+    {
+      "name": "retained revisions and snapshot files are bounded",
+      "pass": true
+    },
+    {
+      "name": "expired revision releases unused uploaded image",
+      "pass": true
+    },
+    {
+      "name": "CMS operations preserve every commerce store",
+      "pass": true
+    },
+    {
+      "name": "direct helper access is denied",
+      "pass": true
+    },
+    {
+      "name": "CMS data is outside document root",
+      "pass": true
+    },
+    {
+      "name": "public page reads do not load revision documents",
+      "pass": true
+    },
+    {
+      "name": "existing raster upload remains compatible",
+      "pass": true
+    },
+    {
+      "name": "new existing-system upload appears in library",
+      "pass": true
+    },
+    {
+      "name": "save accepts empty visual maps",
+      "pass": true
+    },
+    {
+      "name": "load preserves editable map objects and real list arrays",
+      "pass": true
+    },
+    {
+      "name": "editing loaded empty responsive map saves normally",
+      "pass": true
+    },
+    {
+      "name": "edited empty maps survive publication and reload",
+      "pass": true
+    },
+    {
+      "name": "legacy empty maps normalize without changing real lists",
+      "pass": true
+    },
+    {
+      "name": "editor clone and dirty comparison preserve legacy-map edits",
+      "pass": true
+    },
+    {
+      "name": "anonymous product ordering save denied",
+      "pass": true
+    },
+    {
+      "name": "customer product ordering publish denied",
+      "pass": true
+    },
+    {
+      "name": "product ordering save requires CSRF",
+      "pass": true
+    },
+    {
+      "name": "product ordering save requires same origin",
+      "pass": true
+    },
+    {
+      "name": "product ordering cannot mutate through GET",
+      "pass": true
+    },
+    {
+      "name": "independent all and category orders persist in draft",
+      "pass": true
+    },
+    {
+      "name": "product ordering draft remains private",
+      "pass": true
+    },
+    {
+      "name": "publish exposes exact saved order lists",
+      "pass": true
+    },
+    {
+      "name": "reordering one category leaves all and other categories unchanged",
+      "pass": true
+    },
+    {
+      "name": "category reorder does not change public order before publish",
+      "pass": true
+    },
+    {
+      "name": "stale ordering writes cannot overwrite another edit",
+      "pass": true
+    },
+    {
+      "name": "stale ordering publish cannot replace live order",
+      "pass": true
+    },
+    {
+      "name": "publishing category reorder preserves the other scope orders",
+      "pass": true
+    },
+    {
+      "name": "reject product order unknown scope",
+      "pass": true
+    },
+    {
+      "name": "reject product order prototype scope",
+      "pass": true
+    },
+    {
+      "name": "reject product order path scope",
+      "pass": true
+    },
+    {
+      "name": "reject product order non-object ordering",
+      "pass": true
+    },
+    {
+      "name": "reject product order non-list scope",
+      "pass": true
+    },
+    {
+      "name": "reject product order duplicate product",
+      "pass": true
+    },
+    {
+      "name": "reject product order string product ID",
+      "pass": true
+    },
+    {
+      "name": "reject product order fractional product ID",
+      "pass": true
+    },
+    {
+      "name": "reject product order boolean product ID",
+      "pass": true
+    },
+    {
+      "name": "reject product order unsafe product ID",
+      "pass": true
+    },
+    {
+      "name": "reject product order unknown product",
+      "pass": true
+    },
+    {
+      "name": "reject product order negative product",
+      "pass": true
+    },
+    {
+      "name": "reject product order zero product",
+      "pass": true
+    },
+    {
+      "name": "reject product order product record injection",
+      "pass": true
+    },
+    {
+      "name": "reject product order nested product ID",
+      "pass": true
+    },
+    {
+      "name": "reject product order category membership mismatch",
+      "pass": true
+    },
+    {
+      "name": "reject product order oversized scope list",
+      "pass": true
+    },
+    {
+      "name": "product ordering cannot be attached to another template",
+      "pass": true
+    },
+    {
+      "name": "new ordering rejects disabled catalog products",
+      "pass": true
+    },
+    {
+      "name": "empty category order remains a list and does not clear all products",
+      "pass": true
+    },
+    {
+      "name": "empty product ordering map reloads as an editable object",
+      "pass": true
+    },
+    {
+      "name": "restoring ordering history changes draft without republishing",
+      "pass": true
+    },
+    {
+      "name": "ordering operations leave all canonical commerce data byte-identical",
+      "pass": true
+    },
+    {
+      "name": "anonymous page creation denied",
+      "pass": true
+    },
+    {
+      "name": "customer page creation denied",
+      "pass": true
+    },
+    {
+      "name": "page creation requires CSRF",
+      "pass": true
+    },
+    {
+      "name": "page creation requires same origin",
+      "pass": true
+    },
+    {
+      "name": "unsafe or reserved slug rejected checkout",
+      "pass": true
+    },
+    {
+      "name": "unsafe or reserved slug rejected products",
+      "pass": true
+    },
+    {
+      "name": "unsafe or reserved slug rejected images",
+      "pass": true
+    },
+    {
+      "name": "unsafe or reserved slug rejected visual-editor",
+      "pass": true
+    },
+    {
+      "name": "unsafe or reserved slug rejected ../escape",
+      "pass": true
+    },
+    {
+      "name": "unsafe or reserved slug rejected a%2fb",
+      "pass": true
+    },
+    {
+      "name": "unsafe or reserved slug rejected about us",
+      "pass": true
+    },
+    {
+      "name": "unsafe or reserved slug rejected BadCase",
+      "pass": true
+    },
+    {
+      "name": "custom page gets stable generated identity and real URL",
+      "pass": true
+    },
+    {
+      "name": "custom starter references canonical or native fallback chrome with typed content",
+      "pass": true
+    },
+    {
+      "name": "slug collision rejected atomically",
+      "pass": true
+    },
+    {
+      "name": "custom draft has no public HTML route",
+      "pass": true
+    },
+    {
+      "name": "custom draft has no public API document",
+      "pass": true
+    },
+    {
+      "name": "custom draft preview has escaped fixed context",
+      "pass": true
+    },
+    {
+      "name": "responsive gradients and positioning persist",
+      "pass": true
+    },
+    {
+      "name": "all standalone simple sections persist",
+      "pass": true
+    },
+    {
+      "name": "local uploaded video path persists safely",
+      "pass": true
+    },
+    {
+      "name": "reject gradient code",
+      "pass": true
+    },
+    {
+      "name": "reject unbounded scale",
+      "pass": true
+    },
+    {
+      "name": "reject script background",
+      "pass": true
+    },
+    {
+      "name": "reject forged source template",
+      "pass": true
+    },
+    {
+      "name": "custom publishing changes lifecycle",
+      "pass": true
+    },
+    {
+      "name": "published custom URL serves actual template and escaped SEO",
+      "pass": true
+    },
+    {
+      "name": "clean page path cannot be overridden by query slug",
+      "pass": true
+    },
+    {
+      "name": "unknown clean path cannot borrow a published query slug",
+      "pass": true
+    },
+    {
+      "name": "trailing-slash clean route uses the same published page",
+      "pass": true
+    },
+    {
+      "name": "custom sitemap contains published page",
+      "pass": true
+    },
+    {
+      "name": "stale page rename denied",
+      "pass": true
+    },
+    {
+      "name": "rename retains original URL",
+      "pass": true
+    },
+    {
+      "name": "stale lifecycle change denied page-delete",
+      "pass": true
+    },
+    {
+      "name": "stale lifecycle change denied page-unpublish",
+      "pass": true
+    },
+    {
+      "name": "stale lifecycle change denied page-duplicate",
+      "pass": true
+    },
+    {
+      "name": "rejected lifecycle changes preserve live publication",
+      "pass": true
+    },
+    {
+      "name": "unpublish is a real lifecycle change",
+      "pass": true
+    },
+    {
+      "name": "unpublished clean page and public API return 404",
+      "pass": true
+    },
+    {
+      "name": "unpublished clean path cannot borrow another live page",
+      "pass": true
+    },
+    {
+      "name": "unpublished page disappears from sitemap",
+      "pass": true
+    },
+    {
+      "name": "unpublished draft stays editable",
+      "pass": true
+    },
+    {
+      "name": "duplicate is independent draft with own ID",
+      "pass": true
+    },
+    {
+      "name": "duplicate canonical belongs to its own URL",
+      "pass": true
+    },
+    {
+      "name": "editing duplicate cannot mutate source draft or live page",
+      "pass": true
+    },
+    {
+      "name": "duplicate stays private until explicitly published",
+      "pass": true
+    },
+    {
+      "name": "native page duplicate retains actual source template",
+      "pass": true
+    },
+    {
+      "name": "protect commerce page home page-delete",
+      "pass": true
+    },
+    {
+      "name": "protect commerce page home page-unpublish",
+      "pass": true
+    },
+    {
+      "name": "protect commerce page products page-delete",
+      "pass": true
+    },
+    {
+      "name": "protect commerce page products page-unpublish",
+      "pass": true
+    },
+    {
+      "name": "protect commerce page product page-delete",
+      "pass": true
+    },
+    {
+      "name": "protect commerce page product page-unpublish",
+      "pass": true
+    },
+    {
+      "name": "protect commerce page price-list page-delete",
+      "pass": true
+    },
+    {
+      "name": "protect commerce page price-list page-unpublish",
+      "pass": true
+    },
+    {
+      "name": "editorial page unpublish permitted",
+      "pass": true
+    },
+    {
+      "name": "editorial clean route is gated by publication",
+      "pass": true
+    },
+    {
+      "name": "editorial hash API supplies unavailable status",
+      "pass": true
+    },
+    {
+      "name": "page deletion persists tombstone",
+      "pass": true
+    },
+    {
+      "name": "deleted page not listed or public",
+      "pass": true
+    },
+    {
+      "name": "deleted page cannot be silently republished",
+      "pass": true
+    },
+    {
+      "name": "deleted page cannot be silently saved",
+      "pass": true
+    },
+    {
+      "name": "deleted page cannot be duplicated",
+      "pass": true
+    },
+    {
+      "name": "exact-device presentation and Home section ordering save together",
+      "pass": true
+    },
+    {
+      "name": "legacy base and three independent overrides survive save",
+      "pass": true
+    },
+    {
+      "name": "invalid responsive presentation rejected {'desktop': {'styles': {'width': 'expression(alert(1))'}}}",
+      "pass": true
+    },
+    {
+      "name": "invalid responsive presentation rejected {'watch': {'hidden': True}}",
+      "pass": true
+    },
+    {
+      "name": "invalid responsive presentation rejected {'mobile': {'content': {'productIds': [26]}}}",
+      "pass": true
+    },
+    {
+      "name": "ordering an absent Home section is rejected",
+      "pass": true
+    },
+    {
+      "name": "published responsive presentation matches saved draft",
+      "pass": true
+    },
+    {
+      "name": "Promo Bar messages and exact-device icon presentation save through existing CMS",
+      "pass": true
+    },
+    {
+      "name": "Promo message defaults are explicit and message order is preserved",
+      "pass": true
+    },
+    {
+      "name": "Promo shared visibility and exact-device overrides survive validation unchanged",
+      "pass": true
+    },
+    {
+      "name": "Promo draft edits do not alter published content",
+      "pass": true
+    },
+    {
+      "name": "Promo message data survives editor reload",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects invalid icon",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects invalid ID",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects HTML message",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects long message",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects non-boolean enabled",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects null enabled",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects null icon",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects unknown message property",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects duplicate message ID",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects too many messages",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects non-list messages",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects non-boolean shared icon visibility",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects messages on unrelated native source",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects messages on non-native section",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects message content in device override",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects non-boolean device icon visibility",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects icon visibility on unrelated native source",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects device icon visibility on unrelated native source",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects device icon visibility on element",
+      "pass": true
+    },
+    {
+      "name": "Rejected Promo data never changes saved draft or version",
+      "pass": true
+    },
+    {
+      "name": "Promo content publishes through existing workflow",
+      "pass": true
+    },
+    {
+      "name": "Public Promo response contains published content without private draft",
+      "pass": true
+    },
+    {
+      "name": "Empty Promo message list is preserved as intentional empty content",
+      "pass": true
+    },
+    {
+      "name": "Explicit empty Promo list remains a list after publication",
+      "pass": true
+    },
+    {
+      "name": "Missing Promo messages remain missing for original storefront fallback",
+      "pass": true
+    },
+    {
+      "name": "Every supported Promo icon survives validation",
+      "pass": true
+    },
+    {
+      "name": "page CRUD leaves commerce stores unchanged",
+      "pass": true
+    },
+    {
+      "name": "public dynamic route rejects ../outside",
+      "pass": true
+    },
+    {
+      "name": "public dynamic route rejects %2e%2e",
+      "pass": true
+    },
+    {
+      "name": "public dynamic route rejects unknown-clean-page",
+      "pass": true
+    }
+  ],
+  "phpDiagnostics": false,
+  "serverStopped": true
+}

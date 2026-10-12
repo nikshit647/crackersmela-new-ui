@@ -1,0 +1,22 @@
+{
+  "cm-cms.php": {
+    "mirrorsMatch": true,
+    "sha256": "aeb15bdd5acd2bd19829733e6b543a59e251080943f4ec1cec0456f418e6e766"
+  },
+  "cms-api.php": {
+    "mirrorsMatch": true,
+    "sha256": "72375e5a517c2a02aa43b5a0a91595194e56828ae7537e6cd626f3806703a0b0"
+  },
+  "cms-global-chrome-backend-results.json": {
+    "passed": 52,
+    "total": 52,
+    "phpDiagnostics": false,
+    "fixtureOnly": true
+  },
+  "cms-shared-navigation-backend-results.json": {
+    "passed": 39,
+    "total": 39,
+    "phpDiagnostics": false,
+    "fixtureOnly": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "generatedAt": "2026-10-06T12:46:25.140519Z",
+  "package": "audit-evidence/combined-review-package-20261006T124625.140519Z",
+  "changedFiles": 61,
+  "productionChanged": 46,
+  "overlayChanged": 15,
+  "unbaselinedSupportingFiles": 6,
+  "verification": {
+    "forwardPatchExactBytes": true,
+    "reversePatchExactBytesAgainstDeclaredBaseline": true,
+    "allOverlayMirrorsMatch": true
+  },
+  "manifestSha256": "72bda19cdcb7522a74caf3c21cd567d1414a1dfedeb57cc83e96150113c5704d"
+}

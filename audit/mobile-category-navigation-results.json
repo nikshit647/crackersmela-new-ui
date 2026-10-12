@@ -1,0 +1,676 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Category rail has a dedicated mobile wrapper",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture retains all 11 category identities and the full selling catalogue",
+      "status": "PASS",
+      "total": 117
+    },
+    {
+      "name": "Compact rail and two-column products at 360×800",
+      "status": "PASS",
+      "columns": 2,
+      "counts": [
+        {
+          "count": 117,
+          "id": "all"
+        },
+        {
+          "count": 7,
+          "id": "gift-boxes"
+        },
+        {
+          "count": 24,
+          "id": "kids-special"
+        },
+        {
+          "count": 12,
+          "id": "sparklers"
+        },
+        {
+          "count": 20,
+          "id": "flower-pots"
+        },
+        {
+          "count": 8,
+          "id": "chakkars"
+        },
+        {
+          "count": 11,
+          "id": "garlands"
+        },
+        {
+          "count": 45,
+          "id": "fancy"
+        },
+        {
+          "count": 11,
+          "id": "rockets"
+        },
+        {
+          "count": 12,
+          "id": "bombs"
+        },
+        {
+          "count": 9,
+          "id": "guns-rolls"
+        },
+        {
+          "count": 9,
+          "id": "night-outs"
+        }
+      ],
+      "end": true,
+      "minTarget": 44,
+      "oneRow": true,
+      "overflowX": "auto",
+      "pageWidth": 360,
+      "railHeight": 58,
+      "railWidth": 304,
+      "selected": {
+        "background": "rgb(18, 84, 173)",
+        "color": "rgb(255, 255, 255)",
+        "current": "true",
+        "radius": "12px"
+      },
+      "start": false,
+      "viewport": [
+        360,
+        800
+      ],
+      "visiblePills": 2
+    },
+    {
+      "name": "Category counts match the live catalogue at 360px",
+      "status": "PASS"
+    },
+    {
+      "name": "Native horizontal wheel moves both ways at 360px",
+      "status": "PASS",
+      "forwardOffset": 240,
+      "backOffset": 120
+    },
+    {
+      "name": "End indicator clears at the actual scroll boundary at 360px",
+      "status": "PASS"
+    },
+    {
+      "name": "Last category selection stays visible and filters exact products at 360px",
+      "status": "PASS",
+      "category": "night-outs",
+      "count": 9
+    },
+    {
+      "name": "All Categories restores the full catalogue at 360px",
+      "status": "PASS"
+    },
+    {
+      "name": "Add updates card state and cart counter at 360px",
+      "status": "PASS"
+    },
+    {
+      "name": "Cart drawer retains the selected item at 360px",
+      "status": "PASS"
+    },
+    {
+      "name": "Removing from drawer restores Add on the product card at 360px",
+      "status": "PASS"
+    },
+    {
+      "name": "Compact rail and two-column products at 375×812",
+      "status": "PASS",
+      "columns": 2,
+      "counts": [
+        {
+          "count": 117,
+          "id": "all"
+        },
+        {
+          "count": 7,
+          "id": "gift-boxes"
+        },
+        {
+          "count": 24,
+          "id": "kids-special"
+        },
+        {
+          "count": 12,
+          "id": "sparklers"
+        },
+        {
+          "count": 20,
+          "id": "flower-pots"
+        },
+        {
+          "count": 8,
+          "id": "chakkars"
+        },
+        {
+          "count": 11,
+          "id": "garlands"
+        },
+        {
+          "count": 45,
+          "id": "fancy"
+        },
+        {
+          "count": 11,
+          "id": "rockets"
+        },
+        {
+          "count": 12,
+          "id": "bombs"
+        },
+        {
+          "count": 9,
+          "id": "guns-rolls"
+        },
+        {
+          "count": 9,
+          "id": "night-outs"
+        }
+      ],
+      "end": true,
+      "minTarget": 44,
+      "oneRow": true,
+      "overflowX": "auto",
+      "pageWidth": 375,
+      "railHeight": 58,
+      "railWidth": 319,
+      "selected": {
+        "background": "rgb(18, 84, 173)",
+        "color": "rgb(255, 255, 255)",
+        "current": "true",
+        "radius": "12px"
+      },
+      "start": false,
+      "viewport": [
+        375,
+        812
+      ],
+      "visiblePills": 2
+    },
+    {
+      "name": "Category counts match the live catalogue at 375px",
+      "status": "PASS"
+    },
+    {
+      "name": "Native horizontal wheel moves both ways at 375px",
+      "status": "PASS",
+      "forwardOffset": 240,
+      "backOffset": 120
+    },
+    {
+      "name": "End indicator clears at the actual scroll boundary at 375px",
+      "status": "PASS"
+    },
+    {
+      "name": "Last category selection stays visible and filters exact products at 375px",
+      "status": "PASS",
+      "category": "night-outs",
+      "count": 9
+    },
+    {
+      "name": "All Categories restores the full catalogue at 375px",
+      "status": "PASS"
+    },
+    {
+      "name": "Add updates card state and cart counter at 375px",
+      "status": "PASS"
+    },
+    {
+      "name": "Cart drawer retains the selected item at 375px",
+      "status": "PASS"
+    },
+    {
+      "name": "Removing from drawer restores Add on the product card at 375px",
+      "status": "PASS"
+    },
+    {
+      "name": "Compact rail and two-column products at 390×844",
+      "status": "PASS",
+      "columns": 2,
+      "counts": [
+        {
+          "count": 117,
+          "id": "all"
+        },
+        {
+          "count": 7,
+          "id": "gift-boxes"
+        },
+        {
+          "count": 24,
+          "id": "kids-special"
+        },
+        {
+          "count": 12,
+          "id": "sparklers"
+        },
+        {
+          "count": 20,
+          "id": "flower-pots"
+        },
+        {
+          "count": 8,
+          "id": "chakkars"
+        },
+        {
+          "count": 11,
+          "id": "garlands"
+        },
+        {
+          "count": 45,
+          "id": "fancy"
+        },
+        {
+          "count": 11,
+          "id": "rockets"
+        },
+        {
+          "count": 12,
+          "id": "bombs"
+        },
+        {
+          "count": 9,
+          "id": "guns-rolls"
+        },
+        {
+          "count": 9,
+          "id": "night-outs"
+        }
+      ],
+      "end": true,
+      "minTarget": 44,
+      "oneRow": true,
+      "overflowX": "auto",
+      "pageWidth": 390,
+      "railHeight": 58,
+      "railWidth": 334,
+      "selected": {
+        "background": "rgb(18, 84, 173)",
+        "color": "rgb(255, 255, 255)",
+        "current": "true",
+        "radius": "12px"
+      },
+      "start": false,
+      "viewport": [
+        390,
+        844
+      ],
+      "visiblePills": 2
+    },
+    {
+      "name": "Category counts match the live catalogue at 390px",
+      "status": "PASS"
+    },
+    {
+      "name": "Native horizontal wheel moves both ways at 390px",
+      "status": "PASS",
+      "forwardOffset": 240,
+      "backOffset": 120
+    },
+    {
+      "name": "End indicator clears at the actual scroll boundary at 390px",
+      "status": "PASS"
+    },
+    {
+      "name": "Last category selection stays visible and filters exact products at 390px",
+      "status": "PASS",
+      "category": "night-outs",
+      "count": 9
+    },
+    {
+      "name": "All Categories restores the full catalogue at 390px",
+      "status": "PASS"
+    },
+    {
+      "name": "Add updates card state and cart counter at 390px",
+      "status": "PASS"
+    },
+    {
+      "name": "Cart drawer retains the selected item at 390px",
+      "status": "PASS"
+    },
+    {
+      "name": "Removing from drawer restores Add on the product card at 390px",
+      "status": "PASS"
+    },
+    {
+      "name": "Compact rail and two-column products at 412×915",
+      "status": "PASS",
+      "columns": 2,
+      "counts": [
+        {
+          "count": 117,
+          "id": "all"
+        },
+        {
+          "count": 7,
+          "id": "gift-boxes"
+        },
+        {
+          "count": 24,
+          "id": "kids-special"
+        },
+        {
+          "count": 12,
+          "id": "sparklers"
+        },
+        {
+          "count": 20,
+          "id": "flower-pots"
+        },
+        {
+          "count": 8,
+          "id": "chakkars"
+        },
+        {
+          "count": 11,
+          "id": "garlands"
+        },
+        {
+          "count": 45,
+          "id": "fancy"
+        },
+        {
+          "count": 11,
+          "id": "rockets"
+        },
+        {
+          "count": 12,
+          "id": "bombs"
+        },
+        {
+          "count": 9,
+          "id": "guns-rolls"
+        },
+        {
+          "count": 9,
+          "id": "night-outs"
+        }
+      ],
+      "end": true,
+      "minTarget": 44,
+      "oneRow": true,
+      "overflowX": "auto",
+      "pageWidth": 412,
+      "railHeight": 58,
+      "railWidth": 356,
+      "selected": {
+        "background": "rgb(18, 84, 173)",
+        "color": "rgb(255, 255, 255)",
+        "current": "true",
+        "radius": "12px"
+      },
+      "start": false,
+      "viewport": [
+        412,
+        915
+      ],
+      "visiblePills": 2
+    },
+    {
+      "name": "Category counts match the live catalogue at 412px",
+      "status": "PASS"
+    },
+    {
+      "name": "Native horizontal wheel moves both ways at 412px",
+      "status": "PASS",
+      "forwardOffset": 240,
+      "backOffset": 120
+    },
+    {
+      "name": "End indicator clears at the actual scroll boundary at 412px",
+      "status": "PASS"
+    },
+    {
+      "name": "Last category selection stays visible and filters exact products at 412px",
+      "status": "PASS",
+      "category": "night-outs",
+      "count": 9
+    },
+    {
+      "name": "All Categories restores the full catalogue at 412px",
+      "status": "PASS"
+    },
+    {
+      "name": "Add updates card state and cart counter at 412px",
+      "status": "PASS"
+    },
+    {
+      "name": "Cart drawer retains the selected item at 412px",
+      "status": "PASS"
+    },
+    {
+      "name": "Removing from drawer restores Add on the product card at 412px",
+      "status": "PASS"
+    },
+    {
+      "name": "Compact rail and two-column products at 425×904",
+      "status": "PASS",
+      "columns": 2,
+      "counts": [
+        {
+          "count": 117,
+          "id": "all"
+        },
+        {
+          "count": 7,
+          "id": "gift-boxes"
+        },
+        {
+          "count": 24,
+          "id": "kids-special"
+        },
+        {
+          "count": 12,
+          "id": "sparklers"
+        },
+        {
+          "count": 20,
+          "id": "flower-pots"
+        },
+        {
+          "count": 8,
+          "id": "chakkars"
+        },
+        {
+          "count": 11,
+          "id": "garlands"
+        },
+        {
+          "count": 45,
+          "id": "fancy"
+        },
+        {
+          "count": 11,
+          "id": "rockets"
+        },
+        {
+          "count": 12,
+          "id": "bombs"
+        },
+        {
+          "count": 9,
+          "id": "guns-rolls"
+        },
+        {
+          "count": 9,
+          "id": "night-outs"
+        }
+      ],
+      "end": true,
+      "minTarget": 44,
+      "oneRow": true,
+      "overflowX": "auto",
+      "pageWidth": 425,
+      "railHeight": 58,
+      "railWidth": 369,
+      "selected": {
+        "background": "rgb(18, 84, 173)",
+        "color": "rgb(255, 255, 255)",
+        "current": "true",
+        "radius": "12px"
+      },
+      "start": false,
+      "viewport": [
+        425,
+        904
+      ],
+      "visiblePills": 2
+    },
+    {
+      "name": "Category counts match the live catalogue at 425px",
+      "status": "PASS"
+    },
+    {
+      "name": "Native horizontal wheel moves both ways at 425px",
+      "status": "PASS",
+      "forwardOffset": 240,
+      "backOffset": 120
+    },
+    {
+      "name": "End indicator clears at the actual scroll boundary at 425px",
+      "status": "PASS"
+    },
+    {
+      "name": "Last category selection stays visible and filters exact products at 425px",
+      "status": "PASS",
+      "category": "night-outs",
+      "count": 9
+    },
+    {
+      "name": "All Categories restores the full catalogue at 425px",
+      "status": "PASS"
+    },
+    {
+      "name": "Add updates card state and cart counter at 425px",
+      "status": "PASS"
+    },
+    {
+      "name": "Cart drawer retains the selected item at 425px",
+      "status": "PASS"
+    },
+    {
+      "name": "Removing from drawer restores Add on the product card at 425px",
+      "status": "PASS"
+    },
+    {
+      "name": "Category button maps to exact IDs: Gift Boxes",
+      "status": "PASS"
+    },
+    {
+      "name": "Category button maps to exact IDs: Kids Special",
+      "status": "PASS"
+    },
+    {
+      "name": "Category button maps to exact IDs: Sparklers",
+      "status": "PASS"
+    },
+    {
+      "name": "Category button maps to exact IDs: Flower Pots",
+      "status": "PASS"
+    },
+    {
+      "name": "Category button maps to exact IDs: Chakkars",
+      "status": "PASS"
+    },
+    {
+      "name": "Category button maps to exact IDs: Garlands",
+      "status": "PASS"
+    },
+    {
+      "name": "Category button maps to exact IDs: Fancy Fireworks",
+      "status": "PASS"
+    },
+    {
+      "name": "Category button maps to exact IDs: Rockets & Novel",
+      "status": "PASS"
+    },
+    {
+      "name": "Category button maps to exact IDs: Bombs",
+      "status": "PASS"
+    },
+    {
+      "name": "Category button maps to exact IDs: Guns · Rolls · Pop",
+      "status": "PASS"
+    },
+    {
+      "name": "Category button maps to exact IDs: Multicolor Shows",
+      "status": "PASS"
+    },
+    {
+      "name": "Direct link reveals the selected category without stealing focus",
+      "status": "PASS"
+    },
+    {
+      "name": "Keyboard activation retains focus on the category",
+      "status": "PASS"
+    },
+    {
+      "name": "Category controls retain a visible keyboard focus indicator",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile search still opens matching product results",
+      "status": "PASS"
+    },
+    {
+      "name": "Wishlist retains the chosen product after category and search navigation",
+      "status": "PASS"
+    },
+    {
+      "name": "Product detail opens with quantity controls",
+      "status": "PASS"
+    },
+    {
+      "name": "Full cart retains product and permits checkout above the minimum",
+      "status": "PASS"
+    },
+    {
+      "name": "Checkout customer and delivery form loads with no horizontal overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "Synthetic cart and wishlist are empty after smoke checks",
+      "status": "PASS"
+    },
+    {
+      "name": "Desktop keeps the rail hidden without reserving space at 1024px",
+      "status": "PASS"
+    },
+    {
+      "name": "Desktop keeps the rail hidden without reserving space at 1280px",
+      "status": "PASS"
+    },
+    {
+      "name": "Visual editor mobile iframe renders the same category rail and two-column grid",
+      "status": "PASS",
+      "columns": 2,
+      "count": 12,
+      "overflow": false,
+      "rail": "flex",
+      "width": 390
+    },
+    {
+      "name": "Mobile navigation and commerce smoke produce no uncaught exceptions",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "name": "Browser console contains no errors",
+      "status": "PASS",
+      "consoleErrors": []
+    }
+  ],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\mobile-category-navigation-1791394243719",
+  "limitations": [
+    "Chromium at the requested mobile viewports; native horizontal mouse-wheel input was tested through agent-browser streaming. Physical iOS/Android finger gestures were not tested."
+  ],
+  "scope": "Private local fixture; read-only CMS preview; no order or payment submitted, no mail sent"
+}

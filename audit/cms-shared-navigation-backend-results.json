@@ -1,0 +1,164 @@
+{
+  "fixtureOnly": true,
+  "passed": 39,
+  "total": 39,
+  "results": [
+    {
+      "name": "isolated staff login",
+      "pass": true
+    },
+    {
+      "name": "anonymous cannot reorder",
+      "pass": true
+    },
+    {
+      "name": "CSRF protects reorder",
+      "pass": true
+    },
+    {
+      "name": "category-only save works before any Home draft exists",
+      "pass": true
+    },
+    {
+      "name": "category-only save retains unsaved native Home fallback",
+      "pass": true
+    },
+    {
+      "name": "fresh Products response includes saved Home category order",
+      "pass": true
+    },
+    {
+      "name": "stale category update rejected",
+      "pass": true
+    },
+    {
+      "name": "invalid category permutation rejected 10",
+      "pass": true
+    },
+    {
+      "name": "invalid category permutation rejected 12",
+      "pass": true
+    },
+    {
+      "name": "invalid category permutation rejected 11",
+      "pass": true
+    },
+    {
+      "name": "invalid category permutation rejected 11",
+      "pass": true
+    },
+    {
+      "name": "header saved through existing CMS endpoint",
+      "pass": true
+    },
+    {
+      "name": "header draft stays private",
+      "pass": true
+    },
+    {
+      "name": "publishing header succeeds",
+      "pass": true
+    },
+    {
+      "name": "same shared header and category order on home",
+      "pass": true
+    },
+    {
+      "name": "same shared header and category order on products",
+      "pass": true
+    },
+    {
+      "name": "same shared header and category order on product",
+      "pass": true
+    },
+    {
+      "name": "same shared header and category order on about",
+      "pass": true
+    },
+    {
+      "name": "same shared header and category order on contact",
+      "pass": true
+    },
+    {
+      "name": "same shared header and category order on faq",
+      "pass": true
+    },
+    {
+      "name": "same shared header and category order on privacy",
+      "pass": true
+    },
+    {
+      "name": "unrelated Home draft saved",
+      "pass": true
+    },
+    {
+      "name": "category save preserves draft and published page separately",
+      "pass": true
+    },
+    {
+      "name": "only order fields change in both documents",
+      "pass": true
+    },
+    {
+      "name": "another page can edit the shared header",
+      "pass": true
+    },
+    {
+      "name": "account details excluded from shared header",
+      "pass": true
+    },
+    {
+      "name": "Home draft receives latest header without losing page edits",
+      "pass": true
+    },
+    {
+      "name": "stale header overwrite rejected across page versions",
+      "pass": true
+    },
+    {
+      "name": "stale header publication rejected",
+      "pass": true
+    },
+    {
+      "name": "header edited from About publishes on all pages",
+      "pass": true
+    },
+    {
+      "name": "publishing a clean old page never restores its obsolete header snapshot",
+      "pass": true
+    },
+    {
+      "name": "failed page write returns an error",
+      "pass": true
+    },
+    {
+      "name": "failed page write rolls back shared navigation",
+      "pass": true
+    },
+    {
+      "name": "fresh admin reads retain category order",
+      "pass": true
+    },
+    {
+      "name": "restore after category save accepts empty native content",
+      "pass": true
+    },
+    {
+      "name": "restore preserves live category order and published document",
+      "pass": true
+    },
+    {
+      "name": "explicit publish after category save accepts empty native content",
+      "pass": true
+    },
+    {
+      "name": "published response retains authoritative category order",
+      "pass": true
+    },
+    {
+      "name": "catalog, products and counts remain byte-identical",
+      "pass": true
+    }
+  ],
+  "phpDiagnostics": false
+}

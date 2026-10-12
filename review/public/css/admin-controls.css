@@ -1,0 +1,369 @@
+/* Admin control roles. Loaded after controls.css; page frames and cards stay in styles.css. */
+body.admin-mode .admin-shell {
+  --adm-control-border: var(--control-border, #b7c9dc);
+  --adm-control-focus: var(--control-focus, #0d47a1);
+  --adm-control-selected-text: #0d47a1;
+}
+body.admin-mode .admin-shell[data-admtheme="dark"] {
+  --adm-control-border: var(--as-line-strong);
+  --adm-control-focus: #91bbf5;
+  --adm-control-selected-text: var(--as-active-text);
+}
+
+/* Actions: one solid primary, bordered secondary, and compact table variants. */
+body.admin-mode .admin-shell .btn,
+body.admin-mode .admin-shell .ep-save {
+  min-height: 36px;
+  padding: 7px 12px;
+  gap: 6px;
+  border: 1px solid var(--adm-control-border);
+  border-radius: var(--control-radius, 8px);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0;
+  box-shadow: none;
+  transform: none;
+  filter: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition: background-color .14s ease, border-color .14s ease, color .14s ease;
+}
+body.admin-mode .admin-shell .btn-primary,
+body.admin-mode .admin-shell .ep-save {
+  color: #fff;
+  background: var(--control-primary, #1565c0);
+  border-color: var(--control-primary, #1565c0);
+}
+body.admin-mode .admin-shell .btn-primary:hover,
+body.admin-mode .admin-shell .ep-save:hover,
+body.admin-mode .admin-shell .ep-save:active {
+  color: #fff;
+  background: var(--control-primary-hover, #0d47a1);
+  border-color: var(--control-primary-hover, #0d47a1);
+  box-shadow: none;
+  transform: none;
+  filter: none;
+}
+body.admin-mode .admin-shell :is(.btn-ghost, .btn-glass) {
+  color: var(--as-ink);
+  background: var(--as-surface);
+  border-color: var(--adm-control-border);
+}
+body.admin-mode .admin-shell :is(.btn-ghost, .btn-glass):hover {
+  color: var(--adm-control-selected-text);
+  background: var(--as-hover);
+  border-color: var(--as-muted);
+  box-shadow: none;
+  transform: none;
+}
+body.admin-mode .admin-shell :is(.btn.sm, .btn-sm) {
+  min-height: 32px;
+  padding: 5px 10px;
+  border-radius: var(--control-radius-sm, 6px);
+  font-size: 12px;
+}
+body.admin-mode .admin-shell .btn-danger {
+  color: #fff;
+  background: #b42318;
+  border-color: #b42318;
+}
+body.admin-mode .admin-shell .btn-danger:hover {
+  color: #fff;
+  background: #912018;
+  border-color: #912018;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Navigation remains quiet; inline links are not secondary CTA buttons. */
+body.admin-mode .admin-shell .as-item {
+  min-height: 36px;
+  border-radius: var(--control-radius-sm, 6px);
+  font-weight: 500;
+}
+body.admin-mode .admin-shell .as-item.active { font-weight: 600; }
+body.admin-mode .admin-shell .link-btn {
+  min-height: 32px;
+  padding: 4px 2px;
+  border: 0;
+  border-radius: var(--control-radius-sm, 6px);
+  color: var(--as-accent);
+  background: transparent;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: none;
+  transform: none;
+}
+body.admin-mode .admin-shell .link-btn:hover {
+  color: var(--as-accent-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+body.admin-mode .admin-shell :is(.at-icon, .icon-btn, .modal__close) {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 6px;
+  border: 1px solid var(--adm-control-border);
+  border-radius: var(--control-radius-sm, 6px);
+  color: var(--as-muted);
+  background: var(--as-surface);
+  box-shadow: none;
+  transform: none;
+}
+body.admin-mode .admin-shell :is(.at-icon, .icon-btn, .modal__close):hover {
+  color: var(--adm-control-selected-text);
+  background: var(--as-hover);
+  border-color: var(--as-muted);
+  box-shadow: none;
+  transform: none;
+}
+body.admin-mode .admin-shell .icon-btn[data-del-prod] { color: var(--as-danger); }
+body.admin-mode .admin-shell .icon-btn[data-del-prod]:hover {
+  color: var(--as-danger);
+  background: var(--as-danger-bg);
+  border-color: var(--as-danger);
+}
+body.admin-mode .admin-shell td > .icon-btn + .icon-btn { margin-inline-start: 4px; }
+body.admin-mode .admin-shell :is(.at-av-btn, .at-av-menu a, .at-av-menu button) {
+  min-height: 32px;
+  border-radius: var(--control-radius-sm, 6px);
+  font-weight: 500;
+}
+
+/* Selectors have a soft selected state instead of borrowing the primary action fill. */
+body.admin-mode .admin-shell .seg {
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--adm-control-border);
+  border-radius: var(--control-radius, 8px);
+  background: var(--as-subtle);
+  box-shadow: none;
+}
+body.admin-mode .admin-shell .seg-b,
+body.admin-mode .admin-shell .an-range button {
+  min-height: 32px;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--control-radius-sm, 6px);
+  color: var(--as-muted);
+  background: transparent;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0;
+  box-shadow: none;
+  transform: none;
+}
+body.admin-mode .admin-shell .an-range button {
+  border-color: var(--adm-control-border);
+  background: var(--as-surface);
+}
+body.admin-mode .admin-shell .seg-b:hover,
+body.admin-mode .admin-shell .an-range button:hover {
+  color: var(--as-ink);
+  background: var(--as-hover);
+}
+body.admin-mode .admin-shell .seg-b.on,
+body.admin-mode .admin-shell .an-range button.on {
+  color: var(--adm-control-selected-text);
+  background: var(--as-active);
+  border-color: var(--adm-control-border);
+  font-weight: 600;
+  box-shadow: none;
+}
+body.admin-mode .admin-shell .pill-sel {
+  min-height: 32px;
+  padding: 5px 26px 5px 8px;
+  border-width: 1px;
+  border-radius: var(--control-radius-sm, 6px);
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: none;
+}
+
+/* Form fields use the existing surfaces and native select indicators. */
+body.admin-mode .admin-shell :is(.filter-select, .price-input, .admin-field),
+body.admin-mode .admin-shell :is(.add-form, .ep-field) :is(input, select, textarea):where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"])),
+body.admin-mode .admin-shell .img-url-line input,
+body.admin-mode .admin-shell .cal-row input,
+body.admin-mode .admin-shell .cv-tools select {
+  min-height: 36px;
+  min-width: 0;
+  padding: 7px 10px;
+  border: 1px solid var(--adm-control-border);
+  border-radius: var(--control-radius-sm, 6px);
+  color: var(--as-ink);
+  background-color: var(--as-field);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  box-shadow: none;
+}
+body.admin-mode .admin-shell :is(.filter-select, .ep-field select) { padding-right: 30px; }
+body.admin-mode .admin-shell .ep-field select[multiple] { min-height: 118px; padding-right: 10px; }
+body.admin-mode .admin-shell :is(.add-form, .ep-field) textarea { min-height: 80px; }
+body.admin-mode .admin-shell .data-table :is(.filter-select, .price-input) { min-height: 32px; padding-block: 5px; }
+body.admin-mode .admin-shell :is(.at-search, .at-search.mini) {
+  height: 36px;
+  min-height: 36px;
+  border-color: var(--adm-control-border);
+  border-radius: var(--control-radius-sm, 6px);
+  background: var(--as-field);
+  box-shadow: none;
+}
+body.admin-mode .admin-shell .at-search input { font-size: 13px; }
+body.admin-mode .admin-shell .an-custom { border-radius: var(--control-radius-sm, 6px); }
+body.admin-mode .admin-shell .an-custom input { min-height: 32px; font-size: 12px; }
+body.admin-mode .admin-shell :is(.add-form label, .ep-label, .ep-toggle__txt b, .cv-tools label) {
+  font-weight: 600;
+  letter-spacing: 0;
+}
+body.admin-mode .admin-shell :is(.ep-hint, .ep-toggle__txt small, .img-hint) { font-weight: 400; }
+body.admin-mode .admin-shell .img-file > span { display: inline-flex; align-items: center; gap: 6px; }
+body.admin-mode .admin-shell .ep-card--media .img-widget { background: var(--as-field); border-color: var(--adm-control-border); }
+body.admin-mode .admin-shell .feat-line { min-height: 36px; }
+body.admin-mode .admin-shell .add-form input[type="checkbox"] { width: 18px; height: 18px; min-height: 18px; padding: 0; }
+body.admin-mode .admin-shell .admin-check { display: inline-flex; align-items: center; justify-content: center; width: 32px; min-height: 32px; cursor: pointer; }
+
+/* Product editor switches retain their recognizable track, without a gradient or glow. */
+body.admin-mode .admin-shell .ep-shell {
+  --ep-ink: var(--as-ink);
+  --ep-muted: var(--as-muted);
+  --ep-deep: var(--adm-control-selected-text);
+  --ep-err: var(--as-danger);
+}
+body.admin-mode .admin-shell .ep-toggle {
+  min-height: 44px;
+  border-radius: var(--control-radius, 8px);
+  background: var(--as-surface);
+  box-shadow: none;
+}
+body.admin-mode .admin-shell .ep-toggle:hover { border-color: var(--adm-control-border); box-shadow: none; }
+body.admin-mode .admin-shell .ep-toggle input:checked + .ep-toggle__track { background: var(--control-primary, #1565c0); }
+body.admin-mode .admin-shell .ep-toggle__track::after { box-shadow: none; }
+body.admin-mode .admin-shell .ep-field--error :is(input, select, textarea) { border-color: var(--as-danger); box-shadow: none; }
+
+/* POS keeps its own independent theme; selection controls remain distinct from Generate Bill. */
+body.admin-mode .pos-root { --pos-control-danger: #f08c83; --pos-control-danger-bg: #3a2427; }
+body.admin-mode .pos-root[data-postheme="light"] { --pos-control-danger: #b42318; --pos-control-danger-bg: #fceeed; }
+body.admin-mode .pos-root :is(.pos-cat__head h2, .pos-bill__head h3) { color: var(--pos-ink); }
+body.admin-mode .pos-root .pos-btn {
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid var(--pos-line-strong);
+  border-radius: var(--control-radius, 8px);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.3;
+  box-shadow: none;
+  transform: none;
+  filter: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+body.admin-mode .pos-root .pos-btn--sm { min-height: 32px; padding: 5px 10px; font-size: 12px; border-radius: var(--control-radius-sm, 6px); }
+body.admin-mode .pos-root .pos-btn--ghost { color: var(--pos-ink); background: var(--pos-surface); }
+body.admin-mode .pos-root .pos-btn--ghost:hover { color: var(--pos-ink); background: var(--pos-blue-soft); }
+body.admin-mode .pos-root .pos-btn--primary { color: #fff; background: var(--control-primary, #1565c0); border-color: var(--control-primary, #1565c0); }
+body.admin-mode .pos-root .pos-btn--primary:hover,
+body.admin-mode .pos-root .pos-btn--primary:active { color: #fff; background: var(--control-primary-hover, #0d47a1); border-color: var(--control-primary-hover, #0d47a1); box-shadow: none; transform: none; filter: none; }
+body.admin-mode .pos-root :is(.pos-pill, .pos-paybtn, .pos-mtab) {
+  min-height: 32px;
+  padding: 5px 10px;
+  border: 1px solid var(--pos-line-strong);
+  border-radius: var(--control-radius-sm, 6px);
+  color: var(--pos-muted);
+  background: var(--pos-surface);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0;
+  box-shadow: none;
+  transform: none;
+}
+body.admin-mode .pos-root :is(.pos-paybtn, .pos-mtab) { min-height: 36px; }
+body.admin-mode .pos-root :is(.pos-pill, .pos-paybtn, .pos-mtab):hover { color: var(--pos-ink); background: var(--pos-card-hover); }
+body.admin-mode .pos-root :is(.pos-pill, .pos-paybtn, .pos-mtab).on { color: var(--pos-blue); background: var(--pos-blue-soft); border-color: var(--pos-blue); font-weight: 600; box-shadow: none; }
+body.admin-mode .pos-root .pos-mtab__n { color: inherit; background: transparent; }
+body.admin-mode .pos-root :is(.pos-held-n, .pos-mtab__n):empty { display: none; }
+body.admin-mode .pos-root :is(.pos-sort, .pos-cust input, .pos-sumrow--disc input) {
+  min-height: 36px;
+  padding-block: 7px;
+  border-color: var(--pos-line-strong);
+  border-radius: var(--control-radius-sm, 6px);
+  color: var(--pos-ink);
+  background-color: var(--pos-surface);
+  font-size: 13px;
+  font-weight: 400;
+  box-shadow: none;
+}
+body.admin-mode .pos-root .pos-search { min-height: 36px; padding-block: 6px; border-radius: var(--control-radius-sm, 6px); box-shadow: none; }
+body.admin-mode .pos-root .pos-search input { font-size: 13px; }
+body.admin-mode .pos-root .pos-cust label span { font-weight: 600; text-transform: none; letter-spacing: 0; }
+body.admin-mode .pos-root :is(.pos-line__qty button, .pos-line__del, .pos-heldrow__del) {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 5px;
+  border: 1px solid var(--pos-line-strong);
+  border-radius: var(--control-radius-sm, 6px);
+  color: var(--pos-ink);
+  background: var(--pos-surface);
+  font-weight: 600;
+  box-shadow: none;
+  transform: none;
+}
+body.admin-mode .pos-root .pos-line__qty button:active { background: var(--pos-blue-soft); transform: none; }
+body.admin-mode .pos-root :is(.pos-line__del, .pos-heldrow__del) { color: var(--pos-control-danger); }
+body.admin-mode .pos-root :is(.pos-line__del, .pos-heldrow__del):hover { color: var(--pos-control-danger); background: var(--pos-control-danger-bg); border-color: var(--pos-control-danger); }
+body.admin-mode .pos-root .pos-ico-btn { min-width: 36px; padding-inline: 8px; }
+
+/* Focus is an outline, not a persistent decorative halo. Disabled controls keep their role. */
+body.admin-mode .admin-shell :is(input, select, textarea):focus,
+body.admin-mode .admin-shell :is(.at-search, .at-search.mini):focus-within { border-color: var(--adm-control-focus); box-shadow: none; }
+body.admin-mode .pos-root :is(input, select):focus,
+body.admin-mode .pos-root .pos-search:focus-within { border-color: var(--pos-blue); box-shadow: none; }
+body.admin-mode .admin-shell :is(button, a, input, select, textarea):focus-visible { outline: 2px solid var(--adm-control-focus); outline-offset: 2px; box-shadow: none; }
+body.admin-mode .pos-root :is(button, a, input, select):focus-visible { outline: 2px solid var(--pos-blue); outline-offset: 2px; box-shadow: none; }
+body.admin-mode .admin-shell .ep-toggle input:focus-visible + .ep-toggle__track { outline: 2px solid var(--adm-control-focus); outline-offset: 3px; box-shadow: none; }
+body.admin-mode .admin-shell .img-file:has(input:focus-visible) { outline: 2px solid var(--adm-control-focus); outline-offset: 3px; box-shadow: none; }
+body.admin-mode .admin-shell :is(button, a, input, select, textarea):is(:disabled, [aria-disabled="true"]) {
+  opacity: .6;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  filter: none;
+}
+
+/* Touch targets grow only in touch/narrow contexts; dense desktop tables stay compact. */
+@media (pointer: coarse), (max-width: 640px) {
+  body.admin-mode .admin-shell :is(.btn, .btn.sm, .btn-sm, .ep-save, .as-item, .link-btn, .seg-b, .pill-sel, .filter-select, .price-input, .admin-field, .at-av-btn, .admin-check),
+  body.admin-mode .admin-shell .an-range button,
+  body.admin-mode .admin-shell .data-table :is(.filter-select, .price-input),
+  body.admin-mode .admin-shell :is(.at-av-menu a, .at-av-menu button),
+  body.admin-mode .pos-root :is(.pos-btn, .pos-btn--sm, .pos-pill, .pos-paybtn, .pos-mtab, .pos-sort) { min-height: 44px; }
+  body.admin-mode .admin-shell :is(.at-icon, .icon-btn, .modal__close, .admin-check),
+  body.admin-mode .pos-root :is(.pos-line__qty button, .pos-line__del, .pos-heldrow__del, .pos-ico-btn) { width: 44px; height: 44px; min-width: 44px; min-height: 44px; }
+  body.admin-mode .admin-shell :is(.at-search, .at-search.mini) { height: 44px; min-height: 44px; }
+  body.admin-mode .admin-shell :is(.add-form, .ep-field) :is(input, select):where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"])),
+  body.admin-mode .admin-shell :is(.img-url-line, .cal-row, .an-custom) input,
+  body.admin-mode .admin-shell .cv-tools select,
+  body.admin-mode .pos-root :is(.pos-cust input, .pos-sumrow--disc input, .pos-search) { min-height: 44px; }
+  body.admin-mode .admin-shell .feat-line { min-height: 44px; }
+  body.admin-mode .admin-shell td > .icon-btn + .icon-btn { margin-inline-start: 8px; }
+  body.admin-mode .admin-shell :is(.seg, .an-range, .add-actions, .ad-head-cta),
+  body.admin-mode .pos-root :is(.pos-pills, .pos-pay, .pos-mtabs, .pos-top__actions, .pos-line__qty) { gap: 8px; }
+  body.admin-mode .admin-shell :is(.at-search input, .add-form input, .add-form select, .add-form textarea, .ep-field input, .ep-field select, .ep-field textarea, .admin-field, .img-url-line input),
+  body.admin-mode .pos-root :is(.pos-search input, .pos-cust input, .pos-sumrow--disc input) { font-size: 16px; }
+}
+@media (max-width: 560px) {
+  body.admin-mode .pos-root .pos-btn span { display: inline; }
+}
+@media (max-width: 980px) {
+  body.admin-mode .pos-root .pos-billpanel { min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+}

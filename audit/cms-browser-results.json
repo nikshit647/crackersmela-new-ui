@@ -1,0 +1,32 @@
+{
+  "scope": "Isolated local copy; synthetic authentication; no production mutations or mail",
+  "status": "FAIL",
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\cms-browser-1791031010788",
+  "checks": [
+    {
+      "name": "Editor requires real staff authentication",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing staff login UI authenticates the synthetic account",
+      "status": "PASS"
+    },
+    {
+      "name": "Canvas contains current website and real catalog",
+      "status": "PASS"
+    },
+    {
+      "name": "Clicking actual canvas button opens its text properties",
+      "status": "PASS"
+    },
+    {
+      "name": "Button text updates immediately in the actual storefront",
+      "status": "PASS"
+    },
+    {
+      "name": "Undo and redo restore actual rendered text",
+      "status": "PASS"
+    }
+  ],
+  "error": "Command failed: C:\\Users\\Nikshit Garje\\AppData\\Roaming\\npm\\node_modules\\agent-browser\\bin\\agent-browser-win32-x64.exe --session cms-qa wait --fn (() => { const win=document.querySelector('#siteFrame')?.contentWindow, doc=win?.document; return !!doc && (win.innerWidth===1280 && win.getComputedStyle(doc.querySelector(\"[data-cms-section=\\\"home:hero\\\"] [data-cms-element=\\\"e1.0.3.0\\\"]\")).fontSize==='23px'); })() --json"
+}

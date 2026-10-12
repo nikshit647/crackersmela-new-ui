@@ -1,0 +1,130 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "header text and link edit through actual visual editor controls",
+      "status": "PASS"
+    },
+    {
+      "name": "Products editor loads the same saved shared draft",
+      "status": "PASS"
+    },
+    {
+      "name": "shared header publishes from another page",
+      "status": "PASS"
+    },
+    {
+      "name": "header edited from About saves and publishes globally",
+      "status": "PASS"
+    },
+    {
+      "name": "Home editor refresh shows About header edit",
+      "status": "PASS"
+    },
+    {
+      "name": "publishing clean Home retains the newer shared navigation",
+      "status": "PASS"
+    },
+    {
+      "name": "fresh desktop / uses shared header",
+      "status": "PASS"
+    },
+    {
+      "name": "fresh desktop /products uses shared header",
+      "status": "PASS"
+    },
+    {
+      "name": "commerce page content survives shared header application",
+      "status": "PASS"
+    },
+    {
+      "name": "fresh desktop /category/sparklers uses shared header",
+      "status": "PASS"
+    },
+    {
+      "name": "fresh desktop /about uses shared header",
+      "status": "PASS"
+    },
+    {
+      "name": "fresh desktop /contact uses shared header",
+      "status": "PASS"
+    },
+    {
+      "name": "fresh desktop /#/cart uses shared header",
+      "status": "PASS"
+    },
+    {
+      "name": "cart content stays application-owned",
+      "status": "PASS"
+    },
+    {
+      "name": "fresh desktop /#/wishlist uses shared header",
+      "status": "PASS"
+    },
+    {
+      "name": "fresh desktop /#/track uses shared header",
+      "status": "PASS"
+    },
+    {
+      "name": "edited desktop navigation link still navigates to products",
+      "status": "PASS"
+    },
+    {
+      "name": "mobile /products drawer projects the shared navigation edit",
+      "status": "PASS"
+    },
+    {
+      "name": "mobile /products keeps additional drawer links",
+      "status": "PASS"
+    },
+    {
+      "name": "mobile /products has no horizontal page overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "mobile /products drawer settles fully inside viewport",
+      "status": "PASS"
+    },
+    {
+      "name": "mobile /about drawer projects the shared navigation edit",
+      "status": "PASS"
+    },
+    {
+      "name": "mobile /about keeps additional drawer links",
+      "status": "PASS"
+    },
+    {
+      "name": "mobile /about has no horizontal page overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "mobile /about drawer settles fully inside viewport",
+      "status": "PASS"
+    },
+    {
+      "name": "mobile /#/cart drawer projects the shared navigation edit",
+      "status": "PASS"
+    },
+    {
+      "name": "mobile /#/cart keeps additional drawer links",
+      "status": "PASS"
+    },
+    {
+      "name": "mobile /#/cart has no horizontal page overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "mobile /#/cart drawer settles fully inside viewport",
+      "status": "PASS"
+    },
+    {
+      "name": "no uncaught browser errors",
+      "status": "PASS"
+    },
+    {
+      "name": "no browser console errors",
+      "status": "PASS"
+    }
+  ],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\shared-navigation-browser-1791458400690"
+}

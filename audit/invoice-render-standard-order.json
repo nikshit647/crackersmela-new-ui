@@ -1,0 +1,14 @@
+{
+  "id": "local-invoice-fixture-1",
+  "code": "CM-LOCAL-0001",
+  "status": "confirmed",
+  "payment": "COD",
+  "placedAt": "2026-10-05T06:30:00Z",
+  "items": [
+    {"id": 90001, "name": "Festival Sparklers - verification sample", "sku": "FIXTURE-SPARK", "qty": 2, "price": 1234.5},
+    {"id": 90002, "name": "Café Celebration Gift Box", "sku": "FIXTURE-BOX", "qty": 1, "price": 540.75}
+  ],
+  "totals": {"subtotal": 3009.75, "couponAmt": 109.75, "couponCode": "LOCAL", "posDiscount": 0, "festiveAmt": 0, "delivery": 50, "saving": 1200, "total": 2950},
+  "customer": {"name": "Test Buyer", "phone": "9000000001", "email": "buyer@example.test", "address": "123 Synthetic Test Road", "area": "Fixture Area", "city": "Hyderabad", "state": "Telangana", "pincode": "500001"},
+  "shipping": {"address": "123 Synthetic Test Road", "area": "Fixture Area", "city": "Hyderabad", "pincode": "500001"}
+}

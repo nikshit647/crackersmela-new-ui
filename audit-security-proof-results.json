@@ -1,0 +1,41 @@
+{
+  "source": "downloaded live-app.js",
+  "execution": "isolated Node VM; zero network requests",
+  "results": [
+    {
+      "id": "SEC-01",
+      "result": "CONFIRMED",
+      "detail": "Arbitrary matching client-side account and session values pass the staff write guard."
+    },
+    {
+      "id": "SEC-02",
+      "result": "CONFIRMED",
+      "detail": "Registration assigns admin to the owner email without any email-verification or server call. No registration was sent anywhere."
+    },
+    {
+      "id": "SEC-03-card",
+      "result": "CONFIRMED",
+      "detail": "An admin-entered image URL breaks out of the inline image error handler. Verified using a local boolean marker only."
+    },
+    {
+      "id": "SEC-03-thumbnail",
+      "result": "CONFIRMED",
+      "detail": "An admin-entered image URL breaks out of the inline image error handler. Verified using a local boolean marker only."
+    },
+    {
+      "id": "VERIFY-03",
+      "result": "CONFIRMED",
+      "detail": "Order ID renders as raw attribute markup. Cross-user exploitability depends on server-side order schema enforcement, which was not tested."
+    },
+    {
+      "id": "VERIFY-04",
+      "result": "CONFIRMED",
+      "detail": "All six staff role labels share the same client authorization guard; ordinary customer is rejected only before changing editable local state."
+    },
+    {
+      "id": "BUG-SYNC-01",
+      "result": "CONFIRMED",
+      "detail": "A pull with an empty server list automatically attempts to push a local-only order; the proof uses a stub fetch and synthetic ID."
+    }
+  ]
+}

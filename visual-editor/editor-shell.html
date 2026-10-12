@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Visual editor · Crackers Mela</title>
+  <link rel="icon" href="/images/logo.png">
+  <link rel="stylesheet" href="/css/visual-editor.css?v=20261008-globals1">
+  <script type="module" src="/js/visual-editor.js?v=20261008-globals1"></script>
+</head>
+<body>
+  <a class="skip-link" href="#inspector">Skip to editing controls</a>
+  <div id="editor" class="editor">
+    <!-- Compact bar: identity and mode on the left, save state in the middle,
+         history and publishing on the right. The website never enters this bar. -->
+    <header class="toolbar">
+      <a id="backToAdmin" class="brand back-to-admin" href="/">← Back to Admin</a>
+      <p class="page-heading"><strong id="pageTitle">Loading…</strong></p>
+      <button id="toggleLibrary" class="button button-outline mobile-tools" type="button" aria-controls="library" aria-expanded="false">Pages &amp; tools</button>
+      <div class="mode-switch" role="group" aria-label="Editor mode">
+        <button id="modeEdit" type="button" aria-pressed="true">Edit</button>
+        <button id="preview" type="button" aria-pressed="false">Preview</button>
+      </div>
+      <p class="save-state" aria-hidden="true"><span class="save-dot"></span><span id="saveState">Connecting…</span></p>
+      <div class="device-switch" role="group" aria-label="Editing device">
+        <button data-device="desktop" aria-label="Desktop preview" aria-pressed="true" title="Desktop preview"><span>Desktop</span></button>
+        <button data-device="tablet" aria-label="Tablet preview" aria-pressed="false" title="Tablet preview"><span>Tablet</span></button>
+        <button data-device="mobile" aria-label="Mobile preview" aria-pressed="false" title="Mobile preview"><span>Mobile</span></button>
+      </div>
+      <div class="toolbar-actions">
+        <button id="undo" class="icon-button" title="Undo · Ctrl+Z" aria-label="Undo" disabled></button>
+        <button id="redo" class="icon-button" title="Redo · Ctrl+Shift+Z" aria-label="Redo" disabled></button>
+        <span class="toolbar-divider" aria-hidden="true"></span>
+        <button id="discard" class="button button-quiet" title="Discard unsaved changes">Discard</button>
+        <button id="save" class="button button-outline" aria-describedby="publishingScope" disabled>Save draft</button>
+        <button id="publish" class="button button-primary" aria-describedby="publishingScope" disabled>Save &amp; Publish</button>
+      </div>
+    </header>
+    <p id="publishingScope" class="sr-only">Save draft keeps this page and global component changes private. Publish updates this page and applies shared Promo Bar, Header and Footer changes to every page.</p>
+    <div id="errorBanner" class="error-banner" hidden role="alert"><span></span><button id="reloadPage" class="button button-outline">Reload saved draft</button></div>
+    <div class="workspace">
+      <!-- Left: the real pages of the site, plus the reusable building blocks
+           and the structure of the page that is open. -->
+      <aside class="library" aria-label="Pages and elements">
+        <div class="simple-sidebar-head">
+          <nav id="nav" aria-label="Editor tools"></nav>
+          <button id="reorderCategories" class="category-order-entry" type="button"><span aria-hidden="true">⠿</span><span>Reorder Categories<small>One order across your website</small></span></button>
+          <button id="reorderProductBlocks" class="category-order-entry block-order-entry" type="button"><span aria-hidden="true">↕</span><span>Reorder Products sections<small>Page layout and filter blocks</small></span></button>
+        </div>
+        <div id="library"></div>
+        <div class="simple-sidebar-foot">
+          <button class="text-button" data-page-settings>Page settings</button>
+          <button class="panel-toggle" id="toggleInspector" aria-controls="inspector" aria-expanded="true" title="Show or hide editing controls">Edit</button>
+          <button id="theme" class="icon-button" title="Switch theme" aria-label="Switch theme"></button>
+        </div>
+      </aside>
+      <!-- Centre: the actual Crackers Mela page, scaled to the chosen device. -->
+      <main class="canvas-area" aria-label="Live website canvas">
+        <div class="canvas-bar"><div class="canvas-location"><span class="connection-dot"></span><span id="canvasPath">crackersmela.com</span></div><span id="viewportLabel">1280 × Desktop</span></div>
+        <div id="canvasStage" class="canvas-stage"><div id="canvasFrame" class="canvas-frame"><iframe id="siteFrame" title="Actual Crackers Mela page preview" referrerpolicy="same-origin" src="about:blank"></iframe></div><div id="loading" class="canvas-loading" role="status"><span class="spinner"></span><strong>Opening your website</strong><span>Loading the current page and saved draft…</span></div></div>
+        <div class="canvas-footer"><span id="breadcrumb">Select an element on the page to edit</span><span id="canvasMode">Click to edit</span></div>
+      </main>
+      <!-- Right: only the controls for whatever is selected right now. -->
+      <aside id="inspector" class="inspector properties-panel" aria-label="Selected element controls" tabindex="-1"></aside>
+    </div>
+    <footer class="statusbar"><span id="saveStatus" role="status" aria-live="polite">Connecting…</span><span id="publishedStatus">Your published site stays live while you edit.</span><button id="history" class="text-button">Revision history</button></footer>
+  </div>
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+  <dialog id="confirmDialog" class="dialog confirm-dialog"><form method="dialog"><div class="dialog-head"><h2 id="confirmTitle"></h2><button value="cancel" class="icon-button" aria-label="Close dialog">×</button></div><p id="confirmMessage"></p><div class="dialog-actions"><button class="button button-outline" value="cancel">Cancel</button><button id="confirmAction" class="button button-primary" value="confirm">Continue</button></div></form></dialog>
+  <dialog id="mediaDialog" class="dialog media-dialog"><div class="dialog-head"><div><span class="eyebrow">Your website assets</span><h2>Media library</h2></div><button id="closeMedia" class="icon-button" aria-label="Close media library">×</button></div><div class="media-tools"><label class="search-field"><span class="sr-only">Search images</span><input id="mediaSearch" type="search" placeholder="Search your images…"></label><label class="button button-primary upload-button">Upload image<input id="mediaUpload" type="file" accept="image/jpeg,image/png,image/webp"></label></div><p id="mediaStatus" class="muted" role="status">Loading images…</p><div class="media-body"><div id="mediaGrid" class="media-grid"></div><aside id="mediaDetails" class="media-details"><p>Select an image to preview it and edit its alt text.</p></aside></div><div class="dialog-actions"><button id="mediaMore" class="button button-outline" hidden>Load more</button><span class="muted">JPG, PNG or WebP · up to 5 MB</span><button id="chooseMedia" class="button button-primary" disabled>Use image</button></div></dialog>
+  <dialog id="historyDialog" class="dialog history-dialog"><div class="dialog-head"><h2>Page revision history</h2><button id="closeHistory" class="icon-button" aria-label="Close revision history">×</button></div><p class="muted">Restore this page’s content into your draft. Current global Promo Bar, Header and Footer stay unchanged. Publish when ready.</p><div id="revisionList"></div></dialog>
+  <dialog id="pageDialog" class="dialog page-dialog"><form id="pageForm"><div class="dialog-head"><h2 id="pageDialogTitle">Add page</h2><button type="button" id="closePageDialog" class="icon-button" aria-label="Close page dialog">×</button></div><label class="field"><span>Page name</span><input id="newPageName" name="page-name" autocomplete="off" required maxlength="100" placeholder="About us…"></label><label id="slugField" class="field"><span>Page URL</span><div class="slug-input"><span>crackersmela.com/</span><input id="newPageSlug" name="page-slug" autocomplete="off" spellcheck="false" required pattern="[a-z0-9]+(-[a-z0-9]+)*" maxlength="80" placeholder="about-us"></div></label><p id="pageFormError" class="form-error" role="alert" hidden></p><p class="muted">Your new page stays private until you publish it.</p><div class="dialog-actions"><button type="button" id="cancelPageDialog" class="button button-outline">Cancel</button><button id="pageFormSubmit" class="button button-primary" type="submit">Create page</button></div></form></dialog>
+</body>
+</html>

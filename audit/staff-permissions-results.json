@@ -1,0 +1,738 @@
+{
+  "checks": [
+    {
+      "name": "configured owner remains able to log in",
+      "pass": true
+    },
+    {
+      "name": "configured owner is protected Super Admin",
+      "pass": true
+    },
+    {
+      "name": "anonymous cannot list staff",
+      "pass": true
+    },
+    {
+      "name": "create requires CSRF",
+      "pass": true
+    },
+    {
+      "name": "create rejects cross-origin requests",
+      "pass": true
+    },
+    {
+      "name": "mutation cannot use GET",
+      "pass": true
+    },
+    {
+      "name": "owner listed without credential material",
+      "pass": true
+    },
+    {
+      "name": "configured owner cannot be deactivated",
+      "pass": true
+    },
+    {
+      "name": "configured owner cannot be demoted",
+      "pass": true
+    },
+    {
+      "name": "create super_admin",
+      "pass": true
+    },
+    {
+      "name": "server authenticates super_admin",
+      "pass": true
+    },
+    {
+      "name": "create admin",
+      "pass": true
+    },
+    {
+      "name": "server authenticates admin",
+      "pass": true
+    },
+    {
+      "name": "create billing",
+      "pass": true
+    },
+    {
+      "name": "server authenticates billing",
+      "pass": true
+    },
+    {
+      "name": "create inventory_manager",
+      "pass": true
+    },
+    {
+      "name": "server authenticates inventory_manager",
+      "pass": true
+    },
+    {
+      "name": "create order_manager",
+      "pass": true
+    },
+    {
+      "name": "server authenticates order_manager",
+      "pass": true
+    },
+    {
+      "name": "duplicate email rejected case-insensitively",
+      "pass": true
+    },
+    {
+      "name": "reject weak password",
+      "pass": true
+    },
+    {
+      "name": "reject NUL password",
+      "pass": true
+    },
+    {
+      "name": "reject oversized password",
+      "pass": true
+    },
+    {
+      "name": "reject unknown role",
+      "pass": true
+    },
+    {
+      "name": "reject script name",
+      "pass": true
+    },
+    {
+      "name": "reject invalid email",
+      "pass": true
+    },
+    {
+      "name": "reject forged grants",
+      "pass": true
+    },
+    {
+      "name": "managed hashes and credential schemes never appear in staff directory responses",
+      "pass": true
+    },
+    {
+      "name": "super_admin staff-directory boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin cannot bypass management by direct create",
+      "pass": true
+    },
+    {
+      "name": "super_admin cannot bypass management by direct update",
+      "pass": true
+    },
+    {
+      "name": "super_admin cannot bypass management by direct activation",
+      "pass": true
+    },
+    {
+      "name": "super_admin customer-directory boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin analytics boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin order-list boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin status boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin payment boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin catalog boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin product-write boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin settings field boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin upload boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin old upload alias boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin invoice boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin invoice download still requires its CSRF token",
+      "pass": true
+    },
+    {
+      "name": "super_admin cannot bypass staff invoice permissions through customer endpoint",
+      "pass": true
+    },
+    {
+      "name": "super_admin notification boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin CMS read boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin CMS write boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin editor entry boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin preview boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin media boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin media mutation boundary",
+      "pass": true
+    },
+    {
+      "name": "super_admin POS boundary",
+      "pass": true
+    },
+    {
+      "name": "admin staff-directory boundary",
+      "pass": true
+    },
+    {
+      "name": "admin cannot bypass management by direct create",
+      "pass": true
+    },
+    {
+      "name": "admin cannot bypass management by direct update",
+      "pass": true
+    },
+    {
+      "name": "admin cannot bypass management by direct activation",
+      "pass": true
+    },
+    {
+      "name": "admin customer-directory boundary",
+      "pass": true
+    },
+    {
+      "name": "admin analytics boundary",
+      "pass": true
+    },
+    {
+      "name": "admin order-list boundary",
+      "pass": true
+    },
+    {
+      "name": "admin status boundary",
+      "pass": true
+    },
+    {
+      "name": "admin payment boundary",
+      "pass": true
+    },
+    {
+      "name": "admin catalog boundary",
+      "pass": true
+    },
+    {
+      "name": "admin product-write boundary",
+      "pass": true
+    },
+    {
+      "name": "admin settings field boundary",
+      "pass": true
+    },
+    {
+      "name": "admin upload boundary",
+      "pass": true
+    },
+    {
+      "name": "admin old upload alias boundary",
+      "pass": true
+    },
+    {
+      "name": "admin invoice boundary",
+      "pass": true
+    },
+    {
+      "name": "admin invoice download still requires its CSRF token",
+      "pass": true
+    },
+    {
+      "name": "admin cannot bypass staff invoice permissions through customer endpoint",
+      "pass": true
+    },
+    {
+      "name": "admin notification boundary",
+      "pass": true
+    },
+    {
+      "name": "admin CMS read boundary",
+      "pass": true
+    },
+    {
+      "name": "admin CMS write boundary",
+      "pass": true
+    },
+    {
+      "name": "admin editor entry boundary",
+      "pass": true
+    },
+    {
+      "name": "admin preview boundary",
+      "pass": true
+    },
+    {
+      "name": "admin media boundary",
+      "pass": true
+    },
+    {
+      "name": "admin media mutation boundary",
+      "pass": true
+    },
+    {
+      "name": "admin POS boundary",
+      "pass": true
+    },
+    {
+      "name": "billing staff-directory boundary",
+      "pass": true
+    },
+    {
+      "name": "billing cannot bypass management by direct create",
+      "pass": true
+    },
+    {
+      "name": "billing cannot bypass management by direct update",
+      "pass": true
+    },
+    {
+      "name": "billing cannot bypass management by direct activation",
+      "pass": true
+    },
+    {
+      "name": "billing customer-directory boundary",
+      "pass": true
+    },
+    {
+      "name": "billing analytics boundary",
+      "pass": true
+    },
+    {
+      "name": "billing order-list boundary",
+      "pass": true
+    },
+    {
+      "name": "billing status boundary",
+      "pass": true
+    },
+    {
+      "name": "billing payment boundary",
+      "pass": true
+    },
+    {
+      "name": "billing catalog boundary",
+      "pass": true
+    },
+    {
+      "name": "billing product-write boundary",
+      "pass": true
+    },
+    {
+      "name": "billing settings field boundary",
+      "pass": true
+    },
+    {
+      "name": "billing upload boundary",
+      "pass": true
+    },
+    {
+      "name": "billing old upload alias boundary",
+      "pass": true
+    },
+    {
+      "name": "billing invoice boundary",
+      "pass": true
+    },
+    {
+      "name": "billing invoice download still requires its CSRF token",
+      "pass": true
+    },
+    {
+      "name": "billing cannot bypass staff invoice permissions through customer endpoint",
+      "pass": true
+    },
+    {
+      "name": "billing notification boundary",
+      "pass": true
+    },
+    {
+      "name": "billing CMS read boundary",
+      "pass": true
+    },
+    {
+      "name": "billing CMS write boundary",
+      "pass": true
+    },
+    {
+      "name": "billing editor entry boundary",
+      "pass": true
+    },
+    {
+      "name": "billing preview boundary",
+      "pass": true
+    },
+    {
+      "name": "billing media boundary",
+      "pass": true
+    },
+    {
+      "name": "billing media mutation boundary",
+      "pass": true
+    },
+    {
+      "name": "billing POS boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager staff-directory boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager cannot bypass management by direct create",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager cannot bypass management by direct update",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager cannot bypass management by direct activation",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager customer-directory boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager analytics boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager order-list boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager status boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager payment boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager catalog boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager product-write boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager settings field boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager upload boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager old upload alias boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager invoice boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager invoice download still requires its CSRF token",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager cannot bypass staff invoice permissions through customer endpoint",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager notification boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager CMS read boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager CMS write boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager editor entry boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager preview boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager media boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager media mutation boundary",
+      "pass": true
+    },
+    {
+      "name": "inventory_manager POS boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager staff-directory boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager cannot bypass management by direct create",
+      "pass": true
+    },
+    {
+      "name": "order_manager cannot bypass management by direct update",
+      "pass": true
+    },
+    {
+      "name": "order_manager cannot bypass management by direct activation",
+      "pass": true
+    },
+    {
+      "name": "order_manager customer-directory boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager analytics boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager order-list boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager status boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager payment boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager catalog boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager product-write boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager settings field boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager upload boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager old upload alias boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager invoice boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager invoice download still requires its CSRF token",
+      "pass": true
+    },
+    {
+      "name": "order_manager cannot bypass staff invoice permissions through customer endpoint",
+      "pass": true
+    },
+    {
+      "name": "order_manager notification boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager CMS read boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager CMS write boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager editor entry boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager preview boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager media boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager media mutation boundary",
+      "pass": true
+    },
+    {
+      "name": "order_manager POS boundary",
+      "pass": true
+    },
+    {
+      "name": "billing cannot smuggle status through payment update",
+      "pass": true
+    },
+    {
+      "name": "mixed forbidden order request changes no fields",
+      "pass": true
+    },
+    {
+      "name": "inventory cannot smuggle settings through product save",
+      "pass": true
+    },
+    {
+      "name": "mixed forbidden product request changes no fields",
+      "pass": true
+    },
+    {
+      "name": "signed Google email maps to existing managed role and ignores submitted identity",
+      "pass": true
+    },
+    {
+      "name": "Google-managed session enforces API permissions",
+      "pass": true
+    },
+    {
+      "name": "signed but unprovisioned allowlisted-domain account cannot sign in",
+      "pass": true
+    },
+    {
+      "name": "configured owner retains approved Google sign-in",
+      "pass": true
+    },
+    {
+      "name": "customer registration never creates staff privileges",
+      "pass": true
+    },
+    {
+      "name": "role change persists",
+      "pass": true
+    },
+    {
+      "name": "role change immediately revokes old session",
+      "pass": true
+    },
+    {
+      "name": "stale admin edit rejected",
+      "pass": true
+    },
+    {
+      "name": "updated account signs into new role",
+      "pass": true
+    },
+    {
+      "name": "deactivation persists",
+      "pass": true
+    },
+    {
+      "name": "deactivation revokes existing session",
+      "pass": true
+    },
+    {
+      "name": "inactive account cannot log in",
+      "pass": true
+    },
+    {
+      "name": "inactive managed account cannot use a valid Google token",
+      "pass": true
+    },
+    {
+      "name": "reactivation restores sign-in",
+      "pass": true
+    },
+    {
+      "name": "password reset revokes active session",
+      "pass": true
+    },
+    {
+      "name": "old password no longer works",
+      "pass": true
+    },
+    {
+      "name": "new password works",
+      "pass": true
+    },
+    {
+      "name": "customer logout clears new staff identity",
+      "pass": true
+    },
+    {
+      "name": "forged Google identity never grants staff",
+      "pass": true
+    },
+    {
+      "name": "valid legacy owner session survives upgrade",
+      "pass": true
+    },
+    {
+      "name": "passwords are never stored in plaintext",
+      "pass": true
+    },
+    {
+      "name": "managed long Unicode password can be created and used",
+      "pass": true
+    },
+    {
+      "name": "managed password hashing does not truncate a changed long suffix",
+      "pass": true
+    },
+    {
+      "name": "final managed Super Admin cannot deactivate itself when configured owner is unavailable",
+      "pass": true
+    },
+    {
+      "name": "final managed Super Admin cannot demote itself when configured owner is unavailable",
+      "pass": true
+    },
+    {
+      "name": "existing customer authentication regression suite",
+      "pass": true
+    }
+  ],
+  "passed": 183,
+  "total": 183
+}

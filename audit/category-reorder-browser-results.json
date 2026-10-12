@@ -1,0 +1,7 @@
+{
+  "status": "FAIL",
+  "scope": "Isolated local copy; synthetic authentication; no production mutations or mail",
+  "checks": [],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\category-reorder-browser-1791455193652",
+  "error": "Error: Browser launch failed\n    at ChildProcess.<anonymous> (file:///C:/Users/Nikshit%20Garje/Documents/ChatGPT/crackersmela%20final/tests/cms-category-reorder-browser-test.mjs:69:224)\n    at Object.onceWrapper (node:events:631:26)\n    at ChildProcess.emit (node:events:509:28)\n    at ChildProcess._handle.onexit (node:internal/child_process:295:12)"
+}

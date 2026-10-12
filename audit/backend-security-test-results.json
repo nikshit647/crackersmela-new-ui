@@ -1,0 +1,392 @@
+{
+  "checkedAt": "2026-10-06T19:23:28Z",
+  "runtime": "PHP 8.3.35 Windows; production PHP 8.1 lint remains separate",
+  "fixtureOnly": true,
+  "mailDisabled": true,
+  "serverStopped": true,
+  "passed": 95,
+  "total": 95,
+  "results": [
+    {
+      "name": "host-only HttpOnly SameSite session cookie",
+      "pass": true
+    },
+    {
+      "name": "anonymous session is not staff",
+      "pass": true
+    },
+    {
+      "name": "anonymous order collection empty",
+      "pass": true
+    },
+    {
+      "name": "anonymous privileged action denied /products-api.php:push",
+      "pass": true
+    },
+    {
+      "name": "anonymous privileged action denied /catalog-api.php:push",
+      "pass": true
+    },
+    {
+      "name": "anonymous privileged action denied /orders-api.php:update",
+      "pass": true
+    },
+    {
+      "name": "anonymous privileged action denied /orders-api.php:push",
+      "pass": true
+    },
+    {
+      "name": "anonymous analytics report denied",
+      "pass": true
+    },
+    {
+      "name": "anonymous upload denied /upload-api.php",
+      "pass": true
+    },
+    {
+      "name": "anonymous upload denied /api/upload.php",
+      "pass": true
+    },
+    {
+      "name": "login without CSRF denied",
+      "pass": true
+    },
+    {
+      "name": "cross-origin login denied",
+      "pass": true
+    },
+    {
+      "name": "wrong staff password denied",
+      "pass": true
+    },
+    {
+      "name": "valid staff login uses server session",
+      "pass": true
+    },
+    {
+      "name": "staff mutation without CSRF denied",
+      "pass": true
+    },
+    {
+      "name": "staff analytics report allowed",
+      "pass": true
+    },
+    {
+      "name": "public order without CSRF denied",
+      "pass": true
+    },
+    {
+      "name": "canonical order creation succeeds",
+      "pass": true
+    },
+    {
+      "name": "client prices and discounts replaced by server values",
+      "pass": true
+    },
+    {
+      "name": "server owns order identity timestamp status and log",
+      "pass": true
+    },
+    {
+      "name": "internal ownership and request hashes omitted",
+      "pass": true
+    },
+    {
+      "name": "identical retry returns same saved order",
+      "pass": true
+    },
+    {
+      "name": "changed retry cannot overwrite prior order",
+      "pass": true
+    },
+    {
+      "name": "creating browser sees its own order",
+      "pass": true
+    },
+    {
+      "name": "different browser cannot list that order",
+      "pass": true
+    },
+    {
+      "name": "lookup requires correct phone",
+      "pass": true
+    },
+    {
+      "name": "code plus phone grants one-order browser access",
+      "pass": true
+    },
+    {
+      "name": "tracking projection omits id",
+      "pass": true
+    },
+    {
+      "name": "tracking projection omits items",
+      "pass": true
+    },
+    {
+      "name": "tracking projection omits totals",
+      "pass": true
+    },
+    {
+      "name": "tracking projection omits shipping",
+      "pass": true
+    },
+    {
+      "name": "tracking projection omits customer",
+      "pass": true
+    },
+    {
+      "name": "tracking projection omits _emailEvents",
+      "pass": true
+    },
+    {
+      "name": "tracking projection omits _requestHash",
+      "pass": true
+    },
+    {
+      "name": "tracking projection omits customerUserId",
+      "pass": true
+    },
+    {
+      "name": "tracking projection carries the derived quantity",
+      "pass": true
+    },
+    {
+      "name": "tracking projection carries a status timeline",
+      "pass": true
+    },
+    {
+      "name": "verified browser sees the order in its own session",
+      "pass": true
+    },
+    {
+      "name": "staff can list persisted orders",
+      "pass": true
+    },
+    {
+      "name": "order without a billing block is accepted",
+      "pass": true
+    },
+    {
+      "name": "same-as-delivery billing is accepted",
+      "pass": true
+    },
+    {
+      "name": "same-as-delivery billing mirrors the delivery address server-side",
+      "pass": true
+    },
+    {
+      "name": "same-as-delivery flag persisted",
+      "pass": true
+    },
+    {
+      "name": "order without billing carries no billing key",
+      "pass": true
+    },
+    {
+      "name": "distinct billing address is accepted",
+      "pass": true
+    },
+    {
+      "name": "distinct billing address stored verbatim",
+      "pass": true
+    },
+    {
+      "name": "distinct billing does not overwrite the delivery address",
+      "pass": true
+    },
+    {
+      "name": "billing pincode must be six digits",
+      "pass": true
+    },
+    {
+      "name": "billing state is required when different",
+      "pass": true
+    },
+    {
+      "name": "billing name is required when different",
+      "pass": true
+    },
+    {
+      "name": "billing mobile must be a valid 10-digit number",
+      "pass": true
+    },
+    {
+      "name": "reject negative quantity",
+      "pass": true
+    },
+    {
+      "name": "reject fractional quantity",
+      "pass": true
+    },
+    {
+      "name": "reject stock-excess quantity",
+      "pass": true
+    },
+    {
+      "name": "reject nonexistent coupon",
+      "pass": true
+    },
+    {
+      "name": "public cannot claim POS privileges",
+      "pass": true
+    },
+    {
+      "name": "public cannot choose staff-only payment mode",
+      "pass": true
+    },
+    {
+      "name": "staff updates create authoritative audit log",
+      "pass": true
+    },
+    {
+      "name": "unknown order status rejected",
+      "pass": true
+    },
+    {
+      "name": "staff POS persists canonical counter bill",
+      "pass": true
+    },
+    {
+      "name": "owned order notification accepts stored identity with mail disabled",
+      "pass": true
+    },
+    {
+      "name": "frontend orderId notification contract accepted",
+      "pass": true
+    },
+    {
+      "name": "other browser cannot trigger order notification",
+      "pass": true
+    },
+    {
+      "name": "negative catalog price rejected",
+      "pass": true
+    },
+    {
+      "name": "staff catalog mutation accepted",
+      "pass": true
+    },
+    {
+      "name": "public receives persisted catalog changes",
+      "pass": true
+    },
+    {
+      "name": "stale product revision rejected",
+      "pass": true
+    },
+    {
+      "name": "staff product mutation accepted",
+      "pass": true
+    },
+    {
+      "name": "unsafe product image scheme rejected",
+      "pass": true
+    },
+    {
+      "name": "unsafe product URL slug rejected",
+      "pass": true
+    },
+    {
+      "name": "authenticated safe raster upload /upload-api.php",
+      "pass": true
+    },
+    {
+      "name": "random upload stays inside fixture directory /upload-api.php",
+      "pass": true
+    },
+    {
+      "name": "upload raster reencoding strips trailing content /upload-api.php",
+      "pass": true
+    },
+    {
+      "name": "authenticated safe raster upload /api/upload.php",
+      "pass": true
+    },
+    {
+      "name": "random upload stays inside fixture directory /api/upload.php",
+      "pass": true
+    },
+    {
+      "name": "upload raster reencoding strips trailing content /api/upload.php",
+      "pass": true
+    },
+    {
+      "name": "expired staff cannot retain POS order ownership",
+      "pass": true
+    },
+    {
+      "name": "staff can sign in again after expiry",
+      "pass": true
+    },
+    {
+      "name": "staff logout succeeds",
+      "pass": true
+    },
+    {
+      "name": "logout revokes staff API access",
+      "pass": true
+    },
+    {
+      "name": "repeated staff password failures are rate limited",
+      "pass": true
+    },
+    {
+      "name": "registration cannot claim staff role",
+      "pass": true
+    },
+    {
+      "name": "same email never claims legacy guest orders",
+      "pass": true
+    },
+    {
+      "name": "normal customer cannot modify catalog",
+      "pass": true
+    },
+    {
+      "name": "normal customer cannot view admin report",
+      "pass": true
+    },
+    {
+      "name": "normal customer cannot upload products",
+      "pass": true
+    },
+    {
+      "name": "customer order is saved",
+      "pass": true
+    },
+    {
+      "name": "customer can sign in from second browser",
+      "pass": true
+    },
+    {
+      "name": "server customer ID scopes cross-browser order history",
+      "pass": true
+    },
+    {
+      "name": "separate customer registration succeeds",
+      "pass": true
+    },
+    {
+      "name": "separate customer cannot read another customer orders",
+      "pass": true
+    },
+    {
+      "name": "separate customer cannot mail another customer order",
+      "pass": true
+    },
+    {
+      "name": "customer expiry enforced on direct order API",
+      "pass": true
+    },
+    {
+      "name": "customer logout succeeds",
+      "pass": true
+    },
+    {
+      "name": "customer logout revokes order history access",
+      "pass": true
+    }
+  ],
+  "serverLog": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\php-security-mlq1al5o\\php-server.log"
+}

@@ -1,0 +1,362 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Catalog contains all 11 existing categories",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh /products reads global saved order",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh /products sidebar matches saved order",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh /category/sparklers reads global saved order",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh /category/sparklers sidebar matches saved order",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh /about reads global saved order",
+      "status": "PASS"
+    },
+    {
+      "name": "Save order updates public backend immediately without Publish",
+      "status": "PASS"
+    },
+    {
+      "name": "Refreshing admin preserves saved category order",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancel leaves backend draft category order untouched",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancel leaves published category order untouched",
+      "status": "PASS"
+    },
+    {
+      "name": "grid drag shows insertion marker and all 11 live positions",
+      "status": "PASS"
+    },
+    {
+      "name": "grid order previews before pointer release",
+      "status": "PASS"
+    },
+    {
+      "name": "grid drag retains every category exactly once",
+      "status": "PASS"
+    },
+    {
+      "name": "Failed Save leaves reorder mode open for retry",
+      "status": "PASS"
+    },
+    {
+      "name": "Failed Save preserves current dragged order",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry saves exact category order",
+      "status": "PASS"
+    },
+    {
+      "name": "Sidebar Save publishes same global order",
+      "status": "PASS"
+    },
+    {
+      "name": "Mega-menu editing contains all 11 categories and toolbar within desktop viewport",
+      "status": "PASS",
+      "detail": {
+        "count": 12,
+        "inside": true,
+        "overlap": false
+      }
+    },
+    {
+      "name": "Mega-menu editing cards and toolbar do not overlap",
+      "status": "PASS",
+      "detail": {
+        "count": 12,
+        "inside": true,
+        "overlap": false
+      }
+    },
+    {
+      "name": "Mega-menu handles receive pointer input",
+      "status": "PASS",
+      "detail": {
+        "handleHit": true,
+        "hit": "<svg viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><circle cx=\"9\" cy=\"6\" r=\"1.6\"></circle><circle cx=\"15\" cy=\"6\" r=\"1.6\"></circle><circle cx=\"9\" cy=\"12\" r=\"1.6\"></circle><circle cx=\"15\" c",
+        "pointerEvents": "auto"
+      }
+    },
+    {
+      "name": "menu drag shows insertion marker and all 11 live positions",
+      "status": "PASS"
+    },
+    {
+      "name": "menu order previews before pointer release",
+      "status": "PASS"
+    },
+    {
+      "name": "Mouse menu drag ghost keeps a solid card with the source dimensions",
+      "status": "PASS",
+      "detail": {
+        "background": "rgb(255, 255, 255)",
+        "boxSizing": "border-box",
+        "display": "flex",
+        "height": 133.375,
+        "iconHeight": 28,
+        "iconWidth": 28,
+        "nameAboveCount": true,
+        "sourceHeight": 133.375
+      }
+    },
+    {
+      "name": "Mouse menu drag ghost keeps category name and count on separate lines",
+      "status": "PASS",
+      "detail": {
+        "background": "rgb(255, 255, 255)",
+        "boxSizing": "border-box",
+        "display": "flex",
+        "height": 133.375,
+        "iconHeight": 28,
+        "iconWidth": 28,
+        "nameAboveCount": true,
+        "sourceHeight": 133.375
+      }
+    },
+    {
+      "name": "Mouse menu drag ghost keeps the category icon size",
+      "status": "PASS",
+      "detail": {
+        "background": "rgb(255, 255, 255)",
+        "boxSizing": "border-box",
+        "display": "flex",
+        "height": 133.375,
+        "iconHeight": 28,
+        "iconWidth": 28,
+        "nameAboveCount": true,
+        "sourceHeight": 133.375
+      }
+    },
+    {
+      "name": "menu drag retains every category exactly once",
+      "status": "PASS"
+    },
+    {
+      "name": "menu touch drag shows live preview",
+      "status": "PASS"
+    },
+    {
+      "name": "Touch menu drag ghost keeps a solid card with the source dimensions",
+      "status": "PASS",
+      "detail": {
+        "background": "rgb(255, 255, 255)",
+        "boxSizing": "border-box",
+        "display": "flex",
+        "height": 133.375,
+        "iconHeight": 28,
+        "iconWidth": 28,
+        "nameAboveCount": true,
+        "sourceHeight": 133.375
+      }
+    },
+    {
+      "name": "Touch menu drag ghost keeps category name and count on separate lines",
+      "status": "PASS",
+      "detail": {
+        "background": "rgb(255, 255, 255)",
+        "boxSizing": "border-box",
+        "display": "flex",
+        "height": 133.375,
+        "iconHeight": 28,
+        "iconWidth": 28,
+        "nameAboveCount": true,
+        "sourceHeight": 133.375
+      }
+    },
+    {
+      "name": "Touch menu drag ghost keeps the category icon size",
+      "status": "PASS",
+      "detail": {
+        "background": "rgb(255, 255, 255)",
+        "boxSizing": "border-box",
+        "display": "flex",
+        "height": 133.375,
+        "iconHeight": 28,
+        "iconWidth": 28,
+        "nameAboveCount": true,
+        "sourceHeight": 133.375
+      }
+    },
+    {
+      "name": "menu touch preserves all category identities",
+      "status": "PASS"
+    },
+    {
+      "name": "Mega-menu Save publishes same global order",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile touch drag shows live preview",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile touch preserves all 11 category identities",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile reorder canvas has no horizontal overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile move controls have usable touch targets",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile Save publishes touch order",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile Reorder Categories opens all 11 Products sidebar categories",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile category editor stays visible within the canvas",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile sidebar move previews its new category order",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile sidebar Cancel leaves the published order untouched",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile fresh /products matches saved order",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile fresh /category/sparklers matches saved order",
+      "status": "PASS"
+    },
+    {
+      "name": "Desktop refreshed mega-menu matches final order",
+      "status": "PASS"
+    },
+    {
+      "name": "Desktop refreshed sidebar matches final order",
+      "status": "PASS"
+    },
+    {
+      "name": "Sidebar filtering still selects only products in its category",
+      "status": "PASS"
+    },
+    {
+      "name": "All category links retain canonical URL and ID",
+      "status": "PASS",
+      "detail": [
+        {
+          "count": "11 products",
+          "href": "/category/bombs",
+          "id": "bombs",
+          "name": "Bombs"
+        },
+        {
+          "count": "8 products",
+          "href": "/category/chakkars",
+          "id": "chakkars",
+          "name": "Chakkars"
+        },
+        {
+          "count": "45 products",
+          "href": "/category/fancy",
+          "id": "fancy",
+          "name": "Fancy Fireworks"
+        },
+        {
+          "count": "20 products",
+          "href": "/category/flower-pots",
+          "id": "flower-pots",
+          "name": "Flower Pots"
+        },
+        {
+          "count": "11 products",
+          "href": "/category/garlands",
+          "id": "garlands",
+          "name": "Garlands"
+        },
+        {
+          "count": "7 products",
+          "href": "/category/gift-boxes",
+          "id": "gift-boxes",
+          "name": "Gift Boxes"
+        },
+        {
+          "count": "9 products",
+          "href": "/category/guns-rolls",
+          "id": "guns-rolls",
+          "name": "Guns · Rolls · Pop"
+        },
+        {
+          "count": "24 products",
+          "href": "/category/kids-special",
+          "id": "kids-special",
+          "name": "Kids Special"
+        },
+        {
+          "count": "9 products",
+          "href": "/category/night-outs",
+          "id": "night-outs",
+          "name": "Multicolor Shows"
+        },
+        {
+          "count": "10 products",
+          "href": "/category/rockets",
+          "id": "rockets",
+          "name": "Rockets & Novel"
+        },
+        {
+          "count": "12 products",
+          "href": "/category/sparklers",
+          "id": "sparklers",
+          "name": "Sparklers"
+        }
+      ]
+    },
+    {
+      "name": "Category names, links and product counts remain attached to their category IDs",
+      "status": "PASS"
+    },
+    {
+      "name": "SPA navigation back Home preserves category names, counts and links",
+      "status": "PASS"
+    },
+    {
+      "name": "SPA navigation back Home preserves saved category order",
+      "status": "PASS"
+    },
+    {
+      "name": "Product, count source, category membership and catalog records are byte-identical",
+      "status": "PASS"
+    },
+    {
+      "name": "No uncaught browser errors",
+      "status": "PASS"
+    },
+    {
+      "name": "No browser console errors",
+      "status": "PASS"
+    }
+  ],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\category-save-live-1791460992366",
+  "fixtureUrl": "http://127.0.0.1:4314"
+}

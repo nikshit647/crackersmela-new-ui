@@ -1,0 +1,136 @@
+{
+  "generatedAt": "2026-10-05T03:59:18.747117+00:00",
+  "fixtureOnly": true,
+  "schemaSha256": "3fa44e3aa6430ef95ac8ab94a00d39d0a014b93543b860510d02fa899274ce86",
+  "mirrorsMatch": true,
+  "existingCmsChecks": 203,
+  "promoPassed": 31,
+  "promoTotal": 31,
+  "phpDiagnostics": false,
+  "results": [
+    {
+      "name": "Promo Bar messages and exact-device icon presentation save through existing CMS",
+      "pass": true
+    },
+    {
+      "name": "Promo message defaults are explicit and message order is preserved",
+      "pass": true
+    },
+    {
+      "name": "Promo shared visibility and exact-device overrides survive validation unchanged",
+      "pass": true
+    },
+    {
+      "name": "Promo draft edits do not alter published content",
+      "pass": true
+    },
+    {
+      "name": "Promo message data survives editor reload",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects invalid icon",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects invalid ID",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects HTML message",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects long message",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects non-boolean enabled",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects null enabled",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects null icon",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects unknown message property",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects duplicate message ID",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects too many messages",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects non-list messages",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects non-boolean shared icon visibility",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects messages on unrelated native source",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects messages on non-native section",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects message content in device override",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects non-boolean device icon visibility",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects icon visibility on unrelated native source",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects device icon visibility on unrelated native source",
+      "pass": true
+    },
+    {
+      "name": "Promo rejects device icon visibility on element",
+      "pass": true
+    },
+    {
+      "name": "Rejected Promo data never changes saved draft or version",
+      "pass": true
+    },
+    {
+      "name": "Promo content publishes through existing workflow",
+      "pass": true
+    },
+    {
+      "name": "Public Promo response contains published content without private draft",
+      "pass": true
+    },
+    {
+      "name": "Empty Promo message list is preserved as intentional empty content",
+      "pass": true
+    },
+    {
+      "name": "Explicit empty Promo list remains a list after publication",
+      "pass": true
+    },
+    {
+      "name": "Missing Promo messages remain missing for original storefront fallback",
+      "pass": true
+    },
+    {
+      "name": "Every supported Promo icon survives validation",
+      "pass": true
+    }
+  ]
+}

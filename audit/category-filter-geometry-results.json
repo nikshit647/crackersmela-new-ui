@@ -1,0 +1,336 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Catalog contains all 11 existing categories",
+      "status": "PASS"
+    },
+    {
+      "name": "Desktop 1280 canvas sidebar toolbar children stay within filter card",
+      "status": "PASS",
+      "detail": {
+        "menuVisible": false,
+        "rows": [
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          }
+        ],
+        "toolbarInside": true
+      }
+    },
+    {
+      "name": "Desktop 1280 canvas category rows are compact with controls inside",
+      "status": "PASS",
+      "detail": {
+        "menuVisible": false,
+        "rows": [
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          }
+        ],
+        "toolbarInside": true
+      }
+    },
+    {
+      "name": "Desktop 1280 canvas filter reorder does not force the unrelated mega-menu open",
+      "status": "PASS",
+      "detail": {
+        "menuVisible": false,
+        "rows": [
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          }
+        ],
+        "toolbarInside": true
+      }
+    },
+    {
+      "name": "Mobile 390 canvas sidebar toolbar children stay within filter card",
+      "status": "PASS",
+      "detail": {
+        "menuVisible": false,
+        "rows": [
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          }
+        ],
+        "toolbarInside": true
+      }
+    },
+    {
+      "name": "Mobile 390 canvas category rows are compact with controls inside",
+      "status": "PASS",
+      "detail": {
+        "menuVisible": false,
+        "rows": [
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          }
+        ],
+        "toolbarInside": true
+      }
+    },
+    {
+      "name": "Mobile 390 canvas filter reorder does not force the unrelated mega-menu open",
+      "status": "PASS",
+      "detail": {
+        "menuVisible": false,
+        "rows": [
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          },
+          {
+            "height": 94,
+            "inside": true
+          }
+        ],
+        "toolbarInside": true
+      }
+    }
+  ],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\category-save-live-1791460251054",
+  "fixtureUrl": "http://127.0.0.1:4314",
+  "filterGeometry": true
+}

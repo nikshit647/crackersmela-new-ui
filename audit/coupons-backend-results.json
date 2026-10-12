@@ -1,0 +1,521 @@
+{
+  "checkedAt": "2026-10-09T12:14:07Z",
+  "runtime": "PHP 8.3.35 Windows; production PHP 8.1 lint is a separate gate",
+  "fixtureOnly": true,
+  "mailDisabled": true,
+  "serverStopped": true,
+  "passed": 127,
+  "total": 127,
+  "results": [
+    {
+      "name": "owner session grants coupons.manage",
+      "pass": true
+    },
+    {
+      "name": "billing fixture account created",
+      "pass": true
+    },
+    {
+      "name": "billing fixture account can sign in",
+      "pass": true
+    },
+    {
+      "name": "admin fixture account created",
+      "pass": true
+    },
+    {
+      "name": "admin fixture account can sign in",
+      "pass": true
+    },
+    {
+      "name": "customer fixture registered",
+      "pass": true
+    },
+    {
+      "name": "anonymous coupon administration is denied",
+      "pass": true
+    },
+    {
+      "name": "a registered customer is not staff for coupons",
+      "pass": true
+    },
+    {
+      "name": "a staff role without coupons.manage is refused",
+      "pass": true
+    },
+    {
+      "name": "a staff role with coupons.manage may list",
+      "pass": true
+    },
+    {
+      "name": "anonymous cannot create a coupon",
+      "pass": true
+    },
+    {
+      "name": "a staff role without coupons.manage cannot create a coupon",
+      "pass": true
+    },
+    {
+      "name": "coupon creation requires a CSRF token",
+      "pass": true
+    },
+    {
+      "name": "coupon creation rejects a cross-origin request",
+      "pass": true
+    },
+    {
+      "name": "coupon creation cannot use GET",
+      "pass": true
+    },
+    {
+      "name": "an unsupported coupon action is refused",
+      "pass": true
+    },
+    {
+      "name": "create coupon SAVE10",
+      "pass": true
+    },
+    {
+      "name": "create coupon CAP10",
+      "pass": true
+    },
+    {
+      "name": "create coupon EXPIRED",
+      "pass": true
+    },
+    {
+      "name": "create coupon FUTURE",
+      "pass": true
+    },
+    {
+      "name": "create coupon OFFLINE",
+      "pass": true
+    },
+    {
+      "name": "create coupon MIN5000",
+      "pass": true
+    },
+    {
+      "name": "create coupon ONCE",
+      "pass": true
+    },
+    {
+      "name": "create coupon ONCEOPEN",
+      "pass": true
+    },
+    {
+      "name": "create coupon PER1",
+      "pass": true
+    },
+    {
+      "name": "create coupon REGONLY",
+      "pass": true
+    },
+    {
+      "name": "create coupon FIRSTONLY",
+      "pass": true
+    },
+    {
+      "name": "create coupon SELONLY",
+      "pass": true
+    },
+    {
+      "name": "create coupon PRODP",
+      "pass": true
+    },
+    {
+      "name": "create coupon CATP",
+      "pass": true
+    },
+    {
+      "name": "create coupon STACKA",
+      "pass": true
+    },
+    {
+      "name": "create coupon STACKB",
+      "pass": true
+    },
+    {
+      "name": "create coupon STACKC",
+      "pass": true
+    },
+    {
+      "name": "create coupon STACKD",
+      "pass": true
+    },
+    {
+      "name": "create coupon BIGC",
+      "pass": true
+    },
+    {
+      "name": "create coupon BIGD",
+      "pass": true
+    },
+    {
+      "name": "create coupon LASTUSE",
+      "pass": true
+    },
+    {
+      "name": "reject an unknown field",
+      "pass": true
+    },
+    {
+      "name": "reject a fixed rupee discount field",
+      "pass": true
+    },
+    {
+      "name": "reject a zero percentage",
+      "pass": true
+    },
+    {
+      "name": "reject a percentage above 100",
+      "pass": true
+    },
+    {
+      "name": "reject an unnormalizable code",
+      "pass": true
+    },
+    {
+      "name": "reject an over-long code",
+      "pass": true
+    },
+    {
+      "name": "reject an unsupported audience",
+      "pass": true
+    },
+    {
+      "name": "reject a non-boolean flag",
+      "pass": true
+    },
+    {
+      "name": "reject an end date before its start",
+      "pass": true
+    },
+    {
+      "name": "reject a malformed date",
+      "pass": true
+    },
+    {
+      "name": "reject a missing code",
+      "pass": true
+    },
+    {
+      "name": "reject a missing percentage",
+      "pass": true
+    },
+    {
+      "name": "10 percent of 6000 is a 600 discount",
+      "pass": true
+    },
+    {
+      "name": "10 percent of 15000 is capped at 1000",
+      "pass": true
+    },
+    {
+      "name": "an unknown code is not_found and changes no total",
+      "pass": true
+    },
+    {
+      "name": "quote reports expired",
+      "pass": true
+    },
+    {
+      "name": "quote reports not_started",
+      "pass": true
+    },
+    {
+      "name": "quote reports inactive",
+      "pass": true
+    },
+    {
+      "name": "a short cart reports below_minimum with unlock progress",
+      "pass": true
+    },
+    {
+      "name": "a second coupon is refused by default",
+      "pass": true
+    },
+    {
+      "name": "two stackable coupons both apply",
+      "pass": true
+    },
+    {
+      "name": "a stacked discount never exceeds the cart subtotal",
+      "pass": true
+    },
+    {
+      "name": "a product-scoped coupon discounts its own product",
+      "pass": true
+    },
+    {
+      "name": "a mixed cart discounts only the qualifying items",
+      "pass": true
+    },
+    {
+      "name": "a fully ineligible cart is scope_mismatch",
+      "pass": true
+    },
+    {
+      "name": "a category-scoped coupon discounts its own category",
+      "pass": true
+    },
+    {
+      "name": "a registered-only coupon requires sign-in before discounting",
+      "pass": true
+    },
+    {
+      "name": "quote rejects a negative quantity",
+      "pass": true
+    },
+    {
+      "name": "quote rejects a fractional quantity",
+      "pass": true
+    },
+    {
+      "name": "quote rejects an oversized quantity",
+      "pass": true
+    },
+    {
+      "name": "quote rejects a malformed line",
+      "pass": true
+    },
+    {
+      "name": "quote rejects an unknown product",
+      "pass": true
+    },
+    {
+      "name": "quote ignores submitted money keys",
+      "pass": true
+    },
+    {
+      "name": "an order applies 10 percent of 6000 as 600",
+      "pass": true
+    },
+    {
+      "name": "an order stores an immutable coupon snapshot",
+      "pass": true
+    },
+    {
+      "name": "an order applies the capped discount",
+      "pass": true
+    },
+    {
+      "name": "an order ignores forged client money",
+      "pass": true
+    },
+    {
+      "name": "an order refuses an unknown coupon code",
+      "pass": true
+    },
+    {
+      "name": "a limited coupon applies to the first order",
+      "pass": true
+    },
+    {
+      "name": "replaying a submission returns the same order",
+      "pass": true
+    },
+    {
+      "name": "a replay does not consume a second use",
+      "pass": true
+    },
+    {
+      "name": "a limited coupon refuses the next order",
+      "pass": true
+    },
+    {
+      "name": "the 2500 minimum still rejects a smaller pre-coupon subtotal",
+      "pass": true
+    },
+    {
+      "name": "the 2500 minimum still allows a valid coupon above it",
+      "pass": true
+    },
+    {
+      "name": "a POS order keeps its counter discount and ignores coupons",
+      "pass": true
+    },
+    {
+      "name": "a signed-in customer spends their per-customer allowance",
+      "pass": true
+    },
+    {
+      "name": "a signed-in customer cannot reuse a per-customer coupon",
+      "pass": true
+    },
+    {
+      "name": "a different customer keeps their own allowance",
+      "pass": true
+    },
+    {
+      "name": "a guest phone spends a per-customer allowance",
+      "pass": true
+    },
+    {
+      "name": "the same guest phone cannot reuse the coupon",
+      "pass": true
+    },
+    {
+      "name": "a different guest phone keeps its own allowance",
+      "pass": true
+    },
+    {
+      "name": "a registered-only coupon refuses a guest",
+      "pass": true
+    },
+    {
+      "name": "a registered-only coupon accepts a signed-in customer",
+      "pass": true
+    },
+    {
+      "name": "a first-order coupon applies to a new customer",
+      "pass": true
+    },
+    {
+      "name": "a first-order coupon refuses a returning customer",
+      "pass": true
+    },
+    {
+      "name": "a selected-audience coupon applies to a listed customer",
+      "pass": true
+    },
+    {
+      "name": "a selected-audience coupon refuses an unlisted customer",
+      "pass": true
+    },
+    {
+      "name": "offers keep a below-minimum coupon with its unlock progress",
+      "pass": true
+    },
+    {
+      "name": "offers report the canonical cart subtotal",
+      "pass": true
+    },
+    {
+      "name": "offers hide expired, inactive, future and non-public codes",
+      "pass": true
+    },
+    {
+      "name": "offers hide a used-up coupon",
+      "pass": true
+    },
+    {
+      "name": "offers keep an unused limited coupon",
+      "pass": true
+    },
+    {
+      "name": "every offer carries only public fields",
+      "pass": true
+    },
+    {
+      "name": "the offers projection hides internalName",
+      "pass": true
+    },
+    {
+      "name": "the offers projection hides customerIds",
+      "pass": true
+    },
+    {
+      "name": "the offers projection hides productIds",
+      "pass": true
+    },
+    {
+      "name": "the offers projection hides categoryIds",
+      "pass": true
+    },
+    {
+      "name": "the offers projection hides usedCount",
+      "pass": true
+    },
+    {
+      "name": "the offers projection hides perCustomerCount",
+      "pass": true
+    },
+    {
+      "name": "the offers projection hides totalUsageLimit",
+      "pass": true
+    },
+    {
+      "name": "the offers projection hides perCustomerUsageLimit",
+      "pass": true
+    },
+    {
+      "name": "the offers projection hides stackingEnabled",
+      "pass": true
+    },
+    {
+      "name": "the offers projection hides Campaign October",
+      "pass": true
+    },
+    {
+      "name": "a signed-in customer gets a definite audience answer",
+      "pass": true
+    },
+    {
+      "name": "create returns version 1 and a server id",
+      "pass": true
+    },
+    {
+      "name": "update with the current version succeeds",
+      "pass": true
+    },
+    {
+      "name": "a stale expected version is refused",
+      "pass": true
+    },
+    {
+      "name": "an unknown coupon id is not found",
+      "pass": true
+    },
+    {
+      "name": "a duplicate code is refused case-insensitively",
+      "pass": true
+    },
+    {
+      "name": "duplicate starts blank, inactive and at version 1",
+      "pass": true
+    },
+    {
+      "name": "a blank coupon cannot be activated",
+      "pass": true
+    },
+    {
+      "name": "set-active persists and bumps the version",
+      "pass": true
+    },
+    {
+      "name": "an unused coupon is removed outright",
+      "pass": true
+    },
+    {
+      "name": "the used coupon can be edited before archival",
+      "pass": true
+    },
+    {
+      "name": "deleting a used coupon archives it instead",
+      "pass": true
+    },
+    {
+      "name": "order coupon history survives the coupon being edited and archived",
+      "pass": true
+    },
+    {
+      "name": "staff usage counts come from stored orders",
+      "pass": true
+    },
+    {
+      "name": "per-customer usage is derived per identity",
+      "pass": true
+    },
+    {
+      "name": "exactly one racing order wins the last remaining use",
+      "pass": true
+    },
+    {
+      "name": "a coupon use never exceeds its total limit",
+      "pass": true
+    }
+  ],
+  "fixture": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\coupons-backend-go18phym",
+  "serverLog": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\coupons-backend-go18phym\\server.log"
+}

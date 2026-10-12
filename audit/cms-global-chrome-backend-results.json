@@ -1,0 +1,216 @@
+{
+  "fixtureOnly": true,
+  "passed": 52,
+  "total": 52,
+  "results": [
+    {
+      "name": "isolated staff login",
+      "pass": true
+    },
+    {
+      "name": "global version extends existing header token",
+      "pass": true
+    },
+    {
+      "name": "Home promo/footer and existing shared header are canonical",
+      "pass": true
+    },
+    {
+      "name": "canonical IDs injected once around page content",
+      "pass": true
+    },
+    {
+      "name": "account data sanitized in migrated globals",
+      "pass": true
+    },
+    {
+      "name": "public reads preserve separate global publication",
+      "pass": true
+    },
+    {
+      "name": "reads never write canonical migration or legacy records",
+      "pass": true
+    },
+    {
+      "name": "anonymous global edit denied",
+      "pass": true
+    },
+    {
+      "name": "global save CSRF protected",
+      "pass": true
+    },
+    {
+      "name": "stale global save rejected before migration",
+      "pass": true
+    },
+    {
+      "name": "first migration page failure returns error",
+      "pass": true
+    },
+    {
+      "name": "failed first migration restores legacy authority",
+      "pass": true
+    },
+    {
+      "name": "one canonical record saves all three global drafts",
+      "pass": true
+    },
+    {
+      "name": "page draft and publication own no global copies after save",
+      "pass": true
+    },
+    {
+      "name": "new page revision stores only page content",
+      "pass": true
+    },
+    {
+      "name": "unrelated legacy page and header file remain unchanged",
+      "pass": true
+    },
+    {
+      "name": "global drafts stay private until publish",
+      "pass": true
+    },
+    {
+      "name": "all admin pages share global draft home",
+      "pass": true
+    },
+    {
+      "name": "all admin pages share global draft products",
+      "pass": true
+    },
+    {
+      "name": "all admin pages share global draft about",
+      "pass": true
+    },
+    {
+      "name": "all admin pages share global draft contact",
+      "pass": true
+    },
+    {
+      "name": "all admin pages share global draft faq",
+      "pass": true
+    },
+    {
+      "name": "all admin pages share global draft privacy",
+      "pass": true
+    },
+    {
+      "name": "publish commits all shared components",
+      "pass": true
+    },
+    {
+      "name": "all public pages use one global publication home",
+      "pass": true
+    },
+    {
+      "name": "all public pages use one global publication products",
+      "pass": true
+    },
+    {
+      "name": "all public pages use one global publication product",
+      "pass": true
+    },
+    {
+      "name": "all public pages use one global publication about",
+      "pass": true
+    },
+    {
+      "name": "all public pages use one global publication contact",
+      "pass": true
+    },
+    {
+      "name": "all public pages use one global publication faq",
+      "pass": true
+    },
+    {
+      "name": "all public pages use one global publication privacy",
+      "pass": true
+    },
+    {
+      "name": "stale cross-page global token rejected",
+      "pass": true
+    },
+    {
+      "name": "contradictory old/new version fields rejected",
+      "pass": true
+    },
+    {
+      "name": "header-only compatibility cannot change promo or footer",
+      "pass": true
+    },
+    {
+      "name": "missing global guard cannot overwrite chrome",
+      "pass": true
+    },
+    {
+      "name": "duplicate global instances rejected",
+      "pass": true
+    },
+    {
+      "name": "page-specific section cannot claim canonical global identity",
+      "pass": true
+    },
+    {
+      "name": "page restore keeps current shared chrome despite archived copies",
+      "pass": true
+    },
+    {
+      "name": "page restore leaves global draft and publication bytes untouched",
+      "pass": true
+    },
+    {
+      "name": "archived legacy revision remains byte-identical",
+      "pass": true
+    },
+    {
+      "name": "restored page stores no global copies",
+      "pass": true
+    },
+    {
+      "name": "category-only save preserves canonical global record",
+      "pass": true
+    },
+    {
+      "name": "category order is unchanged by global operations",
+      "pass": true
+    },
+    {
+      "name": "omitted global roles are preserved and re-injected",
+      "pass": true
+    },
+    {
+      "name": "future duplicated page references canonical globals",
+      "pass": true
+    },
+    {
+      "name": "failed page publication returns storage error",
+      "pass": true
+    },
+    {
+      "name": "failed publication restores exact global bytes",
+      "pass": true
+    },
+    {
+      "name": "legacy header becomes inert after one canonical import",
+      "pass": true
+    },
+    {
+      "name": "catalog products prices IDs and counts remain byte-identical",
+      "pass": true
+    },
+    {
+      "name": "category-only write before migration preserves Home chrome fallback",
+      "pass": true
+    },
+    {
+      "name": "first page restore imports current globals before removing page copies",
+      "pass": true
+    },
+    {
+      "name": "first restore retains distinct canonical draft and publication",
+      "pass": true
+    }
+  ],
+  "phpDiagnostics": false
+}

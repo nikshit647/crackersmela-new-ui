@@ -1,0 +1,43 @@
+﻿{
+    "Scope":  "Isolated local preview and error paths only; no real server persistence/authentication",
+    "Checks":  [
+                   {
+                       "Check":  "Contact reports unavailable and retains draft",
+                       "Status":  "PASS"
+                   },
+                   {
+                       "Check":  "503 checkout retains cart, creates no success page or private cache",
+                       "Status":  "PASS"
+                   },
+                   {
+                       "Check":  "Unknown initial route renders noindexed 404 UI",
+                       "Status":  "PASS"
+                   },
+                   {
+                       "Check":  "Admin search filters to one row without losing focus",
+                       "Status":  "PASS"
+                   },
+                   {
+                       "Check":  "Admin edit save blocked without local override or false success",
+                       "Status":  "PASS"
+                   }
+               ],
+    "BrowserErrors":  {
+                          "errors":  [
+
+                                     ],
+                          "lifecycle":  {
+                                            "effectiveLaunch":  {
+                                                                    "browserLaunched":  true,
+                                                                    "engine":  "chrome",
+                                                                    "launchHash":  7707568497978554591
+                                                                },
+                                            "launched":  false,
+                                            "relaunchedBrowser":  false,
+                                            "restartedBackground":  false,
+                                            "restoreStatus":  "not_configured",
+                                            "reused":  true,
+                                            "saveStatus":  "not_attempted"
+                                        }
+                      }
+}

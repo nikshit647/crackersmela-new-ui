@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "scope": "Isolated local copy; synthetic authentication; no production mutations or mail",
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\cms-canva-palette-1791463752470",
+  "checks": [
+    {
+      "name": "Drag Container from Elements palette onto the actual page",
+      "status": "PASS"
+    },
+    {
+      "name": "Drag Heading inside the new container and retain its parent",
+      "status": "PASS"
+    },
+    {
+      "name": "Duplicating a container also duplicates its nested heading",
+      "status": "PASS",
+      "detail": [
+        {
+          "id": "a-e24fb0d3-d02d-4728-bb74-98303f2d19af",
+          "parent": "a-5241caa8-c450-4f0b-90fb-2a2aaf1c7b62"
+        },
+        {
+          "id": "a-d1fa515f-047e-4589-a7e2-11cf1dd9a375",
+          "parent": "a-863506ed-312a-4ea2-8aa2-ca0aa63572b5"
+        }
+      ]
+    },
+    {
+      "name": "Both nested headings render under their containers on the persistent public page",
+      "status": "PASS"
+    },
+    {
+      "name": "No uncaught exceptions in the supplemental workflow",
+      "status": "PASS"
+    }
+  ]
+}

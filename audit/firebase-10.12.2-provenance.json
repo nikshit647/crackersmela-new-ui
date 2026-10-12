@@ -1,0 +1,31 @@
+{
+  "version": "10.12.2",
+  "preparation": "node audit/prepare-console-assets.mjs",
+  "transformation": "Remove only each exact terminal sourceMappingURL comment; retain every preceding byte. The CDN files have no license comments, so the complete matching release license is included separately.",
+  "verification": "Concatenating the vendored bytes with removedSuffix recreates the exact official upstream SHA-256.",
+  "files": [
+    {
+      "path": "js/vendor/firebase/10.12.2/firebase-app-compat.js",
+      "upstreamUrl": "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js",
+      "upstreamBytes": 31444,
+      "upstreamSha256": "24a1fd90a9424647636669f59013201ba385eff82a58f88c76a7d400d4d71139",
+      "vendoredBytes": 31396,
+      "vendoredSha256": "d2d70c6fc0b754c04232629a9746c621933487ed8fd71a27a36fef52feeb73e1",
+      "removedSuffix": "//# sourceMappingURL=firebase-app-compat.js.map\n"
+    },
+    {
+      "path": "js/vendor/firebase/10.12.2/firebase-auth-compat.js",
+      "upstreamUrl": "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js",
+      "upstreamBytes": 139582,
+      "upstreamSha256": "277f6ef70525168247921e7a51fe995ecc66f9c3cf56c97f0d2bc262f74b5906",
+      "vendoredBytes": 139533,
+      "vendoredSha256": "15fde4a08c69086a076880563589137be5369d1bfd406e30a3a059eb884b73e1",
+      "removedSuffix": "//# sourceMappingURL=firebase-auth-compat.js.map\n"
+    }
+  ],
+  "license": {
+    "path": "js/vendor/firebase/10.12.2/LICENSE.txt",
+    "upstreamUrl": "https://raw.githubusercontent.com/firebase/firebase-js-sdk/firebase%4010.12.2/LICENSE",
+    "upstreamSha256": "065e45b5674f9bf76670496e5472611b3fbd87fbeaf99336725430a9909cb687"
+  }
+}

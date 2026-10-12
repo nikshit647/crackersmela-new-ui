@@ -1,0 +1,100 @@
+{
+  "scope": "Local editor source only; no live writes/deployment",
+  "files": [
+    {
+      "file": "cm-cms.php",
+      "mirrored": true,
+      "sha256": "1f46d388d1d100a0dd98c041b56bfd1cd31d9132333265273b67ff4cb9ecb3b5"
+    },
+    {
+      "file": "cms-api.php",
+      "mirrored": true,
+      "sha256": "afec930945f34cb356e7925735760ecf7b8fc4dadff9c4d90b43c79c301f2e49"
+    },
+    {
+      "file": "cms-media.php",
+      "mirrored": true,
+      "sha256": "d7a6e7fc8d71c994123d2e629eb17cfcd4efb1b8a742b9d79b80ee6ec0f0ab6d"
+    },
+    {
+      "file": "visual-editor.php",
+      "mirrored": true,
+      "sha256": "4ac6851303f9da11ffd510cbdd587c6b9abff567e0d161638f2ddaf1da7b7541"
+    },
+    {
+      "file": "visual-preview.php",
+      "mirrored": true,
+      "sha256": "854365e03e0e8343abfeaa35ce8222fd21716dbeebc9ec6c26f4aff3c028f118"
+    },
+    {
+      "file": "editor-shell.html",
+      "mirrored": true,
+      "sha256": "5c9f34c3ef6d6dc67d50e45a1cef491833fb9188514c8cde8613c89f256afd28"
+    },
+    {
+      "file": "js/cms-responsive.js",
+      "mirrored": true,
+      "sha256": "7edb6db6e33a6926d8868c5a33353b0127e5ccb36856a142e5a5df3fb1327b20"
+    },
+    {
+      "file": "js/cms-model.js",
+      "mirrored": true,
+      "sha256": "5427ce41c20c57beeeeb10056f1b007eb7bfedf1bccc9cffeee2bae75086e838"
+    },
+    {
+      "file": "js/cms-runtime.js",
+      "mirrored": true,
+      "sha256": "b72a6262609a6bd01815a412e7938591c00b41c276d2327be0dba73c84148ec3"
+    },
+    {
+      "file": "js/cms-preview.js",
+      "mirrored": true,
+      "sha256": "7443822b38c811c6cf4c42f63890f4b911e4a29e1504ce49627995d0e94b7fa8"
+    },
+    {
+      "file": "js/visual-editor.js",
+      "mirrored": true,
+      "sha256": "2ca9dbdc4d9c683a6b0679ab439debd6550ba1809e56dc71feecda630ece9caf"
+    },
+    {
+      "file": "css/visual-editor.css",
+      "mirrored": true,
+      "sha256": "64e5c67685965b65d902f0498b63edd12f1a80156dccb5800eee8ce74947d268"
+    },
+    {
+      "file": "css/cms-content.css",
+      "mirrored": true,
+      "sha256": "cb629efc418bb8905cc19628e67aeea0798306932d95e9186bfb8ec352e4594e"
+    }
+  ],
+  "tests": {
+    "responsiveAndOrderingNode": {
+      "passed": 18,
+      "total": 18
+    },
+    "cmsBackend": {
+      "passed": 203,
+      "total": 203
+    },
+    "responsiveBrowser": {
+      "passed": 14,
+      "report": "audit/cms-responsive-browser-results.json"
+    },
+    "productsReorderBrowser": {
+      "passed": 37,
+      "report": "audit/cms-product-reorder-browser-results.json"
+    },
+    "canvaBrowser": {
+      "passed": 34,
+      "report": "audit/cms-canva-browser-results.json"
+    },
+    "eslint": "PASS",
+    "legacyHomeGridBrowser": {
+      "passed": 9,
+      "total": 9,
+      "report": "audit/cms-home-grid-browser-results.json"
+    }
+  },
+  "fixtureManifest": "audit-evidence/cms-responsive-fixture.json",
+  "integrationScriptRun": false
+}

@@ -1,3 +1,5 @@
+# ===== Spring Boot storefront (origin/main) =====
+
 # Build output
 target/
 *.class
@@ -28,5 +30,25 @@ application-secrets.yml
 .DS_Store
 Thumbs.db
 
-# Node (unused here, but safe)
+# ===== Local UI review harness (codex/local-audit) =====
+
+# Deployed evidence can contain exposed credentials; never publish it.
+live-app.js
+live-index.html
+audit/screenshots/
+audit-evidence/
+# audit-artifacts/ contains verbatim copies of deployed production app.js
+# (Firebase API key + demo admin credentials). Same class as audit-evidence/.
+audit-artifacts/
+.codex-mine/
+.backup-*/
+__pycache__/
+tmp-probe.txt
+
+# Images: only the review harness product/logo images are intentional.
+*.png
+!review/public/images/**/*.png
+
+# Node / logs (shared)
 node_modules/
+*.log

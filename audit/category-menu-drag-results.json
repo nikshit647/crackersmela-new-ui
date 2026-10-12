@@ -1,0 +1,143 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Catalog contains all 11 existing categories",
+      "status": "PASS"
+    },
+    {
+      "name": "Mega-menu editing contains all 11 categories and toolbar within desktop viewport",
+      "status": "PASS",
+      "detail": {
+        "count": 12,
+        "inside": true,
+        "overlap": false
+      }
+    },
+    {
+      "name": "Mega-menu editing cards and toolbar do not overlap",
+      "status": "PASS",
+      "detail": {
+        "count": 12,
+        "inside": true,
+        "overlap": false
+      }
+    },
+    {
+      "name": "Mega-menu handles receive pointer input",
+      "status": "PASS",
+      "detail": {
+        "handleHit": true,
+        "hit": "<svg viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><circle cx=\"9\" cy=\"6\" r=\"1.6\"></circle><circle cx=\"15\" cy=\"6\" r=\"1.6\"></circle><circle cx=\"9\" cy=\"12\" r=\"1.6\"></circle><circle cx=\"15\" c",
+        "pointerEvents": "auto"
+      }
+    },
+    {
+      "name": "menu drag shows insertion marker and all 11 live positions",
+      "status": "PASS"
+    },
+    {
+      "name": "menu order previews before pointer release",
+      "status": "PASS"
+    },
+    {
+      "name": "Mouse menu drag ghost keeps a solid card with the source dimensions",
+      "status": "PASS",
+      "detail": {
+        "background": "rgb(255, 255, 255)",
+        "boxSizing": "border-box",
+        "display": "flex",
+        "height": 133.375,
+        "iconHeight": 28,
+        "iconWidth": 28,
+        "nameAboveCount": true,
+        "sourceHeight": 133.375
+      }
+    },
+    {
+      "name": "Mouse menu drag ghost keeps category name and count on separate lines",
+      "status": "PASS",
+      "detail": {
+        "background": "rgb(255, 255, 255)",
+        "boxSizing": "border-box",
+        "display": "flex",
+        "height": 133.375,
+        "iconHeight": 28,
+        "iconWidth": 28,
+        "nameAboveCount": true,
+        "sourceHeight": 133.375
+      }
+    },
+    {
+      "name": "Mouse menu drag ghost keeps the category icon size",
+      "status": "PASS",
+      "detail": {
+        "background": "rgb(255, 255, 255)",
+        "boxSizing": "border-box",
+        "display": "flex",
+        "height": 133.375,
+        "iconHeight": 28,
+        "iconWidth": 28,
+        "nameAboveCount": true,
+        "sourceHeight": 133.375
+      }
+    },
+    {
+      "name": "menu drag retains every category exactly once",
+      "status": "PASS"
+    },
+    {
+      "name": "menu touch drag shows live preview",
+      "status": "PASS"
+    },
+    {
+      "name": "Touch menu drag ghost keeps a solid card with the source dimensions",
+      "status": "PASS",
+      "detail": {
+        "background": "rgb(255, 255, 255)",
+        "boxSizing": "border-box",
+        "display": "flex",
+        "height": 133.375,
+        "iconHeight": 28,
+        "iconWidth": 28,
+        "nameAboveCount": true,
+        "sourceHeight": 133.375
+      }
+    },
+    {
+      "name": "Touch menu drag ghost keeps category name and count on separate lines",
+      "status": "PASS",
+      "detail": {
+        "background": "rgb(255, 255, 255)",
+        "boxSizing": "border-box",
+        "display": "flex",
+        "height": 133.375,
+        "iconHeight": 28,
+        "iconWidth": 28,
+        "nameAboveCount": true,
+        "sourceHeight": 133.375
+      }
+    },
+    {
+      "name": "Touch menu drag ghost keeps the category icon size",
+      "status": "PASS",
+      "detail": {
+        "background": "rgb(255, 255, 255)",
+        "boxSizing": "border-box",
+        "display": "flex",
+        "height": 133.375,
+        "iconHeight": 28,
+        "iconWidth": 28,
+        "nameAboveCount": true,
+        "sourceHeight": 133.375
+      }
+    },
+    {
+      "name": "menu touch preserves all category identities",
+      "status": "PASS"
+    }
+  ],
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\category-save-live-1791460966943",
+  "fixtureUrl": "http://127.0.0.1:4314",
+  "menuProbe": true
+}

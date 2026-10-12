@@ -1,0 +1,218 @@
+{
+  "scope": "Isolated local copy; synthetic authentication; no production mutations or mail",
+  "status": "PASS",
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\cms-canva-browser-1791635309931",
+  "checks": [
+    {
+      "name": "Editor requires staff authentication",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing staff authentication endpoint grants the synthetic account a real session",
+      "status": "PASS"
+    },
+    {
+      "name": "1–2. Open the visual editor and actual Home page",
+      "status": "PASS"
+    },
+    {
+      "name": "Sidebar tools, properties rail and the website canvas share one window",
+      "status": "PASS"
+    },
+    {
+      "name": "3–4. Click a real heading and edit text directly on the page",
+      "status": "PASS"
+    },
+    {
+      "name": "Undo and redo restore the inline text change",
+      "status": "PASS"
+    },
+    {
+      "name": "5. Change the heading font to Sora",
+      "status": "PASS"
+    },
+    {
+      "name": "6. Change the heading size",
+      "status": "PASS"
+    },
+    {
+      "name": "7. Change text color through the color control",
+      "status": "PASS"
+    },
+    {
+      "name": "8. Apply a text gradient and its direction",
+      "status": "PASS"
+    },
+    {
+      "name": "9. Change text opacity",
+      "status": "PASS"
+    },
+    {
+      "name": "Desktop, tablet and mobile preview work; mobile size does not change desktop",
+      "status": "PASS"
+    },
+    {
+      "name": "10. Select an existing image with a bounding box and eight resize handles",
+      "status": "PASS"
+    },
+    {
+      "name": "11. Drag image left, right, up and down with real pointer gestures",
+      "status": "PASS",
+      "detail": [
+        {
+          "direction": "right",
+          "before": {
+            "scale": 1,
+            "x": 0,
+            "y": 0
+          },
+          "after": {
+            "scale": 1,
+            "x": 30.1,
+            "y": -0.6
+          }
+        },
+        {
+          "direction": "left",
+          "before": {
+            "scale": 1,
+            "x": 30.1,
+            "y": -0.6
+          },
+          "after": {
+            "scale": 1,
+            "x": 7.1,
+            "y": -7.4
+          }
+        },
+        {
+          "direction": "down",
+          "before": {
+            "scale": 1,
+            "x": 7.1,
+            "y": -7.4
+          },
+          "after": {
+            "scale": 1,
+            "x": 5.5,
+            "y": 12.9
+          }
+        },
+        {
+          "direction": "up",
+          "before": {
+            "scale": 1,
+            "x": 5.5,
+            "y": 12.9
+          },
+          "after": {
+            "scale": 1,
+            "x": 5.4,
+            "y": -7
+          }
+        }
+      ]
+    },
+    {
+      "name": "12. Resize an image by dragging its actual corner handle",
+      "status": "PASS"
+    },
+    {
+      "name": "13. Replace the image using the website media library",
+      "status": "PASS"
+    },
+    {
+      "name": "14. Add a real section and edit its heading on the canvas",
+      "status": "PASS"
+    },
+    {
+      "name": "15. Move the section up in the actual page",
+      "status": "PASS"
+    },
+    {
+      "name": "Published Home persists text, font, size, gradient, opacity and replacement image",
+      "status": "PASS",
+      "detail": {
+        "font": "Sora",
+        "gradient": "linear-gradient(135deg, rgb(21, 101, 192), rgb(255, 111, 0))",
+        "image": "/images/products/nobg/p188.webp",
+        "opacity": "0.82",
+        "position": "5.4px -7px",
+        "size": "44px",
+        "text": "Diwali Mega Sale · 5574",
+        "replacementUrl": "http://127.0.0.1:4385/images/products/nobg/p188.webp"
+      }
+    },
+    {
+      "name": "Published Home survives a clean visitor reload",
+      "status": "PASS"
+    },
+    {
+      "name": "16. Create an actual website page with a clean URL",
+      "status": "PASS",
+      "detail": {
+        "pageId": "custom-b4d5976d5a4ce830de1de78efd7a1aa3",
+        "slug": "diwali-offers-mv2df1hp"
+      }
+    },
+    {
+      "name": "17. Edit the newly created page directly",
+      "status": "PASS"
+    },
+    {
+      "name": "18. Save the page and show the saved status",
+      "status": "PASS"
+    },
+    {
+      "name": "19. Preview the actual page as a visitor",
+      "status": "PASS"
+    },
+    {
+      "name": "20. Publish the new page through the authenticated CMS",
+      "status": "PASS"
+    },
+    {
+      "name": "21. Open the real clean public page URL",
+      "status": "PASS"
+    },
+    {
+      "name": "22. Verify persisted public content and styles after reload",
+      "status": "PASS",
+      "detail": {
+        "chrome": false,
+        "font": "Sora",
+        "size": "38px",
+        "text": "Your Diwali celebration starts here"
+      }
+    },
+    {
+      "name": "Public custom-page logo returns to the actual Home page",
+      "status": "PASS"
+    },
+    {
+      "name": "Unpublish withdraws the public page",
+      "status": "PASS"
+    },
+    {
+      "name": "Deleting an actual page requires confirmation",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancel preserves the page",
+      "status": "PASS"
+    },
+    {
+      "name": "Confirmed deletion returns to Home",
+      "status": "PASS"
+    },
+    {
+      "name": "Editor keeps its four tools accessible on a phone width",
+      "status": "PASS"
+    },
+    {
+      "name": "No uncaught browser exceptions",
+      "status": "PASS",
+      "detail": []
+    }
+  ]
+}

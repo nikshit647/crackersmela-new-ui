@@ -1,0 +1,14 @@
+{
+  "generatedAt": "2026-10-05T03:43:04.405154Z",
+  "package": "audit-evidence/three-area-package-20261005T034304.405154Z",
+  "changedFiles": 46,
+  "productionChanged": 32,
+  "overlayChanged": 14,
+  "unbaselinedSupportingFiles": 6,
+  "verification": {
+    "forwardPatchExactBytes": true,
+    "reversePatchExactBytesAgainstDeclaredBaseline": true,
+    "allOverlayMirrorsMatch": true
+  },
+  "manifestSha256": "26c1d7b4436331ba0f97ff8986af82a49cbe1961a4b1890a36b550973421b2aa"
+}

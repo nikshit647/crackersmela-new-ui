@@ -1,0 +1,296 @@
+{
+  "checkedAt": "2026-09-28T02:37:01.087Z",
+  "scope": "Public assets and bounded HEAD requests only. No login, production writes, uploaded payloads, private API response bodies, or orders.",
+  "checks": [
+    {
+      "url": "https://crackersmela.com/",
+      "method": "GET",
+      "status": 200,
+      "ms": 98,
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "5196",
+        "server": "LiteSpeed"
+      },
+      "title": "CrackersMela — Premium Fireworks &amp; Festive Celebrations",
+      "robots": "index, follow, max-image-preview:large",
+      "sameOriginScripts": [
+        "https://crackersmela.com/js/products-data.js",
+        "https://crackersmela.com/js/app.js?v=20260927-google2",
+        "https://crackersmela.com/js/accessibility.js?v=20260927-google2"
+      ]
+    },
+    {
+      "url": "https://crackersmela.com/js/app.js?v=20260927-google2",
+      "method": "GET",
+      "status": 200,
+      "ms": 18,
+      "headers": {
+        "content-type": "text/javascript",
+        "content-length": "72956",
+        "server": "LiteSpeed"
+      }
+    },
+    {
+      "url": "https://crackersmela.com/robots.txt",
+      "method": "GET",
+      "status": 200,
+      "ms": 19,
+      "headers": {
+        "content-type": "text/plain",
+        "server": "LiteSpeed"
+      }
+    },
+    {
+      "url": "https://crackersmela.com/sitemap.xml",
+      "method": "HEAD",
+      "status": 200,
+      "ms": 108,
+      "headers": {
+        "content-type": "application/xml; charset=utf-8",
+        "server": "LiteSpeed",
+        "x-content-type-options": "nosniff",
+        "cache-control": "public, max-age=900"
+      }
+    },
+    {
+      "url": "https://crackersmela.com/cm-owner-audit-missing-page-20260927",
+      "method": "HEAD",
+      "status": 404,
+      "ms": 60,
+      "headers": {
+        "server": "LiteSpeed"
+      }
+    },
+    {
+      "url": "https://crackersmela.com/.env",
+      "method": "HEAD",
+      "status": 403,
+      "ms": 76,
+      "headers": {
+        "server": "LiteSpeed"
+      }
+    },
+    {
+      "url": "https://crackersmela.com/.git/HEAD",
+      "method": "HEAD",
+      "status": 403,
+      "ms": 60,
+      "headers": {
+        "server": "LiteSpeed"
+      }
+    },
+    {
+      "url": "https://crackersmela.com/package.json",
+      "method": "HEAD",
+      "status": 404,
+      "ms": 59,
+      "headers": {
+        "server": "LiteSpeed"
+      }
+    },
+    {
+      "url": "https://crackersmela.com/orders-api.php?a=pull",
+      "method": "HEAD",
+      "status": 405,
+      "ms": 91,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "server": "LiteSpeed",
+        "x-content-type-options": "nosniff",
+        "cache-control": "no-store, no-cache, must-revalidate"
+      }
+    },
+    {
+      "url": "https://crackersmela.com/upload-api.php",
+      "method": "HEAD",
+      "status": 405,
+      "ms": 59,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "server": "LiteSpeed",
+        "x-content-type-options": "nosniff",
+        "cache-control": "no-store, no-cache, must-revalidate"
+      }
+    },
+    {
+      "url": "https://crackersmela.com/products-api.php?a=pull",
+      "method": "HEAD",
+      "status": 405,
+      "ms": 62,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "server": "LiteSpeed",
+        "x-content-type-options": "nosniff",
+        "cache-control": "no-store, no-cache, must-revalidate"
+      }
+    },
+    {
+      "url": "http://crackersmela.com/",
+      "method": "HEAD",
+      "status": 301,
+      "ms": 35,
+      "headers": {
+        "server": "LiteSpeed",
+        "location": "https://crackersmela.com/"
+      }
+    },
+    {
+      "url": "https://admin.crackersmela.com/",
+      "method": "GET",
+      "status": 200,
+      "ms": 57,
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "5196",
+        "server": "LiteSpeed"
+      },
+      "title": "CrackersMela — Premium Fireworks &amp; Festive Celebrations",
+      "robots": "index, follow, max-image-preview:large",
+      "sameOriginScripts": [
+        "https://admin.crackersmela.com/js/products-data.js",
+        "https://admin.crackersmela.com/js/app.js?v=20260927-google2",
+        "https://admin.crackersmela.com/js/accessibility.js?v=20260927-google2"
+      ]
+    },
+    {
+      "url": "https://admin.crackersmela.com/js/app.js?v=20260927-google2",
+      "method": "GET",
+      "status": 200,
+      "ms": 21,
+      "headers": {
+        "content-type": "text/javascript",
+        "content-length": "72956",
+        "server": "LiteSpeed"
+      }
+    },
+    {
+      "url": "https://admin.crackersmela.com/robots.txt",
+      "method": "GET",
+      "status": 200,
+      "ms": 24,
+      "headers": {
+        "content-type": "text/plain",
+        "server": "LiteSpeed"
+      }
+    },
+    {
+      "url": "https://admin.crackersmela.com/sitemap.xml",
+      "method": "HEAD",
+      "status": 200,
+      "ms": 36,
+      "headers": {
+        "content-type": "application/xml; charset=utf-8",
+        "server": "LiteSpeed",
+        "x-content-type-options": "nosniff",
+        "cache-control": "public, max-age=900"
+      }
+    },
+    {
+      "url": "https://admin.crackersmela.com/cm-owner-audit-missing-page-20260927",
+      "method": "HEAD",
+      "status": 404,
+      "ms": 74,
+      "headers": {
+        "server": "LiteSpeed"
+      }
+    },
+    {
+      "url": "https://admin.crackersmela.com/.env",
+      "method": "HEAD",
+      "status": 403,
+      "ms": 57,
+      "headers": {
+        "server": "LiteSpeed"
+      }
+    },
+    {
+      "url": "https://admin.crackersmela.com/.git/HEAD",
+      "method": "HEAD",
+      "status": 403,
+      "ms": 60,
+      "headers": {
+        "server": "LiteSpeed"
+      }
+    },
+    {
+      "url": "https://admin.crackersmela.com/package.json",
+      "method": "HEAD",
+      "status": 404,
+      "ms": 58,
+      "headers": {
+        "server": "LiteSpeed"
+      }
+    },
+    {
+      "url": "https://admin.crackersmela.com/orders-api.php?a=pull",
+      "method": "HEAD",
+      "status": 405,
+      "ms": 78,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "server": "LiteSpeed",
+        "x-content-type-options": "nosniff",
+        "cache-control": "no-store, no-cache, must-revalidate"
+      }
+    },
+    {
+      "url": "https://admin.crackersmela.com/upload-api.php",
+      "method": "HEAD",
+      "status": 405,
+      "ms": 59,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "server": "LiteSpeed",
+        "x-content-type-options": "nosniff",
+        "cache-control": "no-store, no-cache, must-revalidate"
+      }
+    },
+    {
+      "url": "https://admin.crackersmela.com/products-api.php?a=pull",
+      "method": "HEAD",
+      "status": 405,
+      "ms": 60,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "server": "LiteSpeed",
+        "x-content-type-options": "nosniff",
+        "cache-control": "no-store, no-cache, must-revalidate"
+      }
+    },
+    {
+      "url": "http://admin.crackersmela.com/",
+      "method": "HEAD",
+      "status": 301,
+      "ms": 38,
+      "headers": {
+        "server": "LiteSpeed",
+        "location": "https://admin.crackersmela.com/"
+      }
+    }
+  ],
+  "assets": [
+    {
+      "url": "https://crackersmela.com/js/app.js?v=20260927-google2",
+      "bytes": 300612,
+      "sha256": "55c2823faa6a006ada5833aba10adf5af331995155a5deba901a07a23a0dd849",
+      "matchesPreviouslyAuditedOriginal": false,
+      "matchesPreviousAfterLineEndingNormalization": false,
+      "privilegedKeyDeclarationPresent": false,
+      "inlineImageErrorHandlersPresent": false,
+      "clientAuthenticationFunctionPresent": true,
+      "previewClientDeployed": false
+    },
+    {
+      "url": "https://admin.crackersmela.com/js/app.js?v=20260927-google2",
+      "bytes": 300612,
+      "sha256": "55c2823faa6a006ada5833aba10adf5af331995155a5deba901a07a23a0dd849",
+      "matchesPreviouslyAuditedOriginal": false,
+      "matchesPreviousAfterLineEndingNormalization": false,
+      "privilegedKeyDeclarationPresent": false,
+      "inlineImageErrorHandlersPresent": false,
+      "clientAuthenticationFunctionPresent": true,
+      "previewClientDeployed": false
+    }
+  ]
+}

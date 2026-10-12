@@ -1,0 +1,20 @@
+{
+  "status": "FAIL",
+  "checks": [
+    {
+      "name": "Category name generates a usable slug",
+      "pass": true
+    },
+    {
+      "name": "Created category appears in category list",
+      "pass": false
+    },
+    {
+      "name": "Only owned category/order records cleaned up",
+      "pass": true
+    }
+  ],
+  "failure": "AssertionError [ERR_ASSERTION]: Created category appears in category list\n    at check (file:///C:/Users/Nikshit%20Garje/Documents/ChatGPT/crackersmela%20final/tests/store-improvements-browser-test.mjs:27:76)\n    at file:///C:/Users/Nikshit%20Garje/Documents/ChatGPT/crackersmela%20final/tests/store-improvements-browser-test.mjs:61:2\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)",
+  "scope": "Local fixture, native Chromium UI, synthetic order and category; no external email",
+  "output": "C:\\Users\\Nikshit Garje\\Documents\\ChatGPT\\crackersmela final\\audit-evidence\\store-improvements-browser"
+}

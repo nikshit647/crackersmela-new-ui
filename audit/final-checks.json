@@ -1,0 +1,56 @@
+{
+  "date": "2026-09-26",
+  "scope": "Recovered frontend and loopback preview only; not the deployed PHP backend",
+  "results": [
+    {
+      "name": "lint",
+      "status": "PASS",
+      "exitCode": 0,
+      "output": "npm notice run lint\nnpm notice run eslint review/public/js review/server.mjs tests eslint.config.mjs\n"
+    },
+    {
+      "name": "syntax",
+      "status": "PASS",
+      "exitCode": 0,
+      "output": "npm notice run check\nnpm notice run node --check review/public/js/app.js && node --check review/public/js/accessibility.js && node --check review/server.mjs\n"
+    },
+    {
+      "name": "tests",
+      "status": "PASS",
+      "exitCode": 0,
+      "output": "✔ cart reports whether an addition succeeded so a rejected add cannot show success (2.028ms)\r\n✔ checkout returns to cart before rendering a product removed from the catalog (2.0226ms)\r\n✔ failed HTTP order response never clears cart or creates a success record (7.042ms)\r\n✔ network failure preserves cart, and acknowledged order has no invented shipping events (3.036ms)\r\n✔ checkout refuses removed or insufficient-stock products before network I/O (2.7086ms)\r\n✔ forged browser roles cannot authenticate the recovered client (1.1503ms)\r\n✔ registration and login fail honestly while the authentication backend is missing (0.9838ms)\r\n✔ optional checkout email stays optional after focus, but malformed email is rejected (1.0828ms)\r\nℹ tests 109\r\nℹ suites 0\r\nℹ pass 109\r\nℹ fail 0\r\nℹ cancelled 0\r\nℹ skipped 0\r\nℹ todo 0\r\nℹ duration_ms 397.8447\r\n"
+    },
+    {
+      "name": "dependencyAudit",
+      "status": "PASS",
+      "exitCode": 0,
+      "output": "{\n  \"auditReportVersion\": 2,\n  \"vulnerabilities\": {},\n  \"metadata\": {\n    \"vulnerabilities\": {\n      \"info\": 0,\n      \"low\": 0,\n      \"moderate\": 0,\n      \"high\": 0,\n      \"critical\": 0,\n      \"total\": 0\n    },\n    \"dependencies\": {\n      \"prod\": 1,\n      \"dev\": 78,\n      \"optional\": 0,\n      \"peer\": 0,\n      \"peerOptional\": 0,\n      \"total\": 78\n    }\n  }\n}\n"
+    },
+    {
+      "name": "routeSmoke",
+      "status": "PASS",
+      "exitCode": 0,
+      "output": "✓ CrackersMela | Premium Crackers & Fireworks in Hyderabad\n[agent-browser]  http://localhost:4173/\n launched browser\nVerified local route: /\r\nVerified local route: /products\r\nVerified local route: /products?q=sparkler\r\nVerified local route: /product/long-boy-gun\r\nVerified local route: /cart\r\nVerified local route: /checkout\r\nVerified local route: /wishlist\r\nVerified local route: /my-orders\r\nVerified local route: /track\r\nVerified local route: /price-list\r\nVerified local route: /about\r\nVerified local route: /contact\r\nVerified local route: /faq\r\nVerified local route: /wholesale\r\nVerified local route: /shipping\r\nVerified local route: /returns\r\nVerified local route: /safety\r\nVerified local route: /terms\r\nVerified local route: /privacy\r\nVerified local route: /missing-qa-page\r\nPASS: 20 local routes rendered. Details: audit/browser-smoke.json\r\n"
+    }
+  ],
+  "browserFlows": {
+    "status": "PASS",
+    "checks": 5,
+    "evidence": "audit/browser-flows.json"
+  },
+  "responsive": {
+    "status": "PASS for sampled states",
+    "viewports": [
+      "390x844",
+      "768x1024",
+      "1366x768",
+      "1920x1080"
+    ],
+    "evidence": "audit-ui.md"
+  },
+  "productionBuild": "BLOCKED: current production backend/build source missing",
+  "typeCheck": "N/A: plain JavaScript; syntax checked",
+  "serverSecurity": "BLOCKED: PHP/session/database/storage source and isolated backend missing",
+  "realAuthenticationAndCRUD": "BLOCKED",
+  "deployment": "NOT PERFORMED"
+}

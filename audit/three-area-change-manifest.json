@@ -1,0 +1,816 @@
+{
+  "generatedAt": "2026-10-05T03:43:04.405154Z",
+  "scope": "Original staff permissions, responsive editor, and console regression task only",
+  "sourceRebuilt": false,
+  "deployed": false,
+  "baseline": "audit-evidence/three-area-baseline-20261005",
+  "baselineLimit": "Selective production snapshot plus full editor overlay. Production editor-shell.html uses its saved overlay copy as a surrogate because the production baseline omitted it; its exact pre-task production rollback is not independently established.",
+  "queuedUnimplemented": [
+    "Promo Bar contextual editor",
+    "Shop by Categories redesign"
+  ],
+  "storefrontVerification": "pending root final review at package creation",
+  "files": [
+    {
+      "path": "production-release/analytics-api.php",
+      "sourcePath": "audit-evidence/production-release/analytics-api.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/analytics-api.php",
+      "beforeBytes": 11717,
+      "afterBytes": 11733,
+      "beforeSha256": "f33455026fc700a5e158ef9f84ed6981bad7ca63d099a03e706a01763d0a1bc8",
+      "afterSha256": "becfcbfe3f523a9f7b6207edb51c42d42277716872d8e8e8fd9b7d1ba6fe0ac7",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/catalog-api.php",
+      "sourcePath": "audit-evidence/production-release/catalog-api.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/catalog-api.php",
+      "beforeBytes": 1639,
+      "afterBytes": 1663,
+      "beforeSha256": "c340f6473bc3794614778278ab027c659f28d126f8578bce97684ee2aa4adf27",
+      "afterSha256": "8393dc8ca105ac2aee77071b4af0b26983709fa428c843472bed09a3653cc72f",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/cm-cms.php",
+      "sourcePath": "audit-evidence/production-release/cm-cms.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/cm-cms.php",
+      "beforeBytes": 31437,
+      "afterBytes": 34903,
+      "beforeSha256": "46e5b92e45a0a349d34ad5991938c39d3e0820de0d254617b6a463e845b65586",
+      "afterSha256": "1f46d388d1d100a0dd98c041b56bfd1cd31d9132333265273b67ff4cb9ecb3b5",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/cm-commerce.php",
+      "sourcePath": "audit-evidence/production-release/cm-commerce.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/cm-commerce.php",
+      "beforeBytes": 8375,
+      "afterBytes": 8396,
+      "beforeSha256": "c3fbd09bef579af7526c304009c86bcf12e5a07fe95073ba898f4db471de1bf2",
+      "afterSha256": "f76e2d29e3f0d08c0627838a4b6013d859a5cbd8d5e2cc162b57141dd0f6cf39",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/cm-security.php",
+      "sourcePath": "audit-evidence/production-release/cm-security.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/cm-security.php",
+      "beforeBytes": 8718,
+      "afterBytes": 15330,
+      "beforeSha256": "5cc7135201e3e0e15f5ce18b98e767b9e798445282136f227920678b13c14efe",
+      "afterSha256": "3a85f45b7687f54c1e4a37863f484714aba72991067f07ad4cf1addaa10ff44d",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/cms-api.php",
+      "sourcePath": "audit-evidence/production-release/cms-api.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/cms-api.php",
+      "beforeBytes": 9848,
+      "afterBytes": 10004,
+      "beforeSha256": "06209ce04a967ea5f03a1f54e6db138985471fcd015587df25f0462c760fe79f",
+      "afterSha256": "afec930945f34cb356e7925735760ecf7b8fc4dadff9c4d90b43c79c301f2e49",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/cms-media.php",
+      "sourcePath": "audit-evidence/production-release/cms-media.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/cms-media.php",
+      "beforeBytes": 8716,
+      "afterBytes": 8876,
+      "beforeSha256": "1586b8e0b9294a2992a9b6112155925df4d6bbb5e0f51c1930c5b0ad1656e4a3",
+      "afterSha256": "d7a6e7fc8d71c994123d2e629eb17cfcd4efb1b8a742b9d79b80ee6ec0f0ab6d",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/css/cms-content.css",
+      "sourcePath": "audit-evidence/production-release/css/cms-content.css",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/css/cms-content.css",
+      "beforeBytes": 10674,
+      "afterBytes": 11798,
+      "beforeSha256": "d70daf8b540235ccf58a063e32fed1a1a9f0a7ebcea021842954f6fe2600540f",
+      "afterSha256": "cb629efc418bb8905cc19628e67aeea0798306932d95e9186bfb8ec352e4594e",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/css/staff-users.css",
+      "sourcePath": "audit-evidence/production-release/css/staff-users.css",
+      "baselinePath": null,
+      "beforeBytes": null,
+      "afterBytes": 3942,
+      "beforeSha256": null,
+      "afterSha256": "76de59cd1aeb976dbb0c7fd44038fe569e20b4d2d5d649c60d6a16a3ee6283a7",
+      "change": "added"
+    },
+    {
+      "path": "production-release/css/visual-editor.css",
+      "sourcePath": "audit-evidence/production-release/css/visual-editor.css",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/css/visual-editor.css",
+      "beforeBytes": 36345,
+      "afterBytes": 41528,
+      "beforeSha256": "f0e9f5ca645a92e8f726e6a27bc4ca7830baa058ad43d784b36c8b50fb3c6a15",
+      "afterSha256": "64e5c67685965b65d902f0498b63edd12f1a80156dccb5800eee8ce74947d268",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/customer-auth.php",
+      "sourcePath": "audit-evidence/production-release/customer-auth.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/customer-auth.php",
+      "beforeBytes": 10712,
+      "afterBytes": 10532,
+      "beforeSha256": "d703ea8ccaa626b7a086763a56a871d37e03392dabe159dac611e0b6ee85af45",
+      "afterSha256": "0d21784140422082d4c037c8754c4ea195339d8b96f1e0bf293ef71e8d9d0f81",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/editor-shell.html",
+      "sourcePath": "audit-evidence/production-release/editor-shell.html",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/editor-shell.html",
+      "beforeBytes": 7896,
+      "afterBytes": 7976,
+      "beforeSha256": "1b15694400ec73f732f2cb6e518f94f5e952f2db3ce62a38ddcb07ea3d4ff8c5",
+      "afterSha256": "5c9f34c3ef6d6dc67d50e45a1cef491833fb9188514c8cde8613c89f256afd28",
+      "baselineCaveat": "Production file was omitted from selective baseline; saved overlay copy is the comparison surrogate. Exact pre-task production rollback is not independently established.",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/email-api.php",
+      "sourcePath": "audit-evidence/production-release/email-api.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/email-api.php",
+      "beforeBytes": 7663,
+      "afterBytes": 7707,
+      "beforeSha256": "7ea6669f5bfbc2c0169f31484119f2de6242d0a471946d9a0b77d386b78b302d",
+      "afterSha256": "b734bb53473ee46b3bdb7d6a84844c427595574e732f3f66ee9400e4a5b6fab7",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/index.html",
+      "sourcePath": "audit-evidence/production-release/index.html",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/index.html",
+      "beforeBytes": 21832,
+      "afterBytes": 21698,
+      "beforeSha256": "99be4b589a4bfe2bdbae64a5e33dbb64d84903e287a823f30e595bb46f4417c8",
+      "afterSha256": "f84d047830c91db73daf704ec0e71d9065f10adbab002e24a27a110db8710879",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/invoice-api.php",
+      "sourcePath": "audit-evidence/production-release/invoice-api.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/invoice-api.php",
+      "beforeBytes": 6344,
+      "afterBytes": 6359,
+      "beforeSha256": "9d6ca5e4172f8aab53938e108eba94a7c86bde65d7d97a6794e2d0c5e2d2635c",
+      "afterSha256": "ec0f03108c0668645617d1967ce22de5157a2bfd52793470dbfa37c9f7dc163d",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/js/analytics-bootstrap.js",
+      "sourcePath": "audit-evidence/production-release/js/analytics-bootstrap.js",
+      "baselinePath": null,
+      "beforeBytes": null,
+      "afterBytes": 282,
+      "beforeSha256": null,
+      "afterSha256": "33fe8dbf2fc71e4e171bacffa5cb0d0a025742c269eaa77fc7d363c7eb15ea29",
+      "change": "added"
+    },
+    {
+      "path": "production-release/js/app.js",
+      "sourcePath": "audit-evidence/production-release/js/app.js",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/js/app.js",
+      "beforeBytes": 326182,
+      "afterBytes": 349160,
+      "beforeSha256": "61ca2d976f31e08aaf3b11d081fbbe2de36d75b40fbabf8096bdfef0629be1b3",
+      "afterSha256": "9034e9e91e09faf8739e7c3003cd7b7e468e21bbd5672e8694205c1b1ea4bde8",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/js/cms-model.js",
+      "sourcePath": "audit-evidence/production-release/js/cms-model.js",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/js/cms-model.js",
+      "beforeBytes": 6868,
+      "afterBytes": 7055,
+      "beforeSha256": "6e619b3a7c55b2e25096a67c866c49834f8c3a31d83e43045b6da1d4c5d61a6c",
+      "afterSha256": "5427ce41c20c57beeeeb10056f1b007eb7bfedf1bccc9cffeee2bae75086e838",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/js/cms-preview.js",
+      "sourcePath": "audit-evidence/production-release/js/cms-preview.js",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/js/cms-preview.js",
+      "beforeBytes": 47194,
+      "afterBytes": 52209,
+      "beforeSha256": "cde1a0c6d48e7bc765ea328a4444d7401f3d9b35c7a7267637cf4814288ef777",
+      "afterSha256": "7443822b38c811c6cf4c42f63890f4b911e4a29e1504ce49627995d0e94b7fa8",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/js/cms-responsive.js",
+      "sourcePath": "audit-evidence/production-release/js/cms-responsive.js",
+      "baselinePath": null,
+      "beforeBytes": null,
+      "afterBytes": 2158,
+      "beforeSha256": null,
+      "afterSha256": "7edb6db6e33a6926d8868c5a33353b0127e5ccb36856a142e5a5df3fb1327b20",
+      "change": "added"
+    },
+    {
+      "path": "production-release/js/cms-runtime.js",
+      "sourcePath": "audit-evidence/production-release/js/cms-runtime.js",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/js/cms-runtime.js",
+      "beforeBytes": 40805,
+      "afterBytes": 43509,
+      "beforeSha256": "9686415334500b687ae07959dc2d5fe7640a1afab32a27aff2b7b4cc59fd0182",
+      "afterSha256": "b72a6262609a6bd01815a412e7938591c00b41c276d2327be0dba73c84148ec3",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/js/vendor/firebase/10.12.2/LICENSE.txt",
+      "sourcePath": "audit-evidence/production-release/js/vendor/firebase/10.12.2/LICENSE.txt",
+      "baselinePath": null,
+      "beforeBytes": null,
+      "afterBytes": 14096,
+      "beforeSha256": null,
+      "afterSha256": "065e45b5674f9bf76670496e5472611b3fbd87fbeaf99336725430a9909cb687",
+      "change": "added"
+    },
+    {
+      "path": "production-release/js/vendor/firebase/10.12.2/firebase-app-compat.js",
+      "sourcePath": "audit-evidence/production-release/js/vendor/firebase/10.12.2/firebase-app-compat.js",
+      "baselinePath": null,
+      "beforeBytes": null,
+      "afterBytes": 31396,
+      "beforeSha256": null,
+      "afterSha256": "d2d70c6fc0b754c04232629a9746c621933487ed8fd71a27a36fef52feeb73e1",
+      "change": "added"
+    },
+    {
+      "path": "production-release/js/vendor/firebase/10.12.2/firebase-auth-compat.js",
+      "sourcePath": "audit-evidence/production-release/js/vendor/firebase/10.12.2/firebase-auth-compat.js",
+      "baselinePath": null,
+      "beforeBytes": null,
+      "afterBytes": 139533,
+      "beforeSha256": null,
+      "afterSha256": "15fde4a08c69086a076880563589137be5369d1bfd406e30a3a059eb884b73e1",
+      "change": "added"
+    },
+    {
+      "path": "production-release/js/visual-editor.js",
+      "sourcePath": "audit-evidence/production-release/js/visual-editor.js",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/js/visual-editor.js",
+      "beforeBytes": 86464,
+      "afterBytes": 94314,
+      "beforeSha256": "3571ec863f98ee0d8209846f7519b93e4d7d3dca66f61321d1ee7ce219e3ca57",
+      "afterSha256": "2ca9dbdc4d9c683a6b0679ab439debd6550ba1809e56dc71feecda630ece9caf",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/orders-api.php",
+      "sourcePath": "audit-evidence/production-release/orders-api.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/orders-api.php",
+      "beforeBytes": 16944,
+      "afterBytes": 17315,
+      "beforeSha256": "06cd7007f800d31a860e71951afde72f0b0544fec23319cc1ce05592a083d2b3",
+      "afterSha256": "243378c0248ff6932df65853956bbee03df5e947516ed98d411286f432e86130",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/products-api.php",
+      "sourcePath": "audit-evidence/production-release/products-api.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/products-api.php",
+      "beforeBytes": 2311,
+      "afterBytes": 2561,
+      "beforeSha256": "12bbdf011a41360281d70e2c91511bd1ac159906c55dc9d2ae855c36a4b1c963",
+      "afterSha256": "20e890d637622fdfbb1ecee0ffdf7edf3489fe1b74fb91b536574720bd6edd2c",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/staff-auth.php",
+      "sourcePath": "audit-evidence/production-release/staff-auth.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/staff-auth.php",
+      "beforeBytes": 3641,
+      "afterBytes": 2725,
+      "beforeSha256": "4156b9cff7dd2c0a81b1df38061b36c3268099ba8d6e51b643028a2249ab1ba2",
+      "afterSha256": "413718f30dd97ac889b48b1886d73bed6a45fa4183a0f9b754f8a40119052eba",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/staff-users.php",
+      "sourcePath": "audit-evidence/production-release/staff-users.php",
+      "baselinePath": null,
+      "beforeBytes": null,
+      "afterBytes": 6401,
+      "beforeSha256": null,
+      "afterSha256": "77f4f1d4fa6118a50c79e3e9a27d9edd5429be9f44edadf5cc3911daee9b1d46",
+      "change": "added"
+    },
+    {
+      "path": "production-release/upload-api.php",
+      "sourcePath": "audit-evidence/production-release/upload-api.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/upload-api.php",
+      "beforeBytes": 2824,
+      "afterBytes": 2845,
+      "beforeSha256": "51a4a60601b994e81d0e2be18b6483a328ddeae3ffe16fb246c747806a131150",
+      "afterSha256": "3e22e7dfac69d872811d92cb2115ecc9e63bca3d7d5839dcc651661e40f116c5",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/visual-editor.php",
+      "sourcePath": "audit-evidence/production-release/visual-editor.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/visual-editor.php",
+      "beforeBytes": 1565,
+      "afterBytes": 1628,
+      "beforeSha256": "2e047c276b2cbfd970ed020b42c06074f36b4ec6744c3e1d612dd7aab688a508",
+      "afterSha256": "4ac6851303f9da11ffd510cbdd587c6b9abff567e0d161638f2ddaf1da7b7541",
+      "change": "modified"
+    },
+    {
+      "path": "production-release/visual-preview.php",
+      "sourcePath": "audit-evidence/production-release/visual-preview.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/visual-preview.php",
+      "beforeBytes": 1657,
+      "afterBytes": 1685,
+      "beforeSha256": "5553d2ea865ff55eacf5eac255657c0e312ccab5d87341387e7079c7588c9067",
+      "afterSha256": "854365e03e0e8343abfeaa35ce8222fd21716dbeebc9ec6c26f4aff3c028f118",
+      "change": "modified"
+    },
+    {
+      "path": "visual-editor/IMPLEMENTATION.md",
+      "sourcePath": "visual-editor/IMPLEMENTATION.md",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/IMPLEMENTATION.md",
+      "beforeBytes": 11109,
+      "afterBytes": 14827,
+      "beforeSha256": "cfe0c2ff30723b30a5a19b941e79c8dcdf501e745fc35687e09a5df319f9b815",
+      "afterSha256": "e6084c8efec8562ed9b9ba482d913f10a353d16f398700ca3396531380676118",
+      "change": "modified"
+    },
+    {
+      "path": "visual-editor/cm-cms.php",
+      "sourcePath": "visual-editor/cm-cms.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/cm-cms.php",
+      "beforeBytes": 32520,
+      "afterBytes": 34903,
+      "beforeSha256": "5af84f80aec421637f6e1975576f3236bb2f4fa2f31ef02c8b4c8ab2fb5f2d2a",
+      "afterSha256": "1f46d388d1d100a0dd98c041b56bfd1cd31d9132333265273b67ff4cb9ecb3b5",
+      "change": "modified"
+    },
+    {
+      "path": "visual-editor/cms-api.php",
+      "sourcePath": "visual-editor/cms-api.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/cms-api.php",
+      "beforeBytes": 9848,
+      "afterBytes": 10004,
+      "beforeSha256": "06209ce04a967ea5f03a1f54e6db138985471fcd015587df25f0462c760fe79f",
+      "afterSha256": "afec930945f34cb356e7925735760ecf7b8fc4dadff9c4d90b43c79c301f2e49",
+      "change": "modified"
+    },
+    {
+      "path": "visual-editor/cms-media.php",
+      "sourcePath": "visual-editor/cms-media.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/cms-media.php",
+      "beforeBytes": 8716,
+      "afterBytes": 8876,
+      "beforeSha256": "1586b8e0b9294a2992a9b6112155925df4d6bbb5e0f51c1930c5b0ad1656e4a3",
+      "afterSha256": "d7a6e7fc8d71c994123d2e629eb17cfcd4efb1b8a742b9d79b80ee6ec0f0ab6d",
+      "change": "modified"
+    },
+    {
+      "path": "visual-editor/css/visual-editor.css",
+      "sourcePath": "visual-editor/css/visual-editor.css",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/css/visual-editor.css",
+      "beforeBytes": 40431,
+      "afterBytes": 41528,
+      "beforeSha256": "2214d0f4be72eccf34c892d5e15de07c8aed5074cbee0ccec1d72177b94cfa85",
+      "afterSha256": "64e5c67685965b65d902f0498b63edd12f1a80156dccb5800eee8ce74947d268",
+      "change": "modified"
+    },
+    {
+      "path": "visual-editor/editor-shell.html",
+      "sourcePath": "visual-editor/editor-shell.html",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/editor-shell.html",
+      "beforeBytes": 7896,
+      "afterBytes": 7976,
+      "beforeSha256": "1b15694400ec73f732f2cb6e518f94f5e952f2db3ce62a38ddcb07ea3d4ff8c5",
+      "afterSha256": "5c9f34c3ef6d6dc67d50e45a1cef491833fb9188514c8cde8613c89f256afd28",
+      "change": "modified"
+    },
+    {
+      "path": "visual-editor/integrate.mjs",
+      "sourcePath": "visual-editor/integrate.mjs",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/integrate.mjs",
+      "beforeBytes": 13345,
+      "afterBytes": 13544,
+      "beforeSha256": "c41579f7c95a435df78249ee4c74b800ab26071bfb4192534b5240cc3a6c2bb0",
+      "afterSha256": "a202f8d525eac86046d1f346ea328f2d0a707d4f48164447bbfad7d94d0d0ea5",
+      "change": "modified"
+    },
+    {
+      "path": "visual-editor/js/cms-model.js",
+      "sourcePath": "visual-editor/js/cms-model.js",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/js/cms-model.js",
+      "beforeBytes": 6868,
+      "afterBytes": 7055,
+      "beforeSha256": "6e619b3a7c55b2e25096a67c866c49834f8c3a31d83e43045b6da1d4c5d61a6c",
+      "afterSha256": "5427ce41c20c57beeeeb10056f1b007eb7bfedf1bccc9cffeee2bae75086e838",
+      "change": "modified"
+    },
+    {
+      "path": "visual-editor/js/cms-preview.js",
+      "sourcePath": "visual-editor/js/cms-preview.js",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/js/cms-preview.js",
+      "beforeBytes": 51301,
+      "afterBytes": 52209,
+      "beforeSha256": "4db382f79696a5ae6957fe70c2a3836af4a6894cae58e30ef7b9ababd736ecc9",
+      "afterSha256": "7443822b38c811c6cf4c42f63890f4b911e4a29e1504ce49627995d0e94b7fa8",
+      "change": "modified"
+    },
+    {
+      "path": "visual-editor/js/cms-responsive.js",
+      "sourcePath": "visual-editor/js/cms-responsive.js",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/js/cms-responsive.js",
+      "beforeBytes": null,
+      "afterBytes": 2158,
+      "beforeSha256": null,
+      "afterSha256": "7edb6db6e33a6926d8868c5a33353b0127e5ccb36856a142e5a5df3fb1327b20",
+      "change": "added"
+    },
+    {
+      "path": "visual-editor/js/cms-runtime.js",
+      "sourcePath": "visual-editor/js/cms-runtime.js",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/js/cms-runtime.js",
+      "beforeBytes": 40805,
+      "afterBytes": 43509,
+      "beforeSha256": "9686415334500b687ae07959dc2d5fe7640a1afab32a27aff2b7b4cc59fd0182",
+      "afterSha256": "b72a6262609a6bd01815a412e7938591c00b41c276d2327be0dba73c84148ec3",
+      "change": "modified"
+    },
+    {
+      "path": "visual-editor/js/visual-editor.js",
+      "sourcePath": "visual-editor/js/visual-editor.js",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/js/visual-editor.js",
+      "beforeBytes": 91799,
+      "afterBytes": 94314,
+      "beforeSha256": "7824f5a9127c24fab6ef59cafc35505819a4c4fd6e83c38afdc6441bfa7838ca",
+      "afterSha256": "2ca9dbdc4d9c683a6b0679ab439debd6550ba1809e56dc71feecda630ece9caf",
+      "change": "modified"
+    },
+    {
+      "path": "visual-editor/visual-editor.php",
+      "sourcePath": "visual-editor/visual-editor.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/visual-editor.php",
+      "beforeBytes": 1565,
+      "afterBytes": 1628,
+      "beforeSha256": "2e047c276b2cbfd970ed020b42c06074f36b4ec6744c3e1d612dd7aab688a508",
+      "afterSha256": "4ac6851303f9da11ffd510cbdd587c6b9abff567e0d161638f2ddaf1da7b7541",
+      "change": "modified"
+    },
+    {
+      "path": "visual-editor/visual-preview.php",
+      "sourcePath": "visual-editor/visual-preview.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/visual-preview.php",
+      "beforeBytes": 1657,
+      "afterBytes": 1685,
+      "beforeSha256": "5553d2ea865ff55eacf5eac255657c0e312ccab5d87341387e7079c7588c9067",
+      "afterSha256": "854365e03e0e8343abfeaa35ce8222fd21716dbeebc9ec6c26f4aff3c028f118",
+      "change": "modified"
+    }
+  ],
+  "unchangedBaselinedFiles": [
+    {
+      "path": "production-release/.htaccess",
+      "sourcePath": "audit-evidence/production-release/.htaccess",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/.htaccess",
+      "beforeBytes": 1776,
+      "afterBytes": 1776,
+      "beforeSha256": "4a44fdf6ef80cb41c089ab5aaf96720736cba8c6cdf4be50dfd92a8de0c1a6f4",
+      "afterSha256": "4a44fdf6ef80cb41c089ab5aaf96720736cba8c6cdf4be50dfd92a8de0c1a6f4"
+    },
+    {
+      "path": "production-release/cm-email-templates.php",
+      "sourcePath": "audit-evidence/production-release/cm-email-templates.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/cm-email-templates.php",
+      "beforeBytes": 30903,
+      "afterBytes": 30903,
+      "beforeSha256": "4ebcacc92d8ded40f987f064cc8ccf197c7766f5a333207522bc0f6547132e48",
+      "afterSha256": "4ebcacc92d8ded40f987f064cc8ccf197c7766f5a333207522bc0f6547132e48"
+    },
+    {
+      "path": "production-release/cm-email.php",
+      "sourcePath": "audit-evidence/production-release/cm-email.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/cm-email.php",
+      "beforeBytes": 18866,
+      "afterBytes": 18866,
+      "beforeSha256": "0ffa3b368af3e9b1cad97bc76811a860c9e77686b462d4ed77dd339cdc1ddf94",
+      "afterSha256": "0ffa3b368af3e9b1cad97bc76811a860c9e77686b462d4ed77dd339cdc1ddf94"
+    },
+    {
+      "path": "production-release/cm-google.php",
+      "sourcePath": "audit-evidence/production-release/cm-google.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/cm-google.php",
+      "beforeBytes": 7012,
+      "afterBytes": 7012,
+      "beforeSha256": "576c7d85802c7550297b05716d1a5e87616f7dfcc7ee0d8da1142a5ad7881024",
+      "afterSha256": "576c7d85802c7550297b05716d1a5e87616f7dfcc7ee0d8da1142a5ad7881024"
+    },
+    {
+      "path": "production-release/cm-invoice.php",
+      "sourcePath": "audit-evidence/production-release/cm-invoice.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/cm-invoice.php",
+      "beforeBytes": 18395,
+      "afterBytes": 18395,
+      "beforeSha256": "f025efb6d85dbe0220a49ebacbb4d3b19ac8028fff288e0d8d0804e32f0bbe8a",
+      "afterSha256": "f025efb6d85dbe0220a49ebacbb4d3b19ac8028fff288e0d8d0804e32f0bbe8a"
+    },
+    {
+      "path": "production-release/cm-pdf.php",
+      "sourcePath": "audit-evidence/production-release/cm-pdf.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/cm-pdf.php",
+      "beforeBytes": 17724,
+      "afterBytes": 17724,
+      "beforeSha256": "750c3cb332e2b69e523c710fc458c9a194cc83a18f73bd96f9947e77b5a3474b",
+      "afterSha256": "750c3cb332e2b69e523c710fc458c9a194cc83a18f73bd96f9947e77b5a3474b"
+    },
+    {
+      "path": "production-release/cms-page.php",
+      "sourcePath": "audit-evidence/production-release/cms-page.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/cms-page.php",
+      "beforeBytes": 3473,
+      "afterBytes": 3473,
+      "beforeSha256": "0cb720738a53a1d05f341eab1793ef8b557f40e5fe7246d68edaa17542b77c6d",
+      "afterSha256": "0cb720738a53a1d05f341eab1793ef8b557f40e5fe7246d68edaa17542b77c6d"
+    },
+    {
+      "path": "production-release/cms-sitemap.php",
+      "sourcePath": "audit-evidence/production-release/cms-sitemap.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/cms-sitemap.php",
+      "beforeBytes": 988,
+      "afterBytes": 988,
+      "beforeSha256": "0e00540dd62329331cdefb8a7fec4edf5609345dd1176f942f7233f36a817a33",
+      "afterSha256": "0e00540dd62329331cdefb8a7fec4edf5609345dd1176f942f7233f36a817a33"
+    },
+    {
+      "path": "production-release/css/admin-controls.css",
+      "sourcePath": "audit-evidence/production-release/css/admin-controls.css",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/css/admin-controls.css",
+      "beforeBytes": 16510,
+      "afterBytes": 16510,
+      "beforeSha256": "b52066fbbf1d6a726431fce96b7301839adf53538ee0e1ebaeb266f8d02a86ad",
+      "afterSha256": "b52066fbbf1d6a726431fce96b7301839adf53538ee0e1ebaeb266f8d02a86ad"
+    },
+    {
+      "path": "production-release/css/brand-overrides.css",
+      "sourcePath": "audit-evidence/production-release/css/brand-overrides.css",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/css/brand-overrides.css",
+      "beforeBytes": 527,
+      "afterBytes": 527,
+      "beforeSha256": "5b70ee4c36f4a7b55c507feca09d3dbfe2b8733796800a4a0b3ab0fcf6d998be",
+      "afterSha256": "5b70ee4c36f4a7b55c507feca09d3dbfe2b8733796800a4a0b3ab0fcf6d998be"
+    },
+    {
+      "path": "production-release/css/controls.css",
+      "sourcePath": "audit-evidence/production-release/css/controls.css",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/css/controls.css",
+      "beforeBytes": 22172,
+      "afterBytes": 22172,
+      "beforeSha256": "253b17abf243fbef7584aaa9a9f1c6444180c23dbc3a821aaed5443cad68f0ed",
+      "afterSha256": "253b17abf243fbef7584aaa9a9f1c6444180c23dbc3a821aaed5443cad68f0ed"
+    },
+    {
+      "path": "production-release/css/styles.css",
+      "sourcePath": "audit-evidence/production-release/css/styles.css",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/css/styles.css",
+      "beforeBytes": 372193,
+      "afterBytes": 372193,
+      "beforeSha256": "ff5ebaa900c4a5ac19b61220b14dca331578e906246e2fc8c27a9e149e6ccd08",
+      "afterSha256": "ff5ebaa900c4a5ac19b61220b14dca331578e906246e2fc8c27a9e149e6ccd08"
+    },
+    {
+      "path": "production-release/customer-invoice-api.php",
+      "sourcePath": "audit-evidence/production-release/customer-invoice-api.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/customer-invoice-api.php",
+      "beforeBytes": 3541,
+      "afterBytes": 3541,
+      "beforeSha256": "c3daec60278edf4df748d3943d1543f829d308c4ba7b153c598389ebf2599641",
+      "afterSha256": "c3daec60278edf4df748d3943d1543f829d308c4ba7b153c598389ebf2599641"
+    },
+    {
+      "path": "production-release/js/accessibility.js",
+      "sourcePath": "audit-evidence/production-release/js/accessibility.js",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/js/accessibility.js",
+      "beforeBytes": 7972,
+      "afterBytes": 7972,
+      "beforeSha256": "cc3e0ab3027ead72c871cce2642a669f02a2f5aa3331ca0fcbe1a2d77946f3ae",
+      "afterSha256": "cc3e0ab3027ead72c871cce2642a669f02a2f5aa3331ca0fcbe1a2d77946f3ae"
+    },
+    {
+      "path": "production-release/js/products-data.js",
+      "sourcePath": "audit-evidence/production-release/js/products-data.js",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/js/products-data.js",
+      "beforeBytes": 60300,
+      "afterBytes": 60300,
+      "beforeSha256": "0ec38b6fbff8f7d035c0b878b332ad5c8d906944118435e29e73b260aafa3efc",
+      "afterSha256": "0ec38b6fbff8f7d035c0b878b332ad5c8d906944118435e29e73b260aafa3efc"
+    },
+    {
+      "path": "production-release/sitemap.php",
+      "sourcePath": "audit-evidence/production-release/sitemap.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/sitemap.php",
+      "beforeBytes": 2968,
+      "afterBytes": 2968,
+      "beforeSha256": "2a887bb5bff1c22e43e9bc3014d832bc7c4c40f343c55b598ffa91685959fdd6",
+      "afterSha256": "2a887bb5bff1c22e43e9bc3014d832bc7c4c40f343c55b598ffa91685959fdd6"
+    },
+    {
+      "path": "visual-editor/cms-page.php",
+      "sourcePath": "visual-editor/cms-page.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/cms-page.php",
+      "beforeBytes": 3473,
+      "afterBytes": 3473,
+      "beforeSha256": "0cb720738a53a1d05f341eab1793ef8b557f40e5fe7246d68edaa17542b77c6d",
+      "afterSha256": "0cb720738a53a1d05f341eab1793ef8b557f40e5fe7246d68edaa17542b77c6d"
+    },
+    {
+      "path": "visual-editor/cms-sitemap.php",
+      "sourcePath": "visual-editor/cms-sitemap.php",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/cms-sitemap.php",
+      "beforeBytes": 988,
+      "afterBytes": 988,
+      "beforeSha256": "0e00540dd62329331cdefb8a7fec4edf5609345dd1176f942f7233f36a817a33",
+      "afterSha256": "0e00540dd62329331cdefb8a7fec4edf5609345dd1176f942f7233f36a817a33"
+    },
+    {
+      "path": "visual-editor/css/cms-content.css",
+      "sourcePath": "visual-editor/css/cms-content.css",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/css/cms-content.css",
+      "beforeBytes": 11798,
+      "afterBytes": 11798,
+      "beforeSha256": "cb629efc418bb8905cc19628e67aeea0798306932d95e9186bfb8ec352e4594e",
+      "afterSha256": "cb629efc418bb8905cc19628e67aeea0798306932d95e9186bfb8ec352e4594e"
+    },
+    {
+      "path": "visual-editor/deploy-editor.sh",
+      "sourcePath": "visual-editor/deploy-editor.sh",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/deploy-editor.sh",
+      "beforeBytes": 1674,
+      "afterBytes": 1674,
+      "beforeSha256": "407db66bc593c6f98a5138ba383041f6aa8be8a7f798df634742fefe7c8d7f01",
+      "afterSha256": "407db66bc593c6f98a5138ba383041f6aa8be8a7f798df634742fefe7c8d7f01"
+    },
+    {
+      "path": "visual-editor/release-manifest.json",
+      "sourcePath": "visual-editor/release-manifest.json",
+      "baselinePath": "audit-evidence/three-area-baseline-20261005/editor-overlay/release-manifest.json",
+      "beforeBytes": 2912,
+      "afterBytes": 2912,
+      "beforeSha256": "d5010d4886bb0502e396cf2fea3775d0e0a054b4d638229eabc3be725ea2dbf1",
+      "afterSha256": "d5010d4886bb0502e396cf2fea3775d0e0a054b4d638229eabc3be725ea2dbf1"
+    }
+  ],
+  "unbaselinedSupportingFiles": [
+    {
+      "path": "production-release/api/manifest.php",
+      "bytes": 832,
+      "sha256": "e7a20f71d29c26b5871a3266d7184a601bcc16386188c68357ba1671372659a2",
+      "classification": "supporting file not captured by the selective baseline; no change assertion"
+    },
+    {
+      "path": "production-release/api/upload.php",
+      "bytes": 244,
+      "sha256": "bcaeca2b3ac5351a8028a1fab8c9211126faea874e80037016d271d06756b750",
+      "classification": "supporting file not captured by the selective baseline; no change assertion"
+    },
+    {
+      "path": "production-release/EMAIL-CONFIGURATION.md",
+      "bytes": 3647,
+      "sha256": "b0626b0d0dcf16b076b68a88ec8c4a545b54665da5de7202b942c9aa4e4f0ae0",
+      "classification": "supporting file not captured by the selective baseline; no change assertion"
+    },
+    {
+      "path": "production-release/images/category-illustrations.svg",
+      "bytes": 16357,
+      "sha256": "1606b9cc364ed9d6638eac5e62353f3eba4acbc485fe92a6ddeb8ab2f53dcaaf",
+      "classification": "supporting file not captured by the selective baseline; no change assertion"
+    },
+    {
+      "path": "production-release/robots.txt",
+      "bytes": 342,
+      "sha256": "671f0b7c457ee59869c47074838da2181f33a9e6db8fc849066b224b88e1b155",
+      "classification": "supporting file not captured by the selective baseline; no change assertion"
+    },
+    {
+      "path": "production-release/uploads/.htaccess",
+      "bytes": 358,
+      "sha256": "b33868cbbfe04d05b74b82e65513b9fbc7f5656b3d95256760c5f1b686c58ed1",
+      "classification": "supporting file not captured by the selective baseline; no change assertion"
+    }
+  ],
+  "overlayMirrors": [
+    {
+      "path": "cm-cms.php",
+      "sameBytes": true,
+      "productionSha256": "1f46d388d1d100a0dd98c041b56bfd1cd31d9132333265273b67ff4cb9ecb3b5",
+      "overlaySha256": "1f46d388d1d100a0dd98c041b56bfd1cd31d9132333265273b67ff4cb9ecb3b5"
+    },
+    {
+      "path": "cms-api.php",
+      "sameBytes": true,
+      "productionSha256": "afec930945f34cb356e7925735760ecf7b8fc4dadff9c4d90b43c79c301f2e49",
+      "overlaySha256": "afec930945f34cb356e7925735760ecf7b8fc4dadff9c4d90b43c79c301f2e49"
+    },
+    {
+      "path": "cms-media.php",
+      "sameBytes": true,
+      "productionSha256": "d7a6e7fc8d71c994123d2e629eb17cfcd4efb1b8a742b9d79b80ee6ec0f0ab6d",
+      "overlaySha256": "d7a6e7fc8d71c994123d2e629eb17cfcd4efb1b8a742b9d79b80ee6ec0f0ab6d"
+    },
+    {
+      "path": "cms-page.php",
+      "sameBytes": true,
+      "productionSha256": "0cb720738a53a1d05f341eab1793ef8b557f40e5fe7246d68edaa17542b77c6d",
+      "overlaySha256": "0cb720738a53a1d05f341eab1793ef8b557f40e5fe7246d68edaa17542b77c6d"
+    },
+    {
+      "path": "cms-sitemap.php",
+      "sameBytes": true,
+      "productionSha256": "0e00540dd62329331cdefb8a7fec4edf5609345dd1176f942f7233f36a817a33",
+      "overlaySha256": "0e00540dd62329331cdefb8a7fec4edf5609345dd1176f942f7233f36a817a33"
+    },
+    {
+      "path": "css/cms-content.css",
+      "sameBytes": true,
+      "productionSha256": "cb629efc418bb8905cc19628e67aeea0798306932d95e9186bfb8ec352e4594e",
+      "overlaySha256": "cb629efc418bb8905cc19628e67aeea0798306932d95e9186bfb8ec352e4594e"
+    },
+    {
+      "path": "css/visual-editor.css",
+      "sameBytes": true,
+      "productionSha256": "64e5c67685965b65d902f0498b63edd12f1a80156dccb5800eee8ce74947d268",
+      "overlaySha256": "64e5c67685965b65d902f0498b63edd12f1a80156dccb5800eee8ce74947d268"
+    },
+    {
+      "path": "editor-shell.html",
+      "sameBytes": true,
+      "productionSha256": "5c9f34c3ef6d6dc67d50e45a1cef491833fb9188514c8cde8613c89f256afd28",
+      "overlaySha256": "5c9f34c3ef6d6dc67d50e45a1cef491833fb9188514c8cde8613c89f256afd28"
+    },
+    {
+      "path": "js/cms-model.js",
+      "sameBytes": true,
+      "productionSha256": "5427ce41c20c57beeeeb10056f1b007eb7bfedf1bccc9cffeee2bae75086e838",
+      "overlaySha256": "5427ce41c20c57beeeeb10056f1b007eb7bfedf1bccc9cffeee2bae75086e838"
+    },
+    {
+      "path": "js/cms-preview.js",
+      "sameBytes": true,
+      "productionSha256": "7443822b38c811c6cf4c42f63890f4b911e4a29e1504ce49627995d0e94b7fa8",
+      "overlaySha256": "7443822b38c811c6cf4c42f63890f4b911e4a29e1504ce49627995d0e94b7fa8"
+    },
+    {
+      "path": "js/cms-responsive.js",
+      "sameBytes": true,
+      "productionSha256": "7edb6db6e33a6926d8868c5a33353b0127e5ccb36856a142e5a5df3fb1327b20",
+      "overlaySha256": "7edb6db6e33a6926d8868c5a33353b0127e5ccb36856a142e5a5df3fb1327b20"
+    },
+    {
+      "path": "js/cms-runtime.js",
+      "sameBytes": true,
+      "productionSha256": "b72a6262609a6bd01815a412e7938591c00b41c276d2327be0dba73c84148ec3",
+      "overlaySha256": "b72a6262609a6bd01815a412e7938591c00b41c276d2327be0dba73c84148ec3"
+    },
+    {
+      "path": "js/visual-editor.js",
+      "sameBytes": true,
+      "productionSha256": "2ca9dbdc4d9c683a6b0679ab439debd6550ba1809e56dc71feecda630ece9caf",
+      "overlaySha256": "2ca9dbdc4d9c683a6b0679ab439debd6550ba1809e56dc71feecda630ece9caf"
+    },
+    {
+      "path": "visual-editor.php",
+      "sameBytes": true,
+      "productionSha256": "4ac6851303f9da11ffd510cbdd587c6b9abff567e0d161638f2ddaf1da7b7541",
+      "overlaySha256": "4ac6851303f9da11ffd510cbdd587c6b9abff567e0d161638f2ddaf1da7b7541"
+    },
+    {
+      "path": "visual-preview.php",
+      "sameBytes": true,
+      "productionSha256": "854365e03e0e8343abfeaa35ce8222fd21716dbeebc9ec6c26f4aff3c028f118",
+      "overlaySha256": "854365e03e0e8343abfeaa35ce8222fd21716dbeebc9ec6c26f4aff3c028f118"
+    }
+  ],
+  "verification": {
+    "forwardPatchExactBytes": true,
+    "reversePatchExactBytesAgainstDeclaredBaseline": true,
+    "allOverlayMirrorsMatch": true
+  },
+  "artifacts": {
+    "original-three-area.patch": {
+      "bytes": 1916357,
+      "sha256": "5ea27ef07716110113ac75130a465e85271eaa9df5d1b541387def9830008ae6"
+    },
+    "candidate-changed-files.zip": {
+      "bytes": 376926,
+      "sha256": "ea9b35599e0b9bda6f080b48df48e05033048c98bf1abcf1aecd7d7e1a6558e3"
+    },
+    "rollback-changed-files.zip": {
+      "bytes": 298554,
+      "sha256": "21e4ed2bc258e5d8b32e739a8e638406c3a8c9d9193b49fba650956fc660d7eb"
+    }
+  }
+}

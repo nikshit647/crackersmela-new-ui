@@ -1,0 +1,21 @@
+{
+  "before": {
+    "baseline": "10 items",
+    "rendered": "10 items",
+    "saved": "10 items"
+  },
+  "after": {
+    "baseline": "11 items",
+    "rendered": "11 items",
+    "saved": "10 items"
+  },
+  "presentation": {
+    "count": "11 items",
+    "countReadOnly": true,
+    "fontSize": "15px",
+    "label": "Edited category label",
+    "labelReadOnly": false
+  },
+  "filteredCount": 11,
+  "status": "PASS"
+}

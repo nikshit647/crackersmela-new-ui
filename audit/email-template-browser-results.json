@@ -1,0 +1,60 @@
+{
+  "checks": [
+    {
+      "event": "ORDER_PLACED",
+      "pass": true
+    },
+    {
+      "event": "ORDER_CONFIRMED",
+      "pass": true
+    },
+    {
+      "event": "ORDER_PACKED",
+      "pass": true
+    },
+    {
+      "event": "ORDER_SHIPPED",
+      "pass": true
+    },
+    {
+      "event": "ORDER_OUT_FOR_DELIVERY",
+      "pass": true
+    },
+    {
+      "event": "ORDER_DELIVERED",
+      "pass": true
+    },
+    {
+      "event": "ORDER_CANCELLED",
+      "pass": true
+    },
+    {
+      "event": "ORDER_UPDATED",
+      "pass": true
+    },
+    {
+      "name": "Typing updates shared HTML preview and dirty state",
+      "pass": true
+    },
+    {
+      "name": "Discard confirmation preserves then discards only draft",
+      "pass": true
+    },
+    {
+      "name": "Template saves through UI and persists after reload",
+      "pass": true
+    },
+    {
+      "name": "Reset requires confirmation and restores original message",
+      "pass": true
+    },
+    {
+      "name": "390px layout has no page overflow",
+      "pass": true
+    },
+    {
+      "name": "No browser exceptions",
+      "pass": true
+    }
+  ]
+}
