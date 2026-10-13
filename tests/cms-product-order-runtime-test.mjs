@@ -39,7 +39,7 @@ function runtime({ preview = false, published = null, cards = [], contextShop = 
     head: { querySelector: () => null, appendChild: () => {} },
     querySelector: selector => selector === '#view' ? view : null,
     querySelectorAll: selector => selector === '#view .shop-layout .shop-main .prod-grid' ? [grid] : [],
-    createElement: () => ({ textContent: '' }),
+    createElement: () => ({ textContent: '', setAttribute(name, value) { this[name] = String(value); }, removeAttribute(name) { delete this[name]; } }),
     dispatchEvent: () => {},
   };
   const window = { CM_EDITOR_PREVIEW: preview, CMStorefront: {

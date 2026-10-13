@@ -2,9 +2,9 @@
 (() => {
   'use strict';
   const pageNames = new Set(['home', 'products', 'product', 'price-list', 'about', 'contact', 'faq', 'wholesale', 'shipping', 'returns', 'safety', 'terms', 'privacy']);
-  const styleNames = new Set('fontFamily fontSize fontWeight lineHeight letterSpacing textAlign color backgroundColor paddingTop paddingRight paddingBottom paddingLeft marginTop marginRight marginBottom marginLeft width maxWidth minHeight height borderRadius borderWidth borderColor borderStyle boxShadow display gap gridTemplateColumns flexDirection alignItems justifyContent objectFit objectPosition opacity'.split(' '));
+  const styleNames = new Set('fontFamily fontSize fontWeight lineHeight letterSpacing textAlign color backgroundColor paddingTop paddingRight paddingBottom paddingLeft marginTop marginRight marginBottom marginLeft width maxWidth minHeight height borderRadius borderWidth borderColor borderStyle boxShadow display gap gridTemplateColumns flexDirection alignItems justifyContent objectFit objectPosition opacity zIndex'.split(' '));
   // Account controls and signed-in identity stay owned by the live storefront.
-  const commerce = '.prod-card,.prod-toolbar,.shop-sidebar,.filter-card,.chip-row,.prod-price-big,.savings-note,.stock-line,.qty-stepper,.rating-row,.hero-stats,.hero-shot__tag,#plTable tbody,form,input,select,textarea,[data-add],[data-wish],[data-qty],[data-del],#pdQty,#cartBtn,#wishBtn,#userIconBtn,#cartCount,#wishCount,#accountChip,#accountArea,#navCatMenu';
+  const commerce = '.prod-card,.prod-toolbar,.shop-sidebar,.filter-card,.chip-row,.prod-price-big,.savings-note,.stock-line,.qty-stepper,.rating-row,.hero-stats,.hero-shot,.hero-shot__tag,#plTable tbody,form,input,select,textarea,[data-add],[data-wish],[data-qty],[data-del],#pdQty,#cartBtn,#wishBtn,#userIconBtn,#cartCount,#wishCount,#accountChip,#accountArea,#navCatMenu';
   const state = { page: '', templatePage: '', baseline: null, sources: new Map(), instances: new Map(), documents: new Map(), published: new Map(), request: 0, style: null, cardOrders: new WeakMap(), categoryOrders: new WeakMap(), blockOrders: new WeakMap() };
   const clone = value => JSON.parse(JSON.stringify(value));
   const safeId = value => typeof value === 'string' && /^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$/.test(value);
@@ -40,10 +40,21 @@
   }
   const titleOf = node => node.getAttribute('aria-label') || node.querySelector('h1,h2,h3')?.textContent.trim() || node.id || node.classList[0] || node.tagName.toLowerCase();
   const attr = (node, name, value) => { if (value === null || value === undefined) node.removeAttribute(name); else if (node.getAttribute(name) !== String(value)) node.setAttribute(name, String(value)); };
-  function setText(node, value) { if (typeof value === 'string' && node.textContent !== value) node.textContent = value; }
+  function setText(node, value) {
+    if (typeof value !== 'string') return;
+    if (!node.matches('.hero-lede')) { if (node.textContent !== value) node.textContent = value; return; }
+    // Home's server and storefront render authored paragraph newlines as BRs.
+    // Match that layout with text nodes, keeping saved copy out of HTML parsing.
+    const lines = value.split(/\r\n?|\n/), children = [...node.childNodes];
+    if (children.length === lines.length * 2 - 1 && children.every((child, index) => index % 2 ? child.nodeName === 'BR' : child.nodeType === Node.TEXT_NODE && child.textContent === lines[index / 2])) return;
+    node.replaceChildren(...lines.flatMap((line, index) => [...(index ? [document.createElement('br')] : []), document.createTextNode(line)]));
+  }
   // Keep category/search copy current while retaining the heading containers for layout edits.
   const listingText = node => state.routeSeo && state.page === 'products' && node.closest('.page-head>h1,.page-head>p');
+  const heroStatistic = node => node.matches('.hero-stats > .stat');
   function editable(node) {
+    // Category illustrations are decorative for visitors but still editable.
+    if (node.matches('.home-category-card__art img[data-image-category]')) return true;
     if (node.closest('svg,canvas,script,style,[aria-hidden="true"]')) return false;
     if (node.closest(commerce)) return false;
     if (listingText(node)) return false;
@@ -57,10 +68,18 @@
     const entries = new Map();
     function walk(node, path) {
       if (!(node instanceof HTMLElement)) return;
-      const key = `e${path.length ? path.join('.') : 'root'}`;
+      // Existing product documents style the media container at e0. The
+      // gallery wrapper and its catalog-owned controls must not change that ID.
+      if (state.templatePage === 'product' && node.matches('[data-product-gallery]')) {
+        const stage = node.querySelector('[data-gallery-stage]');
+        if (stage) walk(stage, path);
+        return;
+      }
+      const key = node.matches('.home-category-card__art img[data-image-category]') ? 'category:' + node.dataset.imageCategory + ':image' : `e${path.length ? path.join('.') : 'root'}`;
       const isImage = node.tagName === 'IMG';
       const isLink = node.tagName === 'A';
       const permitted = editable(node);
+      const statistic = heroStatistic(node);
       let kind = 'container';
       if (permitted && isImage) kind = 'image';
       else if (permitted && (isLink || node.tagName === 'BUTTON')) kind = 'button';
@@ -74,13 +93,12 @@
           }
         });
       }
-      const allowContainer = node === root || permitted && /^(DIV|SECTION|HEADER|H[1-6]|P|UL|DETAILS)$/.test(node.tagName) || state.templatePage === 'product' && node.matches('.prod-detail__media,.prod-detail__info,.prod-detail__info>h1,.desc-note') || listingText(node) && node.matches('h1,p');
+      // Register the existing pill and statistic wrappers without inserting any
+      // nodes: saved child-index IDs and independent text positions stay valid.
+      const allowContainer = node === root || node.matches('.hero-shot') || permitted && (/^(DIV|SECTION|HEADER|H[1-6]|P|UL|DETAILS)$/.test(node.tagName) || node.matches('.hero-eyebrow')) || statistic || state.templatePage === 'product' && node.matches('.prod-detail__media,.prod-detail__info,.prod-detail__info>h1,.desc-note') || listingText(node) && node.matches('h1,p');
       if (kind !== 'container' || allowContainer) {
-        // A path-derived key must stay unique inside its section: two nodes
-        // answering the same selector make the editor bind to whichever comes
-        // first in document order rather than the one the user picked.
-        let unique = key; for (let n = 2; entries.has(unique); n++) unique = `${key}-${n}`;
         const descriptor = { kind, name: (node.dataset.cmsText !== undefined ? 'Text' : titleOf(node)).slice(0, 160), styles: emptyStyles(), hover: {}, animation: {} };
+        if (statistic) descriptor.name = ((node.querySelector('.lbl')?.textContent.trim() || 'Hero') + ' statistic').slice(0, 160);
         if (kind === 'text') descriptor.name = node.textContent.trim().slice(0, 80);
         if (kind === 'text' || kind === 'button' && !node.querySelector('img')) descriptor.text = node.textContent;
         if (kind === 'image') { descriptor.src = node.getAttribute('src') || ''; descriptor.alt = node.getAttribute('alt') || ''; }
@@ -89,14 +107,16 @@
           try { const url = new URL(href, location.href); if (['localhost', '127.0.0.1'].includes(url.hostname) && url.protocol === 'http:') href = url.hash || url.pathname + url.search; } catch { /* Keep existing valid links. */ }
           descriptor.href = href; descriptor.newTab = node.target === '_blank';
         }
-        node.dataset.cmsElement = unique;
+        node.dataset.cmsElement = key;
         node.dataset.cmsName = descriptor.name;
         if (kind === 'text' && /^(SPAN|STRONG|B|SMALL)$/.test(node.tagName)) node.dataset.cmsInline = '';
-        entries.set(unique, record(node, descriptor));
+        entries.set(key, record(node, descriptor));
       }
       // Catalog items and dynamic order values stay owned by the existing app.
-      if (kind === 'button' && !node.querySelector('img')) return;
-      if (root.id !== 'promoBar' && !node.matches(commerce) && !node.matches('svg,canvas,script,style')) [...node.children].forEach((child, index) => walk(child, [...path, index]));
+      if (kind === 'button' && !node.querySelector('img') || statistic) return;
+      // Enter the statistics row only far enough to register each layout unit.
+      // Its live numbers and labels remain owned by the storefront.
+      if (root.id !== 'promoBar' && (!node.matches(commerce) || node.matches('.hero-stats')) && !node.matches('svg,canvas,script,style')) [...node.children].forEach((child, index) => walk(child, [...path, index]));
     }
     walk(root, []);
     return entries;
@@ -154,7 +174,12 @@
     }
   }
   function restoreText(node, original, value) {
-    if (typeof value !== 'string' || node.textContent === value) return;
+    if (typeof value !== 'string') return;
+    const paragraph = node.matches('.hero-lede');
+    // A plaintext edit may already contain the saved newlines but still need
+    // BRs after editing ends. Keep the canonical children on subsequent applies.
+    if (paragraph && value !== original.text) { setText(node, value); return; }
+    if (node.textContent === value && !(paragraph && node.querySelector('br'))) return;
     if (value === original.text) node.replaceChildren(...original.children.map(child => child.cloneNode(true)));
     else setText(node, value);
   }
@@ -317,7 +342,8 @@
     for (let pass = 0; pending.length && pass < 21; pass++) {
       const next = [];
       for (const [key, value] of pending) {
-        const parent = value.parentId === 'eroot' || !value.parentId ? instance.node : instance.elements.get(value.parentId)?.descriptor.kind === 'container' ? instance.elements.get(value.parentId).node : null;
+        const parentEntry = instance.elements.get(value.parentId);
+        const parent = value.parentId === 'eroot' || !value.parentId ? instance.node : ['container','button'].includes(parentEntry?.descriptor.kind) ? parentEntry.node : null;
         if (!parent) { next.push([key, value]); continue; }
         let entry = instance.elements.get(key);
         if (entry && !entry.descriptor.added) continue;
@@ -330,7 +356,21 @@
           if (value.kind === 'video') { node.controls = true; node.preload = 'metadata'; node.playsInline = true; }
           entry = record(node, clone(value)); instance.elements.set(key, entry);
         }
-        if (entry.node !== parent && !entry.node.contains(parent) && entry.node.parentNode !== parent) parent.append(entry.node);
+        // Images inserted beside existing copy keep that exact location. The
+        // anchor may live in a generated wrapper beneath the named container.
+        const anchor = safeId(value.beforeId) && value.beforeId !== key ? instance.elements.get(value.beforeId)?.node : null;
+        const before = anchor && anchor !== parent && parent.contains(anchor) && !entry.node.contains(anchor) ? anchor : null;
+        const destination = before ? before.parentNode : parent;
+        if (entry.node !== destination && !entry.node.contains(destination)) {
+          if (before && entry.node.nextSibling !== before) destination.insertBefore(entry.node, before);
+          else if (!before && entry.node.parentNode !== destination) destination.append(entry.node);
+        }
+        // Palette drops use free positioning; an anchored insertion participates
+        // in its content area's flow so it cannot cover the following copy.
+        const flow = !!before || value.flow === true;
+        entry.node.style.position = flow ? 'relative' : '';
+        entry.node.style.left = flow ? 'auto' : '';
+        entry.node.style.top = flow ? 'auto' : '';
         entry.node.dataset.cmsName = value.name || value.kind;
         if (value.kind === 'icon' && entry.node.dataset.cmsIcon !== value.icon) { entry.node.replaceChildren(makeIcon(value.icon)); entry.node.dataset.cmsIcon = value.icon || 'star'; }
       }
@@ -343,14 +383,31 @@
     const section = documentData?.sections.find(item => item.id === sectionId);
     if (!section) return null;
     const entry = elementId && instance.elements.get(elementId);
-    const readOnlyText = section.type === 'native' && section.source === 'home:shop-categories'
-      && !!entry?.node.closest('.home-category-card__count');
-    return { sectionId, elementId: elementId || null, descriptor: clone(entry ? { ...entry.descriptor, ...section.elements?.[elementId] } : section), contentKey: entry?.contentKey || null, readOnlyText };
+    // Stale/missing element identities cannot become an operation on a section.
+    if (elementId && !entry) return null;
+    const readOnlyText = !!entry && (heroStatistic(entry.node) || section.type === 'native' && section.source === 'home:shop-categories'
+      && !!entry.node.closest('.home-category-card') && entry.descriptor.kind !== 'image');
+    let parentId = 'eroot';
+    for (let parent = entry?.node.parentElement; parent && instance.node.contains(parent); parent = parent.parentElement) {
+      const id = parent.dataset.cmsElement;
+      if (id && ['container','button'].includes(instance.elements.get(id)?.descriptor.kind)) { parentId = id; break; }
+      if (parent === instance.node) break;
+    }
+    let lockOwnerId = section.locked ? null : undefined;
+    for (let node = entry?.node; node && instance.node.contains(node); node = node.parentElement) {
+      const id = node.dataset.cmsElement, value = section.elements?.[id] || instance.elements.get(id)?.descriptor;
+      if (value?.locked === true) { lockOwnerId = id; break; }
+      if (node === instance.node) break;
+    }
+    const locked = lockOwnerId !== undefined;
+    const canEditContent = !readOnlyText && (!entry || editable(entry.node) && !entry.node.matches(commerce));
+    const canInsertImage = !locked && canEditContent;
+    return { sectionId, elementId: elementId || null, descriptor: clone(entry ? { ...entry.descriptor, ...section.elements?.[elementId] } : section), contentKey: entry?.contentKey || null, parentId, beforeId: elementId && elementId !== 'eroot' ? elementId : null, canInsertImage, canEditContent, readOnlyText, locked, lockOwnerId };
   }
   function safeStyles(values) {
     return Object.entries(values || {}).filter(([key, value]) => styleNames.has(key) && ['string', 'number'].includes(typeof value) && String(value).length <= 200 && !/[<>;{}\\]|url\s*\(|expression\s*\(|@|\/\*/i.test(value)).map(([key, value]) => `${key.replace(/[A-Z]/g, letter => '-' + letter.toLowerCase())}:${value}!important`).join(';');
   }
-  function rulesFor(selector, item) {
+  function rulesFor(selector, item, basePosition = '') {
     const responsive = window.CMResponsive;
     let rules = '';
     // Keep legacy CSS in its original cascade. Native CSS is never snapshotted.
@@ -363,12 +420,25 @@
       const resolved = responsive.resolve(item, device), override = item.overrides?.[device] || {};
       const wrap = css => css ? `@media ${responsive.media[device]}{${css}}` : '';
       let declarations = safeStyles(override.styles);
+      if (resolved.styles.zIndex !== undefined && basePosition === 'static') declarations += ';position:relative!important';
       if (['text','heading','button'].includes(item.kind) && override.styles?.color) declarations += ';-webkit-text-fill-color:currentColor!important';
       const effects = effectStyles(resolved.effects, item.kind, resolved.styles.color);
       if (effects) declarations += ';' + effects;
       if (declarations) rules += wrap(`${selector}{${declarations}}`);
       if ((resolved.effects.position || resolved.styles.width || resolved.styles.height) && !resolved.styles.display) rules += wrap(`${selector}[data-cms-inline]{display:inline-block!important}`);
-      if (resolved.hidden) rules += wrap(`${selector}{display:none!important}`);
+      // New moves can explicitly keep native inline text in its existing line
+      // boxes. Older snapshots retain their original inline-block behavior.
+      if (resolved.styles.display === 'inline' && resolved.effects.position && Number(resolved.effects.position.scale || 1) === 1) {
+        const offset = value => Number.isFinite(Number(value)) ? Math.max(-1000,Math.min(1000,Number(value))) : 0;
+        rules += wrap(`${selector}[data-cms-inline]{position:relative!important;left:${offset(resolved.effects.position.x)}px!important;top:${offset(resolved.effects.position.y)}px!important;translate:none!important;scale:none!important}`);
+      } else if (resolved.styles.display === 'inline' && resolved.effects.position) {
+        rules += wrap(`${selector}[data-cms-inline]{display:inline-block!important;left:0!important;top:0!important}`);
+      }
+      if (resolved.styles.display === 'inline-block' && resolved.effects.position) rules += wrap(`${selector}[data-cms-inline]{left:0!important;top:0!important}`);
+      // A saved position or size adds the higher-specificity [data-cms-inline]
+      // display rule above. `hidden` must out-specify it, otherwise a deleted or
+      // hidden text box stays on the canvas after it was dragged or resized.
+      if (resolved.hidden) rules += wrap(`${selector}{display:none!important}`) + wrap(`${selector}[data-cms-inline]{display:none!important}`);
       const hover = safeStyles(resolved.hover);
       if (hover) rules += wrap(`@media(hover:hover){${selector}:hover{${hover}}}`);
       const animation = resolved.animation;
@@ -446,7 +516,12 @@
     }
     return declarations.map(value => value + '!important').join(';');
   }
-  function applySeo(seo) {
+  function applySeo(seo, documentData) {
+    if (window.CMSeoManager) {
+      if (window.CM_EDITOR_PREVIEW) { if (!state.routeSeo) window.CMSeoManager.applyEditorSeo(seo, documentData); }
+      else window.CMSeoManager.applyPublishedDocument(documentData);
+      return;
+    }
     if (state.routeSeo) return;
     if (seo.title) document.title = seo.title;
     for (const [key, name, property] of [['description', 'description', false], ['keywords', 'keywords', false], ['ogTitle', 'og:title', true], ['ogDescription', 'og:description', true], ['ogImage', 'og:image', true], ['robots', 'robots', false]]) {
@@ -642,7 +717,8 @@
           if (descriptor.kind === 'image') { attr(target, 'src', safeUrl(content ? contentValue(content, entry.contentKey) : value.src, true) || (descriptor.added ? null : original.src)); attr(target, 'alt', (content ? contentValue(content, entry.contentKey.replace(/src$/, 'alt')) : value.alt) ?? original.alt); }
           if (descriptor.kind === 'video') attr(target, 'src', videoUrl(content ? content.src : value.src) || null);
           if (descriptor.kind === 'button' && target.tagName === 'A') { const link = content || value; attr(target, 'href', categoryIdentity ? original.href : safeUrl(link.href) || original.href || '#'); attr(target, 'target', link.newTab ? '_blank' : original.target === '_blank' && link.newTab === undefined ? '_blank' : null); attr(target, 'rel', link.newTab ? 'noopener noreferrer' : original.rel); }
-          css += rulesFor(key === 'eroot' ? selector : `${selector} [data-cms-element="${cssId(key)}"]`, promo && key === 'eroot' ? promoContainer(value) : value);
+          original.position ??= getComputedStyle(target).position;
+          css += rulesFor(key === 'eroot' ? selector : `${selector} [data-cms-element="${cssId(key)}"]`, promo && key === 'eroot' ? promoContainer(value) : value, original.position);
           if (promo && key === 'eroot') css += promoRules(selector,value);
         }
       }
@@ -667,7 +743,8 @@
       if (section.type === 'native' && section.source === 'global:header') projectMobileHeader(instance, section);
       const sourceContent = state.sources.get(section.source)?.descriptor.content || {};
       const productOptions = section.type === 'native' ? Object.fromEntries(Object.entries(section.content || {}).filter(([key, value]) => value !== sourceContent[key])) : section.content || {};
-      css += rulesFor(selector, promo ? promoContainer(section) : section);
+      instance.originalPosition ??= getComputedStyle(node).position;
+      css += rulesFor(selector, promo ? promoContainer(section) : section, instance.originalPosition);
       if (promo) css += promoRules(selector,section);
       for (const device of window.CMResponsive.devices) {
         const options = {...productOptions,...section.overrides?.[device]?.content};
@@ -705,7 +782,7 @@
     if (design.containerWidth && /^(?:\d+(?:\.\d+)?)(?:px|rem|em|%|vw)$/.test(design.containerWidth)) css += `#view.container,#view .container{max-width:${design.containerWidth}!important}`;
     if (!state.style) { state.style = document.createElement('style'); state.style.id = 'cm-published-styles'; document.head.appendChild(state.style); }
     if (state.style.textContent !== css) state.style.textContent = css;
-    applySeo(documentData.seo || {});
+    applySeo(documentData.seo || {}, documentData);
     forwardCategoryOrder(documentData);
     applyProductOrder(documentData);
     document.dispatchEvent(new CustomEvent('cm:cms-applied', { detail: { page: state.page } }));
@@ -739,6 +816,29 @@
     }
     return result;
   }
+  /* CM_PUBLICATION_BOOTSTRAP: share the HTTP publication with the first
+     interactive render. Never paint a native default while fetching Home. */
+  const publications = new Map(), publicationReads = new Map();
+  try {
+    const initial = JSON.parse(document.getElementById?.('cm-cms-bootstrap')?.textContent || 'null');
+    if (initial && typeof initial.page === 'string' && Object.hasOwn(initial, 'published')) publications.set(initial.page, initial);
+  } catch { /* A malformed optional bootstrap can be retried through the API. */ }
+  function readPublication(page, share = true) {
+    if (share && publicationReads.has(page)) return publicationReads.get(page);
+    const pending = fetch('/cms-api.php?a=published&page=' + encodeURIComponent(page), { credentials: 'same-origin', cache: 'no-store', headers: { Accept: 'application/json' } })
+      .then(async response => {
+        const result = await response.json();
+        if (!response.ok) { const error = new Error('Published page unavailable'); error.code = result?.code; throw error; }
+        if (publicationReads.get(page) === pending) publications.set(page, result);
+        return result;
+      }).finally(() => { if (publicationReads.get(page) === pending) publicationReads.delete(page); });
+    publicationReads.set(page, pending); return pending;
+  }
+  function prepareRoute(route) {
+    if (window.CM_EDITOR_PREVIEW) return null;
+    const page = pageId(route);
+    return publications.has(page) ? null : readPublication(page);
+  }
   async function afterRoute(route) {
     flushCategoryOrder();
     const baseline = capture(route); if (!baseline) return;
@@ -748,20 +848,24 @@
       return;
     }
     const page = state.page; const request = ++state.request;
+    const sourcePage = state.sharedOnly ? 'home' : page;
+    const project = result => {
+      const published = withSharedNavigation(state.sharedOnly ? baseline : result.published || result.document || baseline, result.globals, baseline);
+      state.published.set(page, published);
+      apply(published);
+      // The server's projection is replaced in this same task by runtime CSS.
+      document.querySelectorAll('style[data-cm-initial-css]').forEach(node => node.remove());
+    };
+    const cached = publications.get(sourcePage);
+    if (cached) project(cached);
     try {
-      let published;
-      {
-        await window.CMStorefront?.ready();
-        const response = await fetch(`/cms-api.php?a=published&page=${encodeURIComponent(state.sharedOnly ? 'home' : page)}`, { credentials: 'same-origin', headers: { Accept: 'application/json' } });
-        if (!response.ok) { const failure = await response.json().catch(() => null); if (failure?.code === 'page_unavailable' && request === state.request) window.CMStorefront?.unavailable(); return; }
-        const result = await response.json();
-        if (request !== state.request || page !== state.page) return;
-        published = withSharedNavigation(state.sharedOnly ? baseline : result.published || result.document || baseline, result.globals, baseline);
-        state.published.set(page, published);
-      }
-      if (request === state.request && page === state.page) apply(published || baseline);
-    } catch { /* A CMS read failure leaves the original storefront fully functional. */ }
+      const result = await readPublication(sourcePage, false);
+      if (request === state.request && page === state.page) project(result);
+    } catch (error) {
+      if (error.code === 'page_unavailable' && request === state.request) window.CMStorefront?.unavailable();
+      // Preserve the last published view on a transient read failure.
+    }
   }
   if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') window.addEventListener('load', flushCategoryOrder);
-  window.CMCms = Object.freeze({ beforeRoute, afterRoute, apply, orderProducts, productBlocks, resolveRoute, pageContext, selectionInfo, document: () => clone(state.documents.get(state.page) || state.baseline), baseline: () => state.baseline ? clone(state.baseline) : null, page: () => state.page, pages: [...pageNames], safeUrl });
+  window.CMCms = Object.freeze({ beforeRoute, afterRoute, prepareRoute, promoMessages: () => publications.get('home')?.globals?.promo?.content?.promoMessages, apply, orderProducts, productBlocks, resolveRoute, pageContext, selectionInfo, document: () => clone(state.documents.get(state.page) || state.baseline), baseline: () => state.baseline ? clone(state.baseline) : null, page: () => state.page, pages: [...pageNames], safeUrl });
 })();

@@ -2,6 +2,7 @@
 /* Public clean pages serve the same storefront, gated by persisted publication state. */
 require_once __DIR__ . '/cm-cms.php';
 require_once __DIR__ . '/cm-seo.php';
+require_once __DIR__ . '/cm-product-bootstrap.php';
 $method = strtoupper($_SERVER['REQUEST_METHOD'] ?? 'GET');
 if (!in_array($method, ['GET','HEAD'], true)) { header('Allow: GET, HEAD'); cmRespond(405, ['ok'=>false,'error'=>'This method is not supported.']); }
 header('Content-Type: text/html; charset=utf-8');
@@ -15,7 +16,7 @@ function cmCmsPageNotFound($method) {
 // so a visitor-supplied ?slug= must never select a different public page.
 $requestPath = (string)parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);
 $slug = $requestPath === '/cms-page.php' ? ($_GET['slug'] ?? '') : trim(rawurldecode($requestPath), '/');
-$id = $requestPath === '/' ? 'home' : cmCmsPageForSlug($slug);
+$id = in_array($requestPath, ['/', '/index.html'], true) ? 'home' : cmCmsPageForSlug($slug);
 if ($id === null) cmCmsPageNotFound($method);
 $record = cmCmsRecord(cmCmsStore($id), $id); $info = cmCmsPageInfo($id, $record);
 if (in_array($info['status'], ['unpublished','deleted'], true) || ($info['custom'] && ($info['status'] !== 'published' || $record['published'] === null))) cmCmsPageNotFound($method);
@@ -26,29 +27,18 @@ if ($info['custom']) {
     $context = cmCmsContextMeta($info);
     $html = preg_replace_callback('/<head\b[^>]*>/i', function($match) use ($context) { return $match[0] . "\n" . $context; }, $html, 1);
 }
-$seo = $record['published']['seo'] ?? [];
 $baseMeta = cmSeoPageMetadata($id);
-if ($info['custom']) $baseMeta = ['title'=>$info['name'] . ' | Crackers Mela','seoDesc'=>'Read ' . $info['name'] . ' at Crackers Mela.','canonical'=>'https://crackersmela.com/' . $info['slug']];
-foreach (['title'=>'title','description'=>'seoDesc','canonical'=>'canonical','keywords'=>'keywords'] as $key=>$target) if (!empty($seo[$key]) || ($key === 'keywords' && array_key_exists($key, $seo))) $baseMeta[$target] = $seo[$key];
-$seo['robots'] = cmSeoRobots($seo['robots'] ?? '');
-if (stripos($seo['robots'], 'noindex') !== false) header('X-Robots-Tag: ' . $seo['robots']);
-$html = cmSeoHead($html, $baseMeta, 'website', $seo['ogImage'] ?? '', $seo['robots']);
-$escape = function($value) { return htmlspecialchars((string)$value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); };
-$title = $seo['title'] ?? ($info['custom'] ? $info['name'] . ' | Crackers Mela' : '');
-if ($title !== '') $html = preg_replace_callback('#<title\b[^>]*>.*?</title>#is', function() use ($title, $escape) { return '<title>' . $escape($title) . '</title>'; }, $html, 1);
-$tags = [];
-foreach (['description'=>'description','ogTitle'=>'og:title','ogDescription'=>'og:description','ogImage'=>'og:image','robots'=>'robots'] as $key => $name) if (!empty($seo[$key])) {
-    $html = preg_replace('#<meta\b[^>]*(?:name|property)=["\x27]' . preg_quote($name, '#') . '["\x27][^>]*>#i', '', $html);
-    $tags[] = '<meta ' . (strpos($name, 'og:') === 0 ? 'property' : 'name') . '="' . $name . '" content="' . $escape($seo[$key]) . '">';
+$robots = cmSeoRobots($baseMeta['robots'] ?? '');
+if (stripos($robots, 'noindex') !== false) header('X-Robots-Tag: ' . $robots);
+$html = cmSeoHead($html, $baseMeta, 'website', $baseMeta['ogImage'] ?? '', $robots);
+$schemas = cmSeoJsonLd(cmSeoPageSchema($id, $baseMeta, $record), 'cm-dynamic-schema');
+if ($id !== 'home') $schemas .= cmSeoJsonLd(cmSeoPageBreadcrumbs($baseMeta, $info['name']), 'cm-seo-breadcrumbs');
+$html = cmSeoSchemas($html, $schemas);
+if ($id !== 'home' && is_file(__DIR__ . '/cm-page-content.php')) {
+    require_once __DIR__ . '/cm-page-content.php';
+    $body = cmSeoRenderPublishedPage($id, $record, $info);
+    if ($body !== null) $html = preg_replace_callback('#(<main\b[^>]*\bid=["\x27]view["\x27][^>]*>).*?</main>#is', function($match) use ($body) { return $match[1] . $body . '</main>'; }, $html, 1);
 }
-$canonical = $seo['canonical'] ?? '';
-if ($canonical === '' && $info['custom']) $canonical = 'https://crackersmela.com/' . $info['slug'];
-if ($canonical !== '') {
-    $html = preg_replace('#<link\b[^>]*rel=["\x27]canonical["\x27][^>]*>#i', '', $html);
-    $tags[] = '<link rel="canonical" href="' . $escape($canonical) . '">';
-}
-// The existing JSON-LD/schema and executable scripts remain unchanged.
-if ($tags) $html = preg_replace_callback('/<\/head>/i', function() use ($tags) { return implode("\n", $tags) . "\n</head>"; }, $html, 1);
 if ($id === 'home') {
     $categories = cmBaseData()['categories'] ?? [];
     /* CM_CMS_HOME_CATEGORY_ORDER: the global home category order drives this
@@ -70,7 +60,44 @@ if ($id === 'home') {
         });
     }
     require_once __DIR__ . '/cm-home.php';
-    $body = cmHomeInitialHtml($categories);
+    // The published hero section drives the first-paint headline so the server
+    // render and the CMS pass cannot disagree.
+    $heroSection = null;
+    foreach (($record['published']['sections'] ?? array()) as $section) {
+        if (is_array($section) && ($section['id'] ?? '') === 'home:hero') { $heroSection = $section; break; }
+    }
+    $body = cmHomeInitialHtml($categories, $heroSection);
     $html = preg_replace_callback('#(<main\b[^>]*\bid=["\x27]view["\x27][^>]*>).*?</main>#is', function($m) use ($body) { return $m[1] . $body . '</main>'; }, $html, 1);
 }
+/* The site-wide maintenance flag is a backend settings key that only the
+   products pull normally reveals. Hand it to the first client render so the
+   SPA can paint immediately without ever showing the storefront while
+   maintenance is on. Delivered as a meta tag because the page ships a strict
+   script-src CSP that blocks inline scripts. */
+$maint = !empty((cmBaseData()['settings']['maintenance'] ?? null));
+$flag = '<meta name="cm-remote-maint" content="' . ($maint ? '1' : '0') . '">';
+$html = preg_replace('#</head>#i', $flag . '</head>', $html, 1);
+
+/* Same reason for the hero copy: views.home must render the CMS headline, not a
+   hardcoded one, or the SPA would briefly show stale hero text after first
+   paint even though the server got it right. */
+if ($id === 'home') {
+    $heroCopy = cmHomeHeroCopy($heroSection);
+    $meta = function ($name, $value) {
+        return '<meta name="' . $name . '" content="' . htmlspecialchars((string)$value, ENT_QUOTES, 'UTF-8') . '">';
+    };
+    $heroFlags = $meta('cm-hero-eyebrow', $heroCopy['eyebrow'])
+        . $meta('cm-hero-h1', json_encode($heroCopy['lines'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
+        . $meta('cm-hero-lede', $heroCopy['lede']);
+    $html = preg_replace('#</head>#i', $heroFlags . '</head>', $html, 1);
+}
+// Share the exact published revision with first paint and the synchronous client pass.
+require_once __DIR__ . '/cm-cms-render.php';
+$cmsGlobals = cmCmsGlobals(true);
+$cmsPublished = cmCmsOverlayGlobals($record['published'], $cmsGlobals);
+if (is_array($cmsPublished) && is_array($cmsGlobals['categoryOrder'] ?? null)) $cmsPublished['categoryOrder'] = $cmsGlobals['categoryOrder'];
+$html = cmCmsRenderInitial($html, $id, $id === 'home' ? $cmsPublished : null, $cmsGlobals);
+$html = cmCmsRenderBootstrap($html, $id, cmCmsJsonMaps($cmsPublished), $cmsGlobals, $record['version'] ?? 0);
+$html = cmProductBootstrapInject($html);
+$html = cmSeoSettingsInject($html);
 if ($method !== 'HEAD') echo $html;

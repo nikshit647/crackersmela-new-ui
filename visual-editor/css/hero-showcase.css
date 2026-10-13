@@ -1,0 +1,16 @@
+/* Fixed glass cards retain their geometry; only their content fades. */
+/* Home routing controls its scroll position; replacing equivalent server nodes
+   must not make browser scroll anchoring compensate for intermediate layout. */
+body:has(#view > .hero) { overflow-anchor: none; }
+.hero-shot[hidden] { display: none !important; }
+.hero-shot__content { position: absolute; inset: 0; display: block; opacity: 1; transition: opacity 180ms ease; }
+.hero-shot__content.is-changing { opacity: 0; }
+.hero-shot__content > img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.hero-shot__content > .prod-img-fallback { width: 100%; height: 100%; display: grid; place-items: center; color: var(--primary); font-size: 54px; }
+.hero-shot__tag .hero-shot__category { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 9px; font-weight: 500; color: var(--muted, #526b94); }
+.hero-shot__empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 24px; text-align: center; color: var(--primary-deep); }
+.hero-shot__empty > span:first-child { font-size: 72px; color: var(--primary); }
+.hero-shot__empty > span:last-child { font-size: 12px; }
+/* A near-zero duration still starts a transition for one frame. Disable it
+   completely for reduced motion, including publication-driven layout changes. */
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
